@@ -1,0 +1,43 @@
+{{- $relname := .Release.Name -}}
+{{- with .Values.backend }}
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "collective-ams.fullname" $ }}-backend
+  labels:
+    {{- include "collective-ams.labels" $ | nindent 4 }}
+spec:
+  replicas: {{ .replicaCount }}
+  selector:
+    matchLabels:
+      {{- include "collective-ams.selectorLabels" . | nindent 6 }}
+  template:
+    metadata:
+      labels:
+        {{- include "collective-ams.selectorLabels" . | nindent 8 }}
+    spec:
+      imagePullSecrets:
+        - name: {{ $.Values.imagePullSecret }}
+      serviceAccountName: {{ include "collective-ams.serviceAccountName" $ }}
+      containers:
+        - name: {{ $.Chart.Name }}-backend
+          image: "{{ $.Values.repository }}/{{ .image.name }}:{{ .image.tag }}"
+          env: 
+           {{- range $key, $val := .env }}
+          - name: {{ $key }}
+            value: {{ $val | quote }}
+          {{- end }}
+          imagePullPolicy: {{ .image.pullPolicy }}
+          ports:
+            - name: http
+              containerPort: 3000
+              protocol: TCP
+          livenessProbe:
+            httpGet:
+              path: /
+              port: http
+          readinessProbe:
+            httpGet:
+              path: /
+              port: http
+{{- end}}

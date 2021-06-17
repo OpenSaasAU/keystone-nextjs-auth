@@ -1,0 +1,3 @@
+# Keystone next auth
+This package enables the adition of social auth to keystone-next.
+Backend and apps/signup-frontend give examples of how to use it...

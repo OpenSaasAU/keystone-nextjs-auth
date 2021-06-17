@@ -1,0 +1,20 @@
+{
+  "name": "@opensaas-keystone/next-auth-backend",
+  "version": "2.0.0",
+  "private": true,
+  "scripts": {
+    "build": "keystone-next build",
+    "dev": "keystone-next dev",
+    "postinstall": "keystone-next postinstall",
+    "start": "keystone-next start"
+  },
+  "dependencies": {
+    "@keystone-next/fields": "^11.0.0",
+    "@keystone-next/fields-document": "^7.0.0",
+    "@keystone-next/keystone": "^20.0.0",
+    "@opensaas-keystone/nextjs-auth": "^1.0.0",
+    "@types/ejs": "^3.0.6",
+    "ejs": "^3.1.6",
+    "typescript": "^4.3.2"
+  }
+}
