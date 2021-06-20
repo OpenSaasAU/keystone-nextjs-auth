@@ -2,7 +2,7 @@ import { config } from '@keystone-next/keystone/schema';
 import {
   statelessSessions
 } from '@keystone-next/keystone/session';
-import { createAuth } from '@opensaas-keystone/nextjs-auth';
+import { createAuth, nextAuthProviders as Providers } from '@opensaas-keystone/nextjs-auth';
 
 import { lists } from './schemas';
 
@@ -24,6 +24,7 @@ const auth = createAuth({
   listKey: 'User',
   identityField: 'subjectId',
   sessionData: `id name email`,
+  providers:  [],
 });
 
 export default auth.withAuth(

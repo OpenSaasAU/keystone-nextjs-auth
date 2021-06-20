@@ -1,4 +1,5 @@
 import { BaseGeneratedListTypes, KeystoneContext } from '@keystone-next/types';
+import Providers from 'next-auth/providers';
 
 export type AuthGqlNames = {
   CreateInitialInput: string;
@@ -30,6 +31,8 @@ export type AuthConfig<GeneratedListTypes extends BaseGeneratedListTypes> = {
   identityField: GeneratedListTypes['fields'];
    /** Session data population */
   sessionData?: string;
+  /** NextAuth Providers */
+  providers: typeof Providers;
 };
 
 export type InitFirstItemConfig<GeneratedListTypes extends BaseGeneratedListTypes> = {

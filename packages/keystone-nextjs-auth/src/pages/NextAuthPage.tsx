@@ -1,5 +1,6 @@
 import NextAuth from 'next-auth';
 import Providers from 'next-auth/providers';
+import { AppProviders } from 'next-auth/providers';
 
 import { gql, useMutation } from '@keystone-next/keystone/admin-ui/apollo';
 
@@ -7,18 +8,18 @@ import { gql, useMutation } from '@keystone-next/keystone/admin-ui/apollo';
 type NextAuthPageProps = {
     identityField: string;
     mutationName: string;
+    providers: AppProviders;
   };
+
 export const getNextAuthPage = (props: NextAuthPageProps) => () => NextAuthPage({ ...props });
 
 export default function NextAuthPage(props: NextAuthPageProps){
     return NextAuth({
-        providers: [
-            Providers.Auth0({
-                clientId: process.env.AUTH0_CLIENT_ID || '',
-                clientSecret: process.env.AUTH0_CLIENT_SECRET || '',
-                domain: process.env.AUTH0_DOMAIN || '',
-            })
-        ],
+        providers: [Providers.Auth0({
+            clientId: process.env.AUTH0_CLIENT_ID || '',
+            clientSecret: process.env.AUTH0_CLIENT_SECRET || '',
+            domain: process.env.AUTH0_DOMAIN || '',
+        })],
         callbacks: {
             async signIn(user, account, profile) {
                 // TODO Check if the user is allowed access...

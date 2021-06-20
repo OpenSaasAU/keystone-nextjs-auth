@@ -17,7 +17,7 @@ model Role {
   canManageRoles    Boolean?
   canManageCart     Boolean?
   canManageOrgs     Boolean?
-  assignedTo        User[]   @relation("Userrole")
+  assignedTo        User[]   @relation("User_role")
 }
 
 model User {
@@ -26,75 +26,8 @@ model User {
   email     String? @unique
   password  String?
   subjectId String? @unique
-  role      Role?   @relation("Userrole", fields: [roleId], references: [id])
+  role      Role?   @relation("User_role", fields: [roleId], references: [id])
   roleId    Int?    @map("role")
 
   @@index([roleId])
-}
-
-model List {
-  id               Int            @id @default(autoincrement())
-  name             String?
-  fields           Field[]        @relation("Fieldlist")
-  idField          Field?         @relation("ListidField", fields: [idFieldId], references: [id])
-  idFieldId        Int?           @map("idField")
-  app              App?           @relation("Listapp", fields: [appId], references: [id])
-  appId            Int?           @map("app")
-  accessControls   AccessControl? @relation("ListaccessControls", fields: [accessControlsId], references: [id])
-  accessControlsId Int?           @map("accessControls")
-  hooks            Hook?          @relation("Listhooks", fields: [hooksId], references: [id])
-  hooksId          Int?           @map("hooks")
-
-  @@index([idFieldId])
-  @@index([appId])
-  @@index([accessControlsId])
-  @@index([hooksId])
-}
-
-model Field {
-  id                Int            @id @default(autoincrement())
-  name              String?
-  label             String?
-  type              String?
-  functionLocation  String?
-  functionName      String?
-  isRequired        Boolean?
-  isUnique          Boolean?
-  list              List?          @relation("Fieldlist", fields: [listId], references: [id])
-  listId            Int?           @map("list")
-  hooks             Hook?          @relation("Fieldhooks", fields: [hooksId], references: [id])
-  hooksId           Int?           @map("hooks")
-  accessControls    AccessControl? @relation("FieldaccessControls", fields: [accessControlsId], references: [id])
-  accessControlsId  Int?           @map("accessControls")
-  from_List_idField List[]         @relation("ListidField")
-
-  @@index([listId])
-  @@index([hooksId])
-  @@index([accessControlsId])
-}
-
-model App {
-  id    Int     @id @default(autoincrement())
-  name  String?
-  lists List[]  @relation("Listapp")
-}
-
-model AccessControl {
-  id                        Int     @id @default(autoincrement())
-  name                      String?
-  control                   String?
-  functionLocation          String?
-  functionName              String?
-  from_List_accessControls  List[]  @relation("ListaccessControls")
-  from_Field_accessControls Field[] @relation("FieldaccessControls")
-}
-
-model Hook {
-  id               Int     @id @default(autoincrement())
-  name             String?
-  stage            String?
-  functionLocation String?
-  functionName     String?
-  from_List_hooks  List[]  @relation("Listhooks")
-  from_Field_hooks Field[] @relation("Fieldhooks")
 }

@@ -16,17 +16,20 @@ import { validateNextAuth } from './lib/validateNextAuth';
 import { AuthConfig, AuthGqlNames } from './types';
 import { getSchemaExtension } from './schema';
 import { authTemplate } from './templates/auth';
-import { signinTemplate } from './templates/signin';
+import Providers from 'next-auth/providers';
 
+export const nextAuthProviders = Providers;
 /**
  * createAuth function
  *
  * Generates config for Keystone to implement standard auth features.
  */
+
 export function createAuth<GeneratedListTypes extends BaseGeneratedListTypes>({
   listKey,
   identityField,
   sessionData,
+  providers,
 }: AuthConfig<GeneratedListTypes>) {
   // The protectIdentities flag is currently under review to see whether it should be
   // part of the createAuth API (in which case its use cases need to be documented and tested)
@@ -87,7 +90,7 @@ export function createAuth<GeneratedListTypes extends BaseGeneratedListTypes>({
       {
         mode: 'write',
         outputPath: 'pages/api/auth/[...nextauth].js',
-        src: authTemplate({ gqlNames, identityField }),
+        src: authTemplate({ gqlNames, identityField, providers }),
       },
     ];
     return filesToWrite;
