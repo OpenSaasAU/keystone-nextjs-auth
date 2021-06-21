@@ -8,14 +8,14 @@ import { nextAuthProviders as Providers } from '@opensaas/keystone-nextjs-auth';
 export default getNextAuthPage({
         identityField: '<%= identityField %>',
         mutationName: '<%= gqlNames.authenticateItemWithPassword %>',
-        providers:[ <% providers.forEach(provider => { %>
+        providers:[ <% for (const provider in providers){ %>
             Providers.<%= provider.name %>({
                 <% const providerConf = provider.config;
                 for (const key in providerConf) { %>
                     <%= key %>: '<%= providerConf[key] %>',
                 <%}%>
                 }),
-        <% }) %>
+        <% } %>
         ],
     });
   `

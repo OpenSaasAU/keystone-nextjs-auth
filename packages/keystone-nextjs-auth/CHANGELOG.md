@@ -1,5 +1,11 @@
 # @opensaas-keystone/nextjs-auth
 
+## 4.1.0
+
+### Minor Changes
+
+- Fix forEach error
+
 ## 4.0.0
 
 ### Major Changes
