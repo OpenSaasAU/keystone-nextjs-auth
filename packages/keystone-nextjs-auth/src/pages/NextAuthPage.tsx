@@ -8,18 +8,17 @@ import { gql, useMutation } from '@keystone-next/keystone/admin-ui/apollo';
 type NextAuthPageProps = {
     identityField: string;
     mutationName: string;
-    providers: AppProviders;
+    providers: any;
   };
 
 export const getNextAuthPage = (props: NextAuthPageProps) => () => NextAuthPage({ ...props });
 
 export default function NextAuthPage(props: NextAuthPageProps){
+    const providers = props.providers;
+    console.log(providers);
+    
     return NextAuth({
-        providers: [Providers.Auth0({
-            clientId: process.env.AUTH0_CLIENT_ID || '',
-            clientSecret: process.env.AUTH0_CLIENT_SECRET || '',
-            domain: process.env.AUTH0_DOMAIN || '',
-        })],
+        providers,
         callbacks: {
             async signIn(user, account, profile) {
                 // TODO Check if the user is allowed access...
@@ -36,6 +35,8 @@ export default function NextAuthPage(props: NextAuthPageProps){
             },
             async session(session: any, token: any) {
                 // TODO: Need to somehow add the Keystone SessionData to the next-auth session
+                console.log(session);
+                
                 session.subject = token.sub;
                 return Promise.resolve(session);
             },

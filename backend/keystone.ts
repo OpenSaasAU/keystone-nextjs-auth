@@ -2,8 +2,8 @@ import { config } from '@keystone-next/keystone/schema';
 import {
   statelessSessions
 } from '@keystone-next/keystone/session';
-import { createAuth, nextAuthProviders as Providers } from '@opensaas-keystone/nextjs-auth';
-
+import { createAuth } from '@opensaas-keystone/nextjs-auth';
+import { KeystoneContext } from '@keystone-next/types';
 import { lists } from './schemas';
 
 let sessionSecret = process.env.SESSION_SECRET;
@@ -24,7 +24,16 @@ const auth = createAuth({
   listKey: 'User',
   identityField: 'subjectId',
   sessionData: `id name email`,
-  providers:  [],
+  providers: [
+    {
+    name: 'Auth0',
+    config: {
+      clientId: process.env.AUTH0_CLIENT_ID || '',
+      clientSecret: process.env.AUTH0_CLIENT_SECRET || '',
+      domain: process.env.AUTH0_DOMAIN || '',
+      },
+    },
+    ],
 });
 
 export default auth.withAuth(
@@ -41,7 +50,7 @@ export default auth.withAuth(
       url: process.env.DATABASE_URL || 'postgres://postgres:mysecretpassword@localhost:55000/opensaas-creator',
     },
     ui: {
-      isAccessAllowed: (context) => !!context.session?.data,
+      isAccessAllowed: (context: KeystoneContext) => !!context.session?.data,
     },
     lists,
     session: 

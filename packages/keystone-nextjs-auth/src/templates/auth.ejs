@@ -1,7 +1,3 @@
-import { AuthGqlNames } from '../types';
-import ejs from 'ejs';
-
-const template = `
 import getNextAuthPage from '@opensaas-keystone/nextjs-auth/pages/NextAuthPage';
 import { nextAuthProviders as Providers } from '@opensaas-keystone/nextjs-auth';
 
@@ -18,20 +14,3 @@ export default getNextAuthPage({
         <% }) %>
         ],
     });
-  `
-
-export const authTemplate = ({
-  gqlNames,
-  identityField,
-  providers
-}: {
-  gqlNames: AuthGqlNames;
-  identityField: string;
-  providers: any;
-}) => {
-  console.log(providers);
-  
-  const authOut = ejs
-        .render(template, { gqlNames: gqlNames, identityField: identityField, providers: providers});
-  return authOut;
-};
