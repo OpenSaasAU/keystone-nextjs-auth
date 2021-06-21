@@ -1,11 +1,10 @@
 module.exports = {
   presets: [
+    "@babel/preset-react",
+    "@babel/preset-typescript",
+    "next/babel",
     [
-      'next/babel',
-      {
-        'preset-env': {
-          useBuiltIns: "usage",
-          corejs: "3.8",
+        "@babel/preset-env", {
           targets: {
             node: 14,
             browsers: [
@@ -16,7 +15,6 @@ module.exports = {
             ],
           },
         },
-      } 
     ],
   ],
   plugins: [

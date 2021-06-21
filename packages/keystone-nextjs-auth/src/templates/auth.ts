@@ -2,8 +2,8 @@ import { AuthGqlNames } from '../types';
 import ejs from 'ejs';
 
 const template = `
-import getNextAuthPage from '@opensaas-keystone/nextjs-auth/pages/NextAuthPage';
-import { nextAuthProviders as Providers } from '@opensaas-keystone/nextjs-auth';
+import getNextAuthPage from '@opensaas/keystone-nextjs-auth/pages/NextAuthPage';
+import { nextAuthProviders as Providers } from '@opensaas/keystone-nextjs-auth';
 
 export default getNextAuthPage({
         identityField: '<%= identityField %>',
