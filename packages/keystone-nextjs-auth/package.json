@@ -7,6 +7,7 @@
   "module": "dist/opensaas-keystone-nextjs-auth.esm.js",
   "dependencies": {
     "@babel/runtime": "^7.14.6",
+    "@babel/runtime-corejs3": "^7.14.6",
     "@graphql-tools/merge": "^6.2.14",
     "@keystone-next/admin-ui-utils": "^5.0.2",
     "@keystone-next/fields": "^11.0.0",
