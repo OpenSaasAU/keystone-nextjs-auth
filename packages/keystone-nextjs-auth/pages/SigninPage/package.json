@@ -1,4 +1,0 @@
-{
-  "main": "dist/opensaas-keystone-nextjs-auth-pages-SigninPage.cjs.js",
-  "module": "dist/opensaas-keystone-nextjs-auth-pages-SigninPage.esm.js"
-}

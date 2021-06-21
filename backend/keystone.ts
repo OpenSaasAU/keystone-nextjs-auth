@@ -2,7 +2,7 @@ import { config } from '@keystone-next/keystone/schema';
 import {
   statelessSessions
 } from '@keystone-next/keystone/session';
-import { createAuth } from '@opensaas-keystone/nextjs-auth';
+import { createAuth } from '@opensaas/keystone-nextjs-auth';
 import { KeystoneContext } from '@keystone-next/types';
 import { lists } from './schemas';
 
