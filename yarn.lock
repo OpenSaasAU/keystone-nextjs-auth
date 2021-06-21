@@ -2290,7 +2290,7 @@
     "@emotion/react" "11.4.0"
     facepaint "^1.2.1"
 
-"@keystone-ui/fields@^4.0.0", "@keystone-ui/fields@^4.1.0", "@keystone-ui/fields@^4.1.1":
+"@keystone-ui/fields@^4.0.0", "@keystone-ui/fields@^4.1.1":
   version "4.1.1"
   resolved "https://registry.yarnpkg.com/@keystone-ui/fields/-/fields-4.1.1.tgz#4f60217d8c9a3f72f76b4cbdafc4f684de06e00e"
   integrity sha512-w41P35hv0N10Y2Zyyt4VLyIJ3PpNxq3as6IlRgOW7tuMBWXFjv5QiHKQ+ktfJhnFGCEWBA6KQtBXBO2KgoqXYw==

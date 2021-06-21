@@ -15,7 +15,6 @@ export const getNextAuthPage = (props: NextAuthPageProps) => () => NextAuthPage(
 
 export default function NextAuthPage(props: NextAuthPageProps){
     const providers = props.providers;
-    console.log(providers);
     
     return NextAuth({
         providers,
@@ -35,7 +34,6 @@ export default function NextAuthPage(props: NextAuthPageProps){
             },
             async session(session: any, token: any) {
                 // TODO: Need to somehow add the Keystone SessionData to the next-auth session
-                console.log(session);
                 
                 session.subject = token.sub;
                 return Promise.resolve(session);

@@ -1,5 +1,11 @@
 # @opensaas-keystone/nextjs-auth
 
+## 4.0.0
+
+### Major Changes
+
+- update babel and remove some logging
+
 ## 3.0.0
 
 ### Major Changes
