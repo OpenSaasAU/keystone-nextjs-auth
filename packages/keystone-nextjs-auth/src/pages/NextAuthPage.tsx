@@ -1,19 +1,17 @@
 import NextAuth from 'next-auth';
-import Providers from 'next-auth/providers';
-import { AppProviders } from 'next-auth/providers';
-
-import { gql, useMutation } from '@keystone-next/keystone/admin-ui/apollo';
+import { Provider } from 'next-auth/providers'
 
 //Need to bring in correct props
 type NextAuthPageProps = {
     identityField: string;
     mutationName: string;
-    providers: any;
+    providers: Provider[];
   };
 
 export const getNextAuthPage = (props: NextAuthPageProps) => () => NextAuthPage({ ...props });
 
 export default function NextAuthPage(props: NextAuthPageProps){
+
     const providers = props.providers;
     
     return NextAuth({
@@ -34,6 +32,7 @@ export default function NextAuthPage(props: NextAuthPageProps){
             },
             async session(session: any, token: any) {
                 // TODO: Need to somehow add the Keystone SessionData to the next-auth session
+                console.log(session);
                 
                 session.subject = token.sub;
                 return Promise.resolve(session);

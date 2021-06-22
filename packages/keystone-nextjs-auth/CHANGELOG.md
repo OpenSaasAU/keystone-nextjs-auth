@@ -1,5 +1,11 @@
 # @opensaas-keystone/nextjs-auth
 
+## 4.2.0
+
+### Minor Changes
+
+- For error
+
 ## 4.1.0
 
 ### Minor Changes

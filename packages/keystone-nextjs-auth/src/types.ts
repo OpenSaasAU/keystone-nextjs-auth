@@ -1,5 +1,4 @@
 import { BaseGeneratedListTypes, KeystoneContext } from '@keystone-next/types';
-import Providers from 'next-auth/providers';
 
 export type AuthGqlNames = {
   CreateInitialInput: string;
@@ -23,6 +22,10 @@ export type AuthTokenTypeConfig = {
   /** How long do tokens stay valid for from time of issue, in minutes **/
   tokensValidForMins?: number;
 };
+export type Provider = {
+  name: string,
+  config: {},
+};
 
 export type AuthConfig<GeneratedListTypes extends BaseGeneratedListTypes> = {
   /** The key of the list to authenticate users with */
@@ -32,7 +35,7 @@ export type AuthConfig<GeneratedListTypes extends BaseGeneratedListTypes> = {
    /** Session data population */
   sessionData?: string;
   /** NextAuth Providers */
-  providers: typeof Providers;
+  providers: Provider[];
 };
 
 export type InitFirstItemConfig<GeneratedListTypes extends BaseGeneratedListTypes> = {
