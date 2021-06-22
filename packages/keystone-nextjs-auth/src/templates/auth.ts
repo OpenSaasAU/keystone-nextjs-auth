@@ -1,4 +1,4 @@
-import { AuthGqlNames } from '../types';
+import { AuthGqlNames, Provider } from '../types';
 import ejs from 'ejs';
 
 const template = `
@@ -27,10 +27,8 @@ export const authTemplate = ({
 }: {
   gqlNames: AuthGqlNames;
   identityField: string;
-  providers: any;
+  providers: Provider[];
 }) => {
-  console.log(providers);
-  
   const authOut = ejs
         .render(template, { gqlNames: gqlNames, identityField: identityField, providers: providers});
   return authOut;
