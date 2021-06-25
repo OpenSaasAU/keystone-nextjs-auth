@@ -11,9 +11,9 @@ type NextAuthPageProps = {
 export const getNextAuthPage = (props: NextAuthPageProps) => () => NextAuthPage({ ...props });
 
 export default function NextAuthPage(props: NextAuthPageProps){
-
-    const providers = props.providers;
+    const { providers } = props
     
+      
     return NextAuth({
         providers,
         callbacks: {

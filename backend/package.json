@@ -5,7 +5,6 @@
   "scripts": {
     "build": "keystone-next build",
     "dev": "keystone-next dev",
-    "postinstall": "keystone-next postinstall",
     "start": "keystone-next start"
   },
   "dependencies": {

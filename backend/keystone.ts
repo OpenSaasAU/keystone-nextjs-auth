@@ -58,5 +58,8 @@ export default auth.withAuth(
         maxAge: sessionMaxAge,
         secret: sessionSecret,
       }),
+      experimental: {
+        generateNodeAPI: true,
+      }
   })
 );
