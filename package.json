@@ -19,7 +19,7 @@
     "dev": "yarn dev:backend & yarn dev:signup",
     "dev:backend": "manypkg run backend dev",
     "dev:signup": "manypkg run signup-frontend dev",
-    "postinstall": "preconstruct dev && manypkg check",
+    "postinstall": "preconstruct dev && manypkg check && manypkg run backend keystone-next postinstall",
     "lint": "yarn eslint .",
     "release": "yarn build && changeset publish",
     "start": "echo figure out how to start both services simultaneously here",
@@ -40,12 +40,6 @@
     "@babel/preset-typescript": "^7.14.5",
     "@changesets/changelog-github": "^0.4.0",
     "@changesets/cli": "^2.16.0",
-    "@graphql-codegen/cli": "^1.21.4",
-    "@graphql-codegen/introspection": "^1.18.2",
-    "@graphql-codegen/typescript": "^1.22.0",
-    "@graphql-codegen/typescript-apollo-client-helpers": "^1.1.5",
-    "@graphql-codegen/typescript-operations": "^1.17.16",
-    "@graphql-codegen/typescript-react-apollo": "^2.2.4",
     "@jest/test-sequencer": "^26.6.3",
     "@manypkg/cli": "^0.17.0",
     "@preconstruct/cli": "2.1.0",
@@ -82,5 +76,8 @@
       "packages/*",
       "services/*"
     ]
+  },
+  "resolutions": {
+    "babel-plugin-remove-graphql-queries": "2.7.2"
   }
 }

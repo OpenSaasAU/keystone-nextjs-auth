@@ -1,3 +1,4 @@
+import { nextConfigTemplate } from './templates/next-config';
 import url from 'url';
 //import * as Path from 'path';
 import {
@@ -90,8 +91,13 @@ export function createAuth<GeneratedListTypes extends BaseGeneratedListTypes>({
       {
         mode: 'write',
         outputPath: 'pages/api/auth/[...nextauth].js',
-        src: authTemplate({ gqlNames, identityField, providers }),
+        src: authTemplate({ gqlNames, identityField, providers, sessionData, listKey }),
       },
+      {
+        mode: 'write',
+        outputPath: 'next.config.js',
+        src: nextConfigTemplate(),
+      }
     ];
     return filesToWrite;
   };
@@ -164,26 +170,7 @@ export function createAuth<GeneratedListTypes extends BaseGeneratedListTypes>({
           if (!nextSession){
             return
           } else {
-            const list = sudoContext.lists[listKey];
-            const itemAPI = sudoContext.lists[listKey];
-            const identity = nextSession?.subject as string;
-          
-            const result = await validateNextAuth(
-              list,
-              identityField,
-              identity,
-              protectIdentities,
-              itemAPI
-            );
-
-            if (!result.success){
-              return;
-            }
-            const data = await sudoContext.lists[listKey].findOne({
-              where: { id: result.item.id },
-              query: sessionData || 'id',
-            });
-            return {itemId: result.item.id, listKey, data };
+            return nextSession;
           }
         },
       };
