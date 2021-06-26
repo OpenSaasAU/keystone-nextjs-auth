@@ -1,7 +1,5 @@
 import { config } from '@keystone-next/keystone/schema';
-import {
-  statelessSessions
-} from '@keystone-next/keystone/session';
+import { statelessSessions } from '@keystone-next/keystone/session';
 import { createAuth } from '@opensaas/keystone-nextjs-auth';
 import { KeystoneContext } from '@keystone-next/types';
 import { lists } from './schemas';
@@ -18,22 +16,26 @@ if (!sessionSecret) {
   }
 }
 
-let sessionMaxAge = 60 * 60 * 24 * 30; // 30 days
+const sessionMaxAge = 60 * 60 * 24 * 30; // 30 days
 
 const auth = createAuth({
   listKey: 'User',
   identityField: 'subjectId',
   sessionData: `id name email`,
+  autoCreate: true,
+  userMap: { subjectId: 'id', name: 'name' },
+  accountMap: {},
+  profileMap: { email: 'email' },
   providers: [
     {
-    name: 'Auth0',
-    config: {
-      clientId: process.env.AUTH0_CLIENT_ID || 'Auth0ClientID',
-      clientSecret: process.env.AUTH0_CLIENT_SECRET || 'Auth0ClientSecret',
-      domain: process.env.AUTH0_DOMAIN || 'opensaas.au.auth0.com',
+      name: 'Auth0',
+      config: {
+        clientId: process.env.AUTH0_CLIENT_ID || 'Auth0ClientID',
+        clientSecret: process.env.AUTH0_CLIENT_SECRET || 'Auth0ClientSecret',
+        domain: process.env.AUTH0_DOMAIN || 'opensaas.au.auth0.com',
       },
     },
-    ],
+  ],
 });
 
 export default auth.withAuth(
@@ -42,24 +44,25 @@ export default auth.withAuth(
     server: {
       cors: {
         origin: [process.env.FRONTEND || 'http://localhost:7777'],
-        credentials: true
-      }
+        credentials: true,
+      },
     },
     db: {
       adapter: 'prisma_postgresql',
-      url: process.env.DATABASE_URL || 'postgres://postgres:mysecretpassword@localhost:55000/opensaas-creator',
+      url:
+        process.env.DATABASE_URL ||
+        'postgres://postgres:mysecretpassword@localhost:55000/opensaas-creator',
     },
     ui: {
       isAccessAllowed: (context: KeystoneContext) => !!context.session?.data,
     },
     lists,
-    session: 
-      statelessSessions({
-        maxAge: sessionMaxAge,
-        secret: sessionSecret,
-      }),
-      experimental: {
-        generateNodeAPI: true,
-      }
+    session: statelessSessions({
+      maxAge: sessionMaxAge,
+      secret: sessionSecret,
+    }),
+    experimental: {
+      generateNodeAPI: true,
+    },
   })
 );

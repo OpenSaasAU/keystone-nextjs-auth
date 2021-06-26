@@ -1,9 +1,10 @@
 module.exports = {
   presets: [
-    "@babel/preset-typescript",
-    ["next/babel",
+    '@babel/preset-typescript',
+    [
+      'next/babel',
       {
-        "preset-env": {
+        'preset-env': {
           targets: {
             node: 14,
             browsers: [
@@ -14,23 +15,23 @@ module.exports = {
             ],
           },
         },
-        "transform-runtime": {
-          "helpers": false,
-          "corejs": 3,
+        'transform-runtime': {
+          helpers: false,
+          corejs: 3,
         },
-      } 
+      },
     ],
   ],
   plugins: [
     [
-      "@babel/plugin-transform-runtime",
-    {
-      "corejs": 3,
-      "helpers": false,
-    },
+      '@babel/plugin-transform-runtime',
+      {
+        corejs: 3,
+        helpers: false,
+      },
+    ],
+    '@babel/plugin-proposal-class-properties',
+    '@babel/proposal-object-rest-spread',
+    '@babel/plugin-syntax-dynamic-import',
   ],
-  '@babel/plugin-proposal-class-properties',
-  '@babel/proposal-object-rest-spread',
-  '@babel/plugin-syntax-dynamic-import',
-  ]
 };

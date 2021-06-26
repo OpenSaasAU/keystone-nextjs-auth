@@ -1,5 +1,5 @@
 import { list } from '@keystone-next/keystone/schema';
-import { text, relationship, password } from '@keystone-next/fields';
+import { text, relationship } from '@keystone-next/fields';
 import { permissions, rules } from '../access';
 
 export const User = list({
@@ -19,10 +19,9 @@ export const User = list({
   fields: {
     name: text({ isRequired: true }),
     email: text({ isRequired: true, isUnique: true }),
-    password: password({ isRequired: true }),
-    subjectId: text({ isUnique: true}),
+    subjectId: text({ isUnique: true }),
     role: relationship({
-      ref: 'Role.assignedTo'
-    })
+      ref: 'Role.assignedTo',
+    }),
   },
 });

@@ -180,13 +180,8 @@ type User {
   id: ID!
   name: String
   email: String
-  password: PasswordState
   subjectId: String
   role: Role
-}
-
-type PasswordState {
-  isSet: Boolean!
 }
 
 input UserWhereInput {
@@ -236,7 +231,6 @@ input UserWhereInput {
   email_not_ends_with_i: String
   email_in: [String]
   email_not_in: [String]
-  password_is_set: Boolean
   subjectId: String
   subjectId_not: String
   subjectId_contains: String
@@ -286,7 +280,6 @@ input UserOrderByInput {
 input UserUpdateInput {
   name: String
   email: String
-  password: String
   subjectId: String
   role: RoleRelateToOneInput
 }
@@ -306,7 +299,6 @@ input UsersUpdateInput {
 input UserCreateInput {
   name: String
   email: String
-  password: String
   subjectId: String
   role: RoleRelateToOneInput
 }

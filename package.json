@@ -27,6 +27,34 @@
     "start:next": "yarn manypkg run next-app start",
     "test": "jest"
   },
+  "eslintConfig": {
+    "extends": [
+      "wesbos",
+      "next"
+    ],
+    "rules": {
+      "@typescript-eslint/no-unsafe-assignment": 0,
+      "react/jsx-filename-extension": [
+        1,
+        {
+          "extensions": [
+            ".js",
+            ".jsx",
+            "tsx"
+          ]
+        }
+      ],
+      "react/jsx-props-no-spreading": [
+        1,
+        {
+          "exceptions": [
+            "Component",
+            "App"
+          ]
+        }
+      ]
+    }
+  },
   "dependencies": {
     "@babel/core": "^7.14.6",
     "@babel/plugin-proposal-class-properties": "^7.14.5",

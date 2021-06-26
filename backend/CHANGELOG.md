@@ -1,5 +1,16 @@
 # @opensaas-keystone/next-auth-backend
 
+## 3.0.0
+
+### Major Changes
+
+- enable autoadd hooked in with keystone lists
+
+### Patch Changes
+
+- Updated dependencies [undefined]
+  - @opensaas/keystone-nextjs-auth@5.0.0
+
 ## 2.0.3
 
 ### Patch Changes
