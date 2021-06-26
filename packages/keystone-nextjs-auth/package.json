@@ -1,6 +1,6 @@
 {
   "name": "@opensaas/keystone-nextjs-auth",
-  "version": "4.2.0",
+  "version": "5.0.0",
   "repository": "https://github.com/opensaasau/keystone-nextjs-auth",
   "license": "MIT",
   "main": "dist/opensaas-keystone-nextjs-auth.cjs.js",
@@ -8,6 +8,7 @@
   "dependencies": {
     "@babel/runtime": "^7.14.6",
     "@babel/runtime-corejs3": "^7.14.6",
+    "@graphql-tools/merge": "^6.2.14",
     "@keystone-next/admin-ui-utils": "^5.0.2",
     "@keystone-next/fields": "^11.0.0",
     "@keystone-next/types": "^20.0.0",

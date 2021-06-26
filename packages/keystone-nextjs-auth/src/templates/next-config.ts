@@ -1,5 +1,5 @@
-import { AuthGqlNames, Provider } from '../types';
 import ejs from 'ejs';
+import { AuthGqlNames, Provider } from '../types';
 
 const template = `
 import Path from 'path';
@@ -22,10 +22,9 @@ export const config = withPreconstruct({
     return config;
   },
 });
-`
+`;
 export const nextConfigTemplate = () => {
-    const nextConfigOut = ejs
-          .render(template,{});
-          
-    return nextConfigOut;
-  };
+  const nextConfigOut = ejs.render(template, {});
+
+  return nextConfigOut;
+};

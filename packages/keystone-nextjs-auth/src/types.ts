@@ -19,12 +19,12 @@ export type SendTokenFn = (args: {
 export type AuthTokenTypeConfig = {
   /** Called when a user should be sent the magic signin token they requested */
   sendToken: SendTokenFn;
-  /** How long do tokens stay valid for from time of issue, in minutes **/
+  /** How long do tokens stay valid for from time of issue, in minutes * */
   tokensValidForMins?: number;
 };
 export type Provider = {
-  name: string,
-  config: {},
+  name: string;
+  config: {};
 };
 
 export type AuthConfig<GeneratedListTypes extends BaseGeneratedListTypes> = {
@@ -32,13 +32,23 @@ export type AuthConfig<GeneratedListTypes extends BaseGeneratedListTypes> = {
   listKey: GeneratedListTypes['key'];
   /** The path of the field the identity is stored in; must be text-ish */
   identityField: GeneratedListTypes['fields'];
-   /** Session data population */
+  /** Session data population */
   sessionData?: string;
   /** NextAuth Providers */
   providers: Provider[];
+  /** Auth Create users in Keystone DB from Auth Provider */
+  autoCreate: boolean;
+  /** Map User in next-auth to item */
+  userMap: string;
+  /** Map Account in next-auth to item */
+  accountMap: string;
+  /** Map Profile in next-auth to item */
+  profileMap: string;
 };
 
-export type InitFirstItemConfig<GeneratedListTypes extends BaseGeneratedListTypes> = {
+export type InitFirstItemConfig<
+  GeneratedListTypes extends BaseGeneratedListTypes
+> = {
   /** Array of fields to collect, e.g ['name', 'email', 'password'] */
   fields: GeneratedListTypes['fields'][];
   /** Suppresses the second screen where we ask people to subscribe and follow Keystone */
@@ -47,7 +57,9 @@ export type InitFirstItemConfig<GeneratedListTypes extends BaseGeneratedListType
   itemData?: Partial<GeneratedListTypes['inputs']['create']>;
 };
 
-export type AuthTokenRequestErrorCode = 'IDENTITY_NOT_FOUND' | 'MULTIPLE_IDENTITY_MATCHES';
+export type AuthTokenRequestErrorCode =
+  | 'IDENTITY_NOT_FOUND'
+  | 'MULTIPLE_IDENTITY_MATCHES';
 
 export type PasswordAuthErrorCode =
   | AuthTokenRequestErrorCode

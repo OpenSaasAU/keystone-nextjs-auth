@@ -11,13 +11,17 @@ type NextAuthPageProps = {
     lists: KeystoneListsAPI<any>;
     sessionData: string;
     listKey: string;
+    autoCreate: boolean;
+    userMap: any;
+    accountMap: any;
+    profileMap: any;
   };
 
 
 export const getNextAuthPage = (props: NextAuthPageProps) => () => NextAuthPage({ ...props });
 
 export default function NextAuthPage(props: NextAuthPageProps){
-    const { providers, lists, identityField, sessionData, listKey } = props;
+    const { providers, lists, identityField, sessionData, listKey, autoCreate, userMap, accountMap, profileMap } = props;
     const list = lists[listKey];
     const itemAPI = lists[listKey];
     const protectIdentities = true;
@@ -27,16 +31,54 @@ export default function NextAuthPage(props: NextAuthPageProps){
         providers,
         callbacks: {
             async signIn(user, account, profile) {
-                const ksUser = await lists.[listKey].findMany({ query: sessionData });
-                console.log(ksUser);
-                // TODO Check if the user is allowed access...
-                // TODO Auto add user to KeystoneDB?
-                const isUser = true;
-                if (isUser){
-                    return true;
-                } else {
-                    return false;
-                }
+                
+                const identity = user.id;
+                const result = await validateNextAuth(
+                    list,
+                    identityField,
+                    identity,
+                    protectIdentities,
+                    itemAPI
+                  );
+                const data = {};
+                 for (const key in userMap) {
+                    data.[key] = user.[userMap[key]];
+                 };
+                 for (const key in accountMap) {
+                    data.[key] = account.[accountMap[key]];
+                };
+                for (const key in profileMap) {
+                    data.[key] = profile.[profileMap[key]];
+                };
+                  
+        
+                  if (!result.success){
+                    console.log("Result: ", result);
+                      if (!autoCreate){
+
+                        console.log("False");
+                        return false;
+                      } else {
+                        console.log("Create User");
+                        
+                        
+                        await lists.[listKey].createOne({data})
+                        .then(returned => {
+                            console.log(returned);
+                            
+                            return true;
+                        })
+                        .catch(error => {
+                            console.log(error);
+                            
+                            throw new Error (error);
+                        });
+                      }
+                  } else {
+                      await list.[listKey].updateOne({where: {id: result.item.id}, data});
+                    return result.success
+                  }
+
             },
             async redirect(url, baseUrl) {
                 return url;

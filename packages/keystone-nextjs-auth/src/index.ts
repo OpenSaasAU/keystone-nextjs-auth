@@ -1,6 +1,4 @@
-import { nextConfigTemplate } from './templates/next-config';
 import url from 'url';
-//import * as Path from 'path';
 import {
   AdminFileToWrite,
   BaseGeneratedListTypes,
@@ -9,15 +7,14 @@ import {
   AdminUIConfig,
   SessionStrategy,
 } from '@keystone-next/types';
-import { password, timestamp } from '@keystone-next/fields';
-
 import { getSession } from 'next-auth/client';
-import { validateNextAuth } from './lib/validateNextAuth';
+import Providers from 'next-auth/providers';
+import { nextConfigTemplate } from './templates/next-config';
+// import * as Path from 'path';
 
 import { AuthConfig, AuthGqlNames } from './types';
 import { getSchemaExtension } from './schema';
 import { authTemplate } from './templates/auth';
-import Providers from 'next-auth/providers';
 
 export const nextAuthProviders = Providers;
 /**
@@ -31,12 +28,15 @@ export function createAuth<GeneratedListTypes extends BaseGeneratedListTypes>({
   identityField,
   sessionData,
   providers,
+  autoCreate,
+  userMap,
+  accountMap,
+  profileMap,
 }: AuthConfig<GeneratedListTypes>) {
   // The protectIdentities flag is currently under review to see whether it should be
   // part of the createAuth API (in which case its use cases need to be documented and tested)
   // or whether always being true is what we want, in which case we can refactor our code
   // to match this. -TL
-  const protectIdentities = true;
   const gqlNames: AuthGqlNames = {
     // Core
     authenticateItemWithPassword: `authenticate${listKey}WithPassword`,
@@ -70,10 +70,10 @@ export function createAuth<GeneratedListTypes extends BaseGeneratedListTypes>({
         return { kind: 'redirect', to: '/' };
       }
       return;
-    } 
+    }
 
-    if (!session && !pathname.includes('/api/auth/') ) {
-        return { kind: 'redirect', to: `/api/auth/signin` };
+    if (!session && !pathname.includes('/api/auth/')) {
+      return { kind: 'redirect', to: `/api/auth/signin` };
     }
   };
 
@@ -85,19 +85,28 @@ export function createAuth<GeneratedListTypes extends BaseGeneratedListTypes>({
    *
    * The signin page is always included, and the init page is included when initFirstItem is set
    */
-   //const pkgDir = Path.dirname(require.resolve('@keystone-next/nextjs-auth/package.json'));
-   const getAdditionalFiles = () => {
-    let filesToWrite: AdminFileToWrite[] = [
+  const getAdditionalFiles = () => {
+    const filesToWrite: AdminFileToWrite[] = [
       {
         mode: 'write',
         outputPath: 'pages/api/auth/[...nextauth].js',
-        src: authTemplate({ gqlNames, identityField, providers, sessionData, listKey }),
+        src: authTemplate({
+          gqlNames,
+          identityField,
+          providers,
+          sessionData,
+          listKey,
+          autoCreate,
+          userMap,
+          accountMap,
+          profileMap,
+        }),
       },
       {
         mode: 'write',
         outputPath: 'next.config.js',
         src: nextConfigTemplate(),
-      }
+      },
     ];
     return filesToWrite;
   };
@@ -107,8 +116,16 @@ export function createAuth<GeneratedListTypes extends BaseGeneratedListTypes>({
    *
    * Must be added to the ui.publicPages config
    */
-  const publicPages = ['/api/auth/csrf','/api/auth/signin','/api/auth/signin/auth0', '/api/auth/callack','/api/auth/callback/auth0','/api/auth/session','/api/auth/providers', '/api/auth/signout'];
-
+  const publicPages = [
+    '/api/auth/csrf',
+    '/api/auth/signin',
+    '/api/auth/signin/auth0',
+    '/api/auth/callack',
+    '/api/auth/callback/auth0',
+    '/api/auth/session',
+    '/api/auth/providers',
+    '/api/auth/signout',
+  ];
 
   /**
    * extendGraphqlSchema
@@ -142,9 +159,9 @@ export function createAuth<GeneratedListTypes extends BaseGeneratedListTypes>({
       const msg = `A createAuth() invocation for the "${listKey}" list specifies ${i} as its identityField but no field with that key exists on the list.`;
       throw new Error(msg);
     }
-  }
+  };
 
- /**
+  /**
    * withItemData
    *
    * Automatically injects a session.data value with the authenticated item
@@ -152,32 +169,25 @@ export function createAuth<GeneratedListTypes extends BaseGeneratedListTypes>({
   /* TODO:
     - [ ] We could support additional where input to validate item sessions (e.g an isEnabled boolean)
   */
-    const withItemData = (
-      _sessionStrategy: SessionStrategy<Record<string, any>>
-    ): SessionStrategy<{ listKey: string; itemId: string; data: any }> => {
-      const { get, ...sessionStrategy } = _sessionStrategy;
-      return {
-        ...sessionStrategy,
-        get: async ({ req, createContext }) => {
-          const sudoContext = createContext({}).sudo();
-          const pathname = url.parse(req?.url!).pathname!;
-          console.log("get Session Pathname", pathname);
-          if (pathname.includes('/api/auth')){
-            console.log("returning");
-            return
-          } 
-          const nextSession = await getSession({ req });
-          if (!nextSession){
-            return
-          } else {
-            return nextSession;
-          }
-        },
-      };
+  const withItemData = (
+    _sessionStrategy: SessionStrategy<Record<string, any>>
+  ): SessionStrategy<{ listKey: string; itemId: string; data: any }> => {
+    const { get, ...sessionStrategy } = _sessionStrategy;
+    return {
+      ...sessionStrategy,
+      get: async ({ req }) => {
+        const pathname = url.parse(req?.url!).pathname!;
+        if (pathname.includes('/api/auth')) {
+          return {};
+        }
+        const nextSession = await getSession({ req });
+        if (!nextSession) {
+          return {};
+        }
+        return nextSession;
+      },
     };
-  
-  
-
+  };
 
   /**
    * withAuth
@@ -191,27 +201,35 @@ export function createAuth<GeneratedListTypes extends BaseGeneratedListTypes>({
    */
   const withAuth = (keystoneConfig: KeystoneConfig): KeystoneConfig => {
     validateConfig(keystoneConfig);
-    let ui = keystoneConfig.ui;
+    let { ui } = keystoneConfig;
     if (keystoneConfig.ui) {
       ui = {
         ...keystoneConfig.ui,
         publicPages: [...(keystoneConfig.ui.publicPages || []), ...publicPages],
-        getAdditionalFiles: [...(keystoneConfig.ui.getAdditionalFiles || []), getAdditionalFiles],
-        pageMiddleware: async args =>
-          (await pageMiddleware(args)) ?? keystoneConfig?.ui?.pageMiddleware?.(args),
+        getAdditionalFiles: [
+          ...(keystoneConfig.ui.getAdditionalFiles || []),
+          getAdditionalFiles,
+        ],
+        pageMiddleware: async (args) =>
+          (await pageMiddleware(args)) ??
+          keystoneConfig?.ui?.pageMiddleware?.(args),
         enableSessionItem: true,
         isAccessAllowed: async (context: KeystoneContext) => {
           // Allow access to the adminMeta data from the /init path to correctly render that page
           // even if the user isn't logged in (which should always be the case if they're seeing /init)
           const headers = context.req?.headers;
-          const host = headers ? headers['x-forwarded-host'] || headers['host'] : null;
-          const url = headers?.referer ? new URL(headers.referer) : undefined;
+          const host = headers
+            ? headers['x-forwarded-host'] || headers.host
+            : null;
+          const thisUrl = headers?.referer
+            ? new URL(headers.referer)
+            : undefined;
           const accessingInitPage =
-            url?.pathname === '/init' &&
-            url?.host === host &&
+            thisUrl?.pathname === '/init' &&
+            thisUrl?.host === host &&
             (await context.sudo().lists[listKey].count({})) === 0;
           return (
-            accessingInitPage || 
+            accessingInitPage ||
             (keystoneConfig.ui?.isAccessAllowed
               ? keystoneConfig.ui.isAccessAllowed(context)
               : context.session !== undefined)
@@ -219,12 +237,11 @@ export function createAuth<GeneratedListTypes extends BaseGeneratedListTypes>({
         },
       };
     }
-    let session = keystoneConfig.session;
+    let { session } = keystoneConfig;
     if (session && sessionData) {
       session = withItemData(session);
     }
     const existingExtendGraphQLSchema = keystoneConfig.extendGraphqlSchema;
-    const listConfig = keystoneConfig.lists[listKey];
     return {
       ...keystoneConfig,
       ui,
@@ -233,7 +250,7 @@ export function createAuth<GeneratedListTypes extends BaseGeneratedListTypes>({
         ...keystoneConfig.lists,
       },
       extendGraphqlSchema: existingExtendGraphQLSchema
-        ? schema => existingExtendGraphQLSchema(extendGraphqlSchema(schema))
+        ? (schema) => existingExtendGraphQLSchema(extendGraphqlSchema(schema))
         : extendGraphqlSchema,
     };
   };
