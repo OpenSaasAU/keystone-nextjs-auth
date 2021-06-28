@@ -106,6 +106,7 @@
     ]
   },
   "resolutions": {
-    "babel-plugin-remove-graphql-queries": "2.7.2"
+    "babel-plugin-remove-graphql-queries": "2.7.2",
+    "graphql": "15.5.1"
   }
 }
