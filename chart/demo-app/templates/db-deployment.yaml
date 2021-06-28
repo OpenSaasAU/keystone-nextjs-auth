@@ -9,7 +9,7 @@ metadata:
   annotations:
     # This is what defines this resource as a hook. Without this line, the
     # job is considered part of the release.
-    "helm.sh/hook": pre-install,pre-upgrade
+    "helm.sh/hook": pre-install
     "helm.sh/hook-weight": "-5"
 data:
   POSTGRES_DB: {{ .dbname }}
@@ -26,7 +26,7 @@ metadata:
   annotations:
     # This is what defines this resource as a hook. Without this line, the
     # job is considered part of the release.
-    "helm.sh/hook": pre-install,pre-upgrade
+    "helm.sh/hook": pre-install
     "helm.sh/hook-weight": "-5"
 spec:
   storageClassName: local-path
@@ -46,7 +46,7 @@ metadata:
   annotations:
     # This is what defines this resource as a hook. Without this line, the
     # job is considered part of the release.
-    "helm.sh/hook": pre-install,pre-upgrade
+    "helm.sh/hook": pre-install
     "helm.sh/hook-weight": "-5"
 spec:
   storageClassName: local-path
@@ -65,7 +65,7 @@ metadata:
   annotations:
     # This is what defines this resource as a hook. Without this line, the
     # job is considered part of the release.
-    "helm.sh/hook": pre-install,pre-upgrade
+    "helm.sh/hook": pre-install
 spec:
   selector:
     matchLabels: 
@@ -107,7 +107,7 @@ metadata:
   annotations:
     # This is what defines this resource as a hook. Without this line, the
     # job is considered part of the release.
-    "helm.sh/hook": pre-install,pre-upgrade
+    "helm.sh/hook": pre-install
 spec:
   type: ClusterIP
   ports:
