@@ -6,6 +6,11 @@ metadata:
   name: postgres-config
   labels:
     app: postgres
+  annotations:
+    # This is what defines this resource as a hook. Without this line, the
+    # job is considered part of the release.
+    "helm.sh/hook": pre-install,pre-upgrade
+    "helm.sh/hook-weight": "-5"
 data:
   POSTGRES_DB: {{ .dbname }}
   POSTGRES_USER: {{ .dbadmin }}
@@ -18,6 +23,11 @@ metadata:
   labels:
     type: local
     app: postgres
+  annotations:
+    # This is what defines this resource as a hook. Without this line, the
+    # job is considered part of the release.
+    "helm.sh/hook": pre-install,pre-upgrade
+    "helm.sh/hook-weight": "-5"
 spec:
   storageClassName: manual
   capacity:
@@ -33,6 +43,11 @@ metadata:
   name: postgres-pv-claim
   labels:
     app: postgres
+  annotations:
+    # This is what defines this resource as a hook. Without this line, the
+    # job is considered part of the release.
+    "helm.sh/hook": pre-install,pre-upgrade
+    "helm.sh/hook-weight": "-5"
 spec:
   storageClassName: local-path
   accessModes:
@@ -45,6 +60,10 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: postgres
+  annotations:
+    # This is what defines this resource as a hook. Without this line, the
+    # job is considered part of the release.
+    "helm.sh/hook": pre-install,pre-upgrade
 spec:
   selector:
     matchLabels: 
@@ -83,6 +102,10 @@ metadata:
   labels:
     app.kubernetes.io/name: postgres
     app.kubernetes.io/instance: opensaas-ams
+  annotations:
+    # This is what defines this resource as a hook. Without this line, the
+    # job is considered part of the release.
+    "helm.sh/hook": pre-install,pre-upgrade
 spec:
   type: ClusterIP
   ports:

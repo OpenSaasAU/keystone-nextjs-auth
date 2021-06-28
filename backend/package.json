@@ -5,6 +5,7 @@
   "scripts": {
     "build": "keystone-next build",
     "dev": "keystone-next dev",
+    "prisma-deploy": "keystone-next prisma migrate deploy",
     "start": "keystone-next start"
   },
   "dependencies": {
