@@ -1,10 +1,9 @@
 import ejs from 'ejs';
-import { AuthGqlNames, Provider } from '../types';
 
 const template = `
-import Path from 'path';
+const Path = require('path');
 // @ts-ignore
-import withPreconstruct from '@preconstruct/next';
+const withPreconstruct = require('@preconstruct/next');
 
 export const config = withPreconstruct({
   webpack(config: any, { isServer }: any) {

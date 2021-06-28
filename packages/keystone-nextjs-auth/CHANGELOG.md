@@ -1,5 +1,11 @@
 # @opensaas-keystone/nextjs-auth
 
+## 6.0.0
+
+### Major Changes
+
+- Auto add and next config
+
 ## 5.0.0
 
 ### Major Changes
