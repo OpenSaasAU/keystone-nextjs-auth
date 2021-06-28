@@ -2,7 +2,6 @@ import { Navbar } from 'react-bootstrap';
 import Image from 'next/image';
 import Link from 'next/link';
 
-
 export function Header() {
   return (
     <Navbar bg="light" expand="sm">
