@@ -100,7 +100,7 @@ stages:
     jobs:
     - deployment: Test
       displayName: Deploy to Test
-      environment: Testing
+      environment: Keystone-Demo
       strategy:
         runOnce:
           deploy:
