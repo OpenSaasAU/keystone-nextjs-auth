@@ -2,22 +2,22 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ include "collective-ams.fullname" $ }}-{{ .name }}
+  name: {{ include "opensaas-ams.fullname" $ }}-{{ .name }}
   labels:
-    {{- include "collective-ams.labels" $ | nindent 4 }}
+    {{- include "opensaas-ams.labels" $ | nindent 4 }}
 spec:
   replicas: {{ .replicaCount }}
   selector:
     matchLabels:
-      {{- include "collective-ams.selectorLabels" . | nindent 6 }}
+      {{- include "opensaas-ams.selectorLabels" . | nindent 6 }}
   template:
     metadata:
       labels:
-        {{- include "collective-ams.selectorLabels" . | nindent 8 }}
+        {{- include "opensaas-ams.selectorLabels" . | nindent 8 }}
     spec:
       imagePullSecrets:
         - name: {{ $.Values.imagePullSecret }}
-      serviceAccountName: {{ include "collective-ams.serviceAccountName" $ }}
+      serviceAccountName: {{ include "opensaas-ams.serviceAccountName" $ }}
       containers:
         - name: {{ $.Chart.Name }}-{{ .name }}
           image: "{{ $.Values.repository }}/{{ .image.name }}:{{ .image.tag }}"

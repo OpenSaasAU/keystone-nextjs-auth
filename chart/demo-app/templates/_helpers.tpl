@@ -1,7 +1,7 @@
 {{/*
 Expand the name of the chart.
 */}}
-{{- define "collective-ams.name" -}}
+{{- define "opensaas-ams.name" -}}
 {{- default .Chart.Name .Values.nameOverride | trunc 63 | trimSuffix "-" }}
 {{- end }}
 
@@ -10,7 +10,7 @@ Create a default fully qualified app name.
 We truncate at 63 chars because some Kubernetes name fields are limited to this (by the DNS naming spec).
 If release name contains chart name it will be used as a full name.
 */}}
-{{- define "collective-ams.fullname" -}}
+{{- define "opensaas-ams.fullname" -}}
 {{- if .Values.fullnameOverride }}
 {{- .Values.fullnameOverride | trunc 63 | trimSuffix "-" }}
 {{- else }}
@@ -26,16 +26,16 @@ If release name contains chart name it will be used as a full name.
 {{/*
 Create chart name and version as used by the chart label.
 */}}
-{{- define "collective-ams.chart" -}}
+{{- define "opensaas-ams.chart" -}}
 {{- printf "%s-%s" .Chart.Name .Chart.Version | replace "+" "_" | trunc 63 | trimSuffix "-" }}
 {{- end }}
 
 {{/*
 Common labels
 */}}
-{{- define "collective-ams.labels" -}}
-helm.sh/chart: {{ include "collective-ams.chart" . }}
-{{ include "collective-ams.selectorLabels" . }}
+{{- define "opensaas-ams.labels" -}}
+helm.sh/chart: {{ include "opensaas-ams.chart" . }}
+{{ include "opensaas-ams.selectorLabels" . }}
 {{- if .Chart.AppVersion }}
 app.kubernetes.io/version: {{ .Chart.AppVersion | quote }}
 {{- end }}
@@ -45,17 +45,17 @@ app.kubernetes.io/managed-by: {{ .Release.Service }}
 {{/*
 Selector labels
 */}}
-{{- define "collective-ams.selectorLabels" -}}
-app.kubernetes.io/name: collective-ams-{{ default "collect" .name }}
-app.kubernetes.io/instance: collective-ams
+{{- define "opensaas-ams.selectorLabels" -}}
+app.kubernetes.io/name: opensaas-ams-{{ default "collect" .name }}
+app.kubernetes.io/instance: opensaas-ams
 {{- end }}
 
 {{/*
 Create the name of the service account to use
 */}}
-{{- define "collective-ams.serviceAccountName" -}}
+{{- define "opensaas-ams.serviceAccountName" -}}
 {{- if .Values.serviceAccount.create }}
-{{- default (include "collective-ams.fullname" .) .Values.serviceAccount.name }}
+{{- default (include "opensaas-ams.fullname" .) .Values.serviceAccount.name }}
 {{- else }}
 {{- default "default" .Values.serviceAccount.name }}
 {{- end }}

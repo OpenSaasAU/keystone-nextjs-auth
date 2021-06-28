@@ -1,10 +1,10 @@
-{{- $fullName := include "collective-ams.fullname" . -}}
+{{- $fullName := include "opensaas-ams.fullname" . -}}
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: "{{ $fullName }}-backend"
   labels:
-    {{- include "collective-ams.labels" . | nindent 4 }}
+    {{- include "opensaas-ams.labels" . | nindent 4 }}
   annotations:
     kubernetes.io/ingress.class: nginx
     cert-manager.io/cluster-issuer: {{ .Values.clusterIssuer }}
@@ -32,7 +32,7 @@ kind: Ingress
 metadata:
   name: "{{ $fullName }}-{{ .name }}"
   labels:
-    {{- include "collective-ams.labels" $ | nindent 4 }}
+    {{- include "opensaas-ams.labels" $ | nindent 4 }}
   annotations:
     kubernetes.io/ingress.class: nginx
     cert-manager.io/cluster-issuer: {{ $.Values.clusterIssuer }}

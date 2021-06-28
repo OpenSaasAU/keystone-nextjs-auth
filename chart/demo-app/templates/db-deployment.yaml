@@ -47,7 +47,8 @@ metadata:
   name: postgres
 spec:
   selector:
-    matchLabels: postres
+    matchLabels: 
+        - app: postres
   replicas: 1
   template:
     metadata:

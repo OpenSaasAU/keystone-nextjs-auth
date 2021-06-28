@@ -1,7 +1,7 @@
 apiVersion: batch/v1
 kind: Job
 metadata:
-  name: "{{ include "collective-ams.fullname" . }}-dbmigrate"
+  name: "{{ include "opensaas-ams.fullname" . }}-dbmigrate"
   labels:
     app.kubernetes.io/managed-by: {{ .Release.Service | quote }}
     app.kubernetes.io/instance: {{ .Release.Name | quote }}
@@ -16,7 +16,7 @@ metadata:
 spec:
   template:
     metadata:
-      name: "{{ include "collective-ams.fullname" . }}-dbmigrate"
+      name: "{{ include "opensaas-ams.fullname" . }}-dbmigrate"
       labels:
         app.kubernetes.io/managed-by: {{ .Release.Service | quote }}
         app.kubernetes.io/instance: {{ .Release.Name | quote }}
