@@ -48,12 +48,14 @@ metadata:
 spec:
   selector:
     matchLabels: 
-        - app: postres
+        app.kubernetes.io/name: postres
+        app.kubernetes.io/instance: opensaas-ams
   replicas: 1
   template:
     metadata:
       labels:
-        app: postgres
+        app.kubernetes.io/name: postgres
+        app.kubernetes.io/instance: opensaas-ams
     spec:
       containers:
         - name: postgres
@@ -79,7 +81,8 @@ kind: Service
 metadata:
   name: postgres
   labels:
-    app: postgres
+    app.kubernetes.io/name: postgres
+    app.kubernetes.io/instance: opensaas-ams
 spec:
   type: ClusterIP
   ports:
@@ -87,6 +90,6 @@ spec:
      protocol: TCP
      name: postres
   selector:
-   app: postgres
+   app.kubernetes.io/name: postgres
 {{- end }}
 {{- end }}
