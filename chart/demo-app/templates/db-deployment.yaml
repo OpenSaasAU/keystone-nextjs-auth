@@ -60,6 +60,8 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: postgres
+  labels:
+    {{- include "opensaas-ams.labels" $ | nindent 4 }}
   annotations:
     # This is what defines this resource as a hook. Without this line, the
     # job is considered part of the release.
@@ -67,7 +69,7 @@ metadata:
 spec:
   selector:
     matchLabels: 
-        app.kubernetes.io/name: postres
+        app.kubernetes.io/name: postgres
         app.kubernetes.io/instance: opensaas-ams
   replicas: 1
   template:
