@@ -11,10 +11,10 @@ fullnameOverride: ""
 backend:
     name: backend
     replicaCount: 1
-    hostname: ks-backend-demo.opensaas.org.au
+    hostname: ks-backend-demo.opensaas.com.au
     containerPort: 3000
     env:
-        FRONTEND: https://ks-frontend-demo.opensaas.org.au
+        FRONTEND: https://ks-frontend-demo.opensaas.com.au
         DATABASE_URL: postgres://somename:1234@postgres/dbname
         SESSION_SECRET: SOME_SECURE_STRING
         STRIPE_SECRET: sk_test_1234
@@ -28,7 +28,7 @@ backend:
         tag: ""
 apps:
     - name: ks-frontend-demo
-      hostname: ks-frontend-demo.opensaas.org.au
+      hostname: ks-frontend-demo.opensaas.com.au
       replicaCount: 1
       image:
         name: ks-frontend-demo

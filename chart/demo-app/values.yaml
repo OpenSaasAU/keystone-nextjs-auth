@@ -11,10 +11,10 @@ fullnameOverride: ""
 backend:
     name: backend
     replicaCount: 1
-    hostname: core-test.opensaas.org.au
+    hostname: core-test.opensaas.com.au
     containerPort: 3000
     env:
-        FRONTEND: https://ks-frontend-demo.opensaas.org.au
+        FRONTEND: https://ks-frontend-demo.opensaas.com.au
         DATABASE_URL: postgres://somename:1234@postgres/dbname
         SESSION_SECRET: SOME_SECURE_STRING
         STRIPE_SECRET: sk_test_1234
@@ -28,17 +28,10 @@ backend:
         tag: ""
 apps:
     - name: next-app
-      hostname: next-app.opensaas.org.au
+      hostname: next-app.opensaas.com.au
       replicaCount: 1
       image:
         name: next-app
-        pullPolicy: Always
-        tag: ""
-    - name: next-cypress
-      replicaCount: 1
-      hostname: next-cypress.opensaas.org.au
-      image:
-        name: next-cypress
         pullPolicy: Always
         tag: ""
 
