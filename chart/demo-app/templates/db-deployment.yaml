@@ -34,7 +34,7 @@ metadata:
   labels:
     app: postgres
 spec:
-  storageClassName: manual
+  storageClassName: local-path
   accessModes:
     - ReadWriteMany
   resources:
