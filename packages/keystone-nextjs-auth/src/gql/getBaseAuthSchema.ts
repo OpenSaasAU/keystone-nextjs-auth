@@ -23,7 +23,6 @@ export function getBaseAuthSchema<I extends string, S extends string>({
     resolvers: {
       Query: {
         async authenticatedItem(root, args, { session, lists }) {
-          console.log('session', session);
           if (
             typeof session?.itemId === 'string' &&
             typeof session.listKey === 'string'
@@ -42,7 +41,6 @@ export function getBaseAuthSchema<I extends string, S extends string>({
       },
       AuthenticatedItem: {
         __resolveType(rootVal: any, { session }: KeystoneContext) {
-          console.log('session', session);
           return session?.listKey;
         },
       },
