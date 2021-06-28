@@ -46,6 +46,8 @@ kind: Deployment
 metadata:
   name: postgres
 spec:
+  selector:
+    matchLabels: postres
   replicas: 1
   template:
     metadata:

@@ -9,7 +9,7 @@ trigger:
 
 variables:
   DOCKER_REGISTRY: 'opensaas'
-  TAG: $(Build.BuildNumber)
+  TAG: latest
 
 stages:
   - stage: Build
