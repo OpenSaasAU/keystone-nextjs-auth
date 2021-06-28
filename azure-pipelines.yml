@@ -29,11 +29,8 @@ stages:
           - task: NodeTool@0
             inputs:
               versionSpec: '14.17'
-          
-          - script: curl -f https://get.pnpm.io/v6.js | node - add --global pnpm@6
-            displayName: Install pnpm
             
-          - script: pnpm install
+          - script: yarn install
             displayName: install dependencies
           
           - template: pipeline/frontend-lint.yml
@@ -41,7 +38,7 @@ stages:
               frontendApps:
                 - ks-frontend-demo
             
-          - script: pnpm release
+          - script: yarn release
             displayName: 'Release Packages to Artifacts'
       
       - job: DockerBuildAndPush

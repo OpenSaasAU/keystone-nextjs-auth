@@ -2,12 +2,10 @@ parameters:
   - name: 'frontendApps'
     type: object
     default:
-      - unifi-frontend
-      - ticket-frontend
-      - signup-frontend
-      - friends-frontend
+      - test-app
+
 steps:
   - ${{ each app in parameters.frontendApps }}:
-    - script: pnpm manypkg run ${{ app }} next lint
+    - script: yarn manypkg run ${{ app }} next lint
       displayName: lint check for ${{ app }}
           
