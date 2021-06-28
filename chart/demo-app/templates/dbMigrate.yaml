@@ -35,4 +35,4 @@ spec:
           - name: DATABASE_URL
             value: {{ .Values.backend.env.DATABASE_URL }}
           - name: SESSION_SECRET
-            value: 'avalueforsomethingstowork'
+            value: 'avalueforsomethingstoworkavalueforsomethingstoworkavalueforsomethingstowork'
