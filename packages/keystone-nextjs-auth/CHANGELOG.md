@@ -1,5 +1,17 @@
 # @opensaas-keystone/nextjs-auth
 
+## 6.2.0
+
+### Minor Changes
+
+- next-config error fix
+
+## 6.1.0
+
+### Minor Changes
+
+- fix next-config error
+
 ## 6.0.0
 
 ### Major Changes

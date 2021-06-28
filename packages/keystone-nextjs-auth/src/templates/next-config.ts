@@ -5,8 +5,8 @@ const Path = require('path');
 // @ts-ignore
 const withPreconstruct = require('@preconstruct/next');
 
-export const config = withPreconstruct({
-  webpack(config: any, { isServer }: any) {
+module.exports = withPreconstruct({
+  webpack(config, { isServer }) {
     config.resolve.alias = {
       ...config.resolve.alias,
       react: Path.dirname(require.resolve('react/package.json')),
