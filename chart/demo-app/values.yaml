@@ -14,16 +14,13 @@ backend:
     hostname: core-test.opensaas.org.au
     containerPort: 3000
     env:
-        UNIFI_BASEURL: https://unifi.opensaas.com.au:8443
-        UNIFI_USER: test
-        UNIFI_PASSWORD: test
-        UNIFI_FRONTEND: https://wifi-test.opensaas.org.au
-        FRIENDS_FRONTEND: https://friends-test.opensaas.org.au
-        TICKET_FRONTEND: https://ticket-test.opensaas.org.au
-        DATABASE_ADAPTER: prisma_postgresql
+        FRONTEND: https://ks-frontend-demo.opensaas.org.au
         DATABASE_URL: postgres://somename:1234@postgres/dbname
         SESSION_SECRET: SOME_SECURE_STRING
         STRIPE_SECRET: sk_test_1234
+        AUTH0_DOMAIN: opensaas.au.auth0.com
+        AUTH0_CLIENT_ID: Auth0ClientID
+        AUTH0_CLIENT_SECRET: Auth0ClientSecret
     image:
         name: opensaas-backend
         pullPolicy: IfNotPresent
@@ -44,7 +41,13 @@ apps:
         name: next-cypress
         pullPolicy: IfNotPresent
         tag: ""
-   
+
+localDatabase:
+  create: false
+  dbname: demo-keystone
+  dbadmin: postgres
+  dbpass: securepassword
+
 serviceAccount:
   # Specifies whether a service account should be created
   create: true

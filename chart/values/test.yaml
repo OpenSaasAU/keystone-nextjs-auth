@@ -1,6 +1,6 @@
 
 
-repository: opensaasreg.azurecr.io
+repository: opensaas
 clusterIssuer: dns-solver
 backendUrl: https://ks-backend-demo.opensaas.com.au/api/graphql
 stripeKey: pk_test_TEST_KEY
@@ -18,6 +18,9 @@ backend:
         DATABASE_URL: postgres://somename:1234@postgres/dbname
         SESSION_SECRET: SOME_SECURE_STRING
         STRIPE_SECRET: sk_test_1234
+        AUTH0_DOMAIN: opensaas.au.auth0.com
+        AUTH0_CLIENT_ID: Auth0ClientID
+        AUTH0_CLIENT_SECRET: Auth0ClientSecret
     image:
         name: ks-backend-demo
         pullPolicy: IfNotPresent
@@ -31,7 +34,13 @@ apps:
         name: ks-frontend-demo
         pullPolicy: IfNotPresent
         tag: ""
-   
+
+localDatabase:
+  create: true
+  dbname: demo-keystone
+  dbadmin: postgres
+  dbpass: securepassword
+
 serviceAccount:
   # Specifies whether a service account should be created
   create: true

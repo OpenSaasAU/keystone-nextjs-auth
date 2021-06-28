@@ -124,8 +124,12 @@ stages:
                 valueFile: '$(System.ArtifactsDirectory)/chart/values/test.yaml'
                 overrideValues: |
                   stripeKey=$(STRIPE_KEY_TEST)
-                  backend.env.DATABASE_URL=$(DATABASE_URL_TEST)
+                  localDatabase.dbpass=$(DATABASE_PASS_TEST)
+                  backend.env.DATABASE_URL=postgres://postgres:$(DATABASE_PASS_TEST)@postgres/demo-keystone
                   backend.env.STRIPE_SECRET=$(STRIPE_SECRET_TEST)
+                  backend.env.SESSION_SECRET=$(SESSION_SECRET_TEST)
                   backend.env.SENDGRID_API_KEY=$(SENDGRID_KEY)
+                  backend.env.AUTH0_CLIENT_ID=$(AUTH0_CLIENT_ID)
+                  backend.env.AUTH0_CLIENT_SECRET=$(AUTH0_CLIENT_SECRET)
                   backend.image.tag=$(TAG)
                   apps[0].image.tag=$(TAG)
