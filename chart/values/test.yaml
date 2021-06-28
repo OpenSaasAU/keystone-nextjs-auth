@@ -23,7 +23,7 @@ backend:
         AUTH0_CLIENT_SECRET: Auth0ClientSecret
     image:
         name: ks-backend-demo
-        pullPolicy: IfNotPresent
+        pullPolicy: Always
         # Overrides the image tag whose default is the chart appVersion.
         tag: ""
 apps:
@@ -32,7 +32,7 @@ apps:
       replicaCount: 1
       image:
         name: ks-frontend-demo
-        pullPolicy: IfNotPresent
+        pullPolicy: Always
         tag: ""
 
 localDatabase:

@@ -1,0 +1,61 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  annotations:
+    helm.sh/hook: pre-install,pre-upgrade
+    helm.sh/hook-weight: "-5"
+  creationTimestamp: "2021-06-28T11:40:41Z"
+  finalizers:
+  - kubernetes.io/pv-protection
+  labels:
+    app: postgres
+    type: local
+  managedFields:
+  - apiVersion: v1
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:metadata:
+        f:annotations:
+          .: {}
+          f:helm.sh/hook: {}
+          f:helm.sh/hook-weight: {}
+        f:labels:
+          .: {}
+          f:app: {}
+          f:type: {}
+      f:spec:
+        f:accessModes: {}
+        f:capacity:
+          .: {}
+          f:storage: {}
+        f:hostPath:
+          .: {}
+          f:path: {}
+          f:type: {}
+        f:persistentVolumeReclaimPolicy: {}
+        f:storageClassName: {}
+        f:volumeMode: {}
+    manager: Go-http-client
+    operation: Update
+    time: "2021-06-28T11:40:41Z"
+  - apiVersion: v1
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:status:
+        f:phase: {}
+    manager: k3s
+    operation: Update
+    time: "2021-06-28T11:40:41Z"
+  name: postgres-pv-volume
+  resourceVersion: "55474"
+  uid: ade7a65e-9929-49e4-ac68-8fdc26b4276d
+spec:
+  accessModes:
+  - ReadWriteMany
+  capacity:
+    storage: 5Gi
+  persistentVolumeReclaimPolicy: Retain
+  storageClassName: manual
+  volumeMode: Filesystem
+status:
+  phase: Available
