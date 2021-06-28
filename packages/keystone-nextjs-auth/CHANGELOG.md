@@ -1,5 +1,11 @@
 # @opensaas-keystone/nextjs-auth
 
+## 6.3.0
+
+### Minor Changes
+
+- Change return in session
+
 ## 6.2.0
 
 ### Minor Changes

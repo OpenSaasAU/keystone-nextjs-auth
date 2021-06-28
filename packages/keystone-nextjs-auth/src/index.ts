@@ -178,13 +178,12 @@ export function createAuth<GeneratedListTypes extends BaseGeneratedListTypes>({
       get: async ({ req }) => {
         const pathname = url.parse(req?.url!).pathname!;
         if (pathname.includes('/api/auth')) {
-          return {};
+          return;
         }
         const nextSession = await getSession({ req });
-        if (!nextSession) {
-          return {};
+        if (nextSession) {
+          return nextSession;
         }
-        return nextSession;
       },
     };
   };
