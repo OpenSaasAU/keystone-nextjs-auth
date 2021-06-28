@@ -2,6 +2,7 @@
 
 repository: opensaasreg.azurecr.io
 clusterIssuer: dns-solver
+ingressClass: nginx
 backendUrl: https://core-test.opensaas.com.au/api/graphql
 stripeKey: pk_test_TEST_KEY
 imagePullSecret: opensaasregsecret

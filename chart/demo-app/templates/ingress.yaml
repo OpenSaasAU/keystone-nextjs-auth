@@ -6,7 +6,7 @@ metadata:
   labels:
     {{- include "opensaas-ams.labels" . | nindent 4 }}
   annotations:
-    kubernetes.io/ingress.class: nginx
+    kubernetes.io/ingress.class: {{ .Values.ingressClass }}
     cert-manager.io/cluster-issuer: {{ .Values.clusterIssuer }}
     kubernetes.io/tls-acme: "true"
 spec:
@@ -34,7 +34,7 @@ metadata:
   labels:
     {{- include "opensaas-ams.labels" $ | nindent 4 }}
   annotations:
-    kubernetes.io/ingress.class: nginx
+    kubernetes.io/ingress.class: traefik
     cert-manager.io/cluster-issuer: {{ $.Values.clusterIssuer }}
     kubernetes.io/tls-acme: "true"
 spec:

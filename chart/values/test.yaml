@@ -1,7 +1,8 @@
 
 
 repository: opensaas
-clusterIssuer: dns-solver
+clusterIssuer: letsencrypt-route53
+ingressClass: traefik
 backendUrl: https://ks-backend-demo.opensaas.com.au/api/graphql
 stripeKey: pk_test_TEST_KEY
 imagePullSecret: opensaasregsecret
@@ -21,6 +22,7 @@ backend:
         AUTH0_DOMAIN: opensaas.au.auth0.com
         AUTH0_CLIENT_ID: Auth0ClientID
         AUTH0_CLIENT_SECRET: Auth0ClientSecret
+        NEXTAUTH_URL: https://ks-backend-demo.opensaas.com.au
     image:
         name: ks-backend-demo
         pullPolicy: Always
