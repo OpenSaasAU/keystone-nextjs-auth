@@ -24,6 +24,7 @@ stages:
             displayName: Authenticate to Artifacts
             inputs:
               workingFile: './.npmrc'
+              customEndpoint: 'npmreg'
           
           - task: NodeTool@0
             inputs:
