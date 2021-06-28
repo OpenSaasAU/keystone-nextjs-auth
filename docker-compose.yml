@@ -1,28 +1,18 @@
 version: '3.7'
 
 services:
-    next-aap:
-        image: "${DOCKER_REGISTRY}/next-app:${TAG}"
+    ks-frontend-demo:
+        image: "${DOCKER_REGISTRY}/ks-frontend-demo:${TAG}"
         build:
             context: .
             dockerfile: ./apps/Dockerfile
             args:
-                APP: next-app
+                APP: ks-frontend-demo
                 DOCKER_REGISTRY: ${DOCKER_REGISTRY}   
                 TAG: ${TAG}          
 
-    next-cypress:
-        image: "${DOCKER_REGISTRY}/next-cypress:${TAG}"
-        build:
-            context: .
-            dockerfile: ./apps/Dockerfile
-            args:
-                APP: next-cypress
-                DOCKER_REGISTRY: ${DOCKER_REGISTRY}   
-                TAG: ${TAG}
-
     backend:
-        image: "${DOCKER_REGISTRY}/backend:${TAG}"
+        image: "${DOCKER_REGISTRY}/ks-backend-demo:${TAG}"
         build:
             context: ./backend/
             dockerfile: ./Dockerfile
