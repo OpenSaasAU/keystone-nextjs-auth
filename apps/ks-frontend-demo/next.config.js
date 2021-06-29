@@ -9,7 +9,7 @@ module.exports = withPreconstruct({
     return [
       {
         source: '/api/auth/:auth*',
-        destination: 'http://localhost:3000/api/auth/:auth*',
+        destination: `${process.env.BACKEND_BASE_URL}/api/auth/:auth*`,
       },
     ];
   },

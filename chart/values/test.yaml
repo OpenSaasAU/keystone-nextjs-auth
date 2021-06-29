@@ -4,6 +4,7 @@ repository: opensaas
 clusterIssuer: letsencrypt-route53
 ingressClass: traefik
 backendUrl: https://ks-backend-demo.opensaas.com.au/api/graphql
+backendBaseUrl: http://demo-app-backend
 stripeKey: pk_test_TEST_KEY
 imagePullSecret: opensaasregsecret
 nameOverride: ""

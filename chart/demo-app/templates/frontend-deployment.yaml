@@ -28,6 +28,8 @@ spec:
             value: {{ $.Values.backendUrl }}
           - name: NODE_ENV
             value: {{ $.Values.NODE_ENV }}
+          - name: BACKEND_BASE_URL
+            value: {{ $.Values.backendBaseUrl }}
           imagePullPolicy: {{ .image.pullPolicy }}
           ports:
             - name: http
