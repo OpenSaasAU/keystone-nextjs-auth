@@ -1,43 +1,41 @@
-
-
 repository: opensaas
 clusterIssuer: letsencrypt-route53
 ingressClass: traefik
 backendUrl: https://ks-backend-demo.opensaas.com.au/api/graphql
-backendBaseUrl: http://demo-app-backend:3000
+backendBaseUrl: https://ks-backend-demo.opensaas.com.au
 stripeKey: pk_test_TEST_KEY
 imagePullSecret: opensaasregsecret
 nameOverride: ""
 fullnameOverride: ""
 
 backend:
-    name: backend
-    replicaCount: 1
-    hostname: ks-backend-demo.opensaas.com.au
-    containerPort: 3000
-    env:
-        FRONTEND: https://ks-frontend-demo.opensaas.com.au
-        DATABASE_URL: postgres://somename:1234@postgres/dbname
-        SESSION_SECRET: SOME_SECURE_STRING
-        STRIPE_SECRET: sk_test_1234
-        AUTH0_DOMAIN: opensaas.au.auth0.com
-        AUTH0_CLIENT_ID: Auth0ClientID
-        AUTH0_CLIENT_SECRET: Auth0ClientSecret
-        NEXTAUTH_URL_INTERNAL: http://localhost:3000
-        NEXTAUTH_URL: https://ks-backend-demo.opensaas.com.au
-    image:
-        name: ks-backend-demo
-        pullPolicy: Always
-        # Overrides the image tag whose default is the chart appVersion.
-        tag: ""
+  name: backend
+  replicaCount: 1
+  hostname: ks-backend-demo.opensaas.com.au
+  containerPort: 3000
+  env:
+    FRONTEND: https://ks-frontend-demo.opensaas.com.au
+    DATABASE_URL: postgres://somename:1234@postgres/dbname
+    SESSION_SECRET: SOME_SECURE_STRING
+    STRIPE_SECRET: sk_test_1234
+    AUTH0_DOMAIN: opensaas.au.auth0.com
+    AUTH0_CLIENT_ID: Auth0ClientID
+    AUTH0_CLIENT_SECRET: Auth0ClientSecret
+    NEXTAUTH_URL_INTERNAL: http://localhost:3000
+    NEXTAUTH_URL: https://ks-backend-demo.opensaas.com.au
+  image:
+    name: ks-backend-demo
+    pullPolicy: Always
+    # Overrides the image tag whose default is the chart appVersion.
+    tag: ""
 apps:
-    - name: ks-frontend-demo
-      hostname: ks-frontend-demo.opensaas.com.au
-      replicaCount: 1
-      image:
-        name: ks-frontend-demo
-        pullPolicy: Always
-        tag: ""
+  - name: ks-frontend-demo
+    hostname: ks-frontend-demo.opensaas.com.au
+    replicaCount: 1
+    image:
+      name: ks-frontend-demo
+      pullPolicy: Always
+      tag: ""
 
 localDatabase:
   create: true
