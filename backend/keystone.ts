@@ -53,6 +53,7 @@ export default auth.withAuth(
       url:
         process.env.DATABASE_URL ||
         'postgres://postgres:mysecretpassword@localhost:55000/opensaas-creator',
+      useMigrations: true,
     },
     ui: {
       isAccessAllowed: (context: KeystoneContext) => !!context.session?.data,
