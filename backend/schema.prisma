@@ -9,7 +9,7 @@ generator client {
 }
 
 model Role {
-  id                Int      @id @default(autoincrement())
+  id                String   @id @default(cuid())
   name              String?
   canManageProducts Boolean?
   canSeeOtherUsers  Boolean?
@@ -21,12 +21,12 @@ model Role {
 }
 
 model User {
-  id        Int     @id @default(autoincrement())
+  id        String  @id @default(cuid())
   name      String?
   email     String? @unique
   subjectId String? @unique
   role      Role?   @relation("User_role", fields: [roleId], references: [id])
-  roleId    Int?    @map("role")
+  roleId    String? @map("role")
 
   @@index([roleId])
 }

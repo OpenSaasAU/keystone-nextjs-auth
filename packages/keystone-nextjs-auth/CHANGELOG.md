@@ -1,5 +1,17 @@
 # @opensaas-keystone/nextjs-auth
 
+## 8.1.0
+
+### Minor Changes
+
+- https://github.com/keystonejs/keystone/pull/6022/files
+
+## 8.0.0
+
+### Major Changes
+
+- upgrade keystone
+
 ## 7.0.0
 
 ### Major Changes

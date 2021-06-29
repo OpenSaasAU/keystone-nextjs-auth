@@ -16,7 +16,12 @@ module.exports = withPreconstruct({
       ),
     };
     if (isServer) {
-      config.externals = [...config.externals, /@keystone-next\\/keystone/, /@keystone-next\\/types/, /.prisma\\/client/];
+      config.externals = [
+        ...config.externals, 
+        /@keystone-next\\/keystone(?!\\/___internal-do-not-use-will-break-in-patch\\/admin-ui\\/id-field-view)/,
+        /@keystone-next\\/types/, 
+        /.prisma\\/client/
+      ];
     }
     return config;
   },
