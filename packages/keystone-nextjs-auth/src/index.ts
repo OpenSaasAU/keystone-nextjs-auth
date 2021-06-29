@@ -27,7 +27,6 @@ export function createAuth<GeneratedListTypes extends BaseGeneratedListTypes>({
   listKey,
   identityField,
   sessionData,
-  providers,
   autoCreate,
   userMap,
   accountMap,
@@ -93,7 +92,6 @@ export function createAuth<GeneratedListTypes extends BaseGeneratedListTypes>({
         src: authTemplate({
           gqlNames,
           identityField,
-          providers,
           sessionData,
           listKey,
           autoCreate,

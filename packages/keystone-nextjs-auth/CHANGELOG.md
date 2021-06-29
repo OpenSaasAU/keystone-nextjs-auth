@@ -1,5 +1,11 @@
 # @opensaas-keystone/nextjs-auth
 
+## 7.0.0
+
+### Major Changes
+
+- Fix up providers config
+
 ## 6.3.0
 
 ### Minor Changes
