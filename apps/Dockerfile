@@ -5,6 +5,7 @@ WORKDIR /usr/app
 COPY ".npmrc" .
 COPY ["./apps/${APP}/package.json", "yarn.lock", "./"]
 RUN yarn install
+ENV BACKEND_BASE_URL=http://demo-app-backend
 ENV NODE_ENV=production
 COPY ./apps/${APP}/. .
 RUN yarn build
