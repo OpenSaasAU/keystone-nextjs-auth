@@ -61,7 +61,7 @@ spec:
                 port: 
                   number: 3000
           - path: /api/auth
-            pathType: Exact
+            pathType: Prefix
             backend:
               service:
                 name: {{ $fullName }}-backend
