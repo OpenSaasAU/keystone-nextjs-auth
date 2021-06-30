@@ -30,6 +30,8 @@ spec:
             value: {{ $.Values.NODE_ENV }}
           - name: BACKEND_BASE_URL
             value: {{ $.Values.backendBaseUrl }}
+          - name: PUBLIC_URL
+            value: "https://{{ .hostname }}"
           imagePullPolicy: {{ .image.pullPolicy }}
           ports:
             - name: http
