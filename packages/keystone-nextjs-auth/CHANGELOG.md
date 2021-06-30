@@ -1,5 +1,11 @@
 # @opensaas-keystone/nextjs-auth
 
+## 8.1.2
+
+### Patch Changes
+
+- Comment update
+
 ## 8.1.1
 
 ### Patch Changes

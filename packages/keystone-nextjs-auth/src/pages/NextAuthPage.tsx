@@ -62,7 +62,7 @@ export default function NextAuthPage(props: NextAuthPageProps){
                         console.log("Create User");
                         
                         
-                        await lists.[listKey].createOne({data})
+                        await list.createOne({data})
                         .then(returned => {
                             console.log(returned);
                             
@@ -75,8 +75,7 @@ export default function NextAuthPage(props: NextAuthPageProps){
                         });
                       }
                   } else {
-                
-                    await lists.[listKey].updateOne({where: {id: result.item.id}, data});
+                    //await list.updateOne({where: {id: result.item.id}, data});
                     return result.success
                   }
 
