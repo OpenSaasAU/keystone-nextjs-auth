@@ -75,7 +75,8 @@ export default function NextAuthPage(props: NextAuthPageProps){
                         });
                       }
                   } else {
-                      await list.[listKey].updateOne({where: {id: result.item.id}, data});
+                
+                    await lists.[listKey].updateOne({where: {id: result.item.id}, data});
                     return result.success
                   }
 
