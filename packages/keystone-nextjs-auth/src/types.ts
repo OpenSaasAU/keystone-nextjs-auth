@@ -33,23 +33,23 @@ export type AuthConfig<GeneratedListTypes extends BaseGeneratedListTypes> = {
   /** Auth Create users in Keystone DB from Auth Provider */
   autoCreate: boolean;
   /** Map User in next-auth to item */
-  userMap: string;
+  userMap: {};
   /** Map Account in next-auth to item */
-  accountMap: string;
+  accountMap: {};
   /** Map Profile in next-auth to item */
-  profileMap: string;
+  profileMap: {};
 };
 
 export type InitFirstItemConfig<
   GeneratedListTypes extends BaseGeneratedListTypes
-> = {
-  /** Array of fields to collect, e.g ['name', 'email', 'password'] */
-  fields: GeneratedListTypes['fields'][];
-  /** Suppresses the second screen where we ask people to subscribe and follow Keystone */
-  skipKeystoneWelcome?: boolean;
-  /** Extra input to add for the create mutation */
-  itemData?: Partial<GeneratedListTypes['inputs']['create']>;
-};
+  > = {
+    /** Array of fields to collect, e.g ['name', 'email', 'password'] */
+    fields: GeneratedListTypes['fields'][];
+    /** Suppresses the second screen where we ask people to subscribe and follow Keystone */
+    skipKeystoneWelcome?: boolean;
+    /** Extra input to add for the create mutation */
+    itemData?: Partial<GeneratedListTypes['inputs']['create']>;
+  };
 
 export type AuthTokenRequestErrorCode =
   | 'IDENTITY_NOT_FOUND'
