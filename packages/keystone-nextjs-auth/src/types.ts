@@ -33,11 +33,11 @@ export type AuthConfig<GeneratedListTypes extends BaseGeneratedListTypes> = {
   /** Auth Create users in Keystone DB from Auth Provider */
   autoCreate: boolean;
   /** Map User in next-auth to item */
-  userMap: {};
+  userMap: any;
   /** Map Account in next-auth to item */
-  accountMap: {};
+  accountMap: any;
   /** Map Profile in next-auth to item */
-  profileMap: {};
+  profileMap: any;
 };
 
 export type InitFirstItemConfig<
