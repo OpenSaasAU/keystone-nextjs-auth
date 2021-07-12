@@ -77,6 +77,7 @@ for example see the example [backend](./backend)
 -  userMap: `key:value` pairs that define what is copied from the User object returned from NextAuth in the SignIn callback (https://next-auth.js.org/configuration/callbacks#sign-in-callback) Left side is Keystone side, right is what comes from NextAuth eg: `{ subjectId: 'id', name: 'name' }`
 -  accountMap - As Above but for the Account object
 -  profileMap - As Above but for the Profile object
+-  keystonePath - the path you want to access keystone from your frontend app (if required).
 
 ## Contributing
 If you want to run this package locally
