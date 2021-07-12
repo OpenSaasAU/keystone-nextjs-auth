@@ -50,6 +50,7 @@ const auth = createAuth({
   userMap: { subjectId: 'id', name: 'name' },
   accountMap: {},
   profileMap: { email: 'email' },
+  keystonePath: '/admin',
 });
 ```
 Wrap your keystone config in `auth.withAuth`
