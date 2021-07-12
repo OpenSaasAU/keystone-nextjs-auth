@@ -37,6 +37,7 @@ const auth = createAuth({
   userMap: { subjectId: 'id', name: 'name' },
   accountMap: {},
   profileMap: { email: 'email' },
+  keystonePath: '/admin',
 });
 
 export default auth.withAuth(

@@ -1,5 +1,11 @@
 # @opensaas-keystone/nextjs-auth
 
+## 9.0.0
+
+### Major Changes
+
+- Add keystone base path
+
 ## 8.1.4
 
 ### Patch Changes

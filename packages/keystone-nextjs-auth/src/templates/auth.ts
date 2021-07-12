@@ -36,6 +36,9 @@ export const authTemplate = ({
   sessionData: any;
   listKey: string;
   autoCreate: boolean;
+  userMap: any;
+  accountMap: any;
+  profileMap: any;
 }) => {
   const authOut = ejs.render(template, {
     gqlNames,

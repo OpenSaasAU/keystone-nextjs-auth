@@ -1,5 +1,11 @@
 # @collective-ams/unifi-frontend
 
+## 4.0.0
+
+### Major Changes
+
+- Add keystone base path
+
 ## 3.0.2
 
 ### Patch Changes

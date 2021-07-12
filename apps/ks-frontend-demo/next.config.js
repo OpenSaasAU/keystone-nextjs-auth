@@ -11,7 +11,11 @@ module.exports = withPreconstruct({
     return [
       {
         source: '/api/auth/:auth*',
-        destination: `${process.env.BACKEND_BASE_URL}/api/auth/:auth*`,
+        destination: `${process.env.BACKEND_BASE_URL}/admin/api/auth/:auth*`,
+      },
+      {
+        source: '/admin/:admin*',
+        destination: `${process.env.BACKEND_BASE_URL}/admin/:admin*`,
       },
     ];
   },

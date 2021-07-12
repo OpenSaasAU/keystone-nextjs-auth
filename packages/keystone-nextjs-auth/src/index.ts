@@ -31,6 +31,7 @@ export function createAuth<GeneratedListTypes extends BaseGeneratedListTypes>({
   userMap,
   accountMap,
   profileMap,
+  keystonePath,
 }: AuthConfig<GeneratedListTypes>) {
   // The protectIdentities flag is currently under review to see whether it should be
   // part of the createAuth API (in which case its use cases need to be documented and tested)
@@ -65,14 +66,14 @@ export function createAuth<GeneratedListTypes extends BaseGeneratedListTypes>({
     const pathname = url.parse(req?.url!).pathname!;
 
     if (isValidSession) {
-      if (pathname === '/api/auth/signin') {
-        return { kind: 'redirect', to: '/' };
+      if (pathname === `${keystonePath}/api/auth/signin`) {
+        return { kind: 'redirect', to: `${keystonePath}` };
       }
       return;
     }
 
-    if (!session && !pathname.includes('/api/auth/')) {
-      return { kind: 'redirect', to: `/api/auth/signin` };
+    if (!session && !pathname.includes(`${keystonePath}/api/auth/`)) {
+      return { kind: 'redirect', to: `${keystonePath}/api/auth/signin` };
     }
   };
 
@@ -103,7 +104,7 @@ export function createAuth<GeneratedListTypes extends BaseGeneratedListTypes>({
       {
         mode: 'write',
         outputPath: 'next.config.js',
-        src: nextConfigTemplate(),
+        src: nextConfigTemplate({ keystonePath }),
       },
     ];
     return filesToWrite;
@@ -115,14 +116,14 @@ export function createAuth<GeneratedListTypes extends BaseGeneratedListTypes>({
    * Must be added to the ui.publicPages config
    */
   const publicPages = [
-    '/api/auth/csrf',
-    '/api/auth/signin',
-    '/api/auth/signin/auth0',
-    '/api/auth/callack',
-    '/api/auth/callback/auth0',
-    '/api/auth/session',
-    '/api/auth/providers',
-    '/api/auth/signout',
+    `${keystonePath}/api/auth/csrf`,
+    `${keystonePath}/api/auth/signin`,
+    `${keystonePath}/api/auth/signin/auth0`,
+    `${keystonePath}/api/auth/callack`,
+    `${keystonePath}/api/auth/callback/auth0`,
+    `${keystonePath}/api/auth/session`,
+    `${keystonePath}/api/auth/providers`,
+    `${keystonePath}/api/auth/signout`,
   ];
 
   /**
@@ -165,8 +166,8 @@ export function createAuth<GeneratedListTypes extends BaseGeneratedListTypes>({
    * Automatically injects a session.data value with the authenticated item
    */
   /* TODO:
-    - [ ] We could support additional where input to validate item sessions (e.g an isEnabled boolean)
-  */
+  - [ ] We could support additional where input to validate item sessions (e.g an isEnabled boolean)
+*/
   const withItemData = (
     _sessionStrategy: SessionStrategy<Record<string, any>>
   ): SessionStrategy<{ listKey: string; itemId: string; data: any }> => {

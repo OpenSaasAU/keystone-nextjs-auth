@@ -25,10 +25,15 @@ module.exports = withPreconstruct({
     }
     return config;
   },
+  basePath: '<%= keystonePath || '/' %>'
 });
 `;
-export const nextConfigTemplate = () => {
-  const nextConfigOut = ejs.render(template, {});
+export const nextConfigTemplate = ({
+  keystonePath,
+}: {
+  keystonePath: string;
+}) => {
+  const nextConfigOut = ejs.render(template, { keystonePath });
 
   return nextConfigOut;
 };
