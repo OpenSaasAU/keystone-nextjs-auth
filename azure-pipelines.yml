@@ -32,8 +32,6 @@ stages:
             parameters:
               frontendApps:
                 - ks-frontend-demo
-          - script: yarn changeset status
-            displayName: check for changeset
 
           - script: yarn build
             displayName: 'Release Packages to Artifacts'
