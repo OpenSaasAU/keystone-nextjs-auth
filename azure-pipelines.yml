@@ -20,12 +20,7 @@ stages:
       - job: PackagesBuild
         displayName: Build and Release Packages
         steps:
-          - task: npmAuthenticate@0
-            displayName: Authenticate to Artifacts
-            inputs:
-              workingFile: './.npmrc'
-              customEndpoint: 'npmreg'
-          
+
           - task: NodeTool@0
             inputs:
               versionSpec: '14.17'
@@ -37,10 +32,19 @@ stages:
             parameters:
               frontendApps:
                 - ks-frontend-demo
-            
-          - script: yarn release
+          - script: yarn changeset status
+            displayName: check for changeset
+
+          - script: yarn build
             displayName: 'Release Packages to Artifacts'
       
+          - task: Npm@1
+            inputs:
+              command: 'publish'
+              workingDir: 'packages/keystone-nextjs-auth'
+              publishEndpoint: 'npmreg'
+
+
       - job: DockerBuildAndPush
         dependsOn: PackagesBuild
         displayName: Build and Push Docker Images
