@@ -48,6 +48,8 @@ export function createAuth<GeneratedListTypes extends BaseGeneratedListTypes>({
     createInitialItem: `createInitial${listKey}`,
   };
 
+
+  if (!keystonePath) keystonePath = '';
   /**
    * pageMiddleware
    *

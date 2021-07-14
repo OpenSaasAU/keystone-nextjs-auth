@@ -25,7 +25,7 @@ module.exports = withPreconstruct({
     }
     return config;
   },
-  basePath: '<%= keystonePath || '/' %>'
+  basePath: '<%= keystonePath || '' %>'
 });
 `;
 export const nextConfigTemplate = ({

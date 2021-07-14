@@ -1,5 +1,11 @@
 # @opensaas-keystone/nextjs-auth
 
+## 9.1.0
+
+### Minor Changes
+
+- Make keystonePath optional
+
 ## 9.0.0
 
 ### Major Changes

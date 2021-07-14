@@ -39,7 +39,7 @@ export type AuthConfig<GeneratedListTypes extends BaseGeneratedListTypes> = {
   /** Map Profile in next-auth to item */
   profileMap: any;
   /** Path for Keystone interface */
-  keystonePath: string;
+  keystonePath?: string;
 };
 
 export type InitFirstItemConfig<
