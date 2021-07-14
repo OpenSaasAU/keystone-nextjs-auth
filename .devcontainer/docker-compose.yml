@@ -29,6 +29,7 @@ services:
       - NODE_ENV=development
       - DATABASE_URL=postgres://postgres:mysecretpassword@db
       - NEXTAUTH_URL=http://localhost:7777/admin/api/auth/
+      - BACKEND_BASE_URL=http://localhost:3000
     
     volumes:
       # Update this to wherever you want VS Code to mount the folder of your project
