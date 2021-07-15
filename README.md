@@ -1,4 +1,6 @@
 [![Open in Visual Studio Code](https://open.vscode.dev/badges/open-in-vscode.svg)](https://open.vscode.dev/OpenSaasAU/keystone-nextjs-auth)
+[![Build Status](https://dev.azure.com/OpenSaas/Keystone-nextjs-auth/_apis/build/status/OpenSaasAU.keystone-nextjs-auth?branchName=main)](https://dev.azure.com/OpenSaas/Keystone-nextjs-auth/_build/latest?definitionId=2&branchName=main)
+
 
 # Keystone next auth
 This package that enables the adition of social auth to keystone-6.
