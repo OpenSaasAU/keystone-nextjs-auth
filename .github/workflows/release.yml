@@ -1,0 +1,39 @@
+# This is a basic workflow to help you get started with Actions
+
+name: Release
+
+# Controls when the action will run. Triggers the workflow on push or pull request
+# events but only for the master branch
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  release:
+    name: Release
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@master
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Setup Node.js 14.x
+        uses: actions/setup-node@master
+        with:
+          node-version: 14.x
+
+      - name: Install Dependencies
+        # we have a postinstall script that uses is-ci which doesn't yet detect GitHub Actions
+        run: CI=true yarn
+
+      - name: Create Release Pull Request or Publish to npm
+        id: changesets
+        uses: changesets/action@master
+        with:
+          # This expects you to have a script called release which does a build for your packages and calls changeset publish
+          publish: yarn release
+        env:
+          GITHUB_TOKEN: ${{ secrets.KEYSTONE_AUTH_GITHUB_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
