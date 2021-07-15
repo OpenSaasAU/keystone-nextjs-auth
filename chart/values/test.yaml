@@ -21,8 +21,8 @@ backend:
     AUTH0_DOMAIN: opensaas.au.auth0.com
     AUTH0_CLIENT_ID: Auth0ClientID
     AUTH0_CLIENT_SECRET: Auth0ClientSecret
-    NEXTAUTH_URL_INTERNAL: http://localhost:3000
-    NEXTAUTH_URL: https://ks-backend-demo.opensaas.com.au
+    NEXTAUTH_URL_INTERNAL: http://localhost:3000/admin/api/auth/
+    NEXTAUTH_URL: https://ks-frontend-demo.opensaas.com.au/admin/api/auth/
   image:
     name: ks-backend-demo
     pullPolicy: Always
