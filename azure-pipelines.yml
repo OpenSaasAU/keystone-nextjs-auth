@@ -37,10 +37,6 @@ stages:
         dependsOn: PackagesBuild
         displayName: Build and Push Docker Images
         steps:
-          - task: npmAuthenticate@0
-            displayName: Authenticate to Artifacts
-            inputs:
-              workingFile: './.npmrc'
 
           - task: Docker@2
             displayName: Docker Login
