@@ -1,5 +1,5 @@
 [![Open in Visual Studio Code](https://open.vscode.dev/badges/open-in-vscode.svg)](https://open.vscode.dev/OpenSaasAU/keystone-nextjs-auth)
-[![Build Status](https://dev.azure.com/OpenSaas/Keystone-nextjs-auth/_apis/build/status/OpenSaasAU.keystone-nextjs-auth?branchName=main)](https://dev.azure.com/OpenSaas/Keystone-nextjs-auth/_build/latest?definitionId=2&branchName=main)
+[![Build Status](https://dev.azure.com/OpenSaas/Keystone-nextjs-auth/_apis/build/status/OpenSaasAU.keystone-nextjs-auth?branchName=main)](https://dev.azure.com/OpenSaas/Keystone-nextjs-auth/_build/latest?definitionId=2&branchName=main) [![Release](https://github.com/OpenSaasAU/keystone-nextjs-auth/actions/workflows/release.yml/badge.svg)](https://github.com/OpenSaasAU/keystone-nextjs-auth/actions/workflows/release.yml)
 
 
 # Keystone next auth
