@@ -1,33 +1,45 @@
 import { Container, Button } from 'react-bootstrap';
-import getConfig from 'next/config';
+import { signIn, signOut, useSession } from 'next-auth/client';
 import { useUser } from '../lib/useUser';
 
 export default function SignupPage() {
   const user = useUser();
 
-  const { publicRuntimeConfig } = getConfig();
+  const [session, loading] = useSession();
+  if (loading) return <Container>Loading... </Container>;
 
   return (
     <Container>
-      {user && (
-        <p>
-          Welcome {user.name}, we have you email as {user.email}
-        </p>
+      {session && (
+        <>
+          <p>
+            Welcome {session.user.name}, we have your Session email as{' '}
+            {session.user.email}
+          </p>
+          {user && <p>And your user email as {user.email}.</p>}
+          <Button
+            onClick={() =>
+              signOut({
+                callbackUrl: `${window.location.origin}`,
+              })
+            }
+          >
+            Sign Out
+          </Button>
+        </>
       )}
-      {!user && (
+      {!session && (
         <>
           Not signed in <br />
-          <form
-            action={`${publicRuntimeConfig.backendBaseUrl}/api/auth/signin/auth0`}
-            method="POST"
+          <Button
+            onClick={() =>
+              signIn('auth0', {
+                callbackUrl: `${window.location.origin}`,
+              })
+            }
           >
-            <input
-              type="hidden"
-              name="callbackUrl"
-              value={publicRuntimeConfig.publicUrl}
-            />
-            <Button type="submit">login Auth0</Button>
-          </form>
+            Sign In
+          </Button>
         </>
       )}
     </Container>
