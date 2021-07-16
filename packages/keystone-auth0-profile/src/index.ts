@@ -75,7 +75,6 @@ export function auth0Profile<
     profileMap,
     keystonePath,
   });
-
   /**
    * withProfile
    *
