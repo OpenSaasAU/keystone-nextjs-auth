@@ -9,9 +9,9 @@
     "@babel/runtime": "^7.14.6",
     "@babel/runtime-corejs3": "^7.14.6",
     "@graphql-tools/merge": "^6.2.14",
-    "@keystone-next/admin-ui-utils": "^5.0.3",
-    "@keystone-next/fields": "^11.0.2",
-    "@keystone-next/types": "^21.0.0",
+    "@keystone-next/admin-ui-utils": "^5.0.4",
+    "@keystone-next/fields": "^12.0.0",
+    "@keystone-next/types": "^22.0.0",
     "@types/ejs": "^3.0.6",
     "cross-fetch": "^3.1.4",
     "ejs": "^3.1.6",
@@ -19,11 +19,11 @@
     "next-auth": "^3.27.0"
   },
   "devDependencies": {
-    "@keystone-next/keystone": "^21.0.1",
+    "@keystone-next/keystone": "^22.0.0",
     "react": "^17.0.2"
   },
   "peerDependencies": {
-    "@keystone-next/keystone": "^21.0.1",
+    "@keystone-next/keystone": "^22.0.0",
     "react": "^17.0.2"
   },
   "engines": {

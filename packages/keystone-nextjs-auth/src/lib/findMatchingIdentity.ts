@@ -8,23 +8,23 @@ export async function findMatchingIdentity(
   itemAPI: KeystoneListsAPI<any>[string]
 ): Promise<
   | { success: false; code: AuthTokenRequestErrorCode }
-  | { success: true; item: { id: any; [prop: string]: any } }
+  | { success: true; item: any }
 > {
-  const items = await itemAPI.findMany({
+  const item = await itemAPI.findOne({
     where: { [identityField]: identity },
     resolveFields: false,
   });
+  console.log(item);
 
   // Identity failures with helpful errors
   let code: AuthTokenRequestErrorCode | undefined;
-  if (items.length === 0) {
+  if (item.length === 0) {
     code = 'IDENTITY_NOT_FOUND';
-  } else if (items.length > 1) {
+  } else if (item.length > 1) {
     code = 'MULTIPLE_IDENTITY_MATCHES';
   }
   if (code) {
     return { success: false, code };
-  } else {
-    return { success: true, item: items[0] };
   }
+  return { success: true, item };
 }
