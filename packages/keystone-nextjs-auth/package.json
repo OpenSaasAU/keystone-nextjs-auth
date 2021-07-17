@@ -5,6 +5,9 @@
   "license": "MIT",
   "main": "dist/opensaas-keystone-nextjs-auth.cjs.js",
   "module": "dist/opensaas-keystone-nextjs-auth.esm.js",
+  "publishConfig": {
+    "access": "public"
+  },
   "dependencies": {
     "@babel/runtime": "^7.14.6",
     "@babel/runtime-corejs3": "^7.14.6",
