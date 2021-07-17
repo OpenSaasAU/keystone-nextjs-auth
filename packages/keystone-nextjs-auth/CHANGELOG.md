@@ -1,5 +1,11 @@
 # @opensaas-keystone/nextjs-auth
 
+## 10.0.1
+
+### Patch Changes
+
+- 5175fc9: Fix error from findMany in findMatchingIdentities
+
 ## 10.0.0
 
 ### Major Changes
