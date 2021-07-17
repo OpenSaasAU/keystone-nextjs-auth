@@ -12,7 +12,7 @@ import {
   nextAuthProviders as Providers,
 } from '@opensaas/keystone-nextjs-auth';
 // import * as Path from 'path';
-
+import { profileTemplate } from './templates/profile';
 import { ProfileConfig } from './types';
 
 export const nextAuthProviders = Providers;
@@ -53,6 +53,18 @@ export function auth0Profile<
       throw new Error(msg);
     }
   };
+
+  const getAdditionalFiles = () => {
+    const filesToWrite: AdminFileToWrite[] = [
+      {
+        mode: 'write',
+        outputPath: 'pages/me.js',
+        src: profileTemplate({ listKey }),
+      },
+    ];
+    return filesToWrite;
+  };
+
   const auth = createAuth({
     listKey,
     identityField,
@@ -63,6 +75,7 @@ export function auth0Profile<
     profileMap,
     keystonePath,
   });
+
   /**
    * withProfile
    *
@@ -75,9 +88,20 @@ export function auth0Profile<
    */
   const withProfile = (keystoneConfig: KeystoneConfig): KeystoneConfig => {
     validateConfig(keystoneConfig);
+    let { ui } = keystoneConfig;
+    if (keystoneConfig.ui) {
+      ui = {
+        ...keystoneConfig.ui,
+        getAdditionalFiles: [
+          ...(keystoneConfig.ui.getAdditionalFiles || []),
+          getAdditionalFiles,
+        ],
+      };
+    }
 
     return auth.withAuth({
       ...keystoneConfig,
+      ui,
       lists: {
         ...keystoneConfig.lists,
         [listKey]: {

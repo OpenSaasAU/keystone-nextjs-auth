@@ -37,7 +37,6 @@ const profile = auth0Profile({
   userMap: { subjectId: 'id', name: 'name' },
   accountMap: {},
   profileMap: { email: 'email' },
-  keystonePath: '/admin',
 });
 
 export default profile.withProfile(
@@ -50,11 +49,8 @@ export default profile.withProfile(
       },
     },
     db: {
-      adapter: 'prisma_postgresql',
-      url:
-        process.env.DATABASE_URL ||
-        'postgres://postgres:mysecretpassword@localhost:55000/opensaas-creator',
-      useMigrations: true,
+      provider: 'sqlite',
+      url: process.env.DATABASE_URL || 'file:./keystone-example.db',
     },
     ui: {
       isAccessAllowed: (context: KeystoneContext) => !!context.session?.data,
