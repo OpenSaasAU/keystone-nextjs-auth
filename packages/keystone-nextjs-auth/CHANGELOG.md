@@ -1,5 +1,11 @@
 # @opensaas-keystone/nextjs-auth
 
+## 10.0.0
+
+### Major Changes
+
+- 05de370: Change session data to be stored in JWT to reduce db load on session lookup
+
 ## 9.1.0
 
 ### Minor Changes
