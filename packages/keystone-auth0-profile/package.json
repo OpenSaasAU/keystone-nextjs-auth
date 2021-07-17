@@ -12,7 +12,7 @@
     "@keystone-next/admin-ui-utils": "^5.0.4",
     "@keystone-next/fields": "^12.0.0",
     "@keystone-next/types": "^22.0.0",
-    "@opensaas/keystone-nextjs-auth": "^9.1.0",
+    "@opensaas/keystone-nextjs-auth": "^10.0.2",
     "@types/ejs": "^3.0.6",
     "cross-fetch": "^3.1.4",
     "ejs": "^3.1.6",
