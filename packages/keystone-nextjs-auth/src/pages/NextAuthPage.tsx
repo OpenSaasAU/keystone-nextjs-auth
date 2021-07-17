@@ -93,35 +93,44 @@ export default function NextAuthPage(props: NextAuthPageProps) {
         return url;
       },
       async session(session: any, token: any) {
-        const identity = token.sub;
-        const result = await validateNextAuth(
-          list,
-          identityField,
-          identity,
-          protectIdentities,
-          itemAPI
-        );
-
-        if (!result.success) {
-          return;
-        }
-
-        const data = await lists[listKey].findOne({
-          where: { id: result.item.id },
-          query: sessionData || 'id',
-        });
-
         const returnSession = {
           ...session,
-          data,
+          data: token.data,
           subject: token.sub,
-          listKey,
-          itemId: result.item.id.toString(),
+          listKey: token.listKey,
+          itemId: token.itemId,
         };
-
-        return Promise.resolve(returnSession);
+        return returnSession;
       },
       async jwt(token, user, account, profile, isNewUser) {
+        const identity = token.sub;
+        if (!token.itemId) {
+          const result = await validateNextAuth(
+            list,
+            identityField,
+            identity,
+            protectIdentities,
+            itemAPI
+          );
+
+          if (!result.success) {
+            return;
+          }
+
+          const data = await lists[listKey].findOne({
+            where: { id: result.item.id },
+            query: sessionData || 'id',
+          });
+          const returnToken = {
+            ...token,
+            data,
+            subject: token.sub,
+            listKey,
+            itemId: result.item.id.toString(),
+          };
+
+          return returnToken;
+        }
         return token;
       },
     },
