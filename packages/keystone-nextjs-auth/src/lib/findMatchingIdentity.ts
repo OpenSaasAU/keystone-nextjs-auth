@@ -10,21 +10,20 @@ export async function findMatchingIdentity(
   | { success: false; code: AuthTokenRequestErrorCode }
   | { success: true; item: any }
 > {
-  const item = await itemAPI.findOne({
+  const items = await itemAPI.findMany({
     where: { [identityField]: identity },
     resolveFields: false,
   });
-  console.log(item);
 
   // Identity failures with helpful errors
   let code: AuthTokenRequestErrorCode | undefined;
-  if (item.length === 0) {
+  if (items.length === 0) {
     code = 'IDENTITY_NOT_FOUND';
-  } else if (item.length > 1) {
+  } else if (items.length > 1) {
     code = 'MULTIPLE_IDENTITY_MATCHES';
   }
   if (code) {
     return { success: false, code };
   }
-  return { success: true, item };
+  return { success: true, item: items[0] };
 }
