@@ -29,6 +29,9 @@
   "engines": {
     "node": "^12.20 || >= 14.13"
   },
+  "publishConfig": {
+    "access": "public"
+  },
   "preconstruct": {
     "entrypoints": [
       "index.ts",
