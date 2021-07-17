@@ -1,5 +1,11 @@
 # @opensaas-keystone/nextjs-auth
 
+## 10.0.2
+
+### Patch Changes
+
+- 2d5f594: version bump
+
 ## 10.0.1
 
 ### Patch Changes
