@@ -1,6 +1,6 @@
 {
   "name": "@opensaas-keystone/auth0-profile-backend",
-  "version": "6.0.0",
+  "version": "1.0.0",
   "private": true,
   "scripts": {
     "build": "keystone-next build",
