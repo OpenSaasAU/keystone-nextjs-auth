@@ -1,0 +1,4 @@
+{
+  "main": "dist/opensaas-keystone-auth0-profile-pages-ProfilePage.cjs.js",
+  "module": "dist/opensaas-keystone-auth0-profile-pages-ProfilePage.esm.js"
+}

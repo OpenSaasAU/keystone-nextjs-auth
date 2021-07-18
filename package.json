@@ -9,6 +9,7 @@
     "packages/*",
     "services/*",
     "apps/*",
+    "examples/*",
     "website",
     "backend"
   ],
