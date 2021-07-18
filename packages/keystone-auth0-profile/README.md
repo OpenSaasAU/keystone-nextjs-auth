@@ -1,5 +1,6 @@
 # Keystone next auth
-This package that enables the adition of social auth to keystone-6.
+This package adds a profile page to Keystone-6 for Auth0.
+This utalises the `@opensaas/keystone-nextjs-auth` package but add a page, configured via `profilePageName` where the current logged in users profile is displayed.
 
 ## Contents
 
@@ -9,11 +10,11 @@ This package that enables the adition of social auth to keystone-6.
 - [Contributing](#contributing)
 
 ## About
-This uses NextAuth.js (https://next-auth.js.org/) project to add social auth to Keystone-6 (https://keystonejs.com/). Primary testing has been done with Auth0, happy for others to test other providers/give feedback or send through a PR.
+This uses NextAuth.js (https://next-auth.js.org/) project to add social auth and a profile page to Keystone-6 (https://keystonejs.com/). TODO: The roadmap for this package is to then sync information back to auth0 and include account linking via the management API (https://auth0.com/docs/users/user-account-linking).
 
 ## Adding to your project
 
-Add package by `yarn add @opensaas/keystone-nextjs-auth` then add the following to your `keystone.ts`:
+Add package by `yarn add @opensaas/keystone-auth0-profile` then add the following to your `keystone.ts`:
 
 Add import...
 
@@ -21,7 +22,7 @@ Add import...
 import {
   createAuth,
   nextAuthProviders as Providers,
-} from '@opensaas/keystone-nextjs-auth';
+} from '@opensaas/keystone-auth0-profile';
 ```
 
 Add Providers
@@ -37,10 +38,10 @@ export const providers = [
 ```
 for Provider configuration see https://next-auth.js.org/configuration/providers.
 
-Add you Auth configuration
+Add your Profile and Auth configuration
 
 ```javascript
-const auth = createAuth({
+const profile = createProfile({
   listKey: 'User',
   identityField: 'subjectId',
   sessionData: `id name email`,
@@ -48,11 +49,12 @@ const auth = createAuth({
   userMap: { subjectId: 'id', name: 'name' },
   accountMap: {},
   profileMap: { email: 'email' },
+  profilePageName: 'me',
 });
 ```
-Wrap your keystone config in `auth.withAuth`
+Wrap your keystone config in `profile.withProfile`
 ```javascript
-export default auth.withAuth(
+export default profile.withProfile(
   config({
     server: {},
     db: {},
