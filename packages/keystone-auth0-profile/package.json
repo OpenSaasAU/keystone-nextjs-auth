@@ -1,6 +1,6 @@
 {
   "name": "@opensaas/keystone-auth0-profile",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "repository": "https://github.com/opensaasau/keystone-auth0-profile",
   "license": "MIT",
   "main": "dist/opensaas-keystone-auth0-profile.cjs.js",
