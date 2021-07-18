@@ -37,6 +37,7 @@ const profile = auth0Profile({
   userMap: { subjectId: 'id', name: 'name' },
   accountMap: {},
   profileMap: { email: 'email' },
+  profilePageName: 'me',
 });
 
 export default profile.withProfile(

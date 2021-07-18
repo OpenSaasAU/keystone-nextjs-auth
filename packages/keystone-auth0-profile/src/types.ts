@@ -40,6 +40,8 @@ export type ProfileConfig<GeneratedListTypes extends BaseGeneratedListTypes> = {
   profileMap: any;
   /** Path for Keystone interface */
   keystonePath?: string;
+  /** Path for the Profile Page  */
+  profilePageName: string;
 };
 
 export type InitFirstItemConfig<

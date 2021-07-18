@@ -33,6 +33,7 @@ export function auth0Profile<
   accountMap,
   profileMap,
   keystonePath,
+  profilePageName,
 }: ProfileConfig<GeneratedListTypes>) {
   /**
    * validateConfig
@@ -58,7 +59,7 @@ export function auth0Profile<
     const filesToWrite: AdminFileToWrite[] = [
       {
         mode: 'write',
-        outputPath: 'pages/me.js',
+        outputPath: `pages/${profilePageName}.js`,
         src: profileTemplate({ listKey }),
       },
     ];
