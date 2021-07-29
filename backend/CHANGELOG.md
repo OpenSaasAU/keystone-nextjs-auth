@@ -1,5 +1,16 @@
 # @opensaas-keystone/next-auth-backend
 
+## 8.0.0
+
+### Major Changes
+
+- 664f8c2: Upgrade keystone packages
+
+### Patch Changes
+
+- Updated dependencies [664f8c2]
+  - @opensaas/keystone-nextjs-auth@11.0.0
+
 ## 7.0.0
 
 ### Major Changes

@@ -1,5 +1,11 @@
 # @opensaas-keystone/nextjs-auth
 
+## 11.0.0
+
+### Major Changes
+
+- 664f8c2: Upgrade keystone packages
+
 ## 10.0.3
 
 ### Patch Changes

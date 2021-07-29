@@ -1,5 +1,11 @@
 # @collective-ams/unifi-frontend
 
+## 5.0.0
+
+### Major Changes
+
+- 664f8c2: Upgrade keystone packages
+
 ## 4.0.0
 
 ### Major Changes

@@ -1,6 +1,6 @@
 {
   "name": "@opensaas-keystone/next-auth-signup-frontend",
-  "version": "4.0.0",
+  "version": "5.0.0",
   "private": true,
   "description": "Signup Portal Frontend",
   "license": "ISC",
