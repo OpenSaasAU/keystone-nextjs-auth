@@ -1,6 +1,3 @@
-"""
- A keystone list
-"""
 type Role {
   id: ID!
   name: String
@@ -79,20 +76,8 @@ input RoleWhereInput {
   canManageCart_not: Boolean
   canManageOrgs: Boolean
   canManageOrgs_not: Boolean
-
-  """
-   condition must be true for all nodes
-  """
   assignedTo_every: UserWhereInput
-
-  """
-   condition must be true for at least 1 node
-  """
   assignedTo_some: UserWhereInput
-
-  """
-   condition must be false for all nodes
-  """
   assignedTo_none: UserWhereInput
 }
 
@@ -173,9 +158,6 @@ input RolesCreateInput {
   data: RoleCreateInput
 }
 
-"""
- A keystone list
-"""
 type User {
   id: ID!
   name: String
@@ -316,64 +298,17 @@ scalar JSON
   )
 
 type Mutation {
-  """
-   Create a single Role item.
-  """
   createRole(data: RoleCreateInput): Role
-
-  """
-   Create multiple Role items.
-  """
   createRoles(data: [RolesCreateInput]): [Role]
-
-  """
-   Update a single Role item by ID.
-  """
   updateRole(id: ID!, data: RoleUpdateInput): Role
-
-  """
-   Update multiple Role items by ID.
-  """
   updateRoles(data: [RolesUpdateInput]): [Role]
-
-  """
-   Delete a single Role item by ID.
-  """
   deleteRole(id: ID!): Role
-
-  """
-   Delete multiple Role items by ID.
-  """
   deleteRoles(ids: [ID!]): [Role]
-
-  """
-   Create a single User item.
-  """
   createUser(data: UserCreateInput): User
-
-  """
-   Create multiple User items.
-  """
   createUsers(data: [UsersCreateInput]): [User]
-
-  """
-   Update a single User item by ID.
-  """
   updateUser(id: ID!, data: UserUpdateInput): User
-
-  """
-   Update multiple User items by ID.
-  """
   updateUsers(data: [UsersUpdateInput]): [User]
-
-  """
-   Delete a single User item by ID.
-  """
   deleteUser(id: ID!): User
-
-  """
-   Delete multiple User items by ID.
-  """
   deleteUsers(ids: [ID!]): [User]
   endSession: Boolean!
 }
@@ -381,9 +316,6 @@ type Mutation {
 union AuthenticatedItem = User
 
 type Query {
-  """
-   Search for all Role items which match the where clause.
-  """
   allRoles(
     where: RoleWhereInput! = {}
     search: String
@@ -393,15 +325,7 @@ type Query {
     first: Int
     skip: Int! = 0
   ): [Role!]
-
-  """
-   Search for the Role item with the matching ID.
-  """
   Role(where: RoleWhereUniqueInput!): Role
-
-  """
-   Perform a meta-query on all Role items which match the where clause.
-  """
   _allRolesMeta(
     where: RoleWhereInput! = {}
     search: String
@@ -415,10 +339,6 @@ type Query {
       reason: "This query will be removed in a future version. Please use rolesCount instead."
     )
   rolesCount(where: RoleWhereInput! = {}): Int
-
-  """
-   Search for all User items which match the where clause.
-  """
   allUsers(
     where: UserWhereInput! = {}
     search: String
@@ -428,15 +348,7 @@ type Query {
     first: Int
     skip: Int! = 0
   ): [User!]
-
-  """
-   Search for the User item with the matching ID.
-  """
   User(where: UserWhereUniqueInput!): User
-
-  """
-   Perform a meta-query on all User items which match the where clause.
-  """
   _allUsersMeta(
     where: UserWhereInput! = {}
     search: String
@@ -494,6 +406,7 @@ type KeystoneAdminUIFieldMeta {
   createView: KeystoneAdminUIFieldMetaCreateView!
   listView: KeystoneAdminUIFieldMetaListView!
   itemView(id: ID!): KeystoneAdminUIFieldMetaItemView
+  search: QueryMode
 }
 
 type KeystoneAdminUIFieldMetaCreateView {
@@ -522,6 +435,11 @@ enum KeystoneAdminUIFieldMetaItemViewFieldMode {
   edit
   read
   hidden
+}
+
+enum QueryMode {
+  default
+  insensitive
 }
 
 type KeystoneAdminUISort {
