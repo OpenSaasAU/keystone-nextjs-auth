@@ -1,5 +1,11 @@
 # @opensaas-keystone/nextjs-auth
 
+## 10.0.3
+
+### Patch Changes
+
+- 0d8cc8a: Feat: Add google provider paths to the keystone public pages config
+
 ## 10.0.2
 
 ### Patch Changes
