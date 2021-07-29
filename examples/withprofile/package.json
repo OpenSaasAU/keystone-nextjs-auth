@@ -1,6 +1,6 @@
 {
   "name": "@opensaas-keystone/auth0-profile-backend",
-  "version": "1.0.1",
+  "version": "2.0.0",
   "private": true,
   "scripts": {
     "build": "keystone-next build",
@@ -13,7 +13,7 @@
     "@keystone-next/fields-document": "^7.0.3",
     "@keystone-next/keystone": "^23.0.2",
     "@keystone-next/types": "^23.0.0",
-    "@opensaas/keystone-auth0-profile": "^0.0.2",
+    "@opensaas/keystone-auth0-profile": "^0.1.0",
     "@types/ejs": "^3.0.6",
     "ejs": "^3.1.6",
     "typescript": "^4.3.5"
