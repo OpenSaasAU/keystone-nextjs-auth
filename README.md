@@ -55,7 +55,8 @@ const auth = createAuth({
   keystonePath: '/admin',
 });
 ```
-Wrap your keystone config in `auth.withAuth`
+Wrap your keystone config in `auth.withAuth`. Note that `generateNodeAPI` is required.
+
 ```javascript
 export default auth.withAuth(
   config({
@@ -63,6 +64,9 @@ export default auth.withAuth(
     db: {},
     ui: {},
     lists,
+    experimental: {
+      generateNodeAPI: true,
+    },
     ...
   });
 ```
