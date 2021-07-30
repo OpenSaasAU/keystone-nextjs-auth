@@ -76,14 +76,16 @@ Provider configuration see https://next-auth.js.org/configuration/providers.
 For Keystone-6 Configuration see https://keystonejs.com/
 for example see the example [backend](./backend)
 
--  listKey - the list for authentication (generally `'User'`)
--  identityField - The field that stores the identity/subjectId in keystone (generally `'subjectId'`)
+-  listKey - the list for authentication (generally `'User'`). Make sure any required fields are set using the `*Map` fields, see note below. 
+-  identityField - The field that stores the identity/subjectId in keystone (generally `'subjectId'`). You will need to add this field to your list schema specified by `listKey`. An example can be found [here](./backend/schemas/User.ts).
 -  sessionData - Data to be stored in the session ( something like `'id name email'`),
 -  autoCreate - boolean to autocreate a user when they log in
 -  userMap: `key:value` pairs that define what is copied from the User object returned from NextAuth in the SignIn callback (https://next-auth.js.org/configuration/callbacks#sign-in-callback) Left side is Keystone side, right is what comes from NextAuth eg: `{ subjectId: 'id', name: 'name' }`
 -  accountMap - As Above but for the Account object
 -  profileMap - As Above but for the Profile object
 -  keystonePath - the path you want to access keystone from your frontend app (if required).
+
+Note: The Keystone `create-keystone-app` CLI app (generally run with `yarn create keystone-app`/`npm init keystone-app`) will set a required `password` field on the `User` list. If you've used this to set up your project you will need to modify your list schema to set the field as not required, or remove it entirely if you don't plan to use the default Keystone auth system at all.
 
 ## Contributing
 If you want to run this package locally
