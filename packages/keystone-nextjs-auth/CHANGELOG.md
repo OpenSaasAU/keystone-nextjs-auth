@@ -1,5 +1,11 @@
 # @opensaas-keystone/nextjs-auth
 
+## 11.1.0
+
+### Minor Changes
+
+- f79ceab: Add endSession to clean next-auth cookie
+
 ## 11.0.0
 
 ### Major Changes
