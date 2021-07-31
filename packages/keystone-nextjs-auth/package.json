@@ -13,6 +13,7 @@
     "@keystone-next/fields": "^13.0.0",
     "@keystone-next/types": "^23.0.0",
     "@types/ejs": "^3.0.6",
+    "cookie": "^0.4.1",
     "cross-fetch": "^3.1.4",
     "ejs": "^3.1.6",
     "fast-deep-equal": "^3.1.3",

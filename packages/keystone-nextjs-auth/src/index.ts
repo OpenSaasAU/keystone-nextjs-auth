@@ -9,6 +9,7 @@ import {
 } from '@keystone-next/types';
 import { getSession } from 'next-auth/client';
 import Providers from 'next-auth/providers';
+import * as cookie from 'cookie';
 import { nextConfigTemplate } from './templates/next-config';
 // import * as Path from 'path';
 
@@ -47,7 +48,6 @@ export function createAuth<GeneratedListTypes extends BaseGeneratedListTypes>({
     CreateInitialInput: `CreateInitial${listKey}Input`,
     createInitialItem: `createInitial${listKey}`,
   };
-
 
   if (!keystonePath) keystonePath = '';
   /**
@@ -187,6 +187,24 @@ export function createAuth<GeneratedListTypes extends BaseGeneratedListTypes>({
         if (nextSession) {
           return nextSession;
         }
+      },
+      end: async ({ res, req }) => {
+        const TOKEN_NAME =
+          process.env.NODE_ENV === 'production'
+            ? '__Secure-next-auth.session-token'
+            : 'next-auth.session-token';
+        res.setHeader(
+          'Set-Cookie',
+          cookie.serialize(TOKEN_NAME, '', {
+            maxAge: 0,
+            expires: new Date(),
+            httpOnly: true,
+            secure: process.env.NODE_ENV === 'production',
+            path: '/',
+            sameSite: 'lax',
+            domain: url.parse(req.url).hostname,
+          })
+        );
       },
     };
   };
