@@ -13,7 +13,12 @@ import * as cookie from 'cookie';
 import { nextConfigTemplate } from './templates/next-config';
 // import * as Path from 'path';
 
-import { AuthConfig, AuthGqlNames } from './types';
+import {
+  AuthConfig,
+  AuthGqlNames,
+  KeystoneAuthConfig,
+  NextAuthSession,
+} from './types';
 import { getSchemaExtension } from './schema';
 import { authTemplate } from './templates/auth';
 
@@ -24,6 +29,7 @@ export const nextAuthProviders = Providers;
  * Generates config for Keystone to implement standard auth features.
  */
 
+export type { NextAuthProviders, KeystoneAuthConfig } from './types';
 export function createAuth<GeneratedListTypes extends BaseGeneratedListTypes>({
   listKey,
   identityField,
@@ -33,6 +39,7 @@ export function createAuth<GeneratedListTypes extends BaseGeneratedListTypes>({
   accountMap,
   profileMap,
   keystonePath,
+  providers,
 }: AuthConfig<GeneratedListTypes>) {
   // The protectIdentities flag is currently under review to see whether it should be
   // part of the createAuth API (in which case its use cases need to be documented and tested)
@@ -49,7 +56,7 @@ export function createAuth<GeneratedListTypes extends BaseGeneratedListTypes>({
     createInitialItem: `createInitial${listKey}`,
   };
 
-  if (!keystonePath) keystonePath = '';
+  const customPath = !keystonePath || keystonePath === '/' ? '' : keystonePath;
   /**
    * pageMiddleware
    *
@@ -68,14 +75,14 @@ export function createAuth<GeneratedListTypes extends BaseGeneratedListTypes>({
     const pathname = url.parse(req?.url!).pathname!;
 
     if (isValidSession) {
-      if (pathname === `${keystonePath}/api/auth/signin`) {
-        return { kind: 'redirect', to: `${keystonePath}` };
+      if (pathname === `${customPath}/api/auth/signin`) {
+        return { kind: 'redirect', to: `${customPath}` };
       }
       return;
     }
 
-    if (!session && !pathname.includes(`${keystonePath}/api/auth/`)) {
-      return { kind: 'redirect', to: `${keystonePath}/api/auth/signin` };
+    if (!session && !pathname.includes(`${customPath}/api/auth/`)) {
+      return { kind: 'redirect', to: `${customPath}/api/auth/signin` };
     }
   };
 
@@ -106,7 +113,7 @@ export function createAuth<GeneratedListTypes extends BaseGeneratedListTypes>({
       {
         mode: 'write',
         outputPath: 'next.config.js',
-        src: nextConfigTemplate({ keystonePath }),
+        src: nextConfigTemplate({ keystonePath: customPath }),
       },
     ];
     return filesToWrite;
@@ -118,17 +125,19 @@ export function createAuth<GeneratedListTypes extends BaseGeneratedListTypes>({
    * Must be added to the ui.publicPages config
    */
   const publicPages = [
-    `${keystonePath}/api/auth/csrf`,
-    `${keystonePath}/api/auth/signin`,
-    `${keystonePath}/api/auth/signin/auth0`,
-    `${keystonePath}/api/auth/signin/google`,
-    `${keystonePath}/api/auth/callback`,
-    `${keystonePath}/api/auth/callback/auth0`,
-    `${keystonePath}/api/auth/callback/google`,
-    `${keystonePath}/api/auth/session`,
-    `${keystonePath}/api/auth/providers`,
-    `${keystonePath}/api/auth/signout`,
+    `${customPath}/api/auth/csrf`,
+    `${customPath}/api/auth/signin`,
+    `${customPath}/api/auth/callback`,
+    `${customPath}/api/auth/session`,
+    `${customPath}/api/auth/providers`,
+    `${customPath}/api/auth/signout`,
   ];
+  function addPages(provider) {
+    const name = provider.name.toLowerCase();
+    publicPages.push(`${customPath}/api/auth/signin/${name}`);
+    publicPages.push(`${customPath}/api/auth/callback/${name}`);
+  }
+  providers.map(addPages);
 
   /**
    * extendGraphqlSchema
@@ -174,7 +183,7 @@ export function createAuth<GeneratedListTypes extends BaseGeneratedListTypes>({
 */
   const withItemData = (
     _sessionStrategy: SessionStrategy<Record<string, any>>
-  ): SessionStrategy<{ listKey: string; itemId: string; data: any }> => {
+  ): SessionStrategy<NextAuthSession | undefined> => {
     const { get, ...sessionStrategy } = _sessionStrategy;
     return {
       ...sessionStrategy,
@@ -185,7 +194,7 @@ export function createAuth<GeneratedListTypes extends BaseGeneratedListTypes>({
         }
         const nextSession = await getSession({ req });
         if (nextSession) {
-          return nextSession;
+          return nextSession as NextAuthSession;
         }
       },
       end: async ({ res, req }) => {
@@ -219,7 +228,7 @@ export function createAuth<GeneratedListTypes extends BaseGeneratedListTypes>({
    * It validates the auth config against the provided keystone config, and preserves existing
    * config by composing existing extendGraphqlSchema functions and ui config.
    */
-  const withAuth = (keystoneConfig: KeystoneConfig): KeystoneConfig => {
+  const withAuth = (keystoneConfig: KeystoneConfig): KeystoneAuthConfig => {
     validateConfig(keystoneConfig);
     let { ui } = keystoneConfig;
     if (keystoneConfig.ui) {
@@ -266,6 +275,7 @@ export function createAuth<GeneratedListTypes extends BaseGeneratedListTypes>({
       ...keystoneConfig,
       ui,
       session,
+      providers,
       lists: {
         ...keystoneConfig.lists,
       },

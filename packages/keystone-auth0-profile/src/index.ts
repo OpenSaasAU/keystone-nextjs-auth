@@ -1,16 +1,14 @@
-import url from 'url';
 import {
   AdminFileToWrite,
   BaseGeneratedListTypes,
   KeystoneConfig,
-  KeystoneContext,
-  AdminUIConfig,
-  SessionStrategy,
 } from '@keystone-next/types';
 import {
   createAuth,
   nextAuthProviders as Providers,
+  KeystoneAuthConfig,
 } from '@opensaas/keystone-nextjs-auth';
+
 // import * as Path from 'path';
 import { profileTemplate } from './templates/profile';
 import { ProfileConfig } from './types';
@@ -33,6 +31,7 @@ export function auth0Profile<
   accountMap,
   profileMap,
   keystonePath,
+  providers,
   profilePageName,
 }: ProfileConfig<GeneratedListTypes>) {
   /**
@@ -87,7 +86,7 @@ export function auth0Profile<
    * It validates the auth config against the provided keystone config, and preserves existing
    * config by composing existing extendGraphqlSchema functions and ui config.
    */
-  const withProfile = (keystoneConfig: KeystoneConfig): KeystoneConfig => {
+  const withProfile = (keystoneConfig: KeystoneConfig): KeystoneAuthConfig => {
     validateConfig(keystoneConfig);
     let { ui } = keystoneConfig;
     if (keystoneConfig.ui) {
@@ -103,6 +102,7 @@ export function auth0Profile<
     return auth.withAuth({
       ...keystoneConfig,
       ui,
+      providers,
       lists: {
         ...keystoneConfig.lists,
         [listKey]: {

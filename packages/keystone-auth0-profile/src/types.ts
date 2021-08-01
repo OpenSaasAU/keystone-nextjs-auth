@@ -1,4 +1,5 @@
 import { BaseGeneratedListTypes, KeystoneContext } from '@keystone-next/types';
+import { NextAuthProviders } from '@opensaas/keystone-nextjs-auth';
 
 export type AuthGqlNames = {
   CreateInitialInput: string;
@@ -42,6 +43,8 @@ export type ProfileConfig<GeneratedListTypes extends BaseGeneratedListTypes> = {
   keystonePath?: string;
   /** Path for the Profile Page  */
   profilePageName: string;
+  /** Next Auth Providers */
+  providers: NextAuthProviders;
 };
 
 export type InitFirstItemConfig<

@@ -28,20 +28,8 @@ import {
 } from '@opensaas/keystone-nextjs-auth';
 ```
 
-Add Providers
-
-```javascript
-export const providers = [
-  Providers.Auth0({
-    clientId: process.env.AUTH0_CLIENT_ID || 'Auth0ClientID',
-    clientSecret: process.env.AUTH0_CLIENT_SECRET || 'Auth0ClientSecret',
-    domain: process.env.AUTH0_DOMAIN || 'opensaas.au.auth0.com',
-  }),
-];
-```
+Add you Auth configuration including providers
 for Provider configuration see https://next-auth.js.org/configuration/providers.
-
-Add you Auth configuration
 
 ```javascript
 const auth = createAuth({
@@ -53,6 +41,13 @@ const auth = createAuth({
   accountMap: {},
   profileMap: { email: 'email' },
   keystonePath: '/admin',
+  providers: [
+    Providers.Auth0({
+      clientId: process.env.AUTH0_CLIENT_ID || 'Auth0ClientID',
+      clientSecret: process.env.AUTH0_CLIENT_SECRET || 'Auth0ClientSecret',
+      domain: process.env.AUTH0_DOMAIN || 'opensaas.au.auth0.com',
+    }),
+]
 });
 ```
 Wrap your keystone config in `auth.withAuth`. Note that `generateNodeAPI` is required.

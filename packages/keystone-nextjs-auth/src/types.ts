@@ -1,4 +1,9 @@
-import { BaseGeneratedListTypes, KeystoneContext } from '@keystone-next/types';
+import {
+  BaseGeneratedListTypes,
+  KeystoneContext,
+  KeystoneConfig,
+} from '@keystone-next/types';
+import { Provider } from 'next-auth/providers';
 
 export type AuthGqlNames = {
   CreateInitialInput: string;
@@ -23,6 +28,16 @@ export type AuthTokenTypeConfig = {
   tokensValidForMins?: number;
 };
 
+export type NextAuthSession = { listKey: string; itemId: string; data: any };
+
+export type NextAuthProviders = [Provider];
+
+type KeytoneAuthProviders = {
+  providers: NextAuthProviders;
+};
+
+export type KeystoneAuthConfig = KeystoneConfig & KeytoneAuthProviders;
+
 export type AuthConfig<GeneratedListTypes extends BaseGeneratedListTypes> = {
   /** The key of the list to authenticate users with */
   listKey: GeneratedListTypes['key'];
@@ -40,6 +55,8 @@ export type AuthConfig<GeneratedListTypes extends BaseGeneratedListTypes> = {
   profileMap: any;
   /** Path for Keystone interface */
   keystonePath?: string;
+  /** Providers for Next Auth */
+  providers: NextAuthProviders;
 };
 
 export type InitFirstItemConfig<

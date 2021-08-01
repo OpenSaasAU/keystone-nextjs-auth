@@ -21,14 +21,6 @@ if (!sessionSecret) {
 
 const sessionMaxAge = 60 * 60 * 24 * 30; // 30 days
 
-export const providers = [
-  Providers.Auth0({
-    clientId: process.env.AUTH0_CLIENT_ID || 'Auth0ClientID',
-    clientSecret: process.env.AUTH0_CLIENT_SECRET || 'Auth0ClientSecret',
-    domain: process.env.AUTH0_DOMAIN || 'opensaas.au.auth0.com',
-  }),
-];
-
 const auth = createAuth({
   listKey: 'User',
   identityField: 'subjectId',
@@ -38,6 +30,13 @@ const auth = createAuth({
   accountMap: {},
   profileMap: { email: 'email' },
   keystonePath: '/admin',
+  providers: [
+    Providers.Auth0({
+      clientId: process.env.AUTH0_CLIENT_ID || 'Auth0ClientID',
+      clientSecret: process.env.AUTH0_CLIENT_SECRET || 'Auth0ClientSecret',
+      domain: process.env.AUTH0_DOMAIN || 'opensaas.au.auth0.com',
+    }),
+  ],
 });
 
 export default auth.withAuth(
