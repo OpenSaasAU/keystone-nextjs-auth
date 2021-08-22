@@ -1,5 +1,11 @@
 # @opensaas-keystone/nextjs-auth
 
+## 12.0.1
+
+### Patch Changes
+
+- 49f3922: update readme with new instructions
+
 ## 12.0.0
 
 ### Major Changes
