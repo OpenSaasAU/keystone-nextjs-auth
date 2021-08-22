@@ -1,5 +1,11 @@
 # @collective-ams/unifi-frontend
 
+## 6.0.0
+
+### Major Changes
+
+- decb7d1: Upgrade keystone-next to 24 with latest API upgrades
+
 ## 5.0.0
 
 ### Major Changes

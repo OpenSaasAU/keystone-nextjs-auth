@@ -1,5 +1,12 @@
 # @opensaas-keystone/nextjs-auth
 
+## 12.0.0
+
+### Major Changes
+
+- 3b9b9e8: map publicPages to providers to allow the auto addition of callback and signin URLs to the `publicPages` array in keystone. This requires providers to mvoe to the `createAuth` configuration which probably make more sense anyway. See readme for new configuration.
+- decb7d1: Upgrade keystone-next to 24 with latest API upgrades
+
 ## 11.1.0
 
 ### Minor Changes
