@@ -5,6 +5,7 @@ import { KeystoneGraphQLAPI, KeystoneListsAPI } from '@keystone-next/types';
 // import type { KeystoneListsTypeInfo } from './.keystone/schema-types';
 
 import type { Permission } from './schemas/fields';
+
 export type { Permission } from './schemas/fields';
 
 export type Session = {

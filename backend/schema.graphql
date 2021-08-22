@@ -9,99 +9,86 @@ type Role {
   canManageOrgs: Boolean
   assignedTo(
     where: UserWhereInput! = {}
-    search: String
-    sortBy: [SortUsersBy!]
-      @deprecated(reason: "sortBy has been deprecated in favour of orderBy")
     orderBy: [UserOrderByInput!]! = []
-    first: Int
+    take: Int
     skip: Int! = 0
   ): [User!]
-  _assignedToMeta(
-    where: UserWhereInput! = {}
-    search: String
-    sortBy: [SortUsersBy!]
-      @deprecated(reason: "sortBy has been deprecated in favour of orderBy")
-    orderBy: [UserOrderByInput!]! = []
-    first: Int
-    skip: Int! = 0
-  ): _QueryMeta
-    @deprecated(
-      reason: "This query will be removed in a future version. Please use assignedToCount instead."
-    )
   assignedToCount(where: UserWhereInput! = {}): Int
-}
-
-type _QueryMeta {
-  count: Int
 }
 
 input RoleWhereInput {
   AND: [RoleWhereInput!]
   OR: [RoleWhereInput!]
-  id: ID
-  id_not: ID
-  id_lt: ID
-  id_lte: ID
-  id_gt: ID
-  id_gte: ID
-  id_in: [ID!]
-  id_not_in: [ID!]
-  name: String
-  name_not: String
-  name_contains: String
-  name_not_contains: String
-  name_starts_with: String
-  name_not_starts_with: String
-  name_ends_with: String
-  name_not_ends_with: String
-  name_i: String
-  name_not_i: String
-  name_contains_i: String
-  name_not_contains_i: String
-  name_starts_with_i: String
-  name_not_starts_with_i: String
-  name_ends_with_i: String
-  name_not_ends_with_i: String
-  name_in: [String]
-  name_not_in: [String]
-  canManageProducts: Boolean
-  canManageProducts_not: Boolean
-  canSeeOtherUsers: Boolean
-  canSeeOtherUsers_not: Boolean
-  canManageUsers: Boolean
-  canManageUsers_not: Boolean
-  canManageRoles: Boolean
-  canManageRoles_not: Boolean
-  canManageCart: Boolean
-  canManageCart_not: Boolean
-  canManageOrgs: Boolean
-  canManageOrgs_not: Boolean
-  assignedTo_every: UserWhereInput
-  assignedTo_some: UserWhereInput
-  assignedTo_none: UserWhereInput
+  NOT: [RoleWhereInput!]
+  id: IDFilter
+  name: StringNullableFilter
+  canManageProducts: BooleanNullableFilter
+  canSeeOtherUsers: BooleanNullableFilter
+  canManageUsers: BooleanNullableFilter
+  canManageRoles: BooleanNullableFilter
+  canManageCart: BooleanNullableFilter
+  canManageOrgs: BooleanNullableFilter
+  assignedTo: UserManyRelationFilter
+}
+
+input IDFilter {
+  equals: ID
+  in: [ID!]
+  notIn: [ID!]
+  lt: ID
+  lte: ID
+  gt: ID
+  gte: ID
+  not: IDFilter
+}
+
+input StringNullableFilter {
+  equals: String
+  in: [String!]
+  notIn: [String!]
+  lt: String
+  lte: String
+  gt: String
+  gte: String
+  contains: String
+  startsWith: String
+  endsWith: String
+  mode: QueryMode
+  not: NestedStringNullableFilter
+}
+
+enum QueryMode {
+  default
+  insensitive
+}
+
+input NestedStringNullableFilter {
+  equals: String
+  in: [String!]
+  notIn: [String!]
+  lt: String
+  lte: String
+  gt: String
+  gte: String
+  contains: String
+  startsWith: String
+  endsWith: String
+  not: NestedStringNullableFilter
+}
+
+input BooleanNullableFilter {
+  equals: Boolean
+  not: BooleanNullableFilter
+}
+
+input UserManyRelationFilter {
+  every: UserWhereInput
+  some: UserWhereInput
+  none: UserWhereInput
 }
 
 input RoleWhereUniqueInput {
   id: ID
-}
-
-enum SortRolesBy {
-  id_ASC
-  id_DESC
-  name_ASC
-  name_DESC
-  canManageProducts_ASC
-  canManageProducts_DESC
-  canSeeOtherUsers_ASC
-  canSeeOtherUsers_DESC
-  canManageUsers_ASC
-  canManageUsers_DESC
-  canManageRoles_ASC
-  canManageRoles_DESC
-  canManageCart_ASC
-  canManageCart_DESC
-  canManageOrgs_ASC
-  canManageOrgs_DESC
 }
 
 input RoleOrderByInput {
@@ -128,19 +115,19 @@ input RoleUpdateInput {
   canManageRoles: Boolean
   canManageCart: Boolean
   canManageOrgs: Boolean
-  assignedTo: UserRelateToManyInput
+  assignedTo: UserRelateToManyForUpdateInput
 }
 
-input UserRelateToManyInput {
-  create: [UserCreateInput]
-  connect: [UserWhereUniqueInput]
-  disconnect: [UserWhereUniqueInput]
-  disconnectAll: Boolean
+input UserRelateToManyForUpdateInput {
+  disconnect: [UserWhereUniqueInput!]
+  set: [UserWhereUniqueInput!]
+  create: [UserCreateInput!]
+  connect: [UserWhereUniqueInput!]
 }
 
-input RolesUpdateInput {
-  id: ID!
-  data: RoleUpdateInput
+input RoleUpdateArgs {
+  where: RoleWhereUniqueInput!
+  data: RoleUpdateInput!
 }
 
 input RoleCreateInput {
@@ -151,11 +138,12 @@ input RoleCreateInput {
   canManageRoles: Boolean
   canManageCart: Boolean
   canManageOrgs: Boolean
-  assignedTo: UserRelateToManyInput
+  assignedTo: UserRelateToManyForCreateInput
 }
 
-input RolesCreateInput {
-  data: RoleCreateInput
+input UserRelateToManyForCreateInput {
+  create: [UserCreateInput!]
+  connect: [UserWhereUniqueInput!]
 }
 
 type User {
@@ -169,87 +157,18 @@ type User {
 input UserWhereInput {
   AND: [UserWhereInput!]
   OR: [UserWhereInput!]
-  id: ID
-  id_not: ID
-  id_lt: ID
-  id_lte: ID
-  id_gt: ID
-  id_gte: ID
-  id_in: [ID!]
-  id_not_in: [ID!]
-  name: String
-  name_not: String
-  name_contains: String
-  name_not_contains: String
-  name_starts_with: String
-  name_not_starts_with: String
-  name_ends_with: String
-  name_not_ends_with: String
-  name_i: String
-  name_not_i: String
-  name_contains_i: String
-  name_not_contains_i: String
-  name_starts_with_i: String
-  name_not_starts_with_i: String
-  name_ends_with_i: String
-  name_not_ends_with_i: String
-  name_in: [String]
-  name_not_in: [String]
-  email: String
-  email_not: String
-  email_contains: String
-  email_not_contains: String
-  email_starts_with: String
-  email_not_starts_with: String
-  email_ends_with: String
-  email_not_ends_with: String
-  email_i: String
-  email_not_i: String
-  email_contains_i: String
-  email_not_contains_i: String
-  email_starts_with_i: String
-  email_not_starts_with_i: String
-  email_ends_with_i: String
-  email_not_ends_with_i: String
-  email_in: [String]
-  email_not_in: [String]
-  subjectId: String
-  subjectId_not: String
-  subjectId_contains: String
-  subjectId_not_contains: String
-  subjectId_starts_with: String
-  subjectId_not_starts_with: String
-  subjectId_ends_with: String
-  subjectId_not_ends_with: String
-  subjectId_i: String
-  subjectId_not_i: String
-  subjectId_contains_i: String
-  subjectId_not_contains_i: String
-  subjectId_starts_with_i: String
-  subjectId_not_starts_with_i: String
-  subjectId_ends_with_i: String
-  subjectId_not_ends_with_i: String
-  subjectId_in: [String]
-  subjectId_not_in: [String]
+  NOT: [UserWhereInput!]
+  id: IDFilter
+  name: StringNullableFilter
+  email: StringNullableFilter
+  subjectId: StringNullableFilter
   role: RoleWhereInput
-  role_is_null: Boolean
 }
 
 input UserWhereUniqueInput {
   id: ID
   email: String
   subjectId: String
-}
-
-enum SortUsersBy {
-  id_ASC
-  id_DESC
-  name_ASC
-  name_DESC
-  email_ASC
-  email_DESC
-  subjectId_ASC
-  subjectId_DESC
 }
 
 input UserOrderByInput {
@@ -263,30 +182,30 @@ input UserUpdateInput {
   name: String
   email: String
   subjectId: String
-  role: RoleRelateToOneInput
+  role: RoleRelateToOneForUpdateInput
 }
 
-input RoleRelateToOneInput {
+input RoleRelateToOneForUpdateInput {
   create: RoleCreateInput
   connect: RoleWhereUniqueInput
-  disconnect: RoleWhereUniqueInput
-  disconnectAll: Boolean
+  disconnect: Boolean
 }
 
-input UsersUpdateInput {
-  id: ID!
-  data: UserUpdateInput
+input UserUpdateArgs {
+  where: UserWhereUniqueInput!
+  data: UserUpdateInput!
 }
 
 input UserCreateInput {
   name: String
   email: String
   subjectId: String
-  role: RoleRelateToOneInput
+  role: RoleRelateToOneForCreateInput
 }
 
-input UsersCreateInput {
-  data: UserCreateInput
+input RoleRelateToOneForCreateInput {
+  create: RoleCreateInput
+  connect: RoleWhereUniqueInput
 }
 
 """
@@ -298,69 +217,39 @@ scalar JSON
   )
 
 type Mutation {
-  createRole(data: RoleCreateInput): Role
-  createRoles(data: [RolesCreateInput]): [Role]
-  updateRole(id: ID!, data: RoleUpdateInput): Role
-  updateRoles(data: [RolesUpdateInput]): [Role]
-  deleteRole(id: ID!): Role
-  deleteRoles(ids: [ID!]): [Role]
-  createUser(data: UserCreateInput): User
-  createUsers(data: [UsersCreateInput]): [User]
-  updateUser(id: ID!, data: UserUpdateInput): User
-  updateUsers(data: [UsersUpdateInput]): [User]
-  deleteUser(id: ID!): User
-  deleteUsers(ids: [ID!]): [User]
+  createRole(data: RoleCreateInput!): Role
+  createRoles(data: [RoleCreateInput!]!): [Role]
+  updateRole(where: RoleWhereUniqueInput!, data: RoleUpdateInput!): Role
+  updateRoles(data: [RoleUpdateArgs!]!): [Role]
+  deleteRole(where: RoleWhereUniqueInput!): Role
+  deleteRoles(where: [RoleWhereUniqueInput!]!): [Role]
+  createUser(data: UserCreateInput!): User
+  createUsers(data: [UserCreateInput!]!): [User]
+  updateUser(where: UserWhereUniqueInput!, data: UserUpdateInput!): User
+  updateUsers(data: [UserUpdateArgs!]!): [User]
+  deleteUser(where: UserWhereUniqueInput!): User
+  deleteUsers(where: [UserWhereUniqueInput!]!): [User]
   endSession: Boolean!
 }
 
 union AuthenticatedItem = User
 
 type Query {
-  allRoles(
+  roles(
     where: RoleWhereInput! = {}
-    search: String
-    sortBy: [SortRolesBy!]
-      @deprecated(reason: "sortBy has been deprecated in favour of orderBy")
     orderBy: [RoleOrderByInput!]! = []
-    first: Int
+    take: Int
     skip: Int! = 0
   ): [Role!]
-  Role(where: RoleWhereUniqueInput!): Role
-  _allRolesMeta(
-    where: RoleWhereInput! = {}
-    search: String
-    sortBy: [SortRolesBy!]
-      @deprecated(reason: "sortBy has been deprecated in favour of orderBy")
-    orderBy: [RoleOrderByInput!]! = []
-    first: Int
-    skip: Int! = 0
-  ): _QueryMeta
-    @deprecated(
-      reason: "This query will be removed in a future version. Please use rolesCount instead."
-    )
+  role(where: RoleWhereUniqueInput!): Role
   rolesCount(where: RoleWhereInput! = {}): Int
-  allUsers(
+  users(
     where: UserWhereInput! = {}
-    search: String
-    sortBy: [SortUsersBy!]
-      @deprecated(reason: "sortBy has been deprecated in favour of orderBy")
     orderBy: [UserOrderByInput!]! = []
-    first: Int
+    take: Int
     skip: Int! = 0
   ): [User!]
-  User(where: UserWhereUniqueInput!): User
-  _allUsersMeta(
-    where: UserWhereInput! = {}
-    search: String
-    sortBy: [SortUsersBy!]
-      @deprecated(reason: "sortBy has been deprecated in favour of orderBy")
-    orderBy: [UserOrderByInput!]! = []
-    first: Int
-    skip: Int! = 0
-  ): _QueryMeta
-    @deprecated(
-      reason: "This query will be removed in a future version. Please use usersCount instead."
-    )
+  user(where: UserWhereUniqueInput!): User
   usersCount(where: UserWhereInput! = {}): Int
   authenticatedItem: AuthenticatedItem
   keystone: KeystoneMeta!
@@ -435,11 +324,6 @@ enum KeystoneAdminUIFieldMetaItemViewFieldMode {
   edit
   read
   hidden
-}
-
-enum QueryMode {
-  default
-  insensitive
 }
 
 type KeystoneAdminUISort {

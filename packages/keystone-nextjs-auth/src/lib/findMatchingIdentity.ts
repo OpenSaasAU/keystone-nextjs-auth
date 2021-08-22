@@ -11,7 +11,7 @@ export async function findMatchingIdentity(
   | { success: true; item: any }
 > {
   const items = await itemAPI.findMany({
-    where: { [identityField]: identity },
+    where: { [identityField]: { equals: identity } },
     resolveFields: false,
   });
 

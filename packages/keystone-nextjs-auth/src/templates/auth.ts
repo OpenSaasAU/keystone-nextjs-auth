@@ -5,7 +5,7 @@ const template = `
 import getNextAuthPage from '@opensaas/keystone-nextjs-auth/pages/NextAuthPage';
 import { nextAuthProviders as Providers } from '@opensaas/keystone-nextjs-auth';
 import { lists } from '.keystone/api';
-import { providers }from '../../../../../keystone';
+import keystoneConfig from '../../../../../keystone';
 
 export default getNextAuthPage({
         identityField: '<%= identityField %>',
@@ -16,7 +16,7 @@ export default getNextAuthPage({
         accountMap: <%- JSON.stringify(accountMap) %>,
         profileMap: <%- JSON.stringify(profileMap) %>,
         autoCreate: <%= autoCreate %>,
-        providers,
+        providers: keystoneConfig.providers,
         lists,
     });
   `;
