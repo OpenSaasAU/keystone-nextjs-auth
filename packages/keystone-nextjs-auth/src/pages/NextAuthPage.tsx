@@ -93,6 +93,7 @@ export default function NextAuthPage(props: NextAuthPageProps) {
         return url;
       },
       async session(session: any, token: any) {
+        console.log('session:', session);
         const returnSession = {
           ...session,
           data: token.data,
@@ -103,6 +104,8 @@ export default function NextAuthPage(props: NextAuthPageProps) {
         return returnSession;
       },
       async jwt(token, user, account, profile, isNewUser) {
+        console.log('account:', account);
+
         const identity = token.sub;
         if (!token.itemId) {
           const result = await validateNextAuth(
