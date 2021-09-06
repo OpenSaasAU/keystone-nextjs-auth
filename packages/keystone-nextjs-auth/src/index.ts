@@ -133,7 +133,7 @@ export function createAuth<GeneratedListTypes extends BaseGeneratedListTypes>({
     `${customPath}/api/auth/signout`,
   ];
   function addPages(provider) {
-    const name = provider.name.toLowerCase();
+    const name = provider.id;
     publicPages.push(`${customPath}/api/auth/signin/${name}`);
     publicPages.push(`${customPath}/api/auth/callback/${name}`);
   }
