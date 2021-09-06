@@ -1,5 +1,11 @@
 # @opensaas-keystone/nextjs-auth
 
+## 12.0.2
+
+### Patch Changes
+
+- d17f159: fix #25 - `publicPages` not added correctly
+
 ## 12.0.1
 
 ### Patch Changes
