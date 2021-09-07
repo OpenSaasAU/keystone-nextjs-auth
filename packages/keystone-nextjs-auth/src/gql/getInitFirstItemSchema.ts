@@ -1,5 +1,10 @@
-import type { GraphQLSchemaExtension } from '@keystone-next/types';
-import { assertInputObjectType, GraphQLInputObjectType, GraphQLSchema, printType } from 'graphql';
+import type { GraphQLSchemaExtension } from '@keystone-next/keystone/types';
+import {
+  assertInputObjectType,
+  GraphQLInputObjectType,
+  GraphQLSchema,
+  printType,
+} from 'graphql';
 
 import { AuthGqlNames, InitFirstItemConfig } from '../types';
 
@@ -24,7 +29,9 @@ export function getInitFirstItemSchema({
     new GraphQLInputObjectType({
       ...createInputConfig,
       fields: Object.fromEntries(
-        Object.entries(createInputConfig.fields).filter(([fieldKey]) => fieldsSet.has(fieldKey))
+        Object.entries(createInputConfig.fields).filter(([fieldKey]) =>
+          fieldsSet.has(fieldKey)
+        )
       ),
       name: gqlNames.CreateInitialInput,
     })
@@ -50,12 +57,19 @@ export function getInitFirstItemSchema({
           const dbItemAPI = context.sudo().db.lists[listKey];
           const count = await dbItemAPI.count({});
           if (count !== 0) {
-            throw new Error('Initial items can only be created when no items exist in that list');
+            throw new Error(
+              'Initial items can only be created when no items exist in that list'
+            );
           }
 
           // Update system state
-          const item = await dbItemAPI.createOne({ data: { ...data, ...itemData } });
-          const sessionToken = await context.startSession({ listKey, itemId: item.id });
+          const item = await dbItemAPI.createOne({
+            data: { ...data, ...itemData },
+          });
+          const sessionToken = await context.startSession({
+            listKey,
+            itemId: item.id,
+          });
           return { item, sessionToken };
         },
       },

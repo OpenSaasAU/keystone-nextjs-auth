@@ -1,5 +1,5 @@
-import { list } from '@keystone-next/keystone/schema';
-import { text, relationship } from '@keystone-next/fields';
+import { list } from '@keystone-next/keystone';
+import { text, relationship } from '@keystone-next/keystone/fields';
 import { permissions, rules } from '../access';
 
 export const User = list({

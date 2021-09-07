@@ -1,7 +1,7 @@
 import type {
   GraphQLSchemaExtension,
   KeystoneContext,
-} from '@keystone-next/types';
+} from '@keystone-next/keystone/types';
 
 import { AuthGqlNames } from '../types';
 
