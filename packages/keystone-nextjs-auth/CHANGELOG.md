@@ -1,5 +1,11 @@
 # @opensaas-keystone/nextjs-auth
 
+## 13.0.2
+
+### Patch Changes
+
+- 06cf34e: fix up next-config
+
 ## 13.0.1
 
 ### Patch Changes
