@@ -112,7 +112,7 @@ export function createAuth<GeneratedListTypes extends BaseGeneratedListTypes>({
       },
       {
         mode: 'write',
-        outputPath: 'next.config.js',
+        outputPath: 'next.config.ts',
         src: nextConfigTemplate({ keystonePath: customPath }),
       },
     ];
