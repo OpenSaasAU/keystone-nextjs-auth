@@ -1,5 +1,11 @@
 # @opensaas-keystone/nextjs-auth
 
+## 13.0.0
+
+### Major Changes
+
+- e5d413a: Keystone Version upgrade to 25.0.0
+
 ## 12.0.2
 
 ### Patch Changes
