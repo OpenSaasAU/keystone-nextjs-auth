@@ -6,7 +6,7 @@ export function Header() {
   return (
     <Navbar bg="light" expand="sm">
       <Navbar.Brand style={{ marginLeft: '4rem', marginBottom: '1rem' }}>
-        <Link href="https://www.opensaas.com.au">
+        <Link href="https://www.opensaas.com.au" passHref>
           <Image
             src="/images/logo-opensaas.png"
             height="70"

@@ -6,12 +6,12 @@
   "main": "dist/opensaas-keystone-nextjs-auth.cjs.js",
   "module": "dist/opensaas-keystone-nextjs-auth.esm.js",
   "dependencies": {
-    "@babel/runtime": "^7.15.3",
+    "@babel/runtime": "^7.15.4",
     "@babel/runtime-corejs3": "^7.15.3",
     "@graphql-tools/merge": "^6.2.14",
-    "@keystone-next/admin-ui-utils": "^5.0.6",
-    "@keystone-next/fields": "^14.0.0",
-    "@keystone-next/types": "^24.0.0",
+    "@keystone-next/admin-ui-utils": "^6.0.0",
+    "@keystone-next/fields": "^15.0.0",
+    "@keystone-next/types": "^25.0.0",
     "@types/ejs": "^3.0.6",
     "cookie": "^0.4.1",
     "cross-fetch": "^3.1.4",
@@ -20,11 +20,11 @@
     "next-auth": "^3.28.0"
   },
   "devDependencies": {
-    "@keystone-next/keystone": "^24.0.1",
+    "@keystone-next/keystone": "^25.0.0",
     "react": "^17.0.2"
   },
   "peerDependencies": {
-    "@keystone-next/keystone": "^24.0.1",
+    "@keystone-next/keystone": "^25.0.0",
     "react": "^17.0.2"
   },
   "engines": {

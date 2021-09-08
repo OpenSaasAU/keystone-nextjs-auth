@@ -9,10 +9,10 @@
     "start": "keystone-next start"
   },
   "dependencies": {
-    "@keystone-next/fields": "^14.0.0",
-    "@keystone-next/fields-document": "^8.0.0",
-    "@keystone-next/keystone": "^24.0.1",
-    "@keystone-next/types": "^24.0.0",
+    "@keystone-next/fields": "^15.0.0",
+    "@keystone-next/fields-document": "^9.0.0",
+    "@keystone-next/keystone": "^25.0.0",
+    "@keystone-next/types": "^25.0.0",
     "@opensaas/keystone-nextjs-auth": "^12.0.0",
     "@types/ejs": "^3.0.6",
     "ejs": "^3.1.6",

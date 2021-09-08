@@ -1,6 +1,6 @@
 import NextAuth from 'next-auth';
 import { Provider } from 'next-auth/providers';
-import type { KeystoneListsAPI } from '@keystone-next/types';
+import type { KeystoneListsAPI } from '@keystone-next/keystone/types';
 import { validateNextAuth } from '../lib/validateNextAuth';
 
 // Need to bring in correct props

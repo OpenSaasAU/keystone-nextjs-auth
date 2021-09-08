@@ -2,7 +2,7 @@ import {
   AdminFileToWrite,
   BaseGeneratedListTypes,
   KeystoneConfig,
-} from '@keystone-next/types';
+} from '@keystone-next/keystone/types';
 import {
   createAuth,
   nextAuthProviders as Providers,

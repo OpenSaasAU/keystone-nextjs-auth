@@ -1,10 +1,10 @@
-import { config } from '@keystone-next/keystone/schema';
+import { config } from '@keystone-next/keystone';
 import { statelessSessions } from '@keystone-next/keystone/session';
 import {
   createAuth,
   nextAuthProviders as Providers,
 } from '@opensaas/keystone-nextjs-auth';
-import { KeystoneContext } from '@keystone-next/types';
+import { KeystoneContext } from '@keystone-next/keystone/types';
 import { lists } from './schemas';
 
 let sessionSecret = process.env.SESSION_SECRET;

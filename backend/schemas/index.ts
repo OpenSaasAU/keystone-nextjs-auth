@@ -1,4 +1,4 @@
-import { createSchema } from '@keystone-next/keystone/schema';
+import { createSchema } from '@keystone-next/keystone';
 import { Role } from './Role';
 import { User } from './User';
 

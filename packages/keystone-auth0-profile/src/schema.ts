@@ -1,5 +1,5 @@
 import { mergeSchemas } from '@graphql-tools/merge';
-import { ExtendGraphqlSchema } from '@keystone-next/types';
+import { ExtendGraphqlSchema } from '@keystone-next/keystone/types';
 
 import { AuthGqlNames } from './types';
 import { getBaseAuthSchema } from './gql/getBaseAuthSchema';

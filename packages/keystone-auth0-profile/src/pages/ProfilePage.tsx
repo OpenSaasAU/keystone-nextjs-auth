@@ -15,9 +15,17 @@ import {
   useState,
 } from 'react';
 
-import { ListMeta } from '@keystone-next/types';
+import { ListMeta } from '@keystone-next/keystone/types';
 import { Button } from '@keystone-ui/button';
-import { Box, Center, Heading, Stack, Text, jsx, useTheme } from '@keystone-ui/core';
+import {
+  Box,
+  Center,
+  Heading,
+  Stack,
+  Text,
+  jsx,
+  useTheme,
+} from '@keystone-ui/core';
 import { LoadingDots } from '@keystone-ui/loading';
 import { ClipboardIcon } from '@keystone-ui/icons/icons/ClipboardIcon';
 import { ChevronRightIcon } from '@keystone-ui/icons/icons/ChevronRightIcon';
@@ -37,22 +45,29 @@ import {
   useChangedFieldsAndDataForUpdate,
 } from '@keystone-next/admin-ui-utils';
 
-import { gql, useMutation, useQuery } from '@keystone-next/keystone/admin-ui/apollo';
+import {
+  gql,
+  useMutation,
+  useQuery,
+} from '@keystone-next/keystone/admin-ui/apollo';
 import { useList } from '@keystone-next/keystone/admin-ui/context';
-import { PageContainer } from '@keystone-next/keystone/admin-ui/components';
-import { GraphQLErrorNotice } from '@keystone-next/keystone/admin-ui/components';
-import { CreateItemDrawer } from '@keystone-next/keystone/admin-ui/components';
-import { useSession } from "next-auth/client"
+import {
+  PageContainer,
+  GraphQLErrorNotice,
+  CreateItemDrawer,
+} from '@keystone-next/keystone/admin-ui/components';
+
+import { useSession } from 'next-auth/client';
 
 type ItemPageProps = {
   listKey: string;
 };
 
-function useEventCallback<Func extends (...args: any) => any>(callback: Func): Func {
+function useEventCallback<Func extends (...args: any) => any>(
+  callback: Func
+): Func {
   const callbackRef = useRef(callback);
-  const cb = useCallback((...args) => {
-    return callbackRef.current(...args);
-  }, []);
+  const cb = useCallback((...args) => callbackRef.current(...args), []);
   useEffect(() => {
     callbackRef.current = callback;
   });
@@ -101,7 +116,7 @@ function ItemForm({
   if (
     !loading &&
     state.item !== itemGetter.data &&
-    (itemGetter.errors || []).every(x => x.path?.length !== 1)
+    (itemGetter.errors || []).every((x) => x.path?.length !== 1)
   ) {
     const value = deserializeValue(list.fields, itemGetter);
     setValue({
@@ -137,7 +152,7 @@ function ItemForm({
         // we're checking for path.length === 1 because errors with a path larger than 1 will
         // be field level errors which are handled seperately and do not indicate a failure to
         // update the item
-        const error = errors?.find(x => x.path?.length === 1);
+        const error = errors?.find((x) => x.path?.length === 1);
         if (error) {
           toasts.addToast({
             title: 'Failed to update item',
@@ -153,7 +168,7 @@ function ItemForm({
           });
         }
       })
-      .catch(err => {
+      .catch((err) => {
         toasts.addToast({
           title: 'Failed to update item',
           tone: 'negative',
@@ -167,7 +182,7 @@ function ItemForm({
         networkError={error?.networkError}
         // we're checking for path.length === 1 because errors with a path larger than 1 will be field level errors
         // which are handled seperately and do not indicate a failure to update the item
-        errors={error?.graphQLErrors.filter(x => x.path?.length === 1)}
+        errors={error?.graphQLErrors.filter((x) => x.path?.length === 1)}
       />
       <Fields
         fieldModes={fieldModes}
@@ -175,8 +190,8 @@ function ItemForm({
         forceValidation={forceValidation}
         invalidFields={invalidFields}
         onChange={useCallback(
-          value => {
-            setValue(state => ({
+          (value) => {
+            setValue((state) => ({
               item: state.item,
               value: value(state.value),
             }));
@@ -200,11 +215,19 @@ function ItemForm({
             showDelete ? (
               <DeleteButton
                 list={list}
-                itemLabel={(itemGetter.data?.[list.labelField] ?? itemGetter.data?.id!) as string}
+                itemLabel={
+                  (itemGetter.data?.[list.labelField] ??
+                    itemGetter.data?.id!) as string
+                }
                 itemId={itemGetter.data?.id!}
               />
             ) : undefined,
-          [showDelete, list, itemGetter.data?.[list.labelField], itemGetter.data?.id]
+          [
+            showDelete,
+            list,
+            itemGetter.data?.[list.labelField],
+            itemGetter.data?.id,
+          ]
         )}
       />
     </Box>
@@ -233,7 +256,7 @@ function DeleteButton({
   const router = useRouter();
 
   return (
-    <Fragment>
+    <>
       <Button
         tone="negative"
         onClick={() => {
@@ -251,7 +274,7 @@ function DeleteButton({
           confirm: {
             label: 'Delete',
             action: async () => {
-              await deleteItem().catch(err => {
+              await deleteItem().catch((err) => {
                 toasts.addToast({
                   title: 'Failed to delete item',
                   message: err.message,
@@ -277,16 +300,15 @@ function DeleteButton({
       >
         Are you sure you want to delete <strong>{itemLabel}</strong>?
       </AlertDialog>
-    </Fragment>
+    </>
   );
 }
 
-export const getProfilePage = (props: ItemPageProps) => () => <ItemPage {...props} />;
+export const getProfilePage = (props: ItemPageProps) => () =>
+  <ItemPage {...props} />;
 
 const ItemPage = ({ listKey }: ItemPageProps) => {
-
-
-  const [session, sessionLoading] = useSession()
+  const [session, sessionLoading] = useSession();
 
   console.log(session);
 
@@ -294,10 +316,8 @@ const ItemPage = ({ listKey }: ItemPageProps) => {
   const { palette, spacing, typography } = useTheme();
 
   const { query, selectedFields } = useMemo(() => {
-    let selectedFields = Object.keys(list.fields)
-      .map(fieldPath => {
-        return list.fields[fieldPath].controller.graphqlSelection;
-      })
+    const selectedFields = Object.keys(list.fields)
+      .map((fieldPath) => list.fields[fieldPath].controller.graphqlSelection)
       .join('\n');
     return {
       selectedFields,
@@ -324,7 +344,7 @@ const ItemPage = ({ listKey }: ItemPageProps) => {
       `,
     };
   }, [list]);
-  const id = sessionLoading ? null : session.itemId
+  const id = sessionLoading ? null : session.itemId;
   let { data, error, loading } = useQuery(query, {
     variables: { id, listKey },
     errorPolicy: 'all',
@@ -350,10 +370,17 @@ const ItemPage = ({ listKey }: ItemPageProps) => {
     }>
   >(data, error?.graphQLErrors);
 
-  let itemViewFieldModesByField = useMemo(() => {
-    let itemViewFieldModesByField: Record<string, 'edit' | 'read' | 'hidden'> = {};
-    dataGetter.data?.keystone?.adminMeta?.list?.fields?.forEach(field => {
-      if (field !== null && field.path !== null && field?.itemView?.fieldMode != null) {
+  const itemViewFieldModesByField = useMemo(() => {
+    const itemViewFieldModesByField: Record<
+      string,
+      'edit' | 'read' | 'hidden'
+    > = {};
+    dataGetter.data?.keystone?.adminMeta?.list?.fields?.forEach((field) => {
+      if (
+        field !== null &&
+        field.path !== null &&
+        field?.itemView?.fieldMode != null
+      ) {
         itemViewFieldModesByField[field.path] = field.itemView.fieldMode;
       }
     });
@@ -414,7 +441,10 @@ const ItemPage = ({ listKey }: ItemPageProps) => {
             >
               {loading
                 ? 'Loading...'
-                : (data && data.item && (data.item[list.labelField] || data.item.id)) || id}
+                : (data &&
+                    data.item &&
+                    (data.item[list.labelField] || data.item.id)) ||
+                  id}
             </Heading>
           </div>
           {!hideCreate && <CreateButton listKey={listKey} id={data.item.id} />}
@@ -430,7 +460,7 @@ const ItemPage = ({ listKey }: ItemPageProps) => {
           <Notice tone="negative">{metaQueryErrors[0].message}</Notice>
         </Box>
       ) : (
-        <Fragment>
+        <>
           <ColumnLayout>
             <ItemForm
               fieldModes={itemViewFieldModesByField}
@@ -458,7 +488,7 @@ const ItemPage = ({ listKey }: ItemPageProps) => {
                   value={data.item.id}
                 />
                 <Tooltip content="Copy ID">
-                  {props => (
+                  {(props) => (
                     <Button
                       {...props}
                       aria-label="Copy ID"
@@ -473,7 +503,7 @@ const ItemPage = ({ listKey }: ItemPageProps) => {
               </div>
             </StickySidebar>
           </ColumnLayout>
-        </Fragment>
+        </>
       )}
     </PageContainer>
   );
@@ -494,7 +524,7 @@ const CreateButton = ({ id, listKey }: { id: string; listKey: string }) => {
   }
 
   return (
-    <Fragment>
+    <>
       <Button
         disabled={createModalState.state === 'open'}
         onClick={() => {
@@ -518,7 +548,7 @@ const CreateButton = ({ id, listKey }: { id: string; listKey: string }) => {
           }}
         />
       </DrawerController>
-    </Fragment>
+    </>
   );
 };
 
