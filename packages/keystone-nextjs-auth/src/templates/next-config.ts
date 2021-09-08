@@ -12,7 +12,7 @@ module.exports = withPreconstruct({
   eslint: {
     ignoreDuringBuilds: true,
   },
-  webpack(config: any, { isServer }: any) {
+  webpack(config, { isServer }) {
     config.resolve.alias = {
       ...config.resolve.alias,
       react: Path.dirname(require.resolve('react/package.json')),
