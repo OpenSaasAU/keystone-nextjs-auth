@@ -6,7 +6,13 @@ const Path = require('path');
 const withPreconstruct = require('@preconstruct/next');
 
 module.exports = withPreconstruct({
-  webpack(config, { isServer }) {
+  typescript: {
+    ignoreBuildErrors: true,
+  },
+  eslint: {
+    ignoreDuringBuilds: true,
+  },
+  webpack(config: any, { isServer }: any) {
     config.resolve.alias = {
       ...config.resolve.alias,
       react: Path.dirname(require.resolve('react/package.json')),
@@ -18,8 +24,7 @@ module.exports = withPreconstruct({
     if (isServer) {
       config.externals = [
         ...config.externals, 
-        /@keystone-next\\/keystone(?!\\/___internal-do-not-use-will-break-in-patch\\/admin-ui\\/id-field-view)/,
-        /@keystone-next\\/keystone\\/types/, 
+        /@keystone-next\\/keystone(?!\\/___internal-do-not-use-will-break-in-patch\\/admin-ui\\/id-field-view|\\/fields\\/types\\/[^\\/]+\\/views)/,
         /.prisma\\/client/
       ];
     }
