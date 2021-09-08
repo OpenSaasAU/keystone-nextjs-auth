@@ -6,7 +6,7 @@
   "main": "dist/opensaas-keystone-auth0-profile.cjs.js",
   "module": "dist/opensaas-keystone-auth0-profile.esm.js",
   "dependencies": {
-    "@babel/runtime": "^7.15.3",
+    "@babel/runtime": "^7.15.4",
     "@babel/runtime-corejs3": "^7.15.3",
     "@graphql-tools/merge": "^6.2.14",
     "@keystone-next/admin-ui-utils": "^6.0.0",
