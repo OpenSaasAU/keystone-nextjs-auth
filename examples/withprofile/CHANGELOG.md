@@ -1,5 +1,16 @@
 # @opensaas-keystone/auth0-profile-backend
 
+## 4.0.0
+
+### Major Changes
+
+- e5d413a: Keystone Version upgrade to 25.0.0
+
+### Patch Changes
+
+- Updated dependencies [e5d413a]
+  - @opensaas/keystone-auth0-profile@0.2.1
+
 ## 3.0.0
 
 ### Major Changes
