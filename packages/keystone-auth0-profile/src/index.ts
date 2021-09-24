@@ -74,6 +74,7 @@ export function auth0Profile<
     accountMap,
     profileMap,
     keystonePath,
+    providers,
   });
 
   /**
@@ -102,7 +103,6 @@ export function auth0Profile<
     return auth.withAuth({
       ...keystoneConfig,
       ui,
-      providers,
       lists: {
         ...keystoneConfig.lists,
         [listKey]: {
