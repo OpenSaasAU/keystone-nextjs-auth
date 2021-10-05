@@ -1,8 +1,7 @@
 import {
   BaseGeneratedListTypes,
-  KeystoneContext,
   KeystoneConfig,
-} from '@keystone-next/types';
+} from '@keystone-next/keystone/types';
 import { Provider } from 'next-auth/providers';
 
 export type AuthGqlNames = {
@@ -12,20 +11,6 @@ export type AuthGqlNames = {
   ItemAuthenticationWithPasswordResult: string;
   ItemAuthenticationWithPasswordSuccess: string;
   ItemAuthenticationWithPasswordFailure: string;
-};
-
-export type SendTokenFn = (args: {
-  itemId: string | number;
-  identity: string;
-  token: string;
-  context: KeystoneContext;
-}) => Promise<void> | void;
-
-export type AuthTokenTypeConfig = {
-  /** Called when a user should be sent the magic signin token they requested */
-  sendToken: SendTokenFn;
-  /** How long do tokens stay valid for from time of issue, in minutes * */
-  tokensValidForMins?: number;
 };
 
 export type NextAuthSession = { listKey: string; itemId: string; data: any };

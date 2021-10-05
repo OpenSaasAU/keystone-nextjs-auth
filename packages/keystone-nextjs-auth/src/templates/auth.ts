@@ -4,7 +4,7 @@ import { AuthGqlNames } from '../types';
 const template = `
 import getNextAuthPage from '@opensaas/keystone-nextjs-auth/pages/NextAuthPage';
 import { nextAuthProviders as Providers } from '@opensaas/keystone-nextjs-auth';
-import { lists } from '.keystone/api';
+import { query } from '.keystone/api';
 import keystoneConfig from '../../../../../keystone';
 
 export default getNextAuthPage({
@@ -17,7 +17,7 @@ export default getNextAuthPage({
         profileMap: <%- JSON.stringify(profileMap) %>,
         autoCreate: <%= autoCreate %>,
         providers: keystoneConfig.providers,
-        lists,
+        query,
     });
   `;
 

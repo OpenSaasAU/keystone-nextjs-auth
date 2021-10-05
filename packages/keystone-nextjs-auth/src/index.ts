@@ -256,7 +256,7 @@ export function createAuth<GeneratedListTypes extends BaseGeneratedListTypes>({
           const accessingInitPage =
             thisUrl?.pathname === '/init' &&
             thisUrl?.host === host &&
-            (await context.sudo().lists[listKey].count({})) === 0;
+            (await context.sudo().query[listKey].count({})) === 0;
           return (
             accessingInitPage ||
             (keystoneConfig.ui?.isAccessAllowed

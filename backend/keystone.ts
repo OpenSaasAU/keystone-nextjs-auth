@@ -49,7 +49,7 @@ export default auth.withAuth(
       },
     },
     db: {
-      adapter: 'prisma_postgresql',
+      provider: 'postgresql',
       url:
         process.env.DATABASE_URL ||
         'postgres://postgres:mysecretpassword@localhost:55000/opensaas-creator',
