@@ -1,5 +1,11 @@
 # @opensaas-keystone/nextjs-auth
 
+## 14.0.0
+
+### Major Changes
+
+- 5a64376: Upgrade to keystone-next version 26
+
 ## 13.0.2
 
 ### Patch Changes

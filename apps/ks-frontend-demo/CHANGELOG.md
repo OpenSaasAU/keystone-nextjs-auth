@@ -1,5 +1,11 @@
 # @collective-ams/unifi-frontend
 
+## 6.0.1
+
+### Patch Changes
+
+- 5a64376: Upgrade to keystone-next version 26
+
 ## 6.0.0
 
 ### Major Changes
