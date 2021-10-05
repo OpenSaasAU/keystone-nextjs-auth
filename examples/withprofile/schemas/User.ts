@@ -19,8 +19,8 @@ export const User = list({
     hideDelete: () => true,
   },
   fields: {
-    name: text({ isRequired: true }),
-    email: text({ isRequired: true, isIndexed: 'unique' }),
+    name: text({ validation: { isRequired: true } }),
+    email: text({ validation: { isRequired: true }, isIndexed: 'unique' }),
     subjectId: text({ isIndexed: 'unique' }),
     role: relationship({
       ref: 'Role.assignedTo',

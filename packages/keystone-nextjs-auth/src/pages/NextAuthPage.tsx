@@ -8,7 +8,7 @@ type NextAuthPageProps = {
   identityField: string;
   mutationName: string;
   providers: Provider[];
-  lists: KeystoneListsAPI<any>;
+  query: KeystoneListsAPI<any>;
   sessionData: string;
   listKey: string;
   autoCreate: boolean;
@@ -20,7 +20,7 @@ type NextAuthPageProps = {
 export default function NextAuthPage(props: NextAuthPageProps) {
   const {
     providers,
-    lists,
+    query,
     identityField,
     sessionData,
     listKey,
@@ -29,8 +29,8 @@ export default function NextAuthPage(props: NextAuthPageProps) {
     accountMap,
     profileMap,
   } = props;
-  const list = lists[listKey];
-  const itemAPI = lists[listKey];
+  const list = query[listKey];
+  const queryAPI = query[listKey];
   const protectIdentities = true;
 
   return NextAuth({
@@ -43,7 +43,7 @@ export default function NextAuthPage(props: NextAuthPageProps) {
           identityField,
           identity,
           protectIdentities,
-          itemAPI
+          queryAPI
         );
         const data = {};
         // eslint-disable-next-line no-restricted-syntax
@@ -113,14 +113,14 @@ export default function NextAuthPage(props: NextAuthPageProps) {
             identityField,
             identity,
             protectIdentities,
-            itemAPI
+            queryAPI
           );
 
           if (!result.success) {
             return;
           }
 
-          const data = await lists[listKey].findOne({
+          const data = await query[listKey].findOne({
             where: { id: result.item.id },
             query: sessionData || 'id',
           });

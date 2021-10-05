@@ -1,8 +1,7 @@
-import { createSchema } from '@keystone-next/keystone';
 import { Role } from './Role';
 import { User } from './User';
 
-export const lists = createSchema({
+export const lists = {
   Role,
   User,
-});
+};

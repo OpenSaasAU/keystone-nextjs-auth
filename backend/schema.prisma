@@ -7,27 +7,28 @@ datasource postgresql {
 }
 
 generator client {
-  provider = "prisma-client-js"
-  output   = "node_modules/.prisma/client"
+  provider   = "prisma-client-js"
+  output     = "node_modules/.prisma/client"
+  engineType = "binary"
 }
 
 model Role {
-  id                String   @id @default(cuid())
-  name              String?
-  canManageProducts Boolean?
-  canSeeOtherUsers  Boolean?
-  canManageUsers    Boolean?
-  canManageRoles    Boolean?
-  canManageCart     Boolean?
-  canManageOrgs     Boolean?
-  assignedTo        User[]   @relation("User_role")
+  id                String  @id @default(cuid())
+  name              String  @default("")
+  canManageProducts Boolean @default(false)
+  canSeeOtherUsers  Boolean @default(false)
+  canManageUsers    Boolean @default(false)
+  canManageRoles    Boolean @default(false)
+  canManageCart     Boolean @default(false)
+  canManageOrgs     Boolean @default(false)
+  assignedTo        User[]  @relation("User_role")
 }
 
 model User {
   id        String  @id @default(cuid())
-  name      String?
-  email     String?
-  subjectId String?
+  name      String  @default("")
+  email     String  @default("")
+  subjectId String  @default("")
   role      Role?   @relation("User_role", fields: [roleId], references: [id])
   roleId    String? @map("role")
 

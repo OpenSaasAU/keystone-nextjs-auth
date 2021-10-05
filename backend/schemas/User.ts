@@ -19,8 +19,8 @@ export const User = list({
     hideDelete: (args) => !permissions.canManageUsers(args),
   },
   fields: {
-    name: text({ isRequired: true }),
-    email: text({ isRequired: true, isIndexed: true }),
+    name: text({ validation: { isRequired: true } }),
+    email: text({ validation: { isRequired: true }, isIndexed: true }),
     subjectId: text({ isIndexed: true }),
     role: relationship({
       ref: 'Role.assignedTo',
