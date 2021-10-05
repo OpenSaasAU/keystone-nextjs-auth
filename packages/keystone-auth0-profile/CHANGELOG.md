@@ -1,5 +1,16 @@
 # @opensaas/keystone-auth0-profile
 
+## 0.3.0
+
+### Minor Changes
+
+- 5a64376: Upgrade to keystone-next version 26
+
+### Patch Changes
+
+- Updated dependencies [5a64376]
+  - @opensaas/keystone-nextjs-auth@14.0.0
+
 ## 0.2.1
 
 ### Patch Changes
