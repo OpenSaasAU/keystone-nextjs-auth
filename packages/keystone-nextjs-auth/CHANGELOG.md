@@ -1,5 +1,11 @@
 # @opensaas-keystone/nextjs-auth
 
+## 14.1.1
+
+### Patch Changes
+
+- bfe1860: Fix breaking changes to Context from keystone-next 26
+
 ## 14.1.0
 
 ### Minor Changes
