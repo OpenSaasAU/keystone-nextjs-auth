@@ -1,4 +1,7 @@
-import type { GraphQLSchemaExtension } from '@keystone-next/keystone/types';
+import type {
+  GraphQLSchemaExtension,
+  KeystoneContext,
+} from '@keystone-next/keystone/types';
 import {
   assertInputObjectType,
   GraphQLInputObjectType,
@@ -24,7 +27,7 @@ export function getInitFirstItemSchema({
   const createInputConfig = assertInputObjectType(
     graphQLSchema.getType(`${listKey}CreateInput`)
   ).toConfig();
-  const fieldsSet = new Set(fields);
+  const fieldsSet = new Set<any>(fields);
   const initialCreateInput = printType(
     new GraphQLInputObjectType({
       ...createInputConfig,
@@ -48,13 +51,13 @@ export function getInitFirstItemSchema({
         async [gqlNames.createInitialItem](
           root: any,
           { data }: { data: Record<string, any> },
-          context
+          context: KeystoneContext
         ) {
           if (!context.startSession) {
             throw new Error('No session implementation available on context');
           }
 
-          const dbItemAPI = context.sudo().db.lists[listKey];
+          const dbItemAPI = context.sudo().db[listKey];
           const count = await dbItemAPI.count({});
           if (count !== 0) {
             throw new Error(

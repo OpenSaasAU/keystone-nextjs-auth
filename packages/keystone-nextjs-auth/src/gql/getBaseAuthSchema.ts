@@ -22,13 +22,13 @@ export function getBaseAuthSchema<I extends string, S extends string>({
     `,
     resolvers: {
       Query: {
-        async authenticatedItem(root, args, { session, lists }) {
+        async authenticatedItem(root, args, { session, query }: KeystoneContext) {
           if (
             typeof session?.itemId === 'string' &&
             typeof session.listKey === 'string'
           ) {
             try {
-              return lists[session.listKey].findOne({
+              return query[session.listKey].findOne({
                 where: { id: session.itemId },
                 resolveFields: false,
               });
