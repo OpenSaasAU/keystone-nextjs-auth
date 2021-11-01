@@ -21,7 +21,7 @@ export const User = list({
   fields: {
     name: text({ validation: { isRequired: true } }),
     email: text({ validation: { isRequired: true }, isIndexed: true }),
-    subjectId: text({ isIndexed: true }),
+    subjectId: text({ isIndexed: 'unique' }),
     role: relationship({
       ref: 'Role.assignedTo',
     }),

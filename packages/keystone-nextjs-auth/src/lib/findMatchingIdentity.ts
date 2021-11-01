@@ -1,29 +1,26 @@
-import type { KeystoneListsAPI } from '@keystone-next/keystone/types';
-
 import { AuthTokenRequestErrorCode } from '../types';
 
 export async function findMatchingIdentity(
   identityField: string,
-  identity: string,
-  itemAPI: KeystoneListsAPI<any>[string]
+  identity: string | number,
+  queryAPI: any
 ): Promise<
   | { success: false; code: AuthTokenRequestErrorCode }
   | { success: true; item: any }
 > {
-  const items = await itemAPI.findMany({
-    where: { [identityField]: { equals: identity } },
+  const item = await queryAPI.findOne({
+    where: { [identityField]: identity },
     resolveFields: false,
   });
+  console.log(item);
 
   // Identity failures with helpful errors
   let code: AuthTokenRequestErrorCode | undefined;
-  if (items.length === 0) {
+  if (!item) {
     code = 'IDENTITY_NOT_FOUND';
-  } else if (items.length > 1) {
-    code = 'MULTIPLE_IDENTITY_MATCHES';
   }
   if (code) {
     return { success: false, code };
   }
-  return { success: true, item: items[0] };
+  return { success: true, item };
 }
