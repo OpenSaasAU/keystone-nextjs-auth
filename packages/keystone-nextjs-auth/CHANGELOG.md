@@ -1,5 +1,19 @@
 # @opensaas-keystone/nextjs-auth
 
+## 15.0.0
+
+### Major Changes
+
+- 900b00b: make subjectID unique to allow `findOne` instead of `findMany`
+
+### Minor Changes
+
+- 54a8f5f: upgrade keystone to 26.1.1
+
+### Patch Changes
+
+- 5d28c2d: Fix types to allow a number as the subjectid
+
 ## 14.1.1
 
 ### Patch Changes
