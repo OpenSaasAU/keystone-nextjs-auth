@@ -159,6 +159,7 @@ type User {
 
 input UserWhereUniqueInput {
   id: ID
+  subjectId: String
 }
 
 input UserWhereInput {
