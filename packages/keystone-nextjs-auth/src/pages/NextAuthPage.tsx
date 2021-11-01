@@ -37,7 +37,12 @@ export default function NextAuthPage(props: NextAuthPageProps) {
     providers,
     callbacks: {
       async signIn(user, account, profile) {
-        const identity = user.id as string;
+        let identity;
+        if (typeof user.id === 'string') {
+          identity = user.id;
+        } else if (typeof user.id === 'number') {
+          identity = user.id;
+        }
         const result = await validateNextAuth(
           list,
           identityField,
