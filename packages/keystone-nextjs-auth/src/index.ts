@@ -236,7 +236,7 @@ export function createAuth<GeneratedListTypes extends BaseGeneratedListTypes>({
         ...keystoneConfig.ui,
         publicPages: [...(keystoneConfig.ui.publicPages || []), ...publicPages],
         getAdditionalFiles: [
-          ...(keystoneConfig.ui.getAdditionalFiles || []),
+          ...(keystoneConfig.ui?.getAdditionalFiles || []),
           getAdditionalFiles,
         ],
         pageMiddleware: async (args) =>

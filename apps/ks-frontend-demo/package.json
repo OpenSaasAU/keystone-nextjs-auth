@@ -66,8 +66,8 @@
     "date-fns": "^2.22.1",
     "deepmerge": "^4.2.2",
     "downshift": "^6.1.3",
-    "eslint-config-next": "^11.0.0",
-    "graphql": "^15.5.1",
+    "eslint-config-next": "^12.0.2",
+    "graphql": "^15.6.1",
     "graphql-tag": "^2.12.5",
     "graphql-upload": "^12.0.0",
     "lodash": "^4.17.21",
@@ -83,7 +83,7 @@
     "react-dom": "^17.0.2",
     "react-transition-group": "^4.4.2",
     "styled-components": "^5.3.0",
-    "typescript": "^4.3.5",
+    "typescript": "^4.4.4",
     "waait": "^1.0.5"
   },
   "devDependencies": {
@@ -105,7 +105,7 @@
     "eslint-plugin-react": "^7.24.0",
     "eslint-plugin-react-hooks": "^4.2.0",
     "jest": "^26.6.3",
-    "prettier": "^2.3.1",
+    "prettier": "^2.4.1",
     "react-test-renderer": "^17.0.2"
   }
 }
