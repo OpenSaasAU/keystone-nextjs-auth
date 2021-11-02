@@ -10,7 +10,6 @@ export async function findMatchingIdentity(
 > {
   const item = await queryAPI.findOne({
     where: { [identityField]: identity },
-    resolveFields: false,
   });
   console.log(item);
 

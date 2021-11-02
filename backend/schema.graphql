@@ -234,8 +234,6 @@ type Mutation {
   endSession: Boolean!
 }
 
-union AuthenticatedItem = User
-
 type Query {
   roles(
     where: RoleWhereInput! = {}
@@ -253,8 +251,8 @@ type Query {
   ): [User!]
   user(where: UserWhereUniqueInput!): User
   usersCount(where: UserWhereInput! = {}): Int
-  authenticatedItem: AuthenticatedItem
   keystone: KeystoneMeta!
+  authenticatedItem: AuthenticatedItem
 }
 
 type KeystoneMeta {
@@ -338,3 +336,5 @@ enum KeystoneAdminUISortDirection {
   ASC
   DESC
 }
+
+union AuthenticatedItem = User
