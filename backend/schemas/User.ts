@@ -6,11 +6,13 @@ export const User = list({
   access: {
     operation: {
       create: () => true,
-      read: rules.canManageUsers,
-      update: rules.canManageUsers,
       // only people with the permission can delete themselves!
       // You can't delete yourself
       delete: permissions.canManageUsers,
+    },
+    filter: {
+      query: rules.canManageUsers,
+      update: rules.canManageUsers,
     },
   },
   ui: {
