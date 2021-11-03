@@ -1,5 +1,11 @@
 # @opensaas-keystone/nextjs-auth
 
+## 16.0.0
+
+### Major Changes
+
+- eaea6af: Upgrade to Keystone 27
+
 ## 15.0.0
 
 ### Major Changes

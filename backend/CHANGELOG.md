@@ -1,5 +1,16 @@
 # @opensaas-keystone/next-auth-backend
 
+## 13.0.0
+
+### Major Changes
+
+- eaea6af: Upgrade to Keystone 27
+
+### Patch Changes
+
+- Updated dependencies [eaea6af]
+  - @opensaas/keystone-nextjs-auth@16.0.0
+
 ## 12.0.0
 
 ### Major Changes

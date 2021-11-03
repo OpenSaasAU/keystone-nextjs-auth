@@ -1,5 +1,12 @@
 # @opensaas/keystone-auth0-profile
 
+## 0.4.1
+
+### Patch Changes
+
+- Updated dependencies [eaea6af]
+  - @opensaas/keystone-nextjs-auth@16.0.0
+
 ## 0.4.0
 
 ### Minor Changes
