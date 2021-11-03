@@ -18,11 +18,11 @@
     "next-auth": "^3.29.0"
   },
   "devDependencies": {
-    "@keystone-next/keystone": "^27.0.0",
+    "@keystone-next/keystone": "^27.0.1",
     "react": "^17.0.2"
   },
   "peerDependencies": {
-    "@keystone-next/keystone": "^27.0.0",
+    "@keystone-next/keystone": "^27.0.1",
     "react": "^17.0.2"
   },
   "engines": {
