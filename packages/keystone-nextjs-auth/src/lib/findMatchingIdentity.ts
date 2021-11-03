@@ -10,10 +10,7 @@ export async function findMatchingIdentity(
 > {
   const item = await queryAPI.findOne({
     where: { [identityField]: identity },
-    resolveFields: false,
   });
-  console.log(item);
-
   // Identity failures with helpful errors
   let code: AuthTokenRequestErrorCode | undefined;
   if (!item) {

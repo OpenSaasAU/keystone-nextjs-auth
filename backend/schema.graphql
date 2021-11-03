@@ -234,8 +234,6 @@ type Mutation {
   endSession: Boolean!
 }
 
-union AuthenticatedItem = User
-
 type Query {
   roles(
     where: RoleWhereInput! = {}
@@ -253,9 +251,11 @@ type Query {
   ): [User!]
   user(where: UserWhereUniqueInput!): User
   usersCount(where: UserWhereInput! = {}): Int
-  authenticatedItem: AuthenticatedItem
   keystone: KeystoneMeta!
+  authenticatedItem: AuthenticatedItem
 }
+
+union AuthenticatedItem = User
 
 type KeystoneMeta {
   adminMeta: KeystoneAdminMeta!

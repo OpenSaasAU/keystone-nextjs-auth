@@ -1,57 +1,38 @@
-import type {
-  GraphQLSchemaExtension,
-  KeystoneContext,
-} from '@keystone-next/keystone/types';
+import type { ItemRootValue } from '@keystone-next/keystone/types';
+import { graphql } from '@keystone-next/keystone';
 
 import { AuthGqlNames } from '../types';
 
-export function getBaseAuthSchema<I extends string, S extends string>({
+export function getBaseAuthSchema({
   listKey,
   gqlNames,
+  base,
 }: {
   listKey: string;
   gqlNames: AuthGqlNames;
-}): GraphQLSchemaExtension {
-  return {
-    typeDefs: `
-      # Auth
-      union AuthenticatedItem = ${listKey}
-      type Query {
-        authenticatedItem: AuthenticatedItem
-      }
-    `,
-    resolvers: {
-      Query: {
-        async authenticatedItem(root, args, { session, query }: KeystoneContext) {
+  base: graphql.BaseSchemaMeta;
+}) {
+  const extension = {
+    query: {
+      authenticatedItem: graphql.field({
+        type: graphql.union({
+          name: 'AuthenticatedItem',
+          types: [base.object(listKey) as graphql.ObjectType<ItemRootValue>],
+          resolveType: (root, context) => context.session?.listKey,
+        }),
+        resolve(root, args, { session, db }) {
           if (
             typeof session?.itemId === 'string' &&
             typeof session.listKey === 'string'
           ) {
-            try {
-              return query[session.listKey].findOne({
-                where: { id: session.itemId },
-                resolveFields: false,
-              });
-            } catch (e) {
-              return null;
-            }
+            return db[session.listKey].findOne({
+              where: { id: session.itemId },
+            });
           }
           return null;
         },
-      },
-      AuthenticatedItem: {
-        __resolveType(rootVal: any, { session }: KeystoneContext) {
-          return session?.listKey;
-        },
-      },
-      // TODO: Is this the preferred approach for this?
-      [gqlNames.ItemAuthenticationWithPasswordResult]: {
-        __resolveType(rootVal: any) {
-          return rootVal.sessionToken
-            ? gqlNames.ItemAuthenticationWithPasswordSuccess
-            : gqlNames.ItemAuthenticationWithPasswordFailure;
-        },
-      },
+      }),
     },
   };
+  return { extension };
 }
