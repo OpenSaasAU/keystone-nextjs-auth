@@ -255,6 +255,8 @@ type Query {
   authenticatedItem: AuthenticatedItem
 }
 
+union AuthenticatedItem = User
+
 type KeystoneMeta {
   adminMeta: KeystoneAdminMeta!
 }
@@ -336,5 +338,3 @@ enum KeystoneAdminUISortDirection {
   ASC
   DESC
 }
-
-union AuthenticatedItem = User

@@ -3,7 +3,6 @@ import { AuthGqlNames } from '../types';
 
 const template = `
 import getNextAuthPage from '@opensaas/keystone-nextjs-auth/pages/NextAuthPage';
-import { nextAuthProviders as Providers } from '@opensaas/keystone-nextjs-auth';
 import { query } from '.keystone/api';
 import keystoneConfig from '../../../../../keystone';
 
