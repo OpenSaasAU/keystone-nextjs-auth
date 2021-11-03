@@ -8,7 +8,6 @@ import keystoneConfig from '../../../../../keystone';
 
 export default getNextAuthPage({
         identityField: '<%= identityField %>',
-        mutationName: '<%= gqlNames.authenticateItemWithPassword %>',
         sessionData: '<%= sessionData %>',
         listKey: '<%= listKey %>',
         userMap: <%- JSON.stringify(userMap) %>,
