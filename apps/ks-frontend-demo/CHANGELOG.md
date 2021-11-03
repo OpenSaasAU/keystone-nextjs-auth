@@ -1,5 +1,11 @@
 # @collective-ams/unifi-frontend
 
+## 7.0.0
+
+### Major Changes
+
+- eaea6af: Upgrade to Keystone 27
+
 ## 6.0.1
 
 ### Patch Changes
