@@ -37,7 +37,20 @@ module.exports = withPreconstruct({
     }
     return config;
   },
+  <% if (keystonePath) { %>
+    <% if (process.env.NODE_ENV != 'production') { %> 
+  async rewrites() {
+    return [
+      {
+        source: '/api/__keystone_api_build',
+        destination: 'http://localhost:3000<%= keystonePath || '' %>/api/__keystone_api_build',
+        basePath: false
+      }
+    ];
+  },
+  <% }%>
   basePath: '<%= keystonePath || '' %>'
+  <% } %>
 });
 `;
 export const nextConfigTemplate = ({
