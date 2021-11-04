@@ -1,5 +1,11 @@
 # @opensaas-keystone/nextjs-auth
 
+## 16.0.1
+
+### Patch Changes
+
+- 2e3ae54: Fix Nullish coalescing operator in next-config for older versions of node
+
 ## 16.0.0
 
 ### Major Changes
