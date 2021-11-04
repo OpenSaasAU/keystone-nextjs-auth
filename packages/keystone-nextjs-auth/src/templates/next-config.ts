@@ -31,7 +31,7 @@ module.exports = withPreconstruct({
     // to resolve the location of field views, we will get a path that we can use
     // rather than just the __dirname/__filename of the generated file.
     // https://webpack.js.org/configuration/node/#node__filename
-    config.node ??= {};
+    (_config$node = config.node) !== null && _config$node !== void 0 ? _config$node : config.node = {};
     config.node.__dirname = true;
     config.node.__filename = true;
     }
