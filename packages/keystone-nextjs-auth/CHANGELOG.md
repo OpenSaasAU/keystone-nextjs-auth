@@ -1,5 +1,11 @@
 # @opensaas-keystone/nextjs-auth
 
+## 17.0.0
+
+### Major Changes
+
+- c619df8: Upgrade to `"@keystone-next/keystone": "28.0.0"`
+
 ## 16.0.1
 
 ### Patch Changes
