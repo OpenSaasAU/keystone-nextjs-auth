@@ -9,7 +9,7 @@
     "@babel/runtime": "^7.15.8",
     "@babel/runtime-corejs3": "^7.15.4",
     "@keystone-next/admin-ui-utils": "^6.0.0",
-    "@types/ejs": "^3.0.6",
+    "@types/ejs": "^3.1.0",
     "cookie": "^0.4.1",
     "cross-fetch": "^3.1.4",
     "ejs": "^3.1.6",
@@ -18,11 +18,11 @@
     "next-auth": "^3.29.0"
   },
   "devDependencies": {
-    "@keystone-next/keystone": "^27.0.1",
+    "@keystone-next/keystone": "^28.0.0",
     "react": "^17.0.2"
   },
   "peerDependencies": {
-    "@keystone-next/keystone": "^27.0.1",
+    "@keystone-next/keystone": "^28.0.0",
     "react": "^17.0.2"
   },
   "engines": {
