@@ -1,5 +1,16 @@
 # @opensaas-keystone/next-auth-backend
 
+## 14.0.0
+
+### Major Changes
+
+- cff5031: Upgrade to `"@keystone-next/keystone": "^29.0.0"` see https://keystonejs.com/releases/2021-11-24 for more information
+
+### Patch Changes
+
+- Updated dependencies [cff5031]
+  - @opensaas/keystone-nextjs-auth@18.0.0
+
 ## 13.0.1
 
 ### Patch Changes
