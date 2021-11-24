@@ -1,5 +1,11 @@
 # @opensaas-keystone/nextjs-auth
 
+## 18.0.1
+
+### Patch Changes
+
+- 9b6052a: Fix access issue to allow `/api/__keystone_api_build`
+
 ## 18.0.0
 
 ### Major Changes
