@@ -73,7 +73,9 @@ export function createAuth<GeneratedListTypes extends BaseGeneratedListTypes>({
   }) => {
     const { req, session } = context;
     const pathname = url.parse(req?.url!).pathname!;
-
+    if (pathname === `${customPath}/api/__keystone_api_build`) {
+      return;
+    }
     if (isValidSession) {
       if (pathname === `${customPath}/api/auth/signin`) {
         return { kind: 'redirect', to: `${customPath}` };
@@ -244,6 +246,14 @@ export function createAuth<GeneratedListTypes extends BaseGeneratedListTypes>({
           keystoneConfig?.ui?.pageMiddleware?.(args),
         enableSessionItem: true,
         isAccessAllowed: async (context: KeystoneContext) => {
+          if (
+            process.env.NODE_ENV !== 'production' &&
+            context.req?.url !== undefined &&
+            new URL(context.req.url, 'http://example.com').pathname ===
+            `${customPath}/api/__keystone_api_build`
+          ) {
+            return true;
+          }
           // Allow access to the adminMeta data from the /init path to correctly render that page
           // even if the user isn't logged in (which should always be the case if they're seeing /init)
           const headers = context.req?.headers;
