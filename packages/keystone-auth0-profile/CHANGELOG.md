@@ -1,5 +1,16 @@
 # @opensaas/keystone-auth0-profile
 
+## 0.5.0
+
+### Minor Changes
+
+- cff5031: Upgrade to `"@keystone-next/keystone": "^29.0.0"` see https://keystonejs.com/releases/2021-11-24 for more information
+
+### Patch Changes
+
+- Updated dependencies [cff5031]
+  - @opensaas/keystone-nextjs-auth@18.0.0
+
 ## 0.4.2
 
 ### Patch Changes
