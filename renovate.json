@@ -1,0 +1,37 @@
+{
+  "extends": [
+    "config:base"
+  ],
+  "lockFileMaintenance": {
+    "enabled": true
+  },
+  "separateMinorPatch": true,
+  "prConcurrentLimit": 0,
+  "baseBranches": [
+    "renovating"
+  ],
+  "packageRules": [
+    {
+      "packagePatterns": [
+        "remark",
+        "babel-plugin-remove-graphql-queries",
+        "react-day-picker",
+        "^slate"
+      ],
+      "enabled": false
+    },
+    {
+      "updateTypes": [
+        "patch"
+      ],
+      "groupName": "patch dependencies"
+    }
+  ],
+  "rangeStrategy": "bump",
+  "schedule": [
+    "before 7am on Tuesday",
+    "before 7am on Wednesday"
+  ],
+  "timezone": "Australia/Melbourne",
+  "updateNotScheduled": false
+}
