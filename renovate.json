@@ -7,6 +7,9 @@
   },
   "separateMinorPatch": true,
   "prConcurrentLimit": 0,
+  "baseBranches": [
+    "renovating"
+  ],
   "packageRules": [
     {
       "packagePatterns": [
