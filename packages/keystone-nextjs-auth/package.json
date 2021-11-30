@@ -6,15 +6,15 @@
   "main": "dist/opensaas-keystone-nextjs-auth.cjs.js",
   "module": "dist/opensaas-keystone-nextjs-auth.esm.js",
   "dependencies": {
-    "@babel/runtime": "^7.15.8",
-    "@babel/runtime-corejs3": "^7.15.4",
+    "@babel/runtime": "^7.16.3",
+    "@babel/runtime-corejs3": "^7.16.3",
     "@keystone-next/admin-ui-utils": "^6.0.0",
     "@types/ejs": "^3.1.0",
     "cookie": "^0.4.1",
     "cross-fetch": "^3.1.4",
     "ejs": "^3.1.6",
     "fast-deep-equal": "^3.1.3",
-    "graphql": "^15.6.1",
+    "graphql": "^15.7.2",
     "next-auth": "^3.29.0"
   },
   "devDependencies": {
