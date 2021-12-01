@@ -1,7 +1,7 @@
 import {
   BaseGeneratedListTypes,
   KeystoneConfig,
-} from '@keystone-next/keystone/types';
+} from '@keystone-6/core/types';
 import { Provider } from 'next-auth/providers';
 
 export type AuthGqlNames = {

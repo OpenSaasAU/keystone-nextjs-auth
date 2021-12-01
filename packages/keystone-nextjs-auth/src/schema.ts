@@ -1,7 +1,7 @@
-import { ExtendGraphqlSchema } from '@keystone-next/keystone/types';
+import { ExtendGraphqlSchema } from '@keystone-6/core/types';
 
 import { assertInputObjectType, GraphQLString, GraphQLID } from 'graphql';
-import { graphql } from '@keystone-next/keystone';
+import { graphql } from '@keystone-6/core';
 import { AuthGqlNames } from './types';
 import { getBaseAuthSchema } from './gql/getBaseAuthSchema';
 

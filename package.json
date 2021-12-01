@@ -20,7 +20,7 @@
     "dev": "yarn dev:backend & yarn dev:signup",
     "dev:backend": "manypkg run backend dev",
     "dev:signup": "manypkg run signup-frontend dev",
-    "postinstall": "preconstruct dev && manypkg check && manypkg run backend keystone-next postinstall",
+    "postinstall": "preconstruct dev && manypkg check && manypkg run backend keystone postinstall",
     "lint": "yarn eslint .",
     "release": "yarn build && changeset publish",
     "start": "echo figure out how to start both services simultaneously here",

@@ -1,4 +1,4 @@
-import { BaseGeneratedListTypes, KeystoneContext } from '@keystone-next/keystone/types';
+import { BaseGeneratedListTypes, KeystoneContext } from '@keystone-6/core/types';
 import { NextAuthProviders } from '@opensaas/keystone-nextjs-auth';
 
 export type AuthGqlNames = {

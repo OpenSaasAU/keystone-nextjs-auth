@@ -1772,56 +1772,10 @@
   resolved "https://registry.yarnpkg.com/@josephg/resolvable/-/resolvable-1.0.1.tgz#69bc4db754d79e1a2f17a650d3466e038d94a5eb"
   integrity sha512-CtzORUwWTTOTqfVtHaKRJ0I1kNQd1bpn3sUh8I3nJDVY+5/M/Oe1DnEWzPQvqq/xPIIkzzzIP7mfCoAjFRvDhg==
 
-"@keystone-next/admin-ui-utils@^6.0.0":
-  version "6.0.0"
-  resolved "https://registry.yarnpkg.com/@keystone-next/admin-ui-utils/-/admin-ui-utils-6.0.0.tgz#070f5dff7cc77da86106f9bd633aea262285b368"
-  integrity sha512-H09o34qXnY4Z8KUfoJTJrpwmTw6aOPtwIpJZaLxXHD+GiG7pETyR2n94bfEGzouUH8z3F1dPGFY0RWGLmPtg8Q==
-
-"@keystone-next/document-renderer@^5.0.0":
-  version "5.0.0"
-  resolved "https://registry.yarnpkg.com/@keystone-next/document-renderer/-/document-renderer-5.0.0.tgz#73c20f6c1e83666c63564f5b990857a709f94885"
-  integrity sha512-QzRObpp9nEhq/eUm14spt1IyIL7bipoSjzyntvhO8U15rCDXKUEaf6T7aVX+n5jEXrGbS8GclOctQvPPz59+Pg==
-
-"@keystone-next/fields-document@^14.0.0":
-  version "14.0.0"
-  resolved "https://registry.yarnpkg.com/@keystone-next/fields-document/-/fields-document-14.0.0.tgz#e0611cab9672146cb29f428bae78234cb2e33bf2"
-  integrity sha512-JkZVCsASPoc4QtRc3KzQN2ZadJuK3lGaIykVWThamH9JsdX7WCpVfj6PYm2VAusJRBZXMR0kj8z2ij9UpiNFbw==
-  dependencies:
-    "@babel/runtime" "^7.16.3"
-    "@braintree/sanitize-url" "^5.0.2"
-    "@emotion/weak-memoize" "^0.2.5"
-    "@keystone-next/document-renderer" "^5.0.0"
-    "@keystone-ui/button" "^6.0.0"
-    "@keystone-ui/core" "^4.0.0"
-    "@keystone-ui/fields" "^6.0.0"
-    "@keystone-ui/icons" "^5.0.0"
-    "@keystone-ui/popover" "^5.0.0"
-    "@keystone-ui/tooltip" "^5.0.0"
-    "@types/react" "^17.0.35"
-    apollo-server-errors "^3.3.0"
-    apply-ref "^1.0.0"
-    fp-ts "^2.11.5"
-    graphql "^15.7.2"
-    io-ts "^2.2.16"
-    io-ts-excess "^1.0.1"
-    is-hotkey "^0.2.0"
-    match-sorter "^6.3.1"
-    mdast-util-definitions "^4.0.0"
-    mdast-util-from-markdown "^0.8.5"
-    mdast-util-gfm-autolink-literal "^0.1.3"
-    mdast-util-gfm-strikethrough "^0.2.3"
-    micromark-extension-gfm-autolink-literal "0.5.7"
-    micromark-extension-gfm-strikethrough "0.6.5"
-    react "^17.0.2"
-    scroll-into-view-if-needed "^2.2.28"
-    slate "^0.67.1"
-    slate-history "^0.66.0"
-    slate-react "^0.69.0"
-
-"@keystone-next/keystone@^29.0.0":
-  version "29.0.0"
-  resolved "https://registry.yarnpkg.com/@keystone-next/keystone/-/keystone-29.0.0.tgz#88a2778bc66ecc21f9f6c4372084ab612f0a8e3e"
-  integrity sha512-Gqfm0WX5gOmnUo67Vc4g/nCjnaAFhHZSyFbHNwnt7PRJObh5tfvlu1IWlC3KvPKXdKqey0XMPWLtWx6ZaZNGMQ==
+"@keystone-6/core@^1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@keystone-6/core/-/core-1.0.0.tgz#049dae84da1681eb4f0e46030115a0ce8b90608b"
+  integrity sha512-r/YhipilaEJ9HM/a/xWn58XaQVKOECW+u0nchNYnIf6sT6IeiyyKlfEoBEriAQtEDeFOtn8jhH0NKVIaLF+0xA==
   dependencies:
     "@apollo/client" "3.4.17"
     "@babel/core" "^7.16.0"
@@ -1918,6 +1872,47 @@
     supertest "^6.1.6"
     uid-safe "^2.1.5"
     uuid "^8.3.2"
+
+"@keystone-6/document-renderer@^1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@keystone-6/document-renderer/-/document-renderer-1.0.0.tgz#afedf84bdfcce8130d6f33daa9e477b08d5bc40c"
+  integrity sha512-mumjqZ+6+m9GhPauJTuRPRZGiZSbYOVJlqBvRmiEcndCuXiTucpyOWmANkIqDQFtPMOy0b13Elpx20mh8eUC6g==
+
+"@keystone-6/fields-document@^1.0.0":
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/@keystone-6/fields-document/-/fields-document-1.0.1.tgz#d4ad90da33a3411100ed8d6669786f5084601c89"
+  integrity sha512-w/VvNH6JQ5R1k8Jnfa/QDsfJM28uTExEE6FJOmunbrZ5LrH0rWmaBz+7V4w712mnkbIut3hcVquAH9vNqGaSjQ==
+  dependencies:
+    "@babel/runtime" "^7.16.3"
+    "@braintree/sanitize-url" "^5.0.2"
+    "@emotion/weak-memoize" "^0.2.5"
+    "@keystone-6/document-renderer" "^1.0.0"
+    "@keystone-ui/button" "^6.0.0"
+    "@keystone-ui/core" "^4.0.0"
+    "@keystone-ui/fields" "^6.0.0"
+    "@keystone-ui/icons" "^5.0.0"
+    "@keystone-ui/popover" "^5.0.0"
+    "@keystone-ui/tooltip" "^5.0.0"
+    "@types/react" "^17.0.35"
+    apollo-server-errors "^3.3.0"
+    apply-ref "^1.0.0"
+    fp-ts "^2.11.5"
+    graphql "^15.7.2"
+    io-ts "^2.2.16"
+    io-ts-excess "^1.0.1"
+    is-hotkey "^0.2.0"
+    match-sorter "^6.3.1"
+    mdast-util-definitions "^4.0.0"
+    mdast-util-from-markdown "^0.8.5"
+    mdast-util-gfm-autolink-literal "^0.1.3"
+    mdast-util-gfm-strikethrough "^0.2.3"
+    micromark-extension-gfm-autolink-literal "0.5.7"
+    micromark-extension-gfm-strikethrough "0.6.5"
+    react "^17.0.2"
+    scroll-into-view-if-needed "^2.2.28"
+    slate "^0.67.1"
+    slate-history "^0.66.0"
+    slate-react "^0.69.0"
 
 "@keystone-ui/button@^6.0.0":
   version "6.0.0"
@@ -12185,7 +12180,7 @@ typeorm@^0.2.30:
     yargs "^17.0.1"
     zen-observable-ts "^1.0.0"
 
-typescript@^4.4.4, typescript@^4.5.2:
+typescript@^4.5.2:
   version "4.5.2"
   resolved "https://registry.yarnpkg.com/typescript/-/typescript-4.5.2.tgz#8ac1fba9f52256fdb06fb89e4122fa6a346c2998"
   integrity sha512-5BlMof9H1yGt0P8/WF+wPNw6GfctgGjXp5hkblpyT+8rkASSmkUKMXrxR0Xg8ThVCi/JnHQiKXeBaEwCeQwMFw==

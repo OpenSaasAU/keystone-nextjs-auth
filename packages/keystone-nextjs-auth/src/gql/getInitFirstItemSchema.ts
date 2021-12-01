@@ -1,7 +1,7 @@
 import type {
   GraphQLSchemaExtension,
   KeystoneContext,
-} from '@keystone-next/keystone/types';
+} from '@keystone-6/core/types';
 import {
   assertInputObjectType,
   GraphQLInputObjectType,

@@ -1,5 +1,5 @@
 import { mergeSchemas } from '@graphql-tools/merge';
-import { ExtendGraphqlSchema } from '@keystone-next/keystone/types';
+import { ExtendGraphqlSchema } from '@keystone-6/core/types';
 
 import { AuthGqlNames } from './types';
 import { getBaseAuthSchema } from './gql/getBaseAuthSchema';
@@ -14,15 +14,15 @@ export const getSchemaExtension =
     listKey: string;
     gqlNames: AuthGqlNames;
   }): ExtendGraphqlSchema =>
-  (schema) =>
-    [
-      getBaseAuthSchema({
-        listKey,
-        gqlNames,
-      }),
-    ]
-      .filter((x) => x)
-      .reduce(
-        (s, extension) => mergeSchemas({ schemas: [s], ...extension }),
-        schema
-      );
+    (schema) =>
+      [
+        getBaseAuthSchema({
+          listKey,
+          gqlNames,
+        }),
+      ]
+        .filter((x) => x)
+        .reduce(
+          (s, extension) => mergeSchemas({ schemas: [s], ...extension }),
+          schema
+        );

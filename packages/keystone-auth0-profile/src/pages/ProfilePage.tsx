@@ -15,7 +15,7 @@ import {
   useState,
 } from 'react';
 
-import { ListMeta } from '@keystone-next/keystone/types';
+import { ListMeta } from '@keystone-6/core/types';
 import { Button } from '@keystone-ui/button';
 import {
   Box,
@@ -43,19 +43,19 @@ import {
   useInvalidFields,
   Fields,
   useChangedFieldsAndDataForUpdate,
-} from '@keystone-next/admin-ui-utils';
+} from '@keystone-6/admin-ui/utils';
 
 import {
   gql,
   useMutation,
   useQuery,
-} from '@keystone-next/keystone/admin-ui/apollo';
-import { useList } from '@keystone-next/keystone/admin-ui/context';
+} from '@keystone-6/keystone/admin-ui/apollo';
+import { useList } from '@keystone-6/core/admin-ui/context';
 import {
   PageContainer,
   GraphQLErrorNotice,
   CreateItemDrawer,
-} from '@keystone-next/keystone/admin-ui/components';
+} from '@keystone-6/core/admin-ui/components';
 
 import { useSession } from 'next-auth/client';
 
