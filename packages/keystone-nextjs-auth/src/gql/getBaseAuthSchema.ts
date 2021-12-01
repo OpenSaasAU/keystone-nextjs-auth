@@ -1,4 +1,4 @@
-import type { ItemRootValue } from '@keystone-6/core/types';
+import type { BaseItem } from '@keystone-6/core/types';
 import { graphql } from '@keystone-6/core';
 
 import { AuthGqlNames } from '../types';
@@ -17,7 +17,7 @@ export function getBaseAuthSchema({
       authenticatedItem: graphql.field({
         type: graphql.union({
           name: 'AuthenticatedItem',
-          types: [base.object(listKey) as graphql.ObjectType<ItemRootValue>],
+          types: [base.object(listKey) as graphql.ObjectType<BaseItem>],
           resolveType: (root, context) => context.session?.listKey,
         }),
         resolve(root, args, { session, db }) {

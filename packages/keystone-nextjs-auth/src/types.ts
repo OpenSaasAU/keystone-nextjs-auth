@@ -1,7 +1,4 @@
-import {
-  BaseGeneratedListTypes,
-  KeystoneConfig,
-} from '@keystone-6/core/types';
+import { BaseListTypeInfo, KeystoneConfig } from '@keystone-6/core/types';
 import { Provider } from 'next-auth/providers';
 
 export type AuthGqlNames = {
@@ -23,7 +20,7 @@ type KeytoneAuthProviders = {
 
 export type KeystoneAuthConfig = KeystoneConfig & KeytoneAuthProviders;
 
-export type AuthConfig<GeneratedListTypes extends BaseGeneratedListTypes> = {
+export type AuthConfig<GeneratedListTypes extends BaseListTypeInfo> = {
   /** The key of the list to authenticate users with */
   listKey: GeneratedListTypes['key'];
   /** The path of the field the identity is stored in; must be text-ish */
