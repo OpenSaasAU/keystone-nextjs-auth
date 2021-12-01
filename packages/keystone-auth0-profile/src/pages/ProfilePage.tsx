@@ -43,13 +43,9 @@ import {
   useInvalidFields,
   Fields,
   useChangedFieldsAndDataForUpdate,
-} from '@keystone-6/admin-ui/utils';
+} from '@keystone-6/core/admin-ui/utils';
 
-import {
-  gql,
-  useMutation,
-  useQuery,
-} from '@keystone-6/keystone/admin-ui/apollo';
+import { gql, useMutation, useQuery } from '@keystone-6/core/admin-ui/apollo';
 import { useList } from '@keystone-6/core/admin-ui/context';
 import {
   PageContainer,
@@ -74,7 +70,7 @@ function useEventCallback<Func extends (...args: any) => any>(
   return cb as any;
 }
 
-function ItemForm({
+const ItemForm = function ({
   listKey,
   itemGetter,
   selectedFields,
@@ -232,9 +228,9 @@ function ItemForm({
       />
     </Box>
   );
-}
+};
 
-function DeleteButton({
+var DeleteButton = function ({
   itemLabel,
   itemId,
   list,
@@ -302,12 +298,14 @@ function DeleteButton({
       </AlertDialog>
     </>
   );
-}
+};
 
-export const getProfilePage = (props: ItemPageProps) => () =>
-  <ItemPage {...props} />;
+export const getProfilePage = (props: ItemPageProps) =>
+  function () {
+    return <ItemPage {...props} />;
+  };
 
-const ItemPage = ({ listKey }: ItemPageProps) => {
+var ItemPage = function ({ listKey }: ItemPageProps) {
   const [session, sessionLoading] = useSession();
 
   console.log(session);
@@ -442,9 +440,9 @@ const ItemPage = ({ listKey }: ItemPageProps) => {
               {loading
                 ? 'Loading...'
                 : (data &&
-                    data.item &&
-                    (data.item[list.labelField] || data.item.id)) ||
-                  id}
+                  data.item &&
+                  (data.item[list.labelField] || data.item.id)) ||
+                id}
             </Heading>
           </div>
           {!hideCreate && <CreateButton listKey={listKey} id={data.item.id} />}
@@ -460,56 +458,54 @@ const ItemPage = ({ listKey }: ItemPageProps) => {
           <Notice tone="negative">{metaQueryErrors[0].message}</Notice>
         </Box>
       ) : (
-        <>
-          <ColumnLayout>
-            <ItemForm
-              fieldModes={itemViewFieldModesByField}
-              selectedFields={selectedFields}
-              showDelete={!data.keystone.adminMeta.list!.hideDelete}
-              listKey={listKey}
-              itemGetter={dataGetter.get('item') as DataGetter<ItemData>}
-            />
+        <ColumnLayout>
+          <ItemForm
+            fieldModes={itemViewFieldModesByField}
+            selectedFields={selectedFields}
+            showDelete={!data.keystone.adminMeta.list!.hideDelete}
+            listKey={listKey}
+            itemGetter={dataGetter.get('item') as DataGetter<ItemData>}
+          />
 
-            <StickySidebar>
-              <FieldLabel>Item ID</FieldLabel>
-              <div
+          <StickySidebar>
+            <FieldLabel>Item ID</FieldLabel>
+            <div
+              css={{
+                display: 'flex',
+                alignItems: 'center',
+              }}
+            >
+              <TextInput
                 css={{
-                  display: 'flex',
-                  alignItems: 'center',
+                  marginRight: spacing.medium,
+                  fontFamily: typography.fontFamily.monospace,
+                  fontSize: typography.fontSize.small,
                 }}
-              >
-                <TextInput
-                  css={{
-                    marginRight: spacing.medium,
-                    fontFamily: typography.fontFamily.monospace,
-                    fontSize: typography.fontSize.small,
-                  }}
-                  readOnly
-                  value={data.item.id}
-                />
-                <Tooltip content="Copy ID">
-                  {(props) => (
-                    <Button
-                      {...props}
-                      aria-label="Copy ID"
-                      onClick={() => {
-                        copyToClipboard(data.item.id);
-                      }}
-                    >
-                      <ClipboardIcon size="small" />
-                    </Button>
-                  )}
-                </Tooltip>
-              </div>
-            </StickySidebar>
-          </ColumnLayout>
-        </>
+                readOnly
+                value={data.item.id}
+              />
+              <Tooltip content="Copy ID">
+                {(props) => (
+                  <Button
+                    {...props}
+                    aria-label="Copy ID"
+                    onClick={() => {
+                      copyToClipboard(data.item.id);
+                    }}
+                  >
+                    <ClipboardIcon size="small" />
+                  </Button>
+                )}
+              </Tooltip>
+            </div>
+          </StickySidebar>
+        </ColumnLayout>
       )}
     </PageContainer>
   );
 };
 
-const CreateButton = ({ id, listKey }: { id: string; listKey: string }) => {
+var CreateButton = function ({ id, listKey }: { id: string; listKey: string }) {
   const list = useList(listKey);
   const router = useRouter();
 
@@ -609,7 +605,7 @@ const Toolbar = memo(function Toolbar({
   );
 });
 
-const ColumnLayout = (props: HTMLAttributes<HTMLDivElement>) => {
+var ColumnLayout = function (props: HTMLAttributes<HTMLDivElement>) {
   const { spacing } = useTheme();
 
   return (
@@ -629,7 +625,7 @@ const ColumnLayout = (props: HTMLAttributes<HTMLDivElement>) => {
   );
 };
 
-const StickySidebar = (props: HTMLAttributes<HTMLDivElement>) => {
+var StickySidebar = function (props: HTMLAttributes<HTMLDivElement>) {
   const { spacing } = useTheme();
   return (
     <div
