@@ -1,4 +1,4 @@
-import type { KeystoneListsAPI } from '@keystone-next/keystone/types';
+import type { KeystoneListsAPI } from '@keystone-6/core/types';
 import { NextAuthErrorCode } from '../types';
 import { findMatchingIdentity } from './findMatchingIdentity';
 

@@ -6,7 +6,7 @@ import {
   KeystoneContext,
   AdminUIConfig,
   SessionStrategy,
-} from '@keystone-next/keystone/types';
+} from '@keystone-6/core/types';
 import { getSession } from 'next-auth/client';
 import Providers from 'next-auth/providers';
 import * as cookie from 'cookie';
