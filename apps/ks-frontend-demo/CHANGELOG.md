@@ -1,5 +1,11 @@
 # @collective-ams/unifi-frontend
 
+## 8.0.0
+
+### Major Changes
+
+- 5ac88ef: Upgrade to `keystone-6/core` for more information see https://keystonejs.com/releases/2021-12-01
+
 ## 7.0.0
 
 ### Major Changes

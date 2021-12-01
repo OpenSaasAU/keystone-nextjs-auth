@@ -1,5 +1,16 @@
 # @opensaas-keystone/next-auth-backend
 
+## 15.0.0
+
+### Major Changes
+
+- 5ac88ef: Upgrade to `keystone-6/core` for more information see https://keystonejs.com/releases/2021-12-01
+
+### Patch Changes
+
+- Updated dependencies [5ac88ef]
+  - @opensaas/keystone-nextjs-auth@19.0.0
+
 ## 14.0.0
 
 ### Major Changes

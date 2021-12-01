@@ -1,5 +1,16 @@
 # @opensaas-keystone/auth0-profile-backend
 
+## 6.0.0
+
+### Major Changes
+
+- 5ac88ef: Upgrade to `keystone-6/core` for more information see https://keystonejs.com/releases/2021-12-01
+
+### Patch Changes
+
+- Updated dependencies [5ac88ef]
+  - @opensaas/keystone-auth0-profile@0.6.0
+
 ## 5.0.0
 
 ### Major Changes
