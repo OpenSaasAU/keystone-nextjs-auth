@@ -1,5 +1,11 @@
 # @opensaas-keystone/nextjs-auth
 
+## 19.1.0
+
+### Minor Changes
+
+- fa61bd9: Allow custom port to be defined by env `PORT` as well as a custom path
+
 ## 19.0.0
 
 ### Major Changes
