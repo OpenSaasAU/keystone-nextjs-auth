@@ -1,11 +1,12 @@
 import url from 'url';
 import {
   AdminFileToWrite,
-  BaseGeneratedListTypes,
+  BaseListTypeInfo,
   KeystoneConfig,
   KeystoneContext,
   AdminUIConfig,
   SessionStrategy,
+  BaseKeystoneTypeInfo,
 } from '@keystone-6/core/types';
 import { getSession } from 'next-auth/client';
 import Providers from 'next-auth/providers';
@@ -30,7 +31,7 @@ export const nextAuthProviders = Providers;
  */
 
 export type { NextAuthProviders, KeystoneAuthConfig } from './types';
-export function createAuth<GeneratedListTypes extends BaseGeneratedListTypes>({
+export function createAuth<GeneratedListTypes extends BaseListTypeInfo>({
   listKey,
   identityField,
   sessionData,
@@ -67,26 +68,24 @@ export function createAuth<GeneratedListTypes extends BaseGeneratedListTypes>({
    *  - to the init page when initFirstItem is configured, and there are no user in the database
    *  - to the signin page when no valid session is present
    */
-  const pageMiddleware: AdminUIConfig['pageMiddleware'] = async ({
-    context,
-    isValidSession,
-  }) => {
-    const { req, session } = context;
-    const pathname = url.parse(req?.url!).pathname!;
-    if (pathname === `${customPath}/api/__keystone_api_build`) {
-      return;
-    }
-    if (isValidSession) {
-      if (pathname === `${customPath}/api/auth/signin`) {
-        return { kind: 'redirect', to: `${customPath}` };
+  const pageMiddleware: AdminUIConfig<BaseKeystoneTypeInfo>['pageMiddleware'] =
+    async ({ context, isValidSession }) => {
+      const { req, session } = context;
+      const pathname = url.parse(req?.url!).pathname!;
+      if (pathname === `${customPath}/api/__keystone_api_build`) {
+        return;
       }
-      return;
-    }
+      if (isValidSession) {
+        if (pathname === `${customPath}/api/auth/signin`) {
+          return { kind: 'redirect', to: `${customPath}` };
+        }
+        return;
+      }
 
-    if (!session && !pathname.includes(`${customPath}/api/auth/`)) {
-      return { kind: 'redirect', to: `${customPath}/api/auth/signin` };
-    }
-  };
+      if (!session && !pathname.includes(`${customPath}/api/auth/`)) {
+        return { kind: 'redirect', to: `${customPath}/api/auth/signin` };
+      }
+    };
 
   /**
    * getAdditionalFiles
@@ -250,7 +249,7 @@ export function createAuth<GeneratedListTypes extends BaseGeneratedListTypes>({
             process.env.NODE_ENV !== 'production' &&
             context.req?.url !== undefined &&
             new URL(context.req.url, 'http://example.com').pathname ===
-            `${customPath}/api/__keystone_api_build`
+              `${customPath}/api/__keystone_api_build`
           ) {
             return true;
           }

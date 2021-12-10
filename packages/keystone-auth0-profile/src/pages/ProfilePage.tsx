@@ -440,9 +440,9 @@ var ItemPage = function ({ listKey }: ItemPageProps) {
               {loading
                 ? 'Loading...'
                 : (data &&
-                  data.item &&
-                  (data.item[list.labelField] || data.item.id)) ||
-                id}
+                    data.item &&
+                    (data.item[list.labelField] || data.item.id)) ||
+                  id}
             </Heading>
           </div>
           {!hideCreate && <CreateButton listKey={listKey} id={data.item.id} />}

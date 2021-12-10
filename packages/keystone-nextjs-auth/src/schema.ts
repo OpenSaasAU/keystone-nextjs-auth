@@ -26,9 +26,9 @@ export const getSchemaExtension = ({
     ) {
       throw new Error(
         `createAuth was called with an identityField of ${identityField} on the list ${listKey} ` +
-        `but that field doesn't allow being searched uniquely with a String or ID. ` +
-        `You should likely add \`isIndexed: 'unique'\` ` +
-        `to the field at ${listKey}.${identityField}`
+          `but that field doesn't allow being searched uniquely with a String or ID. ` +
+          `You should likely add \`isIndexed: 'unique'\` ` +
+          `to the field at ${listKey}.${identityField}`
       );
     }
     const baseSchema = getBaseAuthSchema({

@@ -15,7 +15,7 @@ export default class MyDocument extends Document {
   render() {
     return (
       <Html lang="en-AU">
-        <link rel="shortcut icon" href="/static/favicon.ico" />
+        <link rel="icon" href="/static/favicon.ico" />
         <Head />
         <body>
           <Main />

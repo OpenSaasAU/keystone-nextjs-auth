@@ -14,15 +14,15 @@ export const getSchemaExtension =
     listKey: string;
     gqlNames: AuthGqlNames;
   }): ExtendGraphqlSchema =>
-    (schema) =>
-      [
-        getBaseAuthSchema({
-          listKey,
-          gqlNames,
-        }),
-      ]
-        .filter((x) => x)
-        .reduce(
-          (s, extension) => mergeSchemas({ schemas: [s], ...extension }),
-          schema
-        );
+  (schema) =>
+    [
+      getBaseAuthSchema({
+        listKey,
+        gqlNames,
+      }),
+    ]
+      .filter((x) => x)
+      .reduce(
+        (s, extension) => mergeSchemas({ schemas: [s], ...extension }),
+        schema
+      );
