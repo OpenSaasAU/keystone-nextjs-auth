@@ -2,7 +2,7 @@ import { Navbar } from 'react-bootstrap';
 import Image from 'next/image';
 import Link from 'next/link';
 
-export function Header() {
+export const Header = function () {
   return (
     <Navbar bg="light" expand="sm">
       <Navbar.Brand style={{ marginLeft: '4rem', marginBottom: '1rem' }}>
@@ -17,4 +17,4 @@ export function Header() {
       </Navbar.Brand>
     </Navbar>
   );
-}
+};

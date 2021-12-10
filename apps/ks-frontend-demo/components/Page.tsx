@@ -2,7 +2,7 @@ import { Container } from 'react-bootstrap';
 import { Footer } from './Footer';
 import { Header } from './Header';
 
-export function Page({ children }) {
+export const Page = function ({ children }) {
   return (
     <>
       <Header />
@@ -12,4 +12,4 @@ export function Page({ children }) {
       <Footer />
     </>
   );
-}
+};
