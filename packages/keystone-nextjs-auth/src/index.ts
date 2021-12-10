@@ -79,6 +79,9 @@ export function createAuth<GeneratedListTypes extends BaseListTypeInfo>({
         if (pathname === `${customPath}/api/auth/signin`) {
           return { kind: 'redirect', to: `${customPath}` };
         }
+        if (customPath !== '' && pathname === '/') {
+          return { kind: 'redirect', to: `${customPath}` };
+        }
         return;
       }
 
