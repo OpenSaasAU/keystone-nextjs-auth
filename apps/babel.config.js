@@ -4,8 +4,8 @@ module.exports = {
       'next/babel',
       {
         'preset-env': {
-          useBuiltIns: "usage",
-          corejs: "3.8",
+          useBuiltIns: 'usage',
+          corejs: '3.8',
           targets: {
             node: 14,
             browsers: [
@@ -16,15 +16,15 @@ module.exports = {
             ],
           },
         },
-      } 
+      },
     ],
   ],
   plugins: [
     [
-      "@babel/plugin-transform-runtime",
-    {
-      "corejs": 3
-    },
+      '@babel/plugin-transform-runtime',
+      {
+        corejs: 3,
+      },
+    ],
   ],
-  ]
 };

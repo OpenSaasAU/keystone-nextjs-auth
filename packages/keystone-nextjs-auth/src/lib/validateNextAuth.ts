@@ -10,13 +10,13 @@ export async function validateNextAuth(
   itemAPI: KeystoneListsAPI<any>[string]
 ): Promise<
   | { success: false; code: NextAuthErrorCode }
-  | { success: true; item: { id: any;[prop: string]: any } }
+  | { success: true; item: { id: any; [prop: string]: any } }
 > {
   const match = await findMatchingIdentity(identityField, identity, itemAPI);
 
   const { item } = match as {
     success: true;
-    item: { id: any;[prop: string]: any };
+    item: { id: any; [prop: string]: any };
   };
 
   if (item) {

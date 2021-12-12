@@ -43,7 +43,7 @@ module.exports = withPreconstruct({
     return [
       {
         source: '/api/__keystone_api_build',
-        destination: 'http://localhost:3000<%= keystonePath || '' %>/api/__keystone_api_build',
+        destination: 'http://localhost:<%= process.env.PORT || 3000 %><%= keystonePath || '' %>/api/__keystone_api_build',
         basePath: false
       }
     ];

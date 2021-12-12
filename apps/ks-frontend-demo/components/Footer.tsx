@@ -1,6 +1,6 @@
 import { Navbar } from 'react-bootstrap';
 
-export function Footer() {
+export const Footer = function () {
   return (
     <Navbar bg="dark" fixed="bottom" variant="dark" expand="sm">
       <Navbar.Text
@@ -11,4 +11,4 @@ export function Footer() {
       </Navbar.Text>
     </Navbar>
   );
-}
+};

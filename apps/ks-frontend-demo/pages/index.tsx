@@ -1,3 +1,4 @@
+/* eslint-disable react/function-component-definition */
 import { Container, Button } from 'react-bootstrap';
 import { signIn, signOut, useSession } from 'next-auth/client';
 import { useUser } from '../lib/useUser';
