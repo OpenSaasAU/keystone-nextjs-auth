@@ -3,7 +3,7 @@
 
 
 # Keystone next auth
-This package that enables the addition of social auth to keystone-6.
+This package enables the addition of social auth to keystone-6.
 
 ## Contents
 
