@@ -1,5 +1,11 @@
 # @collective-ams/unifi-frontend
 
+## 8.0.1
+
+### Patch Changes
+
+- 0043ca8: clean up some types
+
 ## 8.0.0
 
 ### Major Changes
