@@ -198,7 +198,7 @@ export function createAuth<GeneratedListTypes extends BaseListTypeInfo>({
         if (pathname.includes('/api/auth')) {
           return;
         }
-        const nextSession = await getSession({ req });
+        const nextSession: unknown = await getSession({ req });
         if (nextSession) {
           return nextSession as NextAuthSession;
         }
@@ -254,7 +254,7 @@ export function createAuth<GeneratedListTypes extends BaseListTypeInfo>({
             process.env.NODE_ENV !== 'production' &&
             context.req?.url !== undefined &&
             new URL(context.req.url, 'http://example.com').pathname ===
-            `${customPath}/api/__keystone_api_build`
+              `${customPath}/api/__keystone_api_build`
           ) {
             return true;
           }
