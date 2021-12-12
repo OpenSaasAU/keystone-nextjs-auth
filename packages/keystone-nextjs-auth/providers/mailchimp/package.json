@@ -1,0 +1,4 @@
+{
+  "main": "dist/opensaas-keystone-nextjs-auth-providers-mailchimp.cjs.js",
+  "module": "dist/opensaas-keystone-nextjs-auth-providers-mailchimp.esm.js"
+}

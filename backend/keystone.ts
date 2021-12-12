@@ -1,9 +1,7 @@
 import { config } from '@keystone-6/core';
 import { statelessSessions } from '@keystone-6/core/session';
-import {
-  createAuth,
-  nextAuthProviders as Providers,
-} from '@opensaas/keystone-nextjs-auth';
+import Auth0 from '@opensaas/keystone-nextjs-auth/providers/auth0';
+import { createAuth } from '@opensaas/keystone-nextjs-auth';
 import { KeystoneContext } from '@keystone-6/core/types';
 import { lists } from './schemas';
 
@@ -30,11 +28,13 @@ const auth = createAuth({
   accountMap: {},
   profileMap: { email: 'email' },
   keystonePath: '/admin',
+  sessionSecret,
   providers: [
-    Providers.Auth0({
+    Auth0({
       clientId: process.env.AUTH0_CLIENT_ID || 'Auth0ClientID',
       clientSecret: process.env.AUTH0_CLIENT_SECRET || 'Auth0ClientSecret',
-      domain: process.env.AUTH0_DOMAIN || 'opensaas.au.auth0.com',
+      issuer:
+        process.env.AUTH0_ISSUER_BASE_URL || 'https://opensaas.au.auth0.com',
     }),
   ],
 });

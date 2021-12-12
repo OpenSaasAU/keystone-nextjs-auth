@@ -8,8 +8,7 @@ import {
   SessionStrategy,
   BaseKeystoneTypeInfo,
 } from '@keystone-6/core/types';
-import { getSession } from 'next-auth/client';
-import Providers from 'next-auth/providers';
+import { getSession } from 'next-auth/react';
 import * as cookie from 'cookie';
 import { nextConfigTemplate } from './templates/next-config';
 // import * as Path from 'path';
@@ -23,7 +22,6 @@ import {
 import { getSchemaExtension } from './schema';
 import { authTemplate } from './templates/auth';
 
-export const nextAuthProviders = Providers;
 /**
  * createAuth function
  *
@@ -41,6 +39,7 @@ export function createAuth<GeneratedListTypes extends BaseListTypeInfo>({
   profileMap,
   keystonePath,
   providers,
+  sessionSecret,
 }: AuthConfig<GeneratedListTypes>) {
   // The protectIdentities flag is currently under review to see whether it should be
   // part of the createAuth API (in which case its use cases need to be documented and tested)
@@ -112,6 +111,7 @@ export function createAuth<GeneratedListTypes extends BaseListTypeInfo>({
           userMap,
           accountMap,
           profileMap,
+          sessionSecret,
         }),
       },
       {
@@ -196,7 +196,7 @@ export function createAuth<GeneratedListTypes extends BaseListTypeInfo>({
         if (pathname.includes('/api/auth')) {
           return;
         }
-        const nextSession = await getSession({ req });
+        const nextSession: unknown = await getSession({ req });
         if (nextSession) {
           return nextSession as NextAuthSession;
         }

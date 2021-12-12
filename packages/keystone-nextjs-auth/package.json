@@ -14,7 +14,7 @@
     "ejs": "^3.1.6",
     "fast-deep-equal": "^3.1.3",
     "graphql": "^15.7.2",
-    "next-auth": "^3.29.0"
+    "next-auth": "^4.0.5"
   },
   "devDependencies": {
     "@keystone-6/core": "^1.0.0",
@@ -33,6 +33,7 @@
   "preconstruct": {
     "entrypoints": [
       "index.ts",
+      "providers/*.ts",
       "pages/*.tsx"
     ]
   }

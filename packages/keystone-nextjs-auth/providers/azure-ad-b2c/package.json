@@ -1,0 +1,4 @@
+{
+  "main": "dist/opensaas-keystone-nextjs-auth-providers-azure-ad-b2c.cjs.js",
+  "module": "dist/opensaas-keystone-nextjs-auth-providers-azure-ad-b2c.esm.js"
+}
