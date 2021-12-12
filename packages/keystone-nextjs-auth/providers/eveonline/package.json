@@ -1,0 +1,4 @@
+{
+  "main": "dist/opensaas-keystone-nextjs-auth-providers-eveonline.cjs.js",
+  "module": "dist/opensaas-keystone-nextjs-auth-providers-eveonline.esm.js"
+}

@@ -1,0 +1,4 @@
+{
+  "main": "dist/opensaas-keystone-nextjs-auth-providers-battlenet.cjs.js",
+  "module": "dist/opensaas-keystone-nextjs-auth-providers-battlenet.esm.js"
+}

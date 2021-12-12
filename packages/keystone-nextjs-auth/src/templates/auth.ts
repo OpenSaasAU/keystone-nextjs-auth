@@ -14,6 +14,7 @@ export default getNextAuthPage({
         accountMap: <%- JSON.stringify(accountMap) %>,
         profileMap: <%- JSON.stringify(profileMap) %>,
         autoCreate: <%= autoCreate %>,
+        sessionSecret: '<%= sessionSecret %>',
         providers: keystoneConfig.providers,
         query,
     });
@@ -28,6 +29,7 @@ export const authTemplate = ({
   userMap,
   accountMap,
   profileMap,
+  sessionSecret,
 }: {
   gqlNames: AuthGqlNames;
   identityField: string;
@@ -37,6 +39,7 @@ export const authTemplate = ({
   userMap: any;
   accountMap: any;
   profileMap: any;
+  sessionSecret: string;
 }) => {
   const authOut = ejs.render(template, {
     gqlNames,
@@ -47,6 +50,7 @@ export const authTemplate = ({
     userMap,
     accountMap,
     profileMap,
+    sessionSecret,
   });
   return authOut;
 };

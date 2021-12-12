@@ -1,5 +1,5 @@
 # Keystone next auth
-This package that enables the adition of social auth to keystone-6.
+This package enables the addition of social auth to keystone-6.
 
 ## Contents
 
@@ -18,16 +18,27 @@ Add package by `yarn add @opensaas/keystone-nextjs-auth` then add the following 
 Add import...
 
 ```javascript
-import {
-  createAuth,
-  nextAuthProviders as Providers,
-} from '@opensaas/keystone-nextjs-auth';
+import { createAuth } from '@opensaas/keystone-nextjs-auth';
+import Auth0 from '@opensaas/keystone-nextjs-auth/providers/auth0';
+
 ```
 
 Add you Auth configuration including providers
-for Provider configuration see https://next-auth.js.org/configuration/providers.
+for Provider configuration see https://next-auth.js.org/configuration/providers. For Provider configuration replace `next-auth/providers/` with `@opensaas/keystone-nextjs-auth/providers/`
 
 ```javascript
+let sessionSecret = process.env.SESSION_SECRET;
+
+if (!sessionSecret) {
+  if (process.env.NODE_ENV === 'production') {
+    throw new Error(
+      'The SESSION_SECRET environment variable must be set in production'
+    );
+  } else {
+    sessionSecret = '-- DEV COOKIE SECRET; CHANGE ME --';
+  }
+}
+
 const auth = createAuth({
   listKey: 'User',
   identityField: 'subjectId',
@@ -37,8 +48,9 @@ const auth = createAuth({
   accountMap: {},
   profileMap: { email: 'email' },
   keystonePath: '/admin',
+  sessionSecret,
   providers: [
-    Providers.Auth0({
+    Auth0({
       clientId: process.env.AUTH0_CLIENT_ID || 'Auth0ClientID',
       clientSecret: process.env.AUTH0_CLIENT_SECRET || 'Auth0ClientSecret',
       domain: process.env.AUTH0_DOMAIN || 'opensaas.au.auth0.com',
