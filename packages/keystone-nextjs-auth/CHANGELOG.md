@@ -1,5 +1,21 @@
 # @opensaas-keystone/nextjs-auth
 
+## 20.0.0
+
+### Major Changes
+
+- b385ee4: Upgrade to next-authv4 see https://next-auth.js.org/getting-started/upgrade-v4 for more info.
+
+  BREAKING CHANGE:
+  `sessionSecret` now required in `createAuth`
+
+  `Providers` now under `@opensaas/keystone-nextjs-auth/providers/` ie `import Auth0 from '@opensaas/keystone-nextjs-auth/providers/auth0';` these can also be imported from next-auth by `import Auth0 from 'next-auth/providers/auth0';` if preferred.
+
+### Patch Changes
+
+- a6ad41a: fix redirect for custom path
+- 0043ca8: clean up some types
+
 ## 19.1.0
 
 ### Minor Changes

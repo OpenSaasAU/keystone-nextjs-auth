@@ -1,5 +1,13 @@
 # @opensaas-keystone/auth0-profile-backend
 
+## 6.0.1
+
+### Patch Changes
+
+- 0043ca8: clean up some types
+- Updated dependencies [0043ca8]
+  - @opensaas/keystone-auth0-profile@0.6.1
+
 ## 6.0.0
 
 ### Major Changes
