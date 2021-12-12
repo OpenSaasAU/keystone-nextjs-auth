@@ -39,6 +39,8 @@ export type AuthConfig<GeneratedListTypes extends BaseListTypeInfo> = {
   keystonePath?: string;
   /** Providers for Next Auth */
   providers: NextAuthProviders;
+  /** Next-Auth Session Secret */
+  sessionSecret: string;
 };
 
 export type AuthTokenRequestErrorCode =

@@ -8,9 +8,9 @@ import {
   SessionStrategy,
   BaseKeystoneTypeInfo,
 } from '@keystone-6/core/types';
-import { getSession } from 'next-auth/client';
-import Providers from 'next-auth/providers';
+import { getSession } from 'next-auth/react';
 import * as cookie from 'cookie';
+import Providers from './providers';
 import { nextConfigTemplate } from './templates/next-config';
 // import * as Path from 'path';
 
@@ -41,6 +41,7 @@ export function createAuth<GeneratedListTypes extends BaseListTypeInfo>({
   profileMap,
   keystonePath,
   providers,
+  sessionSecret,
 }: AuthConfig<GeneratedListTypes>) {
   // The protectIdentities flag is currently under review to see whether it should be
   // part of the createAuth API (in which case its use cases need to be documented and tested)
@@ -112,6 +113,7 @@ export function createAuth<GeneratedListTypes extends BaseListTypeInfo>({
           userMap,
           accountMap,
           profileMap,
+          sessionSecret,
         }),
       },
       {
@@ -252,7 +254,7 @@ export function createAuth<GeneratedListTypes extends BaseListTypeInfo>({
             process.env.NODE_ENV !== 'production' &&
             context.req?.url !== undefined &&
             new URL(context.req.url, 'http://example.com').pathname ===
-              `${customPath}/api/__keystone_api_build`
+            `${customPath}/api/__keystone_api_build`
           ) {
             return true;
           }

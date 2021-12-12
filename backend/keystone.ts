@@ -30,11 +30,13 @@ const auth = createAuth({
   accountMap: {},
   profileMap: { email: 'email' },
   keystonePath: '/admin',
+  sessionSecret,
   providers: [
     Providers.Auth0({
       clientId: process.env.AUTH0_CLIENT_ID || 'Auth0ClientID',
       clientSecret: process.env.AUTH0_CLIENT_SECRET || 'Auth0ClientSecret',
-      domain: process.env.AUTH0_DOMAIN || 'opensaas.au.auth0.com',
+      issuer:
+        process.env.AUTH0_ISSUER_BASE_URL || 'https://opensaas.au.auth0.com',
     }),
   ],
 });

@@ -1,6 +1,6 @@
 import NextAuth from 'next-auth';
-import { Provider } from 'next-auth/providers';
 import type { KeystoneListsAPI } from '@keystone-6/core/types';
+import { Provider } from 'next-auth/providers';
 import { validateNextAuth } from '../lib/validateNextAuth';
 
 // Need to bring in correct props
@@ -15,6 +15,7 @@ type NextAuthPageProps = {
   userMap: any;
   accountMap: any;
   profileMap: any;
+  sessionSecret: string;
 };
 
 export default function NextAuthPage(props: NextAuthPageProps) {
@@ -28,15 +29,17 @@ export default function NextAuthPage(props: NextAuthPageProps) {
     userMap,
     accountMap,
     profileMap,
+    sessionSecret,
   } = props;
   const list = query[listKey];
   const queryAPI = query[listKey];
   const protectIdentities = true;
 
   return NextAuth({
+    secret: sessionSecret,
     providers,
     callbacks: {
-      async signIn(user, account, profile) {
+      async signIn({ user, account, profile }) {
         let identity;
         if (typeof user.id === 'string') {
           identity = user.id;
@@ -94,10 +97,10 @@ export default function NextAuthPage(props: NextAuthPageProps) {
           return result.success;
         }
       },
-      async redirect(url) {
+      async redirect({ url }) {
         return url;
       },
-      async session(session: any, token: any) {
+      async session({ session, token }) {
         const returnSession = {
           ...session,
           data: token.data,
@@ -107,7 +110,7 @@ export default function NextAuthPage(props: NextAuthPageProps) {
         };
         return returnSession;
       },
-      async jwt(token) {
+      async jwt({ token }) {
         const identity = token.sub;
         if (!token.itemId) {
           const result = await validateNextAuth(
