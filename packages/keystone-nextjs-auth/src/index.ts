@@ -10,7 +10,6 @@ import {
 } from '@keystone-6/core/types';
 import { getSession } from 'next-auth/react';
 import * as cookie from 'cookie';
-import Providers from './providers';
 import { nextConfigTemplate } from './templates/next-config';
 // import * as Path from 'path';
 
@@ -23,7 +22,6 @@ import {
 import { getSchemaExtension } from './schema';
 import { authTemplate } from './templates/auth';
 
-export const nextAuthProviders = Providers;
 /**
  * createAuth function
  *

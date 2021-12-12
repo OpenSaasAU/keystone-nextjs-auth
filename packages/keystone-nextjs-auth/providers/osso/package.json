@@ -1,0 +1,4 @@
+{
+  "main": "dist/opensaas-keystone-nextjs-auth-providers-osso.cjs.js",
+  "module": "dist/opensaas-keystone-nextjs-auth-providers-osso.esm.js"
+}

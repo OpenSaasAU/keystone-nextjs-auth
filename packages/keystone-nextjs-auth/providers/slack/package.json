@@ -1,0 +1,4 @@
+{
+  "main": "dist/opensaas-keystone-nextjs-auth-providers-slack.cjs.js",
+  "module": "dist/opensaas-keystone-nextjs-auth-providers-slack.esm.js"
+}

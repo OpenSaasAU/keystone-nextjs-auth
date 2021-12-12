@@ -1,0 +1,4 @@
+{
+  "main": "dist/opensaas-keystone-nextjs-auth-providers-strava.cjs.js",
+  "module": "dist/opensaas-keystone-nextjs-auth-providers-strava.esm.js"
+}

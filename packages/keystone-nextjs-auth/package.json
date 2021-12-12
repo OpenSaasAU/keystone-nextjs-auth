@@ -33,6 +33,7 @@
   "preconstruct": {
     "entrypoints": [
       "index.ts",
+      "providers/*.ts",
       "pages/*.tsx"
     ]
   }

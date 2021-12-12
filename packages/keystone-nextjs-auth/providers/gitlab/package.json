@@ -1,0 +1,4 @@
+{
+  "main": "dist/opensaas-keystone-nextjs-auth-providers-gitlab.cjs.js",
+  "module": "dist/opensaas-keystone-nextjs-auth-providers-gitlab.esm.js"
+}

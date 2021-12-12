@@ -1,0 +1,4 @@
+{
+  "main": "dist/opensaas-keystone-nextjs-auth-providers-fusionauth.cjs.js",
+  "module": "dist/opensaas-keystone-nextjs-auth-providers-fusionauth.esm.js"
+}
