@@ -2,6 +2,7 @@ import { ApolloProvider } from '@apollo/client';
 import NProgress from 'nprogress';
 import Router from 'next/router';
 import '../components/styles/nprogress.css';
+import { SessionProvider } from 'next-auth/react';
 import { Page } from '../components/Page';
 import { useApollo } from '../lib/apolloClient';
 import '../components/styles/bootstrap.min.css';
@@ -10,14 +11,16 @@ Router.events.on('routeChangeStart', () => NProgress.start());
 Router.events.on('routeChangeComplete', () => NProgress.done());
 Router.events.on('routeChangeError', () => NProgress.done());
 
-const MyApp = function ({ Component, pageProps }) {
+const MyApp = function ({ Component, pageProps: { session, ...pageProps } }) {
   const apollo = useApollo(pageProps);
   return (
-    <ApolloProvider client={apollo}>
-      <Page>
-        <Component {...pageProps} />
-      </Page>
-    </ApolloProvider>
+    <SessionProvider session={session} refetchInterval={5 * 60}>
+      <ApolloProvider client={apollo}>
+        <Page>
+          <Component {...pageProps} />
+        </Page>
+      </ApolloProvider>
+    </SessionProvider>
   );
 };
 
