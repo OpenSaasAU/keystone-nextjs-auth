@@ -2563,12 +2563,12 @@
     terser "^5.2.1"
     v8-compile-cache "^2.1.1"
 
-"@preconstruct/eslint-plugin-format-js-tag@^0.1.0":
-  version "0.1.0"
-  resolved "https://registry.yarnpkg.com/@preconstruct/eslint-plugin-format-js-tag/-/eslint-plugin-format-js-tag-0.1.0.tgz#1f7fa49fc58f07b36056329e8760af0134e2efd8"
-  integrity sha512-ZcRLOt/Tq+vIFIYXW8sTe0D8gSz/Jw3DhZCd2QYEiv5jl3i0yNS2GH6PKMZiU8UQRf5/bNzrkGmv1+vHA8B0hg==
+"@preconstruct/eslint-plugin-format-js-tag@^0.2.0":
+  version "0.2.0"
+  resolved "https://registry.yarnpkg.com/@preconstruct/eslint-plugin-format-js-tag/-/eslint-plugin-format-js-tag-0.2.0.tgz#6727039301087469fc74fa5ddcdc56fc0187e234"
+  integrity sha512-/yXgIoBp8h0MOYOeI55pT5uLCalOLRyM+FSY55HqnbH1ALkr8ttmf7hu/EI3Z6KY8zRso3sXaf6OeFM4tuHIDg==
   dependencies:
-    "@typescript-eslint/experimental-utils" "^4.2.0"
+    "@typescript-eslint/experimental-utils" "^5.4.0"
 
 "@preconstruct/hook@^0.4.0":
   version "0.4.0"
@@ -3548,7 +3548,7 @@
     semver "^7.3.5"
     tsutils "^3.21.0"
 
-"@typescript-eslint/experimental-utils@4.33.0", "@typescript-eslint/experimental-utils@^4.2.0":
+"@typescript-eslint/experimental-utils@4.33.0":
   version "4.33.0"
   resolved "https://registry.yarnpkg.com/@typescript-eslint/experimental-utils/-/experimental-utils-4.33.0.tgz#6f2a786a4209fa2222989e9380b5331b2810f7fd"
   integrity sha512-zeQjOoES5JFjTnAhI5QY7ZviczMzDptls15GFsI6jyUOq0kOf9+WonkhtlIhh0RgHRnqj5gdNxW5j1EvAyYg6Q==
@@ -3560,7 +3560,7 @@
     eslint-scope "^5.1.1"
     eslint-utils "^3.0.0"
 
-"@typescript-eslint/experimental-utils@^5.0.0":
+"@typescript-eslint/experimental-utils@^5.0.0", "@typescript-eslint/experimental-utils@^5.4.0":
   version "5.5.0"
   resolved "https://registry.yarnpkg.com/@typescript-eslint/experimental-utils/-/experimental-utils-5.5.0.tgz#3fe2514dc2f3cd95562206e4058435ea51df609e"
   integrity sha512-kjWeeVU+4lQ1SLYErRKV5yDXbWDPkpbzTUUlfAUifPYvpX0qZlrcCZ96/6oWxt3QxtK5WVhXz+KsnwW9cIW+3A==
