@@ -1,5 +1,12 @@
 # @opensaas-keystone/nextjs-auth
 
+## 20.0.1
+
+### Patch Changes
+
+- 5503dec: upgrade babel and other packages
+- 5503dec: Fix up providers in build
+
 ## 20.0.0
 
 ### Major Changes
