@@ -2064,7 +2064,7 @@
   resolved "https://registry.yarnpkg.com/@keystone-6/document-renderer/-/document-renderer-1.0.0.tgz#afedf84bdfcce8130d6f33daa9e477b08d5bc40c"
   integrity sha512-mumjqZ+6+m9GhPauJTuRPRZGiZSbYOVJlqBvRmiEcndCuXiTucpyOWmANkIqDQFtPMOy0b13Elpx20mh8eUC6g==
 
-"@keystone-6/fields-document@^1.0.0", "@keystone-6/fields-document@^1.0.1":
+"@keystone-6/fields-document@^1.0.1":
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/@keystone-6/fields-document/-/fields-document-1.0.1.tgz#d4ad90da33a3411100ed8d6669786f5084601c89"
   integrity sha512-w/VvNH6JQ5R1k8Jnfa/QDsfJM28uTExEE6FJOmunbrZ5LrH0rWmaBz+7V4w712mnkbIut3hcVquAH9vNqGaSjQ==
@@ -2931,14 +2931,14 @@
     lz-string "^1.4.4"
     pretty-format "^26.6.2"
 
-"@testing-library/jest-dom@^5.15.1":
-  version "5.15.1"
-  resolved "https://registry.yarnpkg.com/@testing-library/jest-dom/-/jest-dom-5.15.1.tgz#4c49ba4d244f235aec53f0a83498daeb4ee06c33"
-  integrity sha512-kmj8opVDRE1E4GXyLlESsQthCXK7An28dFWxhiMwD7ZUI7ZxA6sjdJRxLerD9Jd8cHX4BDc1jzXaaZKqzlUkvg==
+"@testing-library/jest-dom@^5.16.1":
+  version "5.16.1"
+  resolved "https://registry.yarnpkg.com/@testing-library/jest-dom/-/jest-dom-5.16.1.tgz#3db7df5ae97596264a7da9696fe14695ba02e51f"
+  integrity sha512-ajUJdfDIuTCadB79ukO+0l8O+QwN0LiSxDaYUTI4LndbbUsGi6rWU1SCexXzBA2NSjlVB9/vbkasQIL3tmPBjw==
   dependencies:
     "@babel/runtime" "^7.9.2"
     "@types/testing-library__jest-dom" "^5.9.1"
-    aria-query "^4.2.2"
+    aria-query "^5.0.0"
     chalk "^3.0.0"
     css "^3.0.0"
     css.escape "^1.5.1"
@@ -4060,6 +4060,11 @@ aria-query@^4.2.2:
   dependencies:
     "@babel/runtime" "^7.10.2"
     "@babel/runtime-corejs3" "^7.10.2"
+
+aria-query@^5.0.0:
+  version "5.0.0"
+  resolved "https://registry.yarnpkg.com/aria-query/-/aria-query-5.0.0.tgz#210c21aaf469613ee8c9a62c7f86525e058db52c"
+  integrity sha512-V+SM7AbUwJ+EBnB8+DXs0hPZHO0W6pqBcc0dW90OwtVG02PswOu/teuARoLQjdDOH+t9pJgGnW5/Qmouf3gPJg==
 
 arr-diff@^4.0.0:
   version "4.0.0"
@@ -12384,11 +12389,6 @@ typedarray@^0.0.6:
   version "0.0.6"
   resolved "https://registry.yarnpkg.com/typedarray/-/typedarray-0.0.6.tgz#867ac74e3864187b1d3d47d996a78ec5c8830777"
   integrity sha1-hnrHTjhkGHsdPUfZlqeOxciDB3c=
-
-typescript@^4.4.4:
-  version "4.5.2"
-  resolved "https://registry.yarnpkg.com/typescript/-/typescript-4.5.2.tgz#8ac1fba9f52256fdb06fb89e4122fa6a346c2998"
-  integrity sha512-5BlMof9H1yGt0P8/WF+wPNw6GfctgGjXp5hkblpyT+8rkASSmkUKMXrxR0Xg8ThVCi/JnHQiKXeBaEwCeQwMFw==
 
 typescript@^4.5.4:
   version "4.5.4"
