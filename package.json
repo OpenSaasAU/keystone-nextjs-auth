@@ -74,7 +74,7 @@
     "@preconstruct/cli": "2.1.5",
     "@preconstruct/eslint-plugin-format-js-tag": "^0.2.0",
     "@testing-library/jest-dom": "^5.15.1",
-    "@types/jest": "^27.0.3",
+    "@types/jest": "^27.4.0",
     "@types/node": "^16.11.13",
     "@types/react": "^17.0.37",
     "@typescript-eslint/eslint-plugin": "^4.33.0",
