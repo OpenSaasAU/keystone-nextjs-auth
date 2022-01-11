@@ -1,3 +1,4 @@
+import 'dotenv/config';
 import { config } from '@keystone-6/core';
 import { statelessSessions } from '@keystone-6/core/session';
 import Auth0 from '@opensaas/keystone-nextjs-auth/providers/auth0';
