@@ -80,22 +80,23 @@ export default function NextAuthPage(props: NextAuthPageProps) {
           }
           console.log('Create User');
 
-          await list
+          const createUser =await list
             .createOne({ data })
             .then((returned) => {
-              console.log(returned);
-
+              console.log('User Created', JSON.stringify(returned));
               return true;
             })
             .catch((error) => {
               console.log(error);
-
               throw new Error(error);
             });
+            console.log('Created User', createUser);
+            return createUser;
         } else {
           // await list.updateOne({where: {id: result.item.id}, data});
           return result.success;
         }
+        
       },
       async redirect({ url }) {
         return url;
