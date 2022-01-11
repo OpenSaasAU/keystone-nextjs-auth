@@ -1,5 +1,11 @@
 # @opensaas-keystone/nextjs-auth
 
+## 20.1.0
+
+### Minor Changes
+
+- cd06bfa: upgrade to next-auth 4.1.0 and other minor upgrades
+
 ## 20.0.1
 
 ### Patch Changes
