@@ -9129,10 +9129,10 @@ new-github-issue-url@0.2.1:
   resolved "https://registry.yarnpkg.com/new-github-issue-url/-/new-github-issue-url-0.2.1.tgz#e17be1f665a92de465926603e44b9f8685630c1d"
   integrity sha512-md4cGoxuT4T4d/HDOXbrUHkTKrp/vp+m3aOA7XXVYwNsUNMK49g3SQicTSeV5GIz/5QVGAeYRAOlyp9OvlgsYA==
 
-next-auth@^4.1.2:
-  version "4.1.2"
-  resolved "https://registry.yarnpkg.com/next-auth/-/next-auth-4.1.2.tgz#9ae50e2b6ccbbbac02b7f627a6568fd29b56ac66"
-  integrity sha512-r5Km0eIDgGad+yhegk6OpulAnf7pyxsIpLec3xYB3PIb7F3bUTsvgWm/n/wAvlT0aAF1xKQWOgqhwPjrjte89g==
+next-auth@^4.2.1:
+  version "4.2.1"
+  resolved "https://registry.yarnpkg.com/next-auth/-/next-auth-4.2.1.tgz#042e4858d9f67b4f702d3a55bae0d2f04db3cac3"
+  integrity sha512-XDtt7nqevkNf4EJ2zKAKkI+MFsURf11kx11vPwxrBYA1MHeqWwaWbGOUOI2ekNTvfAg4nTEJJUH3LV2cLrH3Tg==
   dependencies:
     "@babel/runtime" "^7.16.3"
     "@panva/hkdf" "^1.0.1"
