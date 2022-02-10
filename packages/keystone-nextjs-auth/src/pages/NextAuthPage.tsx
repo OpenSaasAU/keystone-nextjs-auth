@@ -123,7 +123,7 @@ export default function NextAuthPage(props: NextAuthPageProps) {
           );
 
           if (!result.success) {
-            return;
+            return {result: false};
           }
 
           const data = await query[listKey].findOne({
