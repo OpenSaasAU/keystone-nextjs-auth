@@ -125,7 +125,7 @@ export default function NextAuthPage(props: NextAuthPageProps) {
           );
 
           if (!result.success) {
-            return token;
+            return { result: false };
           }
           token.itemId = result.item.id;
         }
