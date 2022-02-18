@@ -28,7 +28,7 @@ import Auth0 from '@opensaas/keystone-nextjs-auth/providers/auth0';
 ```
 
 Add you Auth configuration including providers
-for Provider configuration see https://next-auth.js.org/configuration/providers. For Provider configuration replace `next-auth/providers/` with `@opensaas/keystone-nextjs-auth/providers/`
+for Provider configuration see https://next-auth.js.org/providers/. For Provider configuration replace `next-auth/providers/` with `@opensaas/keystone-nextjs-auth/providers/`
 
 ```javascript
 let sessionSecret = process.env.SESSION_SECRET;
