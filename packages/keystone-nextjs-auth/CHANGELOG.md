@@ -1,5 +1,15 @@
 # @opensaas-keystone/nextjs-auth
 
+## 20.2.0
+
+### Minor Changes
+
+- Generate NodeAPI by default
+
+### Patch Changes
+
+- 6d63b1f: Minor Patch upgrades
+
 ## 20.1.1
 
 ### Patch Changes
