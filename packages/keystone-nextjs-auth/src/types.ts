@@ -12,7 +12,7 @@ export type AuthGqlNames = {
 
 export type NextAuthSession = { listKey: string; itemId: string; data: any };
 
-export type NextAuthProviders = [Provider];
+export type NextAuthProviders = Provider[];
 
 type KeytoneAuthProviders = {
   providers: NextAuthProviders;
