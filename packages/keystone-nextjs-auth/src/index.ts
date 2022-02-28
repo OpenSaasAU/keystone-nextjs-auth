@@ -292,6 +292,10 @@ export function createAuth<GeneratedListTypes extends BaseListTypeInfo>({
       lists: {
         ...keystoneConfig.lists,
       },
+      experimental: {
+        ...keystoneConfig.experimental,
+        generateNodeAPI: true,
+      },
       extendGraphqlSchema: existingExtendGraphQLSchema
         ? (schema) => existingExtendGraphQLSchema(extendGraphqlSchema(schema))
         : extendGraphqlSchema,
