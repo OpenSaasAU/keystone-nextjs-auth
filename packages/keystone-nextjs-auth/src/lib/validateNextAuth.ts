@@ -3,7 +3,6 @@ import { NextAuthErrorCode } from '../types';
 import { findMatchingIdentity } from './findMatchingIdentity';
 
 export async function validateNextAuth(
-  list: any,
   identityField: string,
   identity: string | number,
   protectIdentities: boolean,
