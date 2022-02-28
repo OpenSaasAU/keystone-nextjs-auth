@@ -45,6 +45,8 @@ export default function NextAuthPage(props: NextAuthPageProps) {
           identity = user.id;
         } else if (typeof user.id === 'number') {
           identity = user.id;
+        } else {
+          identity = 0;
         }
         const result = await validateNextAuth(
           list,
@@ -53,7 +55,7 @@ export default function NextAuthPage(props: NextAuthPageProps) {
           protectIdentities,
           queryAPI
         );
-        const data = {};
+        const data: any = {};
         // eslint-disable-next-line no-restricted-syntax
         for (const key in userMap) {
           if (Object.prototype.hasOwnProperty.call(userMap, key)) {
@@ -80,22 +82,21 @@ export default function NextAuthPage(props: NextAuthPageProps) {
           }
           console.log('Create User');
 
-          await list
+          const createUser = await list
             .createOne({ data })
             .then((returned) => {
-              console.log(returned);
-
+              console.log('User Created', JSON.stringify(returned));
               return true;
             })
             .catch((error) => {
               console.log(error);
-
               throw new Error(error);
             });
-        } else {
-          // await list.updateOne({where: {id: result.item.id}, data});
-          return result.success;
+          console.log('Created User', createUser);
+          return createUser;
         }
+        // await list.updateOne({where: {id: result.item.id}, data});
+        return result.success;
       },
       async redirect({ url }) {
         return url;
@@ -111,7 +112,7 @@ export default function NextAuthPage(props: NextAuthPageProps) {
         return returnSession;
       },
       async jwt({ token }) {
-        const identity = token.sub;
+        const identity = token.sub as number | string;
         if (!token.itemId) {
           const result = await validateNextAuth(
             list,

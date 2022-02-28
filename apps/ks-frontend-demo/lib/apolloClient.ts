@@ -9,13 +9,14 @@ export const APOLLO_STATE_PROP_NAME = '__APOLLO_STATE__';
 
 let apolloClient;
 
-function createApolloClient() {
+function createApolloClient(headers) {
   const { publicRuntimeConfig } = getConfig();
   return new ApolloClient({
     ssrMode: typeof window === 'undefined',
     link: new HttpLink({
       uri: publicRuntimeConfig?.backend || 'http://localhost:3000/api/graphql', // Server URL (must be absolute)
       credentials: 'include', // Additional fetch() options like `credentials` or `headers`
+      headers: { Cookie: headers?.cookie ?? '' },
     }),
     cache: new InMemoryCache({
       typePolicies: {
@@ -29,8 +30,8 @@ function createApolloClient() {
   });
 }
 
-export function initializeApollo(initialState = null) {
-  const _apolloClient = apolloClient ?? createApolloClient();
+export function initializeApollo(headers, initialState = null) {
+  const _apolloClient = apolloClient ?? createApolloClient(headers);
 
   // If your page has Next.js data fetching methods that use Apollo Client, the initial state
   // gets hydrated here

@@ -1,10 +1,16 @@
 # @opensaas-keystone/nextjs-auth
 
+## 20.1.1
+
+### Patch Changes
+
+- 0b22f90: Fix Error where signin was returning deny on create user
+
 ## 20.1.0
 
 ### Minor Changes
 
-- Generate NodeAPI by default
+- cd06bfa: upgrade to next-auth 4.1.0 and other minor upgrades
 
 ## 20.0.1
 
