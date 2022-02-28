@@ -49,7 +49,6 @@ export default function NextAuthPage(props: NextAuthPageProps) {
           identity = 0;
         }
         const result = await validateNextAuth(
-          list,
           identityField,
           identity,
           protectIdentities,
@@ -119,7 +118,6 @@ export default function NextAuthPage(props: NextAuthPageProps) {
         const identity = token.sub as number | string;
         if (!token.itemId) {
           const result = await validateNextAuth(
-            list,
             identityField,
             identity,
             protectIdentities,
