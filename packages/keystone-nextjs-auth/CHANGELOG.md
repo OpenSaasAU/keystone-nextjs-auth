@@ -1,5 +1,11 @@
 # @opensaas-keystone/nextjs-auth
 
+## 20.2.1
+
+### Patch Changes
+
+- Small patches
+
 ## 20.2.0
 
 ### Minor Changes
