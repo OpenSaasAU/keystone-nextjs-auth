@@ -49,7 +49,6 @@ export default function NextAuthPage(props: NextAuthPageProps) {
           identity = 0;
         }
         const result = await validateNextAuth(
-          list,
           identityField,
           identity,
           protectIdentities,
@@ -77,10 +76,14 @@ export default function NextAuthPage(props: NextAuthPageProps) {
 
         if (!result.success) {
           if (!autoCreate) {
-            console.log('False');
+            console.log(
+              '`autoCreate` if set to `false`, skipping user auto-creation'
+            );
             return false;
           }
-          console.log('Create User');
+          console.log(
+            '`autoCreate` if set to `true`, auto-creating a new user'
+          );
 
           const createUser = await list
             .createOne({ data })
@@ -115,7 +118,6 @@ export default function NextAuthPage(props: NextAuthPageProps) {
         const identity = token.sub as number | string;
         if (!token.itemId) {
           const result = await validateNextAuth(
-            list,
             identityField,
             identity,
             protectIdentities,
