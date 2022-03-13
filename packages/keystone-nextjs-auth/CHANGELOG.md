@@ -1,5 +1,11 @@
 # @opensaas-keystone/nextjs-auth
 
+## 20.3.0
+
+### Minor Changes
+
+- 34e9932: Fix up stale next session - session is now refreshed on change of data
+
 ## 20.2.0
 
 ### Minor Changes
