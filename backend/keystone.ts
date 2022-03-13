@@ -53,7 +53,7 @@ export default auth.withAuth(
       provider: 'postgresql',
       url:
         process.env.DATABASE_URL ||
-        'postgres://postgres:mysecretpassword@localhost:55000/opensaas-creator',
+        'postgres://postgres:mysecretpassword@localhost:55000/opensaas-local',
       useMigrations: true,
     },
     ui: {
