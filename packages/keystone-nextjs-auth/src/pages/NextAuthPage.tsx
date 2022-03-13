@@ -125,24 +125,22 @@ export default function NextAuthPage(props: NextAuthPageProps) {
           );
 
           if (!result.success) {
-            return;
+            return token;
           }
-
-          const data = await query[listKey].findOne({
-            where: { id: result.item.id },
-            query: sessionData || 'id',
-          });
-          const returnToken = {
-            ...token,
-            data,
-            subject: token.sub,
-            listKey,
-            itemId: result.item.id.toString(),
-          };
-
-          return returnToken;
+          token.itemId = result.item.id;
         }
-        return token;
+        const data = await query[listKey].findOne({
+          where: { id: token.itemId },
+          query: sessionData || 'id',
+        });
+        const returnToken = {
+          ...token,
+          data,
+          subject: token.sub,
+          listKey,
+        };
+
+        return returnToken;
       },
     },
   });
