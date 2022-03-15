@@ -1,5 +1,11 @@
 # @opensaas-keystone/nextjs-auth
 
+## 20.4.0
+
+### Minor Changes
+
+- 80ba444: Add `getToken` to keystone `get session` to enable JWT in Authorization header
+
 ## 20.3.0
 
 ### Minor Changes
