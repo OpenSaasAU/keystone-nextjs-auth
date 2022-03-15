@@ -9,7 +9,10 @@ import {
   BaseKeystoneTypeInfo,
 } from '@keystone-6/core/types';
 import { getSession } from 'next-auth/react';
+import { getToken } from 'next-auth/jwt';
 import * as cookie from 'cookie';
+import { Provider } from 'next-auth/providers';
+import { NextApiRequest } from 'next';
 import { nextConfigTemplate } from './templates/next-config';
 // import * as Path from 'path';
 
@@ -136,7 +139,7 @@ export function createAuth<GeneratedListTypes extends BaseListTypeInfo>({
     `${customPath}/api/auth/providers`,
     `${customPath}/api/auth/signout`,
   ];
-  function addPages(provider) {
+  function addPages(provider: Provider) {
     const name = provider.id;
     publicPages.push(`${customPath}/api/auth/signin/${name}`);
     publicPages.push(`${customPath}/api/auth/callback/${name}`);
@@ -188,15 +191,25 @@ export function createAuth<GeneratedListTypes extends BaseListTypeInfo>({
   const withItemData = (
     _sessionStrategy: SessionStrategy<Record<string, any>>
   ): SessionStrategy<NextAuthSession | undefined> => {
-    const { get, ...sessionStrategy } = _sessionStrategy;
+    const { get, start, ...sessionStrategy } = _sessionStrategy;
     return {
       ...sessionStrategy,
+      start,
       get: async ({ req }) => {
         const pathname = url.parse(req?.url!).pathname!;
         if (pathname.includes('/api/auth')) {
           return;
         }
+        if (req.headers.authorization?.split(' ')[0] === 'Bearer') {
+          const request = req as NextApiRequest;
+          const token = await getToken({ req: request, secret: sessionSecret });
+
+          if (token?.data?.id) {
+            return token as NextAuthSession;
+          }
+        }
         const nextSession: unknown = await getSession({ req });
+
         if (nextSession) {
           return nextSession as NextAuthSession;
         }
@@ -215,7 +228,7 @@ export function createAuth<GeneratedListTypes extends BaseListTypeInfo>({
             secure: process.env.NODE_ENV === 'production',
             path: '/',
             sameSite: 'lax',
-            domain: url.parse(req.url).hostname,
+            domain: url.parse(req.url as string).hostname as string,
           })
         );
       },
