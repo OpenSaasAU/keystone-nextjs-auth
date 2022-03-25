@@ -1,5 +1,11 @@
 # @opensaas-keystone/nextjs-auth
 
+## 20.5.0
+
+### Minor Changes
+
+- e2e7122: upgrade keystone to `1.1.0`
+
 ## 20.4.0
 
 ### Minor Changes
