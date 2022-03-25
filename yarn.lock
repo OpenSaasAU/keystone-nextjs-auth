@@ -1390,6 +1390,11 @@
   resolved "https://registry.yarnpkg.com/@braintree/sanitize-url/-/sanitize-url-5.0.2.tgz#b23080fa35520e993a8a37a0f5bca26aa4650a48"
   integrity sha512-NBEJlHWrhQucLhZGHtSxM2loSaNUMajC7KOYJLyfcdW/6goVoff2HoYI3bz8YCDN0wKGbxtUL0gx2dvHpvnWlw==
 
+"@braintree/sanitize-url@^6.0.0":
+  version "6.0.0"
+  resolved "https://registry.yarnpkg.com/@braintree/sanitize-url/-/sanitize-url-6.0.0.tgz#fe364f025ba74f6de6c837a84ef44bdb1d61e68f"
+  integrity sha512-mgmE7XBYY/21erpzhexk4Cj1cyTQ9LzvnTxtzM17BJ7ERMNE6W72mQRo0I1Ud8eFJ+RVVIcBNhLFZ3GX4XFz5w==
+
 "@changesets/apply-release-plan@^5.0.5":
   version "5.0.5"
   resolved "https://registry.yarnpkg.com/@changesets/apply-release-plan/-/apply-release-plan-5.0.5.tgz#d67b1e022c876d18d887f3c475a3abcad9944b68"
@@ -2284,6 +2289,42 @@
     apply-ref "^1.0.0"
     fp-ts "^2.11.5"
     graphql "^15.7.2"
+    io-ts "^2.2.16"
+    io-ts-excess "^1.0.1"
+    is-hotkey "^0.2.0"
+    match-sorter "^6.3.1"
+    mdast-util-definitions "^4.0.0"
+    mdast-util-from-markdown "^0.8.5"
+    mdast-util-gfm-autolink-literal "^0.1.3"
+    mdast-util-gfm-strikethrough "^0.2.3"
+    micromark-extension-gfm-autolink-literal "0.5.7"
+    micromark-extension-gfm-strikethrough "0.6.5"
+    react "^17.0.2"
+    scroll-into-view-if-needed "^2.2.28"
+    slate "^0.67.1"
+    slate-history "^0.66.0"
+    slate-react "^0.69.0"
+
+"@keystone-6/fields-document@^2.0.0":
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/@keystone-6/fields-document/-/fields-document-2.0.0.tgz#94e9eb568012573b9b58d62baec1ae7536a4015f"
+  integrity sha512-nzdv0Pd1ad599Wi/NpPq/f+w6swDUWixijBsuwmzKgo8vXGfZDBL5TVlarji71aJ1j1jl248z9G4HwvY/53WPw==
+  dependencies:
+    "@babel/runtime" "^7.16.3"
+    "@braintree/sanitize-url" "^6.0.0"
+    "@emotion/weak-memoize" "^0.2.5"
+    "@keystone-6/document-renderer" "^1.0.0"
+    "@keystone-ui/button" "^6.0.0"
+    "@keystone-ui/core" "^4.0.0"
+    "@keystone-ui/fields" "^6.0.1"
+    "@keystone-ui/icons" "^5.0.0"
+    "@keystone-ui/popover" "^5.0.1"
+    "@keystone-ui/tooltip" "^5.0.0"
+    "@types/react" "^17.0.37"
+    apollo-server-errors "^3.3.0"
+    apply-ref "^1.0.0"
+    fp-ts "^2.11.5"
+    graphql "^15.8.0"
     io-ts "^2.2.16"
     io-ts-excess "^1.0.1"
     is-hotkey "^0.2.0"
