@@ -46,7 +46,7 @@
     ]
   },
   "dependencies": {
-    "@apollo/client": "^3.5.8",
+    "@apollo/client": "^3.5.10",
     "@babel/core": "^7.17.8",
     "@babel/plugin-proposal-class-properties": "^7.16.7",
     "@babel/plugin-proposal-object-rest-spread": "^7.17.3",
@@ -78,13 +78,13 @@
     "react-bootstrap": "^1.6.4",
     "react-dom": "^17.0.2",
     "react-transition-group": "^4.4.2",
-    "styled-components": "^5.3.3",
+    "styled-components": "^5.3.5",
     "typescript": "^4.5.5",
     "waait": "^1.0.5"
   },
   "devDependencies": {
     "@apollo/react-testing": "^4.0.0",
-    "@testing-library/jest-dom": "^5.16.1",
+    "@testing-library/jest-dom": "^5.16.3",
     "@testing-library/react": "^11.2.7",
     "@testing-library/user-event": "^12.8.3",
     "babel-eslint": "^10.1.0",
