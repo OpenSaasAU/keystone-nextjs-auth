@@ -1,15 +1,11 @@
 import type { BaseItem } from '@keystone-6/core/types';
 import { graphql } from '@keystone-6/core';
 
-import { AuthGqlNames } from '../types';
-
 export function getBaseAuthSchema({
   listKey,
-  gqlNames,
   base,
 }: {
   listKey: string;
-  gqlNames: AuthGqlNames;
   base: graphql.BaseSchemaMeta;
 }) {
   const extension = {

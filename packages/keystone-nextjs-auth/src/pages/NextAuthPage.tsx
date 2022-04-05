@@ -1,43 +1,74 @@
-import NextAuth from 'next-auth';
+import NextAuth, {
+  CookiesOptions,
+  EventCallbacks,
+  PagesOptions,
+} from 'next-auth';
 import type { KeystoneListsAPI } from '@keystone-6/core/types';
 import { Provider } from 'next-auth/providers';
+import { JWTOptions } from 'next-auth/jwt';
 import { validateNextAuth } from '../lib/validateNextAuth';
 
-// Need to bring in correct props
-type NextAuthPageProps = {
-  identityField: string;
-  mutationName: string;
-  providers: Provider[];
-  query: KeystoneListsAPI<any>;
-  sessionData: string;
-  listKey: string;
+// TODO: See if possible to merge with `type AuthConfig`
+type CoreNextAuthPageProps = {
   autoCreate: boolean;
-  userMap: any;
-  accountMap: any;
-  profileMap: any;
+  cookies?: Partial<CookiesOptions>;
+  events?: Partial<EventCallbacks>;
+  identityField: string;
+  jwt?: Partial<JWTOptions>;
+  listKey: string;
+  pages?: Partial<PagesOptions>;
+  providers?: Provider[];
+  resolver?: Function | undefined;
+  sessionData: string | undefined;
   sessionSecret: string;
 };
 
+type NextAuthGglProps = {
+  mutationName?: string;
+  query?: KeystoneListsAPI<any>;
+};
+
+export type NextAuthPageProps = CoreNextAuthPageProps & NextAuthGglProps;
+
 export default function NextAuthPage(props: NextAuthPageProps) {
   const {
+    autoCreate,
+    cookies,
+    events,
+    identityField,
+    jwt,
+    listKey,
+    pages,
     providers,
     query,
-    identityField,
+    resolver,
     sessionData,
-    listKey,
-    autoCreate,
-    userMap,
-    accountMap,
-    profileMap,
     sessionSecret,
   } = props;
+  // TODO: (v1.1). https://github.com/ijsto/keystone-6-oauth/projects/1#card-78602004
+  console.log('NextAuthPages... ', pages);
+
+  if (!query) {
+    console.error('NextAuthPage got no query.');
+    return null;
+  }
+
+  if (!providers || !providers.length) {
+    console.error('You need to provide at least one provider.');
+    return null;
+  }
+
   const list = query[listKey];
   const queryAPI = query[listKey];
   const protectIdentities = true;
 
   return NextAuth({
-    secret: sessionSecret,
+    cookies,
     providers,
+    pages: pages || {},
+    events: events || {},
+    jwt: jwt || {},
+    secret: sessionSecret,
     callbacks: {
       async signIn({ user, account, profile }) {
         let identity;
@@ -48,31 +79,21 @@ export default function NextAuthPage(props: NextAuthPageProps) {
         } else {
           identity = 0;
         }
+        const userInput = resolver
+          ? await resolver({ user, account, profile })
+          : {};
+
         const result = await validateNextAuth(
           identityField,
           identity,
           protectIdentities,
           queryAPI
         );
-        const data: any = {};
-        // eslint-disable-next-line no-restricted-syntax
-        for (const key in userMap) {
-          if (Object.prototype.hasOwnProperty.call(userMap, key)) {
-            data[key] = user[userMap[key]];
-          }
-        }
-        // eslint-disable-next-line no-restricted-syntax
-        for (const key in accountMap) {
-          if (Object.prototype.hasOwnProperty.call(accountMap, key)) {
-            data[key] = account[accountMap[key]];
-          }
-        }
-        // eslint-disable-next-line no-restricted-syntax
-        for (const key in profileMap) {
-          if (Object.prototype.hasOwnProperty.call(profileMap, key)) {
-            data[key] = profile[profileMap[key]];
-          }
-        }
+        // ID
+        const data: any = {
+          [identityField]: identity,
+          ...userInput,
+        };
 
         if (!result.success) {
           if (!autoCreate) {
@@ -125,7 +146,7 @@ export default function NextAuthPage(props: NextAuthPageProps) {
           );
 
           if (!result.success) {
-            return { result: false };
+            return token;
           }
           token.itemId = result.item.id;
         }

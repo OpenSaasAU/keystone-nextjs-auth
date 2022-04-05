@@ -10,18 +10,14 @@ import {
 } from '@keystone-6/core/types';
 import { getSession } from 'next-auth/react';
 import { getToken } from 'next-auth/jwt';
-import * as cookie from 'cookie';
 import { Provider } from 'next-auth/providers';
-import { NextApiRequest } from 'next';
+
+import * as cookie from 'cookie';
+
 import { nextConfigTemplate } from './templates/next-config';
 // import * as Path from 'path';
 
-import {
-  AuthConfig,
-  AuthGqlNames,
-  KeystoneAuthConfig,
-  NextAuthSession,
-} from './types';
+import { AuthConfig, KeystoneOAuthConfig, NextAuthSession } from './types';
 import { getSchemaExtension } from './schema';
 import { authTemplate } from './templates/auth';
 
@@ -31,33 +27,23 @@ import { authTemplate } from './templates/auth';
  * Generates config for Keystone to implement standard auth features.
  */
 
-export type { NextAuthProviders, KeystoneAuthConfig } from './types';
+export type { NextAuthProviders, KeystoneOAuthConfig } from './types';
 export function createAuth<GeneratedListTypes extends BaseListTypeInfo>({
-  listKey,
-  identityField,
-  sessionData,
   autoCreate,
-  userMap,
-  accountMap,
-  profileMap,
+  cookies,
+  identityField,
+  listKey,
   keystonePath,
+  pages,
+  resolver,
   providers,
+  sessionData,
   sessionSecret,
 }: AuthConfig<GeneratedListTypes>) {
   // The protectIdentities flag is currently under review to see whether it should be
   // part of the createAuth API (in which case its use cases need to be documented and tested)
   // or whether always being true is what we want, in which case we can refactor our code
   // to match this. -TL
-  const gqlNames: AuthGqlNames = {
-    // Core
-    authenticateItemWithPassword: `authenticate${listKey}WithPassword`,
-    ItemAuthenticationWithPasswordResult: `${listKey}AuthenticationWithPasswordResult`,
-    ItemAuthenticationWithPasswordSuccess: `${listKey}AuthenticationWithPasswordSuccess`,
-    ItemAuthenticationWithPasswordFailure: `${listKey}AuthenticationWithPasswordFailure`,
-    // Initial data
-    CreateInitialInput: `CreateInitial${listKey}Input`,
-    createInitialItem: `createInitial${listKey}`,
-  };
 
   const customPath = !keystonePath || keystonePath === '/' ? '' : keystonePath;
   /**
@@ -74,9 +60,7 @@ export function createAuth<GeneratedListTypes extends BaseListTypeInfo>({
     async ({ context, isValidSession }) => {
       const { req, session } = context;
       const pathname = url.parse(req?.url!).pathname!;
-      if (pathname === `${customPath}/api/__keystone_api_build`) {
-        return;
-      }
+
       if (isValidSession) {
         if (pathname === `${customPath}/api/auth/signin`) {
           return { kind: 'redirect', to: `${customPath}` };
@@ -86,8 +70,14 @@ export function createAuth<GeneratedListTypes extends BaseListTypeInfo>({
         }
         return;
       }
-
-      if (!session && !pathname.includes(`${customPath}/api/auth/`)) {
+      if (pathname.includes('/_next/') || pathname.includes('/api/auth/')) {
+        return;
+      }
+      if (
+        !session &&
+        !pathname.includes(`${customPath}/api/auth/`) &&
+        !(Object.values(pages).indexOf(pathname) > -1)
+      ) {
         return { kind: 'redirect', to: `${customPath}/api/auth/signin` };
       }
     };
@@ -106,14 +96,10 @@ export function createAuth<GeneratedListTypes extends BaseListTypeInfo>({
         mode: 'write',
         outputPath: 'pages/api/auth/[...nextauth].js',
         src: authTemplate({
-          gqlNames,
-          identityField,
-          sessionData,
-          listKey,
           autoCreate,
-          userMap,
-          accountMap,
-          profileMap,
+          identityField,
+          listKey,
+          sessionData,
           sessionSecret,
         }),
       },
@@ -132,13 +118,17 @@ export function createAuth<GeneratedListTypes extends BaseListTypeInfo>({
    * Must be added to the ui.publicPages config
    */
   const publicPages = [
+    `${customPath}/api/__keystone_api_build`,
     `${customPath}/api/auth/csrf`,
     `${customPath}/api/auth/signin`,
     `${customPath}/api/auth/callback`,
     `${customPath}/api/auth/session`,
     `${customPath}/api/auth/providers`,
     `${customPath}/api/auth/signout`,
+    `${customPath}/api/auth/error`,
   ];
+  // TODO: Add Provider Types
+  // @ts-ignore
   function addPages(provider: Provider) {
     const name = provider.id;
     publicPages.push(`${customPath}/api/auth/signin/${name}`);
@@ -154,7 +144,6 @@ export function createAuth<GeneratedListTypes extends BaseListTypeInfo>({
   const extendGraphqlSchema = getSchemaExtension({
     identityField,
     listKey,
-    gqlNames,
   });
 
   /**
@@ -169,13 +158,16 @@ export function createAuth<GeneratedListTypes extends BaseListTypeInfo>({
       throw new Error(msg);
     }
 
+    // TODO: Check if providers
+    // TODO: Check other required commands/data
+
     // TODO: Check for String-like typing for identityField? How?
     // TODO: Validate that the identifyField is unique.
     // TODO: If this field isn't required, what happens if I try to log in as `null`?
     const identityFieldConfig = listConfig.fields[identityField];
     if (identityFieldConfig === undefined) {
-      const i = JSON.stringify(identityField);
-      const msg = `A createAuth() invocation for the "${listKey}" list specifies ${i} as its identityField but no field with that key exists on the list.`;
+      const identityFieldName = JSON.stringify(identityField);
+      const msg = `A createAuth() invocation for the "${listKey}" list specifies ${identityFieldName} as its identityField but no field with that key exists on the list.`;
       throw new Error(msg);
     }
   };
@@ -194,18 +186,25 @@ export function createAuth<GeneratedListTypes extends BaseListTypeInfo>({
     const { get, start, ...sessionStrategy } = _sessionStrategy;
     return {
       ...sessionStrategy,
-      start,
+      start: async ({ res }) => {
+        console.log('start');
+
+        const session = await start({ res });
+        return session;
+      },
       get: async ({ req }) => {
         const pathname = url.parse(req?.url!).pathname!;
         if (pathname.includes('/api/auth')) {
           return;
         }
         if (req.headers.authorization?.split(' ')[0] === 'Bearer') {
-          const request = req as NextApiRequest;
-          const token = await getToken({ req: request, secret: sessionSecret });
+          const token = (await getToken({
+            req,
+            secret: sessionSecret,
+          })) as NextAuthSession;
 
           if (token?.data?.id) {
-            return token as NextAuthSession;
+            return token;
           }
         }
         const nextSession: unknown = await getSession({ req });
@@ -228,6 +227,7 @@ export function createAuth<GeneratedListTypes extends BaseListTypeInfo>({
             secure: process.env.NODE_ENV === 'production',
             path: '/',
             sameSite: 'lax',
+            // TODO: Update parse to URL
             domain: url.parse(req.url as string).hostname as string,
           })
         );
@@ -245,7 +245,7 @@ export function createAuth<GeneratedListTypes extends BaseListTypeInfo>({
    * It validates the auth config against the provided keystone config, and preserves existing
    * config by composing existing extendGraphqlSchema functions and ui config.
    */
-  const withAuth = (keystoneConfig: KeystoneConfig): KeystoneAuthConfig => {
+  const withAuth = (keystoneConfig: KeystoneConfig): KeystoneOAuthConfig => {
     validateConfig(keystoneConfig);
     let { ui } = keystoneConfig;
     if (keystoneConfig.ui) {
@@ -261,6 +261,15 @@ export function createAuth<GeneratedListTypes extends BaseListTypeInfo>({
           keystoneConfig?.ui?.pageMiddleware?.(args),
         enableSessionItem: true,
         isAccessAllowed: async (context: KeystoneContext) => {
+          const { req } = context;
+          const pathname = url.parse(req?.url!).pathname!;
+
+          // Allow nextjs scripts and static files to be accessed without auth
+          if (pathname.includes('/_next/')) {
+            return true;
+          }
+
+          // Allow keystone to access /api/__keystone_api_build for hot reloading
           if (
             process.env.NODE_ENV !== 'production' &&
             context.req?.url !== undefined &&
@@ -269,25 +278,10 @@ export function createAuth<GeneratedListTypes extends BaseListTypeInfo>({
           ) {
             return true;
           }
-          // Allow access to the adminMeta data from the /init path to correctly render that page
-          // even if the user isn't logged in (which should always be the case if they're seeing /init)
-          const headers = context.req?.headers;
-          const host = headers
-            ? headers['x-forwarded-host'] || headers.host
-            : null;
-          const thisUrl = headers?.referer
-            ? new URL(headers.referer)
-            : undefined;
-          const accessingInitPage =
-            thisUrl?.pathname === '/init' &&
-            thisUrl?.host === host &&
-            (await context.sudo().query[listKey].count({})) === 0;
-          return (
-            accessingInitPage ||
-            (keystoneConfig.ui?.isAccessAllowed
-              ? keystoneConfig.ui.isAccessAllowed(context)
-              : context.session !== undefined)
-          );
+
+          return keystoneConfig.ui?.isAccessAllowed
+            ? keystoneConfig.ui.isAccessAllowed(context)
+            : context.session !== undefined;
         },
       };
     }
@@ -300,8 +294,11 @@ export function createAuth<GeneratedListTypes extends BaseListTypeInfo>({
     return {
       ...keystoneConfig,
       ui,
-      session,
+      cookies,
       providers,
+      pages,
+      resolver,
+      session,
       lists: {
         ...keystoneConfig.lists,
       },
