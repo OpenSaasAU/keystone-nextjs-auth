@@ -48,9 +48,11 @@ const auth = createAuth({
   identityField: 'subjectId',
   sessionData: `id name email`,
   autoCreate: true,
-  userMap: { subjectId: 'id', name: 'name' },
-  accountMap: {},
-  profileMap: { email: 'email' },
+  resolver: async ({user, profile, account}) => {
+    const username = user.name as string;
+    const email = user.email as string;
+    return { email, username };
+  },
   keystonePath: '/admin',
   sessionSecret,
   providers: [

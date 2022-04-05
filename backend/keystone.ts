@@ -4,6 +4,7 @@ import { statelessSessions } from '@keystone-6/core/session';
 import Auth0 from '@opensaas/keystone-nextjs-auth/providers/auth0';
 import { createAuth } from '@opensaas/keystone-nextjs-auth';
 import { KeystoneContext } from '@keystone-6/core/types';
+import * as Path from 'path';
 import { lists } from './schemas';
 
 let sessionSecret = process.env.SESSION_SECRET;
@@ -25,9 +26,14 @@ const auth = createAuth({
   identityField: 'subjectId',
   sessionData: `id name email`,
   autoCreate: true,
-  userMap: { subjectId: 'id', name: 'name' },
-  accountMap: {},
-  profileMap: { email: 'email' },
+  resolver: async ({ user, profile }: { user: any; profile: any }) => {
+    const username = user.name as string;
+    const email = profile.email as string;
+    return { email, username };
+  },
+  pages: {
+    signIn: '/admin/auth/signin',
+  },
   keystonePath: '/admin',
   sessionSecret,
   providers: [
@@ -58,6 +64,21 @@ export default auth.withAuth(
     },
     ui: {
       isAccessAllowed: (context: KeystoneContext) => !!context.session?.data,
+      publicPages: ['/admin/auth/signin', '/admin/auth/error'],
+      getAdditionalFiles: [
+        async () => [
+          {
+            mode: 'copy',
+            inputPath: Path.join(__dirname, './customPages/signin.js'),
+            outputPath: 'pages/auth/signin.js',
+          },
+          {
+            mode: 'copy',
+            inputPath: Path.join(__dirname, './customPages/error.js'),
+            outputPath: 'pages/auth/error.js',
+          },
+        ],
+      ],
     },
     lists,
     session: statelessSessions({

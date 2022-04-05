@@ -1,5 +1,5 @@
 import ejs from 'ejs';
-import { AuthGqlNames } from '../types';
+import { NextAuthPageProps } from '../pages/NextAuthPage';
 
 const template = `
 import getNextAuthPage from '@opensaas/keystone-nextjs-auth/pages/NextAuthPage';
@@ -7,49 +7,32 @@ import { query } from '.keystone/api';
 import keystoneConfig from '../../../../../keystone';
 
 export default getNextAuthPage({
-        identityField: '<%= identityField %>',
-        sessionData: '<%= sessionData %>',
-        listKey: '<%= listKey %>',
-        userMap: <%- JSON.stringify(userMap) %>,
-        accountMap: <%- JSON.stringify(accountMap) %>,
-        profileMap: <%- JSON.stringify(profileMap) %>,
         autoCreate: <%= autoCreate %>,
-        sessionSecret: '<%= sessionSecret %>',
+        identityField: '<%= identityField %>',
+        listKey: '<%= listKey %>',
+        pages: keystoneConfig.pages,
         providers: keystoneConfig.providers,
         query,
+        resolver: keystoneConfig.resolver,
+        sessionData: '<%= sessionData %>',
+        sessionSecret: '<%= sessionSecret %>',
     });
   `;
 
+type AuthTemplateOptions = NextAuthPageProps;
+
 export const authTemplate = ({
-  gqlNames,
-  identityField,
-  sessionData,
-  listKey,
   autoCreate,
-  userMap,
-  accountMap,
-  profileMap,
+  identityField,
+  listKey,
+  sessionData,
   sessionSecret,
-}: {
-  gqlNames: AuthGqlNames;
-  identityField: string;
-  sessionData: any;
-  listKey: string;
-  autoCreate: boolean;
-  userMap: any;
-  accountMap: any;
-  profileMap: any;
-  sessionSecret: string;
-}) => {
+}: AuthTemplateOptions) => {
   const authOut = ejs.render(template, {
-    gqlNames,
     identityField,
     sessionData,
     listKey,
     autoCreate,
-    userMap,
-    accountMap,
-    profileMap,
     sessionSecret,
   });
   return authOut;

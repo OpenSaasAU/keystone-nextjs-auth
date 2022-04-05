@@ -9,6 +9,9 @@ module.exports = withPreconstruct({
   typescript: {
     ignoreBuildErrors: true,
   },
+  env: {
+    NEXTAUTH_URL: process.env.NEXTAUTH_URL || 'http://localhost:<%= process.env.PORT || 3000 %><%= keystonePath || '' %>/api/auth',
+  },
   eslint: {
     ignoreDuringBuilds: true,
   },
