@@ -1,6 +1,6 @@
 {
   "name": "@opensaas/keystone-auth0-profile",
-  "version": "0.6.1",
+  "version": "0.6.2",
   "repository": "https://github.com/opensaasau/keystone-auth0-profile",
   "license": "MIT",
   "main": "dist/opensaas-keystone-auth0-profile.cjs.js",
@@ -18,7 +18,7 @@
     "@keystone-ui/notice": "^5.0.0",
     "@keystone-ui/toast": "^5.0.0",
     "@keystone-ui/tooltip": "^5.0.0",
-    "@opensaas/keystone-nextjs-auth": "^20.0.0",
+    "@opensaas/keystone-nextjs-auth": "^21.0.0",
     "@types/ejs": "^3.1.0",
     "clipboard-copy": "^4.0.1",
     "cross-fetch": "^3.1.5",

@@ -1,5 +1,12 @@
 # @opensaas-keystone/nextjs-auth
 
+## 21.0.0
+
+### Major Changes
+
+- 4119c1c: Add ability to configure custom pages use `pages` configuration
+- 4119c1c: Move `userMap` `accountMap` and `userMap` into a resolver function - `resolver` function takes in `{user,account,profile}` and returns a object that is passed in to create the identity
+
 ## 20.5.0
 
 ### Minor Changes
