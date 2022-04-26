@@ -11,10 +11,14 @@
   "dependencies": {
     "@keystone-6/core": "^1.1.0",
     "@keystone-6/fields-document": "^2.0.0",
+    "@keystone-ui/button": "^6.0.0",
+    "@keystone-ui/core": "^4.0.0",
     "@opensaas/keystone-nextjs-auth": "^21.0.0",
     "@types/ejs": "^3.1.0",
-    "dotenv": "^14.3.2",
+    "dotenv": "^16.0.0",
     "ejs": "^3.1.6",
+    "next-auth": "^4.3.1",
+    "react": "^17.0.2",
     "typescript": "^4.5.5"
   }
 }
