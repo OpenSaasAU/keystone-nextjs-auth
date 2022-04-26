@@ -9,6 +9,7 @@ import {
   Box,
   useTheme,
 } from '@keystone-ui/core';
+import Head from 'next/head';
 import { useRouter } from 'next/dist/client/router';
 
 import { Button } from '@keystone-ui/button';
@@ -20,9 +21,9 @@ const SigninContainer = ({ children, title }) => {
   const { colors, shadow } = useTheme();
   return (
     <div>
-      <head>
+      <Head>
         <title>{title || 'Keystone'}</title>
-      </head>
+      </Head>
       <Center
         css={{
           minWidth: '100vw',
