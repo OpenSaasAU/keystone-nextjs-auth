@@ -1,5 +1,12 @@
 # @opensaas-keystone/nextjs-auth
 
+## 21.1.0
+
+### Minor Changes
+
+- 9d35d01: Patch dependancies
+- 4a593d7: dependancy updates
+
 ## 21.0.0
 
 ### Major Changes
