@@ -17,10 +17,12 @@
   },
   "devDependencies": {
     "@keystone-6/core": "^1.1.0",
+    "next": "12.1.0",
     "react": "^17.0.2"
   },
   "peerDependencies": {
     "@keystone-6/core": "^1.1.0",
+    "next": "12.1.0",
     "react": "^17.0.2"
   },
   "engines": {
