@@ -1,5 +1,11 @@
 # @opensaas-keystone/nextjs-auth
 
+## 21.1.1
+
+### Patch Changes
+
+- e48cb6c: Fix signin redirect error
+
 ## 21.1.0
 
 ### Minor Changes
