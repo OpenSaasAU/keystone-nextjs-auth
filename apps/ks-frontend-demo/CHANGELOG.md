@@ -1,5 +1,11 @@
 # @collective-ams/unifi-frontend
 
+## 8.1.0
+
+### Minor Changes
+
+- 4a593d7: dependancy updates
+
 ## 8.0.1
 
 ### Patch Changes

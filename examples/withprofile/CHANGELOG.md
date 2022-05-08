@@ -1,5 +1,12 @@
 # @opensaas-keystone/auth0-profile-backend
 
+## 6.0.2
+
+### Patch Changes
+
+- Updated dependencies [4a593d7]
+  - @opensaas/keystone-auth0-profile@0.7.0
+
 ## 6.0.1
 
 ### Patch Changes
