@@ -80,7 +80,7 @@
     "babel-plugin-styled-components": "^1.13.3",
     "chalk-cli": "^5.0.0",
     "cross-env": "^7.0.3",
-    "eslint": "^7.32.0",
+    "eslint": "^8.15.0",
     "eslint-plugin-cypress": "^2.12.1",
     "eslint-plugin-import": "^2.26.0",
     "eslint-plugin-react": "^7.28.0",
