@@ -9,13 +9,11 @@ export const getSchemaExtension = ({
   identityField: string;
   listKey: string;
 }): ExtendGraphqlSchema =>
-  graphql.extend((base) => {
+  graphql.extend(base => {
     const baseSchema = getBaseAuthSchema({
       listKey,
       base,
     });
 
-    return [baseSchema.extension].filter(
-      (x): x is Exclude<typeof x, undefined> => x !== undefined
-    );
+    return [baseSchema.extension].filter((x): x is Exclude<typeof x, undefined> => x !== undefined);
   });

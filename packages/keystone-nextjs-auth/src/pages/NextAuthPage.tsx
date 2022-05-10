@@ -1,8 +1,4 @@
-import NextAuth, {
-  CookiesOptions,
-  EventCallbacks,
-  PagesOptions,
-} from 'next-auth';
+import NextAuth, { CookiesOptions, EventCallbacks, PagesOptions } from 'next-auth';
 import type { KeystoneListsAPI } from '@keystone-6/core/types';
 import { Provider } from 'next-auth/providers';
 import { JWTOptions } from 'next-auth/jwt';
@@ -18,7 +14,9 @@ type CoreNextAuthPageProps = {
   listKey: string;
   pages?: Partial<PagesOptions>;
   providers?: Provider[];
-  resolver?: Function | undefined;
+  resolver?: (args: { user: any; profile: any; account: any }) => {
+    [key: string]: boolean | string | number;
+  };
   sessionData: string | undefined;
   sessionSecret: string;
 };
@@ -45,8 +43,6 @@ export default function NextAuthPage(props: NextAuthPageProps) {
     sessionData,
     sessionSecret,
   } = props;
-  // TODO: (v1.1). https://github.com/ijsto/keystone-6-oauth/projects/1#card-78602004
-  console.log('NextAuthPages... ', pages);
 
   if (!query) {
     console.error('NextAuthPage got no query.');
@@ -79,16 +75,9 @@ export default function NextAuthPage(props: NextAuthPageProps) {
         } else {
           identity = 0;
         }
-        const userInput = resolver
-          ? await resolver({ user, account, profile })
-          : {};
+        const userInput = resolver ? await resolver({ user, account, profile }) : {};
 
-        const result = await validateNextAuth(
-          identityField,
-          identity,
-          protectIdentities,
-          queryAPI
-        );
+        const result = await validateNextAuth(identityField, identity, protectIdentities, queryAPI);
         // ID
         const data: any = {
           [identityField]: identity,
@@ -97,22 +86,18 @@ export default function NextAuthPage(props: NextAuthPageProps) {
 
         if (!result.success) {
           if (!autoCreate) {
-            console.log(
-              '`autoCreate` if set to `false`, skipping user auto-creation'
-            );
+            console.log('`autoCreate` if set to `false`, skipping user auto-creation');
             return false;
           }
-          console.log(
-            '`autoCreate` if set to `true`, auto-creating a new user'
-          );
+          console.log('`autoCreate` if set to `true`, auto-creating a new user');
 
           const createUser = await list
             .createOne({ data })
-            .then((returned) => {
+            .then(returned => {
               console.log('User Created', JSON.stringify(returned));
               return true;
             })
-            .catch((error) => {
+            .catch(error => {
               console.log(error);
               throw new Error(error);
             });
@@ -167,5 +152,4 @@ export default function NextAuthPage(props: NextAuthPageProps) {
   });
 }
 
-export const getNextAuthPage = (props: NextAuthPageProps) => () =>
-  NextAuthPage({ ...props });
+export const getNextAuthPage = (props: NextAuthPageProps) => () => NextAuthPage({ ...props });

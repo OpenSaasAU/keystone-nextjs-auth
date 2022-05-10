@@ -1,19 +1,17 @@
 import 'dotenv/config';
+import * as Path from 'path';
 import { config } from '@keystone-6/core';
 import { statelessSessions } from '@keystone-6/core/session';
 import Auth0 from '@opensaas/keystone-nextjs-auth/providers/auth0';
 import { createAuth } from '@opensaas/keystone-nextjs-auth';
 import { KeystoneContext } from '@keystone-6/core/types';
-import * as Path from 'path';
 import { lists } from './schemas';
 
 let sessionSecret = process.env.SESSION_SECRET;
 
 if (!sessionSecret) {
   if (process.env.NODE_ENV === 'production') {
-    throw new Error(
-      'The SESSION_SECRET environment variable must be set in production'
-    );
+    throw new Error('The SESSION_SECRET environment variable must be set in production');
   } else {
     sessionSecret = '-- DEV COOKIE SECRET; CHANGE ME --';
   }
@@ -27,9 +25,9 @@ const auth = createAuth({
   sessionData: `id name email`,
   autoCreate: true,
   resolver: async ({ user, profile }: { user: any; profile: any }) => {
-    const username = user.name as string;
+    const name = user.name as string;
     const email = profile.email as string;
-    return { email, username };
+    return { email, name };
   },
   pages: {
     signIn: '/admin/auth/signin',
@@ -40,8 +38,7 @@ const auth = createAuth({
     Auth0({
       clientId: process.env.AUTH0_CLIENT_ID || 'Auth0ClientID',
       clientSecret: process.env.AUTH0_CLIENT_SECRET || 'Auth0ClientSecret',
-      issuer:
-        process.env.AUTH0_ISSUER_BASE_URL || 'https://opensaas.au.auth0.com',
+      issuer: process.env.AUTH0_ISSUER_BASE_URL || 'https://opensaas.au.auth0.com',
     }),
   ],
 });

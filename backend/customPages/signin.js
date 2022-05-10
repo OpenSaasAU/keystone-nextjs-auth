@@ -1,19 +1,12 @@
 /** @jsxRuntime classic */
 /** @jsx jsx */
-import {
-  jsx,
-  H1,
-  Stack,
-  VisuallyHidden,
-  Center,
-  Box,
-  useTheme,
-} from '@keystone-ui/core';
-import Head from 'next/head';
+/* eslint-disable import/no-extraneous-dependencies */
+import { jsx, H1, Stack, VisuallyHidden, Center, Box, useTheme } from '@keystone-ui/core';
 import { useRouter } from 'next/dist/client/router';
 
 import { Button } from '@keystone-ui/button';
 import { ReactNode } from 'react';
+
 
 import { signIn, getProviders } from 'next-auth/react';
 
@@ -21,9 +14,6 @@ const SigninContainer = ({ children, title }) => {
   const { colors, shadow } = useTheme();
   return (
     <div>
-      <Head>
-        <title>{title || 'Keystone'}</title>
-      </Head>
       <Center
         css={{
           minWidth: '100vw',
@@ -48,17 +38,10 @@ const SigninContainer = ({ children, title }) => {
     </div>
   );
 };
-export const getSigninPage = (props) => () => <SigninPage {...props} />;
+export const getSigninPage = props => () => <SigninPage {...props} />;
 
 export default function SigninPage(props) {
-  const {
-    csrfToken,
-    providers,
-    callbackUrl,
-    theme,
-    email,
-    error: errorType,
-  } = props;
+  const { csrfToken, providers, callbackUrl, theme, email, error: errorType } = props;
   const router = useRouter();
   // We only want to render providers
 
@@ -78,11 +61,9 @@ export default function SigninPage(props) {
   return (
     <SigninContainer title="Keystone - Sign In">
       <H1>Sign In</H1>
-      {Object.values(providers).map((provider) => (
+      {Object.values(providers).map(provider => (
         <div key={provider.name}>
-          <Button
-            onClick={() => signIn(provider.id, { callbackUrl: '/admin' })}
-          >
+          <Button onClick={() => signIn(provider.id, { callbackUrl: '/admin' })}>
             Sign in with
             {provider.name}
           </Button>

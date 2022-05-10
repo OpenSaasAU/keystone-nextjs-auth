@@ -56,11 +56,7 @@ module.exports = withPreconstruct({
   <% } %>
 });
 `;
-export const nextConfigTemplate = ({
-  keystonePath,
-}: {
-  keystonePath: string;
-}) => {
+export const nextConfigTemplate = ({ keystonePath }: { keystonePath: string }) => {
   const nextConfigOut = ejs.render(template, { keystonePath });
 
   return nextConfigOut;

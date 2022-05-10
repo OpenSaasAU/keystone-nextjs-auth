@@ -1,10 +1,11 @@
 /* eslint-disable react/function-component-definition */
+import React from 'react';
 import { Container, Button } from 'react-bootstrap';
 import { signIn, signOut, useSession } from 'next-auth/react';
 import { useUser, CURRENT_USER_QUERY } from '../lib/useUser';
 import { initializeApollo } from '../lib/apolloClient';
 
-export async function getServerSideProps(context) {
+export async function getServerSideProps(context: any) {
   console.log(context?.req?.headers);
 
   const apolloClient = initializeApollo(context?.req?.headers);
@@ -39,9 +40,8 @@ export default function SignupPage({ ...props }) {
         <>
           <p>
             Welcome
-            {data.user.name}
-, we have your Session email as
-{data.user.email}
+            {data?.user?.name}, we have your Session email as
+            {data?.user?.email}
           </p>
           {user && (
             <p>
@@ -53,7 +53,8 @@ export default function SignupPage({ ...props }) {
             onClick={() =>
               signOut({
                 callbackUrl: `${window.location.origin}`,
-              })}
+              })
+            }
           >
             Sign Out
           </Button>
@@ -67,7 +68,8 @@ export default function SignupPage({ ...props }) {
             onClick={() =>
               signIn('auth0', {
                 callbackUrl: `${window.location.origin}`,
-              })}
+              })
+            }
           >
             Sign In
           </Button>

@@ -4,10 +4,7 @@ export async function findMatchingIdentity(
   identityField: string,
   identity: string | number,
   queryAPI: any
-): Promise<
-  | { success: false; code: AuthTokenRequestErrorCode }
-  | { success: true; item: any }
-> {
+): Promise<{ success: false; code: AuthTokenRequestErrorCode } | { success: true; item: any }> {
   const item = await queryAPI.findOne({
     where: { [identityField]: identity },
   });

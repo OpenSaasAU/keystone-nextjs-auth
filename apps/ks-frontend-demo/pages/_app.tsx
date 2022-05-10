@@ -1,3 +1,4 @@
+import React from 'react';
 import { ApolloProvider } from '@apollo/client';
 import NProgress from 'nprogress';
 import Router from 'next/router';
@@ -11,7 +12,10 @@ Router.events.on('routeChangeStart', () => NProgress.start());
 Router.events.on('routeChangeComplete', () => NProgress.done());
 Router.events.on('routeChangeError', () => NProgress.done());
 
-const MyApp = function ({ Component, pageProps: { session, ...pageProps } }) {
+const MyApp = function ({
+  Component,
+  pageProps: { session, ...pageProps },
+}: any) {
   const apollo = useApollo(pageProps);
   return (
     <SessionProvider session={session} refetchInterval={5 * 60}>
@@ -24,7 +28,7 @@ const MyApp = function ({ Component, pageProps: { session, ...pageProps } }) {
   );
 };
 
-MyApp.getInitialProps = async function ({ Component, ctx }) {
+MyApp.getInitialProps = async function ({ Component, ctx }: any) {
   let pageProps: any = {};
   if (Component.getInitialProps) {
     pageProps = await Component.getInitialProps(ctx);

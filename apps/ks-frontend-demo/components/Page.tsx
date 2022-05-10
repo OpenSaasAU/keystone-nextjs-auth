@@ -1,8 +1,9 @@
+import React from 'react';
 import { Container } from 'react-bootstrap';
 import { Footer } from './Footer';
 import { Header } from './Header';
 
-export const Page = function ({ children }) {
+export const Page = function ({ children }: any) {
   return (
     <>
       <Header />

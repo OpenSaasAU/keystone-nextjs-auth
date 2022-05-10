@@ -1,6 +1,9 @@
 import { useEffect, useState } from 'react';
 
-export function useForm(initial = {}) {
+type inputs = {
+  [key: string]: boolean | string | number | undefined;
+};
+export function useForm(initial = {} as inputs) {
   // create a state object for our inputs
   const [inputs, setInputs] = useState(initial);
   const initialValues = Object.values(initial).join('');
@@ -10,7 +13,7 @@ export function useForm(initial = {}) {
     setInputs(initial);
   }, [initialValues]);
 
-  function handleStageButton(e) {
+  function handleStageButton(e: any) {
     const { innerText } = e.target;
     const value = innerText.toLowerCase();
     console.log(value);
@@ -19,7 +22,7 @@ export function useForm(initial = {}) {
       stage: value,
     });
   }
-  function handleChange(e) {
+  function handleChange(e: any) {
     let { value, name, type } = e.target;
     if (type === 'number') {
       value = parseInt(value);

@@ -1,15 +1,11 @@
 {
-  "extends": [
-    "config:base"
-  ],
+  "extends": ["config:base"],
   "lockFileMaintenance": {
     "enabled": true
   },
   "separateMinorPatch": true,
   "prConcurrentLimit": 0,
-  "baseBranches": [
-    "main"
-  ],
+  "baseBranches": ["main"],
   "packageRules": [
     {
       "packagePatterns": [
@@ -21,17 +17,12 @@
       "enabled": false
     },
     {
-      "updateTypes": [
-        "patch"
-      ],
+      "updateTypes": ["patch"],
       "groupName": "patch dependencies"
     }
   ],
   "rangeStrategy": "bump",
-  "schedule": [
-    "before 7am on Tuesday",
-    "before 7am on Wednesday"
-  ],
+  "schedule": ["before 7am on Tuesday", "before 7am on Wednesday"],
   "timezone": "Australia/Melbourne",
   "updateNotScheduled": false
 }

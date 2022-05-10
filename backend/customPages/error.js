@@ -1,5 +1,6 @@
 /** @jsxRuntime classic */
 /** @jsx jsx */
+/* eslint-disable import/no-extraneous-dependencies */
 import { jsx, H1, Stack, VisuallyHidden, Center, Box, useTheme } from '@keystone-ui/core';
 import { useRouter } from 'next/dist/client/router';
 
@@ -8,14 +9,10 @@ import { ReactNode } from 'react';
 
 import { signIn } from 'next-auth/react';
 
-
 const SigninContainer = ({ children, title }) => {
   const { colors, shadow } = useTheme();
   return (
     <div>
-      <head>
-        <title>{title || 'Keystone'}</title>
-      </head>
       <Center
         css={{
           minWidth: '100vw',
@@ -40,10 +37,9 @@ const SigninContainer = ({ children, title }) => {
     </div>
   );
 };
-export const getErrorPage = (props) => () => <ErrorPage {...props} />;
+export const getErrorPage = props => () => <ErrorPage {...props} />;
 
 export default function ErrorPage() {
-
   const router = useRouter();
 
   const { error } = router.query;
@@ -56,7 +52,7 @@ export default function ErrorPage() {
         <p>Oops, something went wrong. Please try again.</p>
         <p>{error}</p>
       </SigninContainer>
-    )
+    );
   }
 
   return (
@@ -67,9 +63,10 @@ export default function ErrorPage() {
           signIn('auth0', {
             callbackUrl: `${window.location.origin}`,
           })
-        }>
-              Sign In with Auth0
-            </Button>
+        }
+      >
+        Sign In with Auth0
+      </Button>
     </SigninContainer>
-  )
+  );
 }

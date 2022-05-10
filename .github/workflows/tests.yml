@@ -1,0 +1,35 @@
+name: Test build
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+jobs:
+  linting:
+    name: Linting
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js LTS
+        uses: actions/setup-node@main
+        with:
+          node-version: lts/*
+
+      - name: Install Dependencies
+        run: yarn
+
+      - name: Prettier
+        run: yarn test:prettier
+
+      - name: Lint
+        run: yarn test:lint
+
+      - name: Types
+        run: yarn test:types
+
+      - name: Build Keystone
+        run: yarn build:backend
