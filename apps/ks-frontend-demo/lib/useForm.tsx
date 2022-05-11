@@ -54,9 +54,7 @@ export function useForm(initial = {} as inputs) {
   }
 
   function clearForm() {
-    const blankState = Object.fromEntries(
-      Object.entries(inputs).map(([key, value]) => [key, ''])
-    );
+    const blankState = Object.fromEntries(Object.entries(inputs).map(([key, value]) => [key, '']));
     setInputs(blankState);
   }
 

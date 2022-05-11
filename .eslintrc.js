@@ -32,9 +32,7 @@ module.exports = {
     'no-unused-expressions': 'error',
     'react-hooks/rules-of-hooks': 'error',
     'react-hooks/exhaustive-deps': 'error',
-    'import/no-extraneous-dependencies': [
-      'error',
-    ],
+    'import/no-extraneous-dependencies': ['error'],
     'import/no-unresolved': 'error',
     'import/order': 'error',
     'jest/valid-describe': 'off',

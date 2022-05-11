@@ -85,30 +85,35 @@ export default function NextAuthPage(props: NextAuthPageProps) {
 
         if (!result.success) {
           if (!autoCreate) {
-            console.log(
-              '`autoCreate` is set to `false`, skipping user auto-creation'
-            );
+            console.log('`autoCreate` is set to `false`, skipping user auto-creation');
             return false;
           }
-          console.log(
-            '`autoCreate` is set to `true`, auto-creating a new user'
-          );
+          console.log('`autoCreate` is set to `true`, auto-creating a new user');
 
           const createUser = await list
             .createOne({ data })
             .then(returned => {
-              console.log('User Created', JSON.stringify(returned));
-              return true;
+              return { success: true, user: returned };
             })
             .catch(error => {
               console.log(error);
               throw new Error(error);
             });
           console.log('Created User', createUser);
-          return createUser;
+          return createUser.success;
         }
-        await list.updateOne({ where: { id: result.item.id }, data });
-        return result.success;
+        console.log('Data', data);
+
+        const updateUser = await list
+          .updateOne({ where: { id: result.item.id }, data })
+          .then(returned => {
+            return { success: true, user: returned };
+          })
+          .catch(error => {
+            console.log(error);
+            throw new Error(error);
+          });
+        return updateUser.success;
       },
       async redirect({ url }) {
         return url;

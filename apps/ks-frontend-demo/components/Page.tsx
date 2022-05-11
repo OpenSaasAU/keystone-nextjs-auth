@@ -7,9 +7,7 @@ export const Page = function ({ children }: any) {
   return (
     <>
       <Header />
-      <Container style={{ paddingBottom: '15rem', paddingTop: '5rem' }}>
-        {children}
-      </Container>
+      <Container style={{ paddingBottom: '15rem', paddingTop: '5rem' }}>{children}</Container>
       <Footer />
     </>
   );

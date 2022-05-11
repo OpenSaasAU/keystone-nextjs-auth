@@ -12,10 +12,7 @@ Router.events.on('routeChangeStart', () => NProgress.start());
 Router.events.on('routeChangeComplete', () => NProgress.done());
 Router.events.on('routeChangeError', () => NProgress.done());
 
-const MyApp = function ({
-  Component,
-  pageProps: { session, ...pageProps },
-}: any) {
+const MyApp = function ({ Component, pageProps: { session, ...pageProps } }: any) {
   const apollo = useApollo(pageProps);
   return (
     <SessionProvider session={session} refetchInterval={5 * 60}>
