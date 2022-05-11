@@ -50,13 +50,7 @@ export type AuthConfig<GeneratedListTypes extends BaseListTypeInfo> = {
   /** Path for Keystone interface */
   keystonePath?: string;
   // Custom pages for different NextAuth events
-  pages?: {
-    error?: string;
-    signIn?: string;
-    signOut?: string;
-    verifyRequest?: string;
-    newUser?: string;
-  }; // TODO: Fix types
+  pages?: Partial<PagesOptions>;
   /** Providers for Next Auth */
   providers: NextAuthProviders;
   /** Resolver for user to define their profile */

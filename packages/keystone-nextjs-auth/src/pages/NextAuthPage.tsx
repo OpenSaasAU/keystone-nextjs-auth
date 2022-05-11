@@ -4,7 +4,6 @@ import { Provider } from 'next-auth/providers';
 import { JWTOptions } from 'next-auth/jwt';
 import { validateNextAuth } from '../lib/validateNextAuth';
 
-// TODO: See if possible to merge with `type AuthConfig`
 type CoreNextAuthPageProps = {
   autoCreate: boolean;
   cookies?: Partial<CookiesOptions>;
@@ -86,10 +85,14 @@ export default function NextAuthPage(props: NextAuthPageProps) {
 
         if (!result.success) {
           if (!autoCreate) {
-            console.log('`autoCreate` if set to `false`, skipping user auto-creation');
+            console.log(
+              '`autoCreate` is set to `false`, skipping user auto-creation'
+            );
             return false;
           }
-          console.log('`autoCreate` if set to `true`, auto-creating a new user');
+          console.log(
+            '`autoCreate` is set to `true`, auto-creating a new user'
+          );
 
           const createUser = await list
             .createOne({ data })
@@ -104,7 +107,7 @@ export default function NextAuthPage(props: NextAuthPageProps) {
           console.log('Created User', createUser);
           return createUser;
         }
-        // await list.updateOne({where: {id: result.item.id}, data});
+        await list.updateOne({ where: { id: result.item.id }, data });
         return result.success;
       },
       async redirect({ url }) {
