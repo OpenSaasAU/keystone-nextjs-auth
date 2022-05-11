@@ -16,10 +16,6 @@
     // remove this when https://github.com/vercel/next.js/issues/30352 is fixed
     "skipLibCheck": true
   },
-  "include": [
-    "**/*"
-  ],
-  "exclude": [
-    "**/node_modules/**/*"
-  ]
+  "include": ["**/*"],
+  "exclude": ["**/node_modules/**/*"]
 }

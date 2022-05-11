@@ -14,8 +14,7 @@
   },
   "eslintConfig": {
     "extends": [
-      "wesbos",
-      "next"
+      "wesbos"
     ],
     "rules": {
       "@typescript-eslint/no-unsafe-assignment": 0,
@@ -87,11 +86,13 @@
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^11.2.7",
     "@testing-library/user-event": "^12.8.3",
+    "@types/nprogress": "^0.2.0",
+    "@types/styled-components": "^5.1.25",
     "babel-eslint": "^10.1.0",
     "babel-jest": "^28.1.0",
     "babel-plugin-styled-components": "^1.13.3",
     "casual": "^1.6.2",
-    "eslint": "^7.32.0",
+    "eslint": "^8.15.0",
     "eslint-config-airbnb": "^19.0.4",
     "eslint-config-prettier": "^6.15.0",
     "eslint-config-wesbos": "^3.0.2",

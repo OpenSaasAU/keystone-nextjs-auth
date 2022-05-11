@@ -1,3 +1,4 @@
+import React from 'react';
 import { Navbar } from 'react-bootstrap';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -7,12 +8,7 @@ export const Header = function () {
     <Navbar bg="light" expand="sm">
       <Navbar.Brand style={{ marginLeft: '4rem', marginBottom: '1rem' }}>
         <Link href="https://www.opensaas.com.au" passHref>
-          <Image
-            src="/images/logo-opensaas.png"
-            height="70"
-            width="230"
-            alt="OpenSaas Logo"
-          />
+          <Image src="/images/logo-opensaas.png" height="70" width="230" alt="OpenSaas Logo" />
         </Link>
       </Navbar.Brand>
     </Navbar>

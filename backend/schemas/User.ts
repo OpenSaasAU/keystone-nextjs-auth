@@ -17,8 +17,8 @@ export const User = list({
   },
   ui: {
     // hide the backend UI from regular users
-    hideCreate: (args) => !permissions.canManageUsers(args),
-    hideDelete: (args) => !permissions.canManageUsers(args),
+    hideCreate: args => !permissions.canManageUsers(args),
+    hideDelete: args => !permissions.canManageUsers(args),
   },
   fields: {
     name: text({ validation: { isRequired: true } }),

@@ -23,7 +23,7 @@ export type Session = {
 };
 
 export type ListsAPI = KeystoneListsAPI<any /* KeystoneListsTypeInfo */>;
-export type GraphqlAPI = KeystoneGraphQLAPI<any /* KeystoneListsTypeInfo */>;
+export type GraphqlAPI = KeystoneGraphQLAPI;
 
 export type AccessArgs = {
   session?: Session;

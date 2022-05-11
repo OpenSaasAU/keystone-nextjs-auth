@@ -1,6 +1,27 @@
-import { BaseListTypeInfo, KeystoneConfig } from '@keystone-6/core/types';
-import { CookiesOptions, PagesOptions } from 'next-auth';
+import type { ServerResponse, IncomingMessage } from 'http';
+import type { NextRequest } from 'next/server';
 import { Provider } from 'next-auth/providers';
+import { CookiesOptions, PagesOptions } from 'next-auth';
+import { BaseListTypeInfo, KeystoneConfig, CreateContext } from '@keystone-6/core/types';
+
+type NextAuthResponse = IncomingMessage & NextRequest;
+
+export declare type AuthSessionStrategy<StoredSessionData> = {
+  start: (args: {
+    res: ServerResponse;
+    data: any;
+    createContext: CreateContext;
+  }) => Promise<string>;
+  end: (args: {
+    req: IncomingMessage;
+    res: ServerResponse;
+    createContext: CreateContext;
+  }) => Promise<void>;
+  get: (args: {
+    req: NextAuthResponse;
+    createContext: CreateContext;
+  }) => Promise<StoredSessionData | undefined>;
+};
 
 export type NextAuthSession = { listKey: string; itemId: string; data: any };
 
@@ -15,9 +36,7 @@ type NextAuthOptions = {
   resolver: any;
 };
 
-export type KeystoneOAuthConfig = KeystoneConfig &
-  KeytoneOAuthOptions &
-  NextAuthOptions;
+export type KeystoneOAuthConfig = KeystoneConfig & KeytoneOAuthOptions & NextAuthOptions;
 
 export type AuthConfig<GeneratedListTypes extends BaseListTypeInfo> = {
   /** Auth Create users in Keystone DB from Auth Provider */
@@ -31,20 +50,20 @@ export type AuthConfig<GeneratedListTypes extends BaseListTypeInfo> = {
   /** Path for Keystone interface */
   keystonePath?: string;
   // Custom pages for different NextAuth events
-  pages?: any; // TODO: Fix types
+  pages?: Partial<PagesOptions>;
   /** Providers for Next Auth */
   providers: NextAuthProviders;
   /** Resolver for user to define their profile */
-  resolver?: Function | undefined;
+  resolver?: (args: { user: any; profile: any; account: any }) => Promise<{
+    [key: string]: boolean | string | number;
+  }>;
   /** Session data population */
   sessionData?: string | undefined;
   /** Next-Auth Session Secret */
   sessionSecret: string;
 };
 
-export type AuthTokenRequestErrorCode =
-  | 'IDENTITY_NOT_FOUND'
-  | 'MULTIPLE_IDENTITY_MATCHES';
+export type AuthTokenRequestErrorCode = 'IDENTITY_NOT_FOUND' | 'MULTIPLE_IDENTITY_MATCHES';
 
 export type PasswordAuthErrorCode =
   | AuthTokenRequestErrorCode
