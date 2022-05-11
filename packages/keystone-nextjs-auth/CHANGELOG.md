@@ -1,5 +1,11 @@
 # @opensaas-keystone/nextjs-auth
 
+## 22.0.0
+
+### Major Changes
+
+- 059d0cc: type fixes and and update user on login
+
 ## 21.1.1
 
 ### Patch Changes
