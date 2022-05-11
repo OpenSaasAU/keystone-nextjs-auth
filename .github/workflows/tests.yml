@@ -25,9 +25,6 @@ jobs:
       - name: Prettier
         run: yarn test:prettier
 
-      - name: Lint
-        run: yarn test:lint
-
       - name: Types
         run: yarn test:types
 
