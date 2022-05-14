@@ -21,10 +21,6 @@ module.exports = withPreconstruct({
         source: '/admin/:admin*',
         destination: `${process.env.BACKEND_BASE_URL}/admin/:admin*`,
       },
-      {
-        source: '/admin',
-        destination: `${process.env.BACKEND_BASE_URL}/admin`,
-      },
     ];
   },
 });
