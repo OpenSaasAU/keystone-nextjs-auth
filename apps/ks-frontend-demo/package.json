@@ -14,7 +14,7 @@
   },
   "eslintConfig": {
     "extends": [
-      "wesbos"
+      "next"
     ],
     "rules": {
       "@typescript-eslint/no-unsafe-assignment": 0,
