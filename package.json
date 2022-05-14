@@ -16,6 +16,7 @@
   "scripts": {
     "build": "preconstruct build",
     "build:backend": "manypkg run backend build",
+    "build:signup": "manypkg run signup-frontend build",
     "clean": "manypkg exec rm -rf node_modules && manypkg exec rm -rf .keystone && manypkg exec rm -rf dist && manypkg exec rm -rf .next && rm -rf node_modules",
     "dev": "NEXTAUTH_URL=http://localhost:7777 BACKEND_BASE_URL=http://localhost:3000 concurrently -k \"yarn:dev:*\"",
     "dev:backend": "manypkg run backend dev",
@@ -27,7 +28,7 @@
     "release": "yarn build && changeset publish",
     "start": "echo figure out how to start both services simultaneously here",
     "start:backend": "manypkg run backend start",
-    "start:next": "yarn manypkg run next-app start",
+    "start:signup": "yarn manypkg run signup-frontend start",
     "test": "jest"
   },
   "prettier": {
