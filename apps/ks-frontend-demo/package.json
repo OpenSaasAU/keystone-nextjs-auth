@@ -13,9 +13,6 @@
     "test": "NODE_ENV=test jest --watch"
   },
   "eslintConfig": {
-    "extends": [
-      "next"
-    ],
     "rules": {
       "@typescript-eslint/no-unsafe-assignment": 0,
       "react/jsx-filename-extension": [

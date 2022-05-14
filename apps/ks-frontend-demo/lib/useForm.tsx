@@ -11,7 +11,7 @@ export function useForm(initial = {} as inputs) {
   useEffect(() => {
     // This function runs when the things we are watching change
     setInputs(initial);
-  }, [initialValues]);
+  }, [initial, initialValues]);
 
   function handleStageButton(e: any) {
     const { innerText } = e.target;
