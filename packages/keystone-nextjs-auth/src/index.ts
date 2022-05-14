@@ -64,7 +64,10 @@ export function createAuth<GeneratedListTypes extends BaseListTypeInfo>({
     const pathname = url.parse(req?.url!).pathname!;
 
     if (isValidSession) {
-      if (pathname === `${customPath}/api/auth/signin`) {
+      if (
+        pathname === `${customPath}/api/auth/signin` ||
+        (pages?.signIn && pathname.includes(pages?.signIn))
+      ) {
         return { kind: 'redirect', to: `${customPath}` };
       }
       return;
