@@ -2,6 +2,7 @@
 import React from 'react';
 import { Container, Button } from 'react-bootstrap';
 import { signIn, signOut, useSession } from 'next-auth/react';
+import Link from 'next/link';
 import { useUser, CURRENT_USER_QUERY } from '../lib/useUser';
 import { initializeApollo } from '../lib/apolloClient';
 
@@ -58,6 +59,9 @@ export default function SignupPage({ ...props }) {
           >
             Sign Out
           </Button>
+          <Link href="/admin">
+            <Button>Admin</Button>
+          </Link>
         </>
       )}
       {!data && (
