@@ -14,7 +14,7 @@
     "backend"
   ],
   "scripts": {
-    "build": "preconstruct build",
+    "build": "preconstruct build && yarn build:backend && yarn build:signup",
     "build:backend": "manypkg run backend build",
     "build:signup": "manypkg run signup-frontend build",
     "clean": "manypkg exec rm -rf node_modules && manypkg exec rm -rf .keystone && manypkg exec rm -rf dist && manypkg exec rm -rf .next && rm -rf node_modules",
