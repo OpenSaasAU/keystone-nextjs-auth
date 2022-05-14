@@ -8,25 +8,25 @@ module.exports = withPreconstruct({
     publicUrl: process.env.PUBLIC_URL,
   },
   async rewrites() {
-    return [
-      {
-        source: '/api/auth/:auth*',
-        destination: `${process.env.BACKEND_BASE_URL}/admin/api/auth/:auth*`,
-      },
-      {
-        source: '/api/graphql',
-        destination: `${process.env.BACKEND_BASE_URL}/api/graphql`,
-      },
-      {
-        source: '/admin/:admin*',
-        destination: `${process.env.BACKEND_BASE_URL}/admin/:admin*`,
-        basePath: false,
-      },
-      {
-        source: '/admin',
-        destination: `${process.env.BACKEND_BASE_URL}/admin`,
-        basePath: false,
-      },
-    ];
+    return {
+      beforeFiles: [
+        {
+          source: '/api/auth/:auth*',
+          destination: `${process.env.BACKEND_BASE_URL}/admin/api/auth/:auth*`,
+        },
+        {
+          source: '/api/graphql',
+          destination: `${process.env.BACKEND_BASE_URL}/api/graphql`,
+        },
+        {
+          source: '/admin/:admin*',
+          destination: `${process.env.BACKEND_BASE_URL}/admin/:admin*`,
+        },
+        {
+          source: '/admin',
+          destination: `${process.env.BACKEND_BASE_URL}/admin`,
+        },
+      ],
+    };
   },
 });
