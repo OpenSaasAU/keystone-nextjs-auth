@@ -63,8 +63,6 @@ export function createAuth<GeneratedListTypes extends BaseListTypeInfo>({
     const { req, session } = context;
     const pathname = url.parse(req?.url!).pathname!;
 
-    console.log('Got a request for', pathname, 'Got a Sesson: ', isValidSession);
-
     if (isValidSession) {
       if (
         pathname === `${customPath}/api/auth/signin` ||
