@@ -13,6 +13,9 @@
     "test": "NODE_ENV=test jest --watch"
   },
   "eslintConfig": {
+    "extends": [
+      "plugin:@next/next/recommended"
+    ],
     "rules": {
       "@typescript-eslint/no-unsafe-assignment": 0,
       "react/jsx-filename-extension": [
@@ -80,6 +83,7 @@
   },
   "devDependencies": {
     "@apollo/react-testing": "^4.0.0",
+    "@next/eslint-plugin-next": "^12.1.6",
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^11.2.7",
     "@testing-library/user-event": "^12.8.3",
