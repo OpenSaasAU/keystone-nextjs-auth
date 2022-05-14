@@ -15,16 +15,16 @@ module.exports = withPreconstruct({
           destination: `${process.env.BACKEND_BASE_URL}/admin/api/auth/:auth*`,
         },
         {
+          source: '/admin',
+          destination: `${process.env.BACKEND_BASE_URL}/admin`,
+        },
+        {
           source: '/api/graphql',
           destination: `${process.env.BACKEND_BASE_URL}/api/graphql`,
         },
         {
           source: '/admin/:admin*',
           destination: `${process.env.BACKEND_BASE_URL}/admin/:admin*`,
-        },
-        {
-          source: '/admin',
-          destination: `${process.env.BACKEND_BASE_URL}/admin`,
         },
       ],
     };
