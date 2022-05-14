@@ -6,7 +6,7 @@
     "build": "keystone build",
     "dev": "keystone dev",
     "prisma-deploy": "keystone prisma migrate deploy",
-    "start": "keystone start"
+    "start": "keystone prisma migrate deploy && keystone start"
   },
   "dependencies": {
     "@keystone-6/core": "^1.1.0",
