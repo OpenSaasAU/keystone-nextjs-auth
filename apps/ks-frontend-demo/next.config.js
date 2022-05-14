@@ -7,15 +7,6 @@ module.exports = withPreconstruct({
     backendBaseUrl: process.env.BACKEND_BASE_URL,
     publicUrl: process.env.PUBLIC_URL,
   },
-  async redirects() {
-    return [
-      {
-        source: '/admin/',
-        destination: '/admin',
-        permanent: false,
-      },
-    ];
-  },
   async rewrites() {
     return {
       beforeFiles: [
