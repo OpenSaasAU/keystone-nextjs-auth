@@ -30,9 +30,10 @@ export default function SignupPage({ ...props }) {
     <Container>
       {user && (
         <p>
-          Authenticated Item from Keystone Says:
+          You are signed in as <strong>{user.email}</strong>
+          AuthenticatedItem from Keystone GraphQL says: {' '}
           {user.name}
-          Server Side Props says:
+          Server Side Props also from Keystone GraphQL says: {' '}
           {ssrUser.name}
         </p>
       )}
@@ -40,9 +41,8 @@ export default function SignupPage({ ...props }) {
       {data && (
         <>
           <p>
-            Welcome
-            {data?.user?.name}, we have your Session email as
-            {data?.user?.email}
+            Welcome {' '}
+            {data?.user?.name}, we have your Session email, stored in your NextAuthjs Session as: &quot;{data?.user?.email}&quot;
           </p>
           {user && (
             <p>
@@ -60,13 +60,13 @@ export default function SignupPage({ ...props }) {
             Sign Out
           </Button>
           <Link href="/admin">
-            <Button>Admin</Button>
+            <Button style={{ float: 'right' }} >Keystone Admin</Button>
           </Link>
         </>
       )}
       {!data && (
         <>
-          Not signed in
+          You are not currnetly signed in. Please sign in to get started.
           <br />
           <Button
             onClick={() =>
@@ -77,6 +77,7 @@ export default function SignupPage({ ...props }) {
           >
             Sign In
           </Button>
+          <p>This Demo SignIn flow uses Auth0 to manage users and social authentication</p>
         </>
       )}
     </Container>
