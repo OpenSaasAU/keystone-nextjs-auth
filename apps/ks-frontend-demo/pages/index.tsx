@@ -80,7 +80,7 @@ export default function SignupPage({ ...props }) {
         </>
       )}
       <p>This Demo Sign In flow uses Auth0 to manage users and social authentication</p>
-      <p>For details on how to set up Social Auth on Keystone see our <a href="https://github.com/OpensaasAU/keystone-nextjs-auth/" target="_blank">Github Repo</a></p>
+      <p>For details on how to set up Social Auth on Keystone see our <a href="https://github.com/OpensaasAU/keystone-nextjs-auth/" rel="noopener" target="_blank">Github Repo</a></p>
     </Container>
   );
 }
