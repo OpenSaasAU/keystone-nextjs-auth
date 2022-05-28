@@ -30,7 +30,7 @@ export default function SignupPage({ ...props }) {
     <Container>
       {user && (
         <p>
-          You are signed in as <strong>{user.email}</strong>
+          You are signed in as <strong>{user.email}</strong><br />
           AuthenticatedItem from Keystone GraphQL says: {' '}
           {user.name}
           Server Side Props also from Keystone GraphQL says: {' '}
@@ -40,16 +40,7 @@ export default function SignupPage({ ...props }) {
       {!user && <p>No User</p>}
       {data && (
         <>
-          <p>
-            Welcome {' '}
-            {data?.user?.name}, we have your Session email, stored in your NextAuthjs Session as: &quot;{data?.user?.email}&quot;
-          </p>
-          {user && (
-            <p>
-              And your user email in authenticatedItem {' '}
-              {user.email}
-            </p>
-          )}
+          <p>Your email stored in your NextAuthjs Session as: &quot;{data?.user?.email}&quot;</p>
           <Button
             onClick={() =>
               signOut({
