@@ -137,12 +137,7 @@ export default function NextAuthPage(props: NextAuthPageProps) {
       },
       async jwt({ token }) {
         const identity = token.sub as number | string;
-        const result = await validateNextAuth(
-          identityField,
-          identity,
-          protectIdentities,
-          queryAPI
-        );
+        const result = await validateNextAuth(identityField, identity, protectIdentities, queryAPI);
 
         if (!result.success) {
           token.itemId = null;
