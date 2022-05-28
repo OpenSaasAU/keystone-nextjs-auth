@@ -81,6 +81,6 @@ export default function SignupPage({ ...props }) {
           Github Repo
         </a>
       </p>
-    </Container >
+    </Container>
   );
 }
