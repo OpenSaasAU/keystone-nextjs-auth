@@ -1,5 +1,5 @@
 ---
-'@opensaas/keystone-nextjs-auth': patch
+'@opensaas/keystone-nextjs-auth': minor
 ---
 
 Invalidate user when deleted from database
