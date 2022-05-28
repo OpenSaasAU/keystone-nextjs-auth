@@ -1,5 +1,15 @@
 # @opensaas-keystone/nextjs-auth
 
+## 22.1.0
+
+### Minor Changes
+
+- b89f4e7: Invalidate user when deleted from database
+
+### Patch Changes
+
+- b89f4e7: signin pages error fix
+
 ## 22.0.0
 
 ### Major Changes
