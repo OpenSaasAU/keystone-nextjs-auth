@@ -39,7 +39,7 @@ export default function SignupPage({ ...props }) {
         </p>
       )}
       {!user && <p>No User</p>}
-      {data && (
+      {data?.itemId ? (
         <>
           <p>Your email stored in your NextAuthjs Session as: &quot;{data?.user?.email}&quot;</p>
           <Button
@@ -55,8 +55,7 @@ export default function SignupPage({ ...props }) {
             <Button style={{ float: 'right' }}>Keystone Admin</Button>
           </Link>
         </>
-      )}
-      {!data && (
+      ) : (
         <>
           You are not currnetly signed in. Please sign in to get started.
           <br />
@@ -82,6 +81,6 @@ export default function SignupPage({ ...props }) {
           Github Repo
         </a>
       </p>
-    </Container>
+    </Container >
   );
 }
