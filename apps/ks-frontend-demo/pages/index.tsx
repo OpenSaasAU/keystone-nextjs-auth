@@ -32,9 +32,9 @@ export default function SignupPage({ ...props }) {
         <p>
           You are signed in as <strong>{user.email}</strong><br />
           AuthenticatedItem from Keystone GraphQL says: {' '}
-          {user.name}
+          {user.name}<br />
           Server Side Props also from Keystone GraphQL says: {' '}
-          {ssrUser.name}
+          {ssrUser.name}<br />
         </p>
       )}
       {!user && <p>No User</p>}
