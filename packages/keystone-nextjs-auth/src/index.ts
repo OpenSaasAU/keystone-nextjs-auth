@@ -14,10 +14,11 @@ import { Provider } from 'next-auth/providers';
 
 import * as cookie from 'cookie';
 
+import { Session } from 'next-auth';
 import { nextConfigTemplate } from './templates/next-config';
 // import * as Path from 'path';
 
-import { AuthConfig, KeystoneOAuthConfig, NextAuthSession, AuthSessionStrategy } from './types';
+import { AuthConfig, KeystoneOAuthConfig, AuthSessionStrategy } from './types';
 import { getSchemaExtension } from './schema';
 import { authTemplate } from './templates/auth';
 
@@ -192,7 +193,7 @@ export function createAuth<GeneratedListTypes extends BaseListTypeInfo>({
 */
   const withItemData = (
     _sessionStrategy: AuthSessionStrategy<Record<string, any>>
-  ): AuthSessionStrategy<NextAuthSession | never> => {
+  ): AuthSessionStrategy<Session | never> => {
     const { get, ...sessionStrategy } = _sessionStrategy;
     return {
       ...sessionStrategy,
@@ -200,37 +201,32 @@ export function createAuth<GeneratedListTypes extends BaseListTypeInfo>({
         return 'false';
       },
       get: async ({ req, createContext }) => {
-        const session = await get({ req, createContext });
         const sudoContext = createContext({ sudo: true });
         const pathname = url.parse(req?.url!).pathname!;
+        let nextSession;
         if (pathname.includes('/api/auth')) {
           return;
         }
         if (req.headers?.authorization?.split(' ')[0] === 'Bearer') {
-          const token = (await getToken({
+          nextSession = await getToken({
             req,
             secret: sessionSecret,
-          })) as NextAuthSession;
-
-          if (!token.itemId) {
-            return;
-          }
+          });
+        } else {
+          nextSession = await getSession({ req });
         }
+
         if (
-          !session ||
-          !session.listKey ||
-          session.listKey !== listKey ||
-          !session.itemId ||
-          !sudoContext.query[session.listKey]
+          !nextSession ||
+          !nextSession.listKey ||
+          nextSession.listKey !== listKey ||
+          !nextSession.itemId ||
+          !sudoContext.query[listKey] ||
+          !nextSession.itemId
         ) {
           return;
         }
-        const nextSession: unknown = await getSession({ req });
-
-        if (nextSession) {
-          return nextSession as NextAuthSession;
-        }
-        return;
+        return nextSession;
       },
       end: async ({ res, req }) => {
         const TOKEN_NAME =

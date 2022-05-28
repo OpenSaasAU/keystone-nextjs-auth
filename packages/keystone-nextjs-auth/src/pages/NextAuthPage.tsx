@@ -121,7 +121,7 @@ export default function NextAuthPage(props: NextAuthPageProps) {
       async session({ session, token }) {
         let returnSession = session;
         if (!token.itemId) {
-          returnSession = { expires: '0' };
+          return { expires: '0' };
         } else {
           returnSession = {
             ...session,
@@ -131,30 +131,31 @@ export default function NextAuthPage(props: NextAuthPageProps) {
             itemId: token.itemId,
           };
         }
+        console.log('Session', returnSession);
+
         return returnSession;
       },
       async jwt({ token }) {
         const identity = token.sub as number | string;
-        if (!token.itemId) {
-          const result = await validateNextAuth(
-            identityField,
-            identity,
-            protectIdentities,
-            queryAPI
-          );
+        const result = await validateNextAuth(
+          identityField,
+          identity,
+          protectIdentities,
+          queryAPI
+        );
 
-          if (!result.success) {
-            return token;
-          }
+        if (!result.success) {
+          token.itemId = null;
+        } else {
           token.itemId = result.item.id;
+          const data = await query[listKey].findOne({
+            where: { id: token.itemId },
+            query: sessionData || 'id',
+          });
+          token.data = data;
         }
-        const data = await query[listKey].findOne({
-          where: { id: token.itemId },
-          query: sessionData || 'id',
-        });
         const returnToken = {
           ...token,
-          data,
           subject: token.sub,
           listKey,
         };
