@@ -30,11 +30,12 @@ export default function SignupPage({ ...props }) {
     <Container>
       {user && (
         <p>
-          You are signed in as <strong>{user.email}</strong><br />
-          AuthenticatedItem from Keystone GraphQL says: {' '}
-          {user.name}<br />
-          Server Side Props also from Keystone GraphQL says: {' '}
-          {ssrUser.name}<br />
+          You are signed in as <strong>{user.email}</strong>
+          <br />
+          AuthenticatedItem from Keystone GraphQL says: {user.name}
+          <br />
+          Server Side Props also from Keystone GraphQL says: {ssrUser.name}
+          <br />
         </p>
       )}
       {!user && <p>No User</p>}
@@ -51,7 +52,7 @@ export default function SignupPage({ ...props }) {
             Sign Out
           </Button>
           <Link href="/admin">
-            <Button style={{ float: 'right' }} >Keystone Admin</Button>
+            <Button style={{ float: 'right' }}>Keystone Admin</Button>
           </Link>
         </>
       )}
@@ -71,7 +72,16 @@ export default function SignupPage({ ...props }) {
         </>
       )}
       <p>This Demo Sign In flow uses Auth0 to manage users and social authentication</p>
-      <p>For details on how to set up Social Auth on Keystone see our <a href="https://github.com/OpensaasAU/keystone-nextjs-auth/" rel="noopener" target="_blank">Github Repo</a></p>
+      <p>
+        For details on how to set up Social Auth on Keystone see our{' '}
+        <a
+          href="https://github.com/OpensaasAU/keystone-nextjs-auth/"
+          rel="noopener"
+          target="_blank"
+        >
+          Github Repo
+        </a>
+      </p>
     </Container>
   );
 }
