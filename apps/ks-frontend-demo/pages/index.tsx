@@ -2,6 +2,7 @@
 import React from 'react';
 import { Container, Button } from 'react-bootstrap';
 import { signIn, signOut, useSession } from 'next-auth/react';
+import Link from 'next/link';
 import { useUser, CURRENT_USER_QUERY } from '../lib/useUser';
 import { initializeApollo } from '../lib/apolloClient';
 
@@ -29,26 +30,18 @@ export default function SignupPage({ ...props }) {
     <Container>
       {user && (
         <p>
-          Authenticated Item from Keystone Says:
-          {user.name}
-          Server Side Props says:
-          {ssrUser.name}
+          You are signed in as <strong>{user.email}</strong>
+          <br />
+          AuthenticatedItem from Keystone GraphQL says: {user.name}
+          <br />
+          Server Side Props also from Keystone GraphQL says: {ssrUser.name}
+          <br />
         </p>
       )}
       {!user && <p>No User</p>}
-      {data && (
+      {data?.itemId ? (
         <>
-          <p>
-            Welcome
-            {data?.user?.name}, we have your Session email as
-            {data?.user?.email}
-          </p>
-          {user && (
-            <p>
-              And your user email as
-              {user.email}
-            </p>
-          )}
+          <p>Your email stored in your NextAuthjs Session as: &quot;{data?.user?.email}&quot;</p>
           <Button
             onClick={() =>
               signOut({
@@ -58,11 +51,13 @@ export default function SignupPage({ ...props }) {
           >
             Sign Out
           </Button>
+          <Link href="/admin">
+            <Button style={{ float: 'right' }}>Keystone Admin</Button>
+          </Link>
         </>
-      )}
-      {!data && (
+      ) : (
         <>
-          Not signed in
+          You are not currnetly signed in. Please sign in to get started.
           <br />
           <Button
             onClick={() =>
@@ -75,6 +70,17 @@ export default function SignupPage({ ...props }) {
           </Button>
         </>
       )}
+      <p>This Demo Sign In flow uses Auth0 to manage users and social authentication</p>
+      <p>
+        For details on how to set up Social Auth on Keystone see our{' '}
+        <a
+          href="https://github.com/OpensaasAU/keystone-nextjs-auth/"
+          rel="noopener"
+          target="_blank"
+        >
+          Github Repo
+        </a>
+      </p>
     </Container>
   );
 }

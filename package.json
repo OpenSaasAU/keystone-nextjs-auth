@@ -14,7 +14,7 @@
     "backend"
   ],
   "scripts": {
-    "build": "preconstruct build",
+    "build": "preconstruct build && yarn build:backend",
     "build:backend": "manypkg run backend build",
     "build:signup": "manypkg run signup-frontend build",
     "clean": "manypkg exec rm -rf node_modules && manypkg exec rm -rf .keystone && manypkg exec rm -rf dist && manypkg exec rm -rf .next && rm -rf node_modules",
@@ -25,7 +25,7 @@
     "test:eslint": "eslint . --ext ts,tsx,js",
     "test:prettier": "prettier --list-different \"**/*.{js,json,ts,tsx}\"",
     "test:types": "tsc",
-    "release": "yarn build && changeset publish",
+    "release": "yarn preconscruct build && changeset publish",
     "start": "echo figure out how to start both services simultaneously here",
     "start:backend": "manypkg run backend start",
     "start:signup": "yarn manypkg run signup-frontend start",
@@ -85,5 +85,8 @@
       "packages/*",
       "services/*"
     ]
+  },
+  "engines": {
+    "node": "^16.13.0"
   }
 }

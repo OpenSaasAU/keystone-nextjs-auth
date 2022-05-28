@@ -119,37 +119,38 @@ export default function NextAuthPage(props: NextAuthPageProps) {
         return url;
       },
       async session({ session, token }) {
-        const returnSession = {
-          ...session,
-          data: token.data,
-          subject: token.sub,
-          listKey: token.listKey,
-          itemId: token.itemId,
-        };
+        let returnSession = session;
+        if (!token.itemId) {
+          return { expires: '0' };
+        } else {
+          returnSession = {
+            ...session,
+            data: token.data,
+            subject: token.sub,
+            listKey: token.listKey as string,
+            itemId: token.itemId as string,
+          };
+        }
+        console.log('Session', returnSession);
+
         return returnSession;
       },
       async jwt({ token }) {
         const identity = token.sub as number | string;
-        if (!token.itemId) {
-          const result = await validateNextAuth(
-            identityField,
-            identity,
-            protectIdentities,
-            queryAPI
-          );
+        const result = await validateNextAuth(identityField, identity, protectIdentities, queryAPI);
 
-          if (!result.success) {
-            return token;
-          }
+        if (!result.success) {
+          token.itemId = null;
+        } else {
           token.itemId = result.item.id;
+          const data = await query[listKey].findOne({
+            where: { id: token.itemId },
+            query: sessionData || 'id',
+          });
+          token.data = data;
         }
-        const data = await query[listKey].findOne({
-          where: { id: token.itemId },
-          query: sessionData || 'id',
-        });
         const returnToken = {
           ...token,
-          data,
           subject: token.sub,
           listKey,
         };

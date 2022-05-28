@@ -23,8 +23,6 @@ export declare type AuthSessionStrategy<StoredSessionData> = {
   }) => Promise<StoredSessionData | undefined>;
 };
 
-export type NextAuthSession = { listKey: string; itemId: string; data: any };
-
 export type NextAuthProviders = Provider[];
 
 type KeytoneOAuthOptions = {
