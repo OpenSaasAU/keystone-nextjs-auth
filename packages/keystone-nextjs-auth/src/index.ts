@@ -227,6 +227,7 @@ export function createAuth<GeneratedListTypes extends BaseListTypeInfo>({
           return;
         }
         return {
+          ...nextSession,
           data: nextSession.data,
           listKey: nextSession.listKey,
           itemId: nextSession.itemId,
