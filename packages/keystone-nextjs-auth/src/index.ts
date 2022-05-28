@@ -193,7 +193,7 @@ export function createAuth<GeneratedListTypes extends BaseListTypeInfo>({
 */
   const withItemData = (
     _sessionStrategy: AuthSessionStrategy<Record<string, any>>
-  ): AuthSessionStrategy<Session | never> => {
+  ): AuthSessionStrategy<{ listKey: string; itemId: string; data: any }> => {
     const { get, ...sessionStrategy } = _sessionStrategy;
     return {
       ...sessionStrategy,
@@ -203,17 +203,17 @@ export function createAuth<GeneratedListTypes extends BaseListTypeInfo>({
       get: async ({ req, createContext }) => {
         const sudoContext = createContext({ sudo: true });
         const pathname = url.parse(req?.url!).pathname!;
-        let nextSession;
+        let nextSession: Session;
         if (pathname.includes('/api/auth')) {
           return;
         }
         if (req.headers?.authorization?.split(' ')[0] === 'Bearer') {
-          nextSession = await getToken({
+          nextSession = (await getToken({
             req,
             secret: sessionSecret,
-          });
+          })) as Session;
         } else {
-          nextSession = await getSession({ req });
+          nextSession = (await getSession({ req })) as Session;
         }
 
         if (
@@ -226,7 +226,11 @@ export function createAuth<GeneratedListTypes extends BaseListTypeInfo>({
         ) {
           return;
         }
-        return nextSession;
+        return {
+          data: nextSession.data,
+          listKey: nextSession.listKey,
+          itemId: nextSession.itemId,
+        };
       },
       end: async ({ res, req }) => {
         const TOKEN_NAME =

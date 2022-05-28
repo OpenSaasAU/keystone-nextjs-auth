@@ -1,7 +1,7 @@
 import type { ServerResponse, IncomingMessage } from 'http';
 import type { NextRequest } from 'next/server';
 import { Provider } from 'next-auth/providers';
-import { CookiesOptions, PagesOptions, Session } from 'next-auth';
+import { CookiesOptions, PagesOptions } from 'next-auth';
 import { BaseListTypeInfo, KeystoneConfig, CreateContext } from '@keystone-6/core/types';
 
 type NextAuthResponse = IncomingMessage & NextRequest;

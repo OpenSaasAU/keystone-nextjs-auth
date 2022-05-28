@@ -127,8 +127,8 @@ export default function NextAuthPage(props: NextAuthPageProps) {
             ...session,
             data: token.data,
             subject: token.sub,
-            listKey: token.listKey,
-            itemId: token.itemId,
+            listKey: token.listKey as string,
+            itemId: token.itemId as string,
           };
         }
         console.log('Session', returnSession);
