@@ -119,13 +119,18 @@ export default function NextAuthPage(props: NextAuthPageProps) {
         return url;
       },
       async session({ session, token }) {
-        const returnSession = {
-          ...session,
-          data: token.data,
-          subject: token.sub,
-          listKey: token.listKey,
-          itemId: token.itemId,
-        };
+        let returnSession = session;
+        if (!token.itemId) {
+          returnSession = { expires: '0' };
+        } else {
+          returnSession = {
+            ...session,
+            data: token.data,
+            subject: token.sub,
+            listKey: token.listKey,
+            itemId: token.itemId,
+          };
+        }
         return returnSession;
       },
       async jwt({ token }) {

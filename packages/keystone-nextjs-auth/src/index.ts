@@ -199,7 +199,9 @@ export function createAuth<GeneratedListTypes extends BaseListTypeInfo>({
       start: async () => {
         return 'false';
       },
-      get: async ({ req }) => {
+      get: async ({ req, createContext }) => {
+        const session = await get({ req, createContext });
+        const sudoContext = createContext({ sudo: true });
         const pathname = url.parse(req?.url!).pathname!;
         if (pathname.includes('/api/auth')) {
           return;
@@ -210,15 +212,25 @@ export function createAuth<GeneratedListTypes extends BaseListTypeInfo>({
             secret: sessionSecret,
           })) as NextAuthSession;
 
-          if (token?.data?.id) {
-            return token;
+          if (!token.itemId) {
+            return;
           }
+        }
+        if (
+          !session ||
+          !session.listKey ||
+          session.listKey !== listKey ||
+          !session.itemId ||
+          !sudoContext.query[session.listKey]
+        ) {
+          return;
         }
         const nextSession: unknown = await getSession({ req });
 
         if (nextSession) {
           return nextSession as NextAuthSession;
         }
+        return;
       },
       end: async ({ res, req }) => {
         const TOKEN_NAME =
