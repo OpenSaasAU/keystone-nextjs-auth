@@ -46,7 +46,7 @@ export default function SignupPage({ ...props }) {
           </p>
           {user && (
             <p>
-              And your user email as {' '}
+              And your user email in authenticatedItem {' '}
               {user.email}
             </p>
           )}
