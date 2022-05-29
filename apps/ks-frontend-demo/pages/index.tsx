@@ -57,7 +57,7 @@ export default function SignupPage({ ...props }) {
         </>
       ) : (
         <>
-          You are not currnetly signed in. Please sign in to get started.
+          You are not currently signed in. Please sign in to get started.
           <br />
           <Button
             onClick={() =>
