@@ -4,28 +4,28 @@ import { Provider } from 'next-auth/providers';
 import { JWTOptions } from 'next-auth/jwt';
 import { validateNextAuth } from '../lib/validateNextAuth';
 
-export type CoreNextAuthPageProps = {
+export type NextAuthTemplateProps = {
   autoCreate: boolean;
-  cookies?: Partial<CookiesOptions>;
-  events?: Partial<EventCallbacks>;
   identityField: string;
-  jwt?: Partial<JWTOptions>;
   listKey: string;
-  pages?: Partial<PagesOptions>;
-  providers?: Provider[];
-  resolver?: (args: { user: any; profile: any; account: any }) => Promise<{
-    [key: string]: boolean | string | number;
-  }>;
   sessionData: string | undefined;
   sessionSecret: string;
 };
 
-type NextAuthGglProps = {
-  mutationName?: string;
-  query?: KeystoneListsAPI<any>;
-};
+export type CoreNextAuthPageProps = {
+  cookies?: Partial<CookiesOptions>;
+  events?: Partial<EventCallbacks>;
+  jwt?: Partial<JWTOptions>;
+  pages?: Partial<PagesOptions>;
+  providers: Provider[];
+  resolver?: (args: { user: any; profile: any; account: any }) => Promise<{
+    [key: string]: boolean | string | number;
+  }>;
+} & NextAuthTemplateProps;
 
-export type NextAuthPageProps = CoreNextAuthPageProps & NextAuthGglProps;
+export type NextAuthPageProps = CoreNextAuthPageProps & {
+  query: KeystoneListsAPI<any>;
+};
 
 export default function NextAuthPage(props: NextAuthPageProps) {
   const {
