@@ -1,10 +1,19 @@
 import ejs from 'ejs';
-import { NextAuthPageProps } from '../pages/NextAuthPage';
+import { NextAuthTemplateProps } from '../pages/NextAuthPage';
 
 const template = `
 import getNextAuthPage from '@opensaas/keystone-nextjs-auth/pages/NextAuthPage';
-import { query } from '.keystone/api';
 import keystoneConfig from '../../../../../keystone';
+import { PrismaClient } from '.prisma/client';
+import { createQueryAPI } from '@keystone-6/core/___internal-do-not-use-will-break-in-patch/node-api';
+
+const prisma = global.prisma || PrismaClient
+
+if (process.env.NODE_ENV !== 'production') global.prisma = prisma
+
+const query = global.query || createQueryAPI(keystoneConfig, prisma);
+
+if (process.env.NODE_ENV !== 'production') global.query = query
 
 export default getNextAuthPage({
         autoCreate: <%= autoCreate %>,
@@ -19,15 +28,13 @@ export default getNextAuthPage({
     });
   `;
 
-type AuthTemplateOptions = NextAuthPageProps;
-
 export const authTemplate = ({
   autoCreate,
   identityField,
   listKey,
   sessionData,
   sessionSecret,
-}: AuthTemplateOptions) => {
+}: NextAuthTemplateProps) => {
   const authOut = ejs.render(template, {
     identityField,
     sessionData,
