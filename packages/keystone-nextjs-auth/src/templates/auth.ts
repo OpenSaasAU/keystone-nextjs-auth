@@ -7,11 +7,7 @@ import keystoneConfig from '../../../../../keystone';
 import { PrismaClient } from '.prisma/client';
 import { createQueryAPI } from '@keystone-6/core/___internal-do-not-use-will-break-in-patch/node-api';
 
-const prisma = global.prisma || PrismaClient
-
-if (process.env.NODE_ENV !== 'production') global.prisma = prisma
-
-const query = global.query || createQueryAPI(keystoneConfig, prisma);
+const query = global.query || createQueryAPI(keystoneConfig, PrismaClient);
 
 if (process.env.NODE_ENV !== 'production') global.query = query
 
