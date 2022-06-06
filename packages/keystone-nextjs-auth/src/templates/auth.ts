@@ -1,5 +1,5 @@
 import ejs from 'ejs';
-import { NextAuthPageProps } from '../pages/NextAuthPage';
+import { CoreNextAuthPageProps } from '../pages/NextAuthPage';
 
 const template = `
 import getNextAuthPage from '@opensaas/keystone-nextjs-auth/pages/NextAuthPage';
@@ -19,7 +19,7 @@ export default getNextAuthPage({
     });
   `;
 
-type AuthTemplateOptions = NextAuthPageProps;
+type AuthTemplateOptions = CoreNextAuthPageProps;
 
 export const authTemplate = ({
   autoCreate,

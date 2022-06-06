@@ -4,7 +4,7 @@ import { Provider } from 'next-auth/providers';
 import { JWTOptions } from 'next-auth/jwt';
 import { validateNextAuth } from '../lib/validateNextAuth';
 
-type CoreNextAuthPageProps = {
+export type CoreNextAuthPageProps = {
   autoCreate: boolean;
   cookies?: Partial<CookiesOptions>;
   events?: Partial<EventCallbacks>;
@@ -13,9 +13,9 @@ type CoreNextAuthPageProps = {
   listKey: string;
   pages?: Partial<PagesOptions>;
   providers?: Provider[];
-  resolver?: (args: { user: any; profile: any; account: any }) => {
+  resolver?: (args: { user: any; profile: any; account: any }) => Promise<{
     [key: string]: boolean | string | number;
-  };
+  }>;
   sessionData: string | undefined;
   sessionSecret: string;
 };
@@ -54,7 +54,6 @@ export default function NextAuthPage(props: NextAuthPageProps) {
   }
 
   const list = query[listKey];
-  const queryAPI = query[listKey];
   const protectIdentities = true;
 
   return NextAuth({
@@ -76,7 +75,7 @@ export default function NextAuthPage(props: NextAuthPageProps) {
         }
         const userInput = resolver ? await resolver({ user, account, profile }) : {};
 
-        const result = await validateNextAuth(identityField, identity, protectIdentities, queryAPI);
+        const result = await validateNextAuth(identityField, identity, protectIdentities, list);
         // ID
         const data: any = {
           [identityField]: identity,
@@ -85,10 +84,8 @@ export default function NextAuthPage(props: NextAuthPageProps) {
 
         if (!result.success) {
           if (!autoCreate) {
-            console.log('`autoCreate` is set to `false`, skipping user auto-creation');
             return false;
           }
-          console.log('`autoCreate` is set to `true`, auto-creating a new user');
 
           const createUser = await list
             .createOne({ data })
@@ -96,13 +93,11 @@ export default function NextAuthPage(props: NextAuthPageProps) {
               return { success: true, user: returned };
             })
             .catch(error => {
-              console.log(error);
+              console.error(error);
               throw new Error(error);
             });
-          console.log('Created User', createUser);
           return createUser.success;
         }
-        console.log('Data', data);
 
         const updateUser = await list
           .updateOne({ where: { id: result.item.id }, data })
@@ -110,7 +105,7 @@ export default function NextAuthPage(props: NextAuthPageProps) {
             return { success: true, user: returned };
           })
           .catch(error => {
-            console.log(error);
+            console.error(error);
             throw new Error(error);
           });
         return updateUser.success;
@@ -131,13 +126,12 @@ export default function NextAuthPage(props: NextAuthPageProps) {
             itemId: token.itemId as string,
           };
         }
-        console.log('Session', returnSession);
 
         return returnSession;
       },
       async jwt({ token }) {
         const identity = token.sub as number | string;
-        const result = await validateNextAuth(identityField, identity, protectIdentities, queryAPI);
+        const result = await validateNextAuth(identityField, identity, protectIdentities, list);
 
         if (!result.success) {
           token.itemId = null;
