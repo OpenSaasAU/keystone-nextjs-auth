@@ -7,9 +7,9 @@ import keystoneConfig from '../../../../../keystone';
 import { PrismaClient } from '.prisma/client';
 import { createQueryAPI } from '@keystone-6/core/___internal-do-not-use-will-break-in-patch/node-api';
 
-const query = global.query || createQueryAPI(keystoneConfig, PrismaClient);
+const keystoneQueryAPI = global.keystoneQueryAPI || createQueryAPI(keystoneConfig, PrismaClient);
 
-if (process.env.NODE_ENV !== 'production') global.query = query
+if (process.env.NODE_ENV !== 'production') globalThis.keystoneQueryAPI = keystoneQueryAPI
 
 export default getNextAuthPage({
         autoCreate: <%= autoCreate %>,
@@ -17,7 +17,7 @@ export default getNextAuthPage({
         listKey: '<%= listKey %>',
         pages: keystoneConfig.pages,
         providers: keystoneConfig.providers,
-        query,
+        query: keystoneQueryAPI,
         resolver: keystoneConfig.resolver,
         sessionData: '<%= sessionData %>',
         sessionSecret: '<%= sessionSecret %>',
