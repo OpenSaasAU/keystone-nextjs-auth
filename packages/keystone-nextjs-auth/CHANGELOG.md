@@ -1,5 +1,11 @@
 # @opensaas-keystone/nextjs-auth
 
+## 22.2.1
+
+### Patch Changes
+
+- 8599b89: remove global prisma client as it is not required
+
 ## 22.2.0
 
 ### Minor Changes
