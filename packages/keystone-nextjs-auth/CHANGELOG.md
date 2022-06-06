@@ -1,5 +1,15 @@
 # @opensaas-keystone/nextjs-auth
 
+## 22.2.0
+
+### Minor Changes
+
+- 4a2f20a: Allow custom session `get`, `start` and `end`
+
+### Patch Changes
+
+- 4a2f20a: Set prisma and query on global in dev to prevent instantiating extra `PrismaClient` instances
+
 ## 22.1.0
 
 ### Minor Changes
