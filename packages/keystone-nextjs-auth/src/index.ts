@@ -233,6 +233,7 @@ export function createAuth<GeneratedListTypes extends BaseListTypeInfo>({
         };
       },
       end: async ({ res, req, createContext }) => {
+        await end({ res, req, createContext });
         const TOKEN_NAME =
           process.env.NODE_ENV === 'production'
             ? '__Secure-next-auth.session-token'
@@ -250,7 +251,6 @@ export function createAuth<GeneratedListTypes extends BaseListTypeInfo>({
             domain: url.parse(req.url as string).hostname as string,
           })
         );
-        await end({ res, req, createContext });
       },
     };
   };
