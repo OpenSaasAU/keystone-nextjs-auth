@@ -205,7 +205,6 @@ export function createAuth<GeneratedListTypes extends BaseListTypeInfo>({
         }
         const sudoContext = createContext({ sudo: true });
 
-        const session = await get({ req, createContext });
         if (req.headers?.authorization?.split(' ')[0] === 'Bearer') {
           nextSession = (await getToken({
             req,
@@ -225,8 +224,17 @@ export function createAuth<GeneratedListTypes extends BaseListTypeInfo>({
         ) {
           return;
         }
+
+        req.user = {
+          istKey: nextSession.listKey,
+          itemId: nextSession.itemId,
+          data: nextSession.data,
+        };
+
+        const userSession = await get({ req, createContext });
+
         return {
-          ...session,
+          ...userSession,
           ...nextSession,
           data: nextSession.data,
           listKey: nextSession.listKey,
