@@ -10,7 +10,7 @@ export default class MyDocument extends Document {
     );
     const styleTags = sheet.getStyleElement();
     const initialProps = await Document.getInitialProps(ctx);
-    return { ...initialProps, styleTags };
+    return { ...initialProps, ...page, styleTags };
   }
 
   render() {
