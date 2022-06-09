@@ -1,5 +1,11 @@
 # @opensaas-keystone/nextjs-auth
 
+## 22.2.2
+
+### Patch Changes
+
+- 544ffd8: fix session order
+
 ## 22.2.1
 
 ### Patch Changes
