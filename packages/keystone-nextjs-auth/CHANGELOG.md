@@ -1,5 +1,11 @@
 # @opensaas-keystone/nextjs-auth
 
+## 22.2.3
+
+### Patch Changes
+
+- 415a15d: Fix the session user input so get is used correctly
+
 ## 22.2.2
 
 ### Patch Changes
