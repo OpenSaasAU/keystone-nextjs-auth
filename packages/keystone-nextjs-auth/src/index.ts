@@ -224,14 +224,14 @@ export function createAuth<GeneratedListTypes extends BaseListTypeInfo>({
         ) {
           return;
         }
-
-        req.user = {
+        const reqWithUser = req as any;
+        reqWithUser.user = {
           istKey: nextSession.listKey,
           itemId: nextSession.itemId,
           data: nextSession.data,
         };
 
-        const userSession = await get({ req, createContext });
+        const userSession = await get({ req: reqWithUser, createContext });
 
         return {
           ...userSession,
