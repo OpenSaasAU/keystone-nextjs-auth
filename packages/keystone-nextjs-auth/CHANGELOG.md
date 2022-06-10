@@ -1,5 +1,11 @@
 # @opensaas-keystone/nextjs-auth
 
+## 23.0.0
+
+### Major Changes
+
+- cedcb30: Upgrade to `@keystone-6/core@2.0.0`
+
 ## 22.2.3
 
 ### Patch Changes
