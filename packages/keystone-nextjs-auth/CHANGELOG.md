@@ -1,5 +1,23 @@
 # @opensaas-keystone/nextjs-auth
 
+## 23.0.0
+
+### Major Changes
+
+- cedcb30: Upgrade to `@keystone-6/core@2.0.0`
+
+## 22.2.3
+
+### Patch Changes
+
+- 415a15d: Fix the session user input so get is used correctly
+
+## 22.2.2
+
+### Patch Changes
+
+- 544ffd8: fix session order
+
 ## 22.2.1
 
 ### Patch Changes
