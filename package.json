@@ -59,7 +59,7 @@
     "@preconstruct/cli": "2.1.5",
     "@preconstruct/eslint-plugin-format-js-tag": "^0.2.0",
     "@types/node": "^16.11.33",
-    "@types/react": "^17.0.44",
+    "@types/react": "^18.0.12",
     "@typescript-eslint/eslint-plugin": "^5.18.0",
     "@typescript-eslint/parser": "^5.23.0",
     "babel-eslint": "^10.1.0",
