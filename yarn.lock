@@ -3402,10 +3402,10 @@
   resolved "https://registry.yarnpkg.com/@keystone-6/document-renderer/-/document-renderer-1.1.0.tgz#759f85f6a887109874af9c8638891dce030d970a"
   integrity sha512-Y9hCZGFzxyupmTauAhhxX0cqTzu6Iqz2fwGIjZyP/9I9WIrou+5ffSyQdOO1c0VzejopPdVRfmLPvsFWO+J0lA==
 
-"@keystone-6/fields-document@^3.0.0":
-  version "3.0.0"
-  resolved "https://registry.yarnpkg.com/@keystone-6/fields-document/-/fields-document-3.0.0.tgz#21462c581abe22a9494a0aecb0461b539555f1e6"
-  integrity sha512-pplDc9CJ+VcFuuPLvApqmYbyBFytJkd6rgiO4YeOalgDrzfpc/3MvzfZnDpeh0cgYpqo0aUsD0AgYhNlhkrCag==
+"@keystone-6/fields-document@^4.0.1":
+  version "4.0.1"
+  resolved "https://registry.yarnpkg.com/@keystone-6/fields-document/-/fields-document-4.0.1.tgz#2e851603f9eb6717e748a390b595d48ac2099cf6"
+  integrity sha512-zaYYuLypu6mBfOMBRl2bVBR2YUPSAa0YvbeAJMLNz7SeCVpGSHECrDi2hTJikmbwTb5PB8Oj9dy27b+RYCEELg==
   dependencies:
     "@babel/runtime" "^7.16.3"
     "@braintree/sanitize-url" "^6.0.0"
@@ -3416,7 +3416,7 @@
     "@keystone-6/document-renderer" "^1.1.0"
     "@keystone-ui/button" "^7.0.0"
     "@keystone-ui/core" "^5.0.0"
-    "@keystone-ui/fields" "^7.0.0"
+    "@keystone-ui/fields" "^7.1.0"
     "@keystone-ui/icons" "^6.0.0"
     "@keystone-ui/popover" "^6.0.0"
     "@keystone-ui/tooltip" "^6.0.0"
@@ -3437,9 +3437,9 @@
     micromark-extension-gfm-strikethrough "0.6.5"
     react "^18.1.0"
     scroll-into-view-if-needed "^2.2.28"
-    slate "^0.67.1"
+    slate "^0.81.1"
     slate-history "^0.66.0"
-    slate-react "^0.69.0"
+    slate-react "^0.81.0"
 
 "@keystone-ui/button@^7.0.0":
   version "7.0.0"
@@ -11911,10 +11911,10 @@ slate-history@^0.66.0:
   dependencies:
     is-plain-object "^5.0.0"
 
-slate-react@^0.69.0:
-  version "0.69.0"
-  resolved "https://registry.yarnpkg.com/slate-react/-/slate-react-0.69.0.tgz#6a444b8f0f854b6ffbfc07ab554a8d497b735baa"
-  integrity sha512-qz3w4dTRuiv9HHBUmQ1mcaaZ1il/7vm8fOCF4ccTqGGsOfwriY9pKX9lTFG06QCqkKaRrSvPHELL+V0oZJIF0g==
+slate-react@^0.81.0:
+  version "0.81.0"
+  resolved "https://registry.yarnpkg.com/slate-react/-/slate-react-0.81.0.tgz#248eb688ce01f23680ce2554625fd60676614962"
+  integrity sha512-bwryad4EvOmc7EFKb8aGg9DWNDh3KvToaggGieIgGTTbHJYHc9ADFC3A87Ittlpd5XUVopR0MpChQ3g3ODyvqw==
   dependencies:
     "@types/is-hotkey" "^0.1.1"
     "@types/lodash" "^4.14.149"
@@ -11925,10 +11925,10 @@ slate-react@^0.69.0:
     scroll-into-view-if-needed "^2.2.20"
     tiny-invariant "1.0.6"
 
-slate@^0.67.1:
-  version "0.67.1"
-  resolved "https://registry.yarnpkg.com/slate/-/slate-0.67.1.tgz#b1b4c0ffefaa4d4b680394136d66a084cf522c2d"
-  integrity sha512-BLBg9/rmlrlSXgWFXHxIsMiHBx3jE0s1txF1Ny5DhgapOYL5buUX3CUFSn9/+7f5TXbA/W3FjegZGjsoU5GeQg==
+slate@^0.81.1:
+  version "0.81.1"
+  resolved "https://registry.yarnpkg.com/slate/-/slate-0.81.1.tgz#98d9f87b1ea2d648bfbab2739dcb1ba897f3bba0"
+  integrity sha512-nmqphQb2qnlJpPMKsoxeWShpa+pOlKfy6XVdmlTuOtgWeGethM6SMPSRTrhh5UF/G+3/IoXhfbKF7o3iDZCbWw==
   dependencies:
     immer "^9.0.6"
     is-plain-object "^5.0.0"
