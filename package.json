@@ -42,24 +42,24 @@
     "babel-plugin-remove-graphql-queries": "2.7.2"
   },
   "dependencies": {
-    "@babel/core": "^7.17.10",
+    "@babel/core": "^7.17.12",
     "@babel/eslint-parser": "^7.17.0",
     "@babel/plugin-proposal-class-properties": "^7.16.7",
-    "@babel/plugin-proposal-object-rest-spread": "^7.17.3",
+    "@babel/plugin-proposal-object-rest-spread": "^7.17.12",
     "@babel/plugin-syntax-dynamic-import": "^7.8.3",
-    "@babel/plugin-transform-runtime": "^7.17.10",
+    "@babel/plugin-transform-runtime": "^7.17.12",
     "@babel/plugin-transform-typescript": "^7.16.8",
     "@babel/preset-env": "^7.16.11",
     "@babel/preset-flow": "^7.16.7",
     "@babel/preset-react": "^7.16.7",
     "@babel/preset-typescript": "^7.16.7",
-    "@changesets/changelog-github": "^0.4.4",
+    "@changesets/changelog-github": "^0.4.6",
     "@changesets/cli": "^2.24.1",
     "@manypkg/cli": "^0.19.1",
     "@preconstruct/cli": "2.2.1",
     "@preconstruct/eslint-plugin-format-js-tag": "^0.2.0",
-    "@types/node": "^16.11.33",
-    "@types/react": "^18.0.12",
+    "@types/node": "^16.11.45",
+    "@types/react": "^18.0.15",
     "@typescript-eslint/eslint-plugin": "^5.18.0",
     "@typescript-eslint/parser": "^5.23.0",
     "babel-eslint": "^10.1.0",
@@ -87,6 +87,6 @@
     ]
   },
   "engines": {
-    "node": "^16.13.0"
+    "node": "^v16.13.2"
   }
 }
