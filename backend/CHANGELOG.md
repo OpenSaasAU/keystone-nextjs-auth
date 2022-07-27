@@ -1,5 +1,14 @@
 # @opensaas-keystone/next-auth-backend
 
+## 15.2.3
+
+### Patch Changes
+
+- Updated dependencies [1e0e2dd]
+- Updated dependencies [1e0e2dd]
+- Updated dependencies [1e0e2dd]
+  - @opensaas/keystone-nextjs-auth@24.0.0
+
 ## 15.2.2
 
 ### Patch Changes
