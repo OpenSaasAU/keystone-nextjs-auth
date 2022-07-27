@@ -1,5 +1,16 @@
 # @opensaas-keystone/nextjs-auth
 
+## 24.0.0
+
+### Major Changes
+
+- 1e0e2dd: Update next-auth to 4.10
+- 1e0e2dd: Upgrade to keystone 2.1
+
+### Patch Changes
+
+- 1e0e2dd: Patch packages
+
 ## 23.0.0
 
 ### Major Changes

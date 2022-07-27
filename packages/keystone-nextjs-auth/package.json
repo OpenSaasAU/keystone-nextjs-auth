@@ -1,6 +1,6 @@
 {
   "name": "@opensaas/keystone-nextjs-auth",
-  "version": "23.0.0",
+  "version": "24.0.0",
   "repository": "https://github.com/opensaasau/keystone-nextjs-auth",
   "license": "MIT",
   "main": "dist/opensaas-keystone-nextjs-auth.cjs.js",
