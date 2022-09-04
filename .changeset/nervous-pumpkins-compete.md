@@ -1,5 +1,5 @@
 ---
-"@opensaas/keystone-nextjs-auth": patch
+"@opensaas/keystone-nextjs-auth": minor
 "@opensaas-keystone/next-auth-backend": patch
 ---
 
