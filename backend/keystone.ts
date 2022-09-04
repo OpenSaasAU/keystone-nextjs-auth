@@ -45,7 +45,6 @@ const auth = createAuth({
 
 export default auth.withAuth(
   config({
-    // @ts-ignore
     server: {
       cors: {
         origin: [process.env.FRONTEND || 'http://localhost:7777'],
@@ -66,12 +65,12 @@ export default auth.withAuth(
         async () => [
           {
             mode: 'copy',
-            inputPath: Path.join(__dirname, './customPages/signin.js'),
+            inputPath: Path.resolve('./customPages/signin.js'),
             outputPath: 'pages/auth/signin.js',
           },
           {
             mode: 'copy',
-            inputPath: Path.join(__dirname, './customPages/error.js'),
+            inputPath: Path.resolve('./customPages/error.js'),
             outputPath: 'pages/auth/error.js',
           },
         ],
