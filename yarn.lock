@@ -3672,29 +3672,29 @@
     uid-safe "^2.1.5"
     uuid "^8.3.2"
 
-"@keystone-6/document-renderer@^1.1.0":
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/@keystone-6/document-renderer/-/document-renderer-1.1.0.tgz#759f85f6a887109874af9c8638891dce030d970a"
-  integrity sha512-Y9hCZGFzxyupmTauAhhxX0cqTzu6Iqz2fwGIjZyP/9I9WIrou+5ffSyQdOO1c0VzejopPdVRfmLPvsFWO+J0lA==
+"@keystone-6/document-renderer@^1.1.1":
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/@keystone-6/document-renderer/-/document-renderer-1.1.1.tgz#cece98bf38ec38953d7bcb8d0e3799aba2af0568"
+  integrity sha512-OziNXEaZwSUWQuA04lbUPzUDyBqc1zxtmw2VAHt51adT6PvTihB58fWhBQ9H17Mytk4Egup4xI3bs7KpG98TOw==
 
-"@keystone-6/fields-document@^4.0.1":
-  version "4.0.1"
-  resolved "https://registry.yarnpkg.com/@keystone-6/fields-document/-/fields-document-4.0.1.tgz#2e851603f9eb6717e748a390b595d48ac2099cf6"
-  integrity sha512-zaYYuLypu6mBfOMBRl2bVBR2YUPSAa0YvbeAJMLNz7SeCVpGSHECrDi2hTJikmbwTb5PB8Oj9dy27b+RYCEELg==
+"@keystone-6/fields-document@^4.1.0":
+  version "4.1.0"
+  resolved "https://registry.yarnpkg.com/@keystone-6/fields-document/-/fields-document-4.1.0.tgz#2c170c305b8b1ad8bc5d0e36c91e85cc44bb570e"
+  integrity sha512-6cSDXDPi36vMTZDK0cEHwOr1sl0WYwqkj67f9Lqb+C2w7cOQQDe3QMZb4cngBT2HEl9WdzaJEC71PtL7QAhapw==
   dependencies:
     "@babel/runtime" "^7.16.3"
     "@braintree/sanitize-url" "^6.0.0"
     "@dnd-kit/core" "^6.0.0"
     "@dnd-kit/modifiers" "^6.0.0"
     "@dnd-kit/sortable" "^7.0.0"
-    "@emotion/weak-memoize" "^0.2.5"
-    "@keystone-6/document-renderer" "^1.1.0"
-    "@keystone-ui/button" "^7.0.0"
-    "@keystone-ui/core" "^5.0.0"
-    "@keystone-ui/fields" "^7.1.0"
-    "@keystone-ui/icons" "^6.0.0"
-    "@keystone-ui/popover" "^6.0.0"
-    "@keystone-ui/tooltip" "^6.0.0"
+    "@emotion/weak-memoize" "^0.3.0"
+    "@keystone-6/document-renderer" "^1.1.1"
+    "@keystone-ui/button" "^7.0.1"
+    "@keystone-ui/core" "^5.0.1"
+    "@keystone-ui/fields" "^7.1.1"
+    "@keystone-ui/icons" "^6.0.1"
+    "@keystone-ui/popover" "^6.0.1"
+    "@keystone-ui/tooltip" "^6.0.1"
     "@types/react" "^18.0.9"
     apollo-server-errors "^3.3.0"
     apply-ref "^1.0.0"
@@ -3704,7 +3704,6 @@
     io-ts-excess "^1.0.1"
     is-hotkey "^0.2.0"
     match-sorter "^6.3.1"
-    mdast-util-definitions "^4.0.0"
     mdast-util-from-markdown "^0.8.5"
     mdast-util-gfm-autolink-literal "^0.1.3"
     mdast-util-gfm-strikethrough "^0.2.3"
@@ -3715,17 +3714,6 @@
     slate "^0.81.1"
     slate-history "^0.66.0"
     slate-react "^0.81.0"
-
-"@keystone-ui/button@^7.0.0":
-  version "7.0.0"
-  resolved "https://registry.yarnpkg.com/@keystone-ui/button/-/button-7.0.0.tgz#02b10a8def249607af78a9886c71dc9226ec82cc"
-  integrity sha512-/HWCDbde6at1nL8XoJn1Af7WaQaDYfawJrWOyiIJZDl3zAfIsWsADB1FSplqoiaLC9mA06UnoTKL6P/k3V0x5w==
-  dependencies:
-    "@babel/runtime" "^7.16.3"
-    "@keystone-ui/core" "^5.0.0"
-    "@keystone-ui/icons" "^6.0.0"
-    "@keystone-ui/loading" "^6.0.0"
-    react "^18.1.0"
 
 "@keystone-ui/button@^7.0.1":
   version "7.0.1"
@@ -3738,16 +3726,6 @@
     "@keystone-ui/loading" "^6.0.1"
     react "^18.1.0"
 
-"@keystone-ui/core@^5.0.0":
-  version "5.0.0"
-  resolved "https://registry.yarnpkg.com/@keystone-ui/core/-/core-5.0.0.tgz#9d97f080c1d81f3a0430c770ac921f6771f4513c"
-  integrity sha512-X6gwVdYzZh0T8Ey2bl2HvQDSKmDseLVguMQm1s1AaLkwgnylSCJUzSPiycMpcmv02pEnfNafu0rTWyf8bRRcOg==
-  dependencies:
-    "@babel/runtime" "^7.16.3"
-    "@emotion/react" "^11.7.1"
-    "@types/facepaint" "^1.2.2"
-    facepaint "^1.2.1"
-
 "@keystone-ui/core@^5.0.1":
   version "5.0.1"
   resolved "https://registry.yarnpkg.com/@keystone-ui/core/-/core-5.0.1.tgz#cff796451ba3dda3064651fc3bc9d157c61ad001"
@@ -3757,21 +3735,6 @@
     "@emotion/react" "^11.7.1"
     "@types/facepaint" "^1.2.2"
     facepaint "^1.2.1"
-
-"@keystone-ui/fields@^7.1.0":
-  version "7.1.0"
-  resolved "https://registry.yarnpkg.com/@keystone-ui/fields/-/fields-7.1.0.tgz#e7ded277b1b294336c6aafe1960a730220e8140e"
-  integrity sha512-+ofiYKl690tSaT/QaVX+YMdJKCQigbUHv/C8LefpzykT8Co0uPQDfuHKb3lal9V43FkL+WSQ/dDAtN4HJQCw/g==
-  dependencies:
-    "@babel/runtime" "^7.16.3"
-    "@keystone-ui/core" "^5.0.0"
-    "@keystone-ui/icons" "^6.0.0"
-    "@keystone-ui/popover" "^6.0.0"
-    date-fns "^2.26.0"
-    react "^18.1.0"
-    react-day-picker "^8.0.4"
-    react-focus-lock "^2.7.1"
-    react-select "^5.2.1"
 
 "@keystone-ui/fields@^7.1.1":
   version "7.1.1"
@@ -3788,14 +3751,6 @@
     react-focus-lock "^2.7.1"
     react-select "^5.2.1"
 
-"@keystone-ui/icons@^6.0.0":
-  version "6.0.0"
-  resolved "https://registry.yarnpkg.com/@keystone-ui/icons/-/icons-6.0.0.tgz#be81988d62fdb26e4abe6d6dbdab3f61d788ffef"
-  integrity sha512-+ONAsgrT8xl6vXiiDdSrwsbk13yC4/IuGQL0DYwCc8Ko28utA296Ntn7qOELq4MBN7EzIFutv709hlhDQ3Mgjw==
-  dependencies:
-    "@babel/runtime" "^7.16.3"
-    "@keystone-ui/core" "^5.0.0"
-
 "@keystone-ui/icons@^6.0.1":
   version "6.0.1"
   resolved "https://registry.yarnpkg.com/@keystone-ui/icons/-/icons-6.0.1.tgz#3ba3c0d71973af4cbb2de69d34f746caf34a7bd3"
@@ -3803,15 +3758,6 @@
   dependencies:
     "@babel/runtime" "^7.16.3"
     "@keystone-ui/core" "^5.0.1"
-
-"@keystone-ui/loading@^6.0.0":
-  version "6.0.0"
-  resolved "https://registry.yarnpkg.com/@keystone-ui/loading/-/loading-6.0.0.tgz#662c4a0b45daba89de086da9d278fa5f5c81f360"
-  integrity sha512-Ls0OFpJOPiDJN4Ls8/OcF4bPJzSnTk3NWF68lAlfnaDNVc1/xYRcraRMdiTqUxVz9QnxuJVDZcir/GmEOkuICg==
-  dependencies:
-    "@babel/runtime" "^7.16.3"
-    "@keystone-ui/core" "^5.0.0"
-    react "^18.1.0"
 
 "@keystone-ui/loading@^6.0.1":
   version "6.0.1"
@@ -3866,17 +3812,6 @@
     "@keystone-ui/core" "^5.0.1"
     "@keystone-ui/icons" "^6.0.1"
 
-"@keystone-ui/popover@^6.0.0":
-  version "6.0.0"
-  resolved "https://registry.yarnpkg.com/@keystone-ui/popover/-/popover-6.0.0.tgz#a5e56f857b2b1a07ba33dea588719ad799cb2889"
-  integrity sha512-VaaMiZP8HjD3FXvD/P/v2078ltn8Uid891e0Tc6mSG+Lj0xZZaSl5Hzz6B1OsKajZpwDCTxuOZWC2t/Ki5dgcA==
-  dependencies:
-    "@babel/runtime" "^7.16.3"
-    "@keystone-ui/core" "^5.0.0"
-    "@popperjs/core" "^2.10.2"
-    focus-trap "^6.7.1"
-    react-popper "^2.2.5"
-
 "@keystone-ui/popover@^6.0.1":
   version "6.0.1"
   resolved "https://registry.yarnpkg.com/@keystone-ui/popover/-/popover-6.0.1.tgz#b06033ad4f34ae83abde23f43ac5eeb84a751519"
@@ -3904,16 +3839,6 @@
     "@babel/runtime" "^7.16.3"
     "@keystone-ui/core" "^5.0.1"
     "@keystone-ui/icons" "^6.0.1"
-
-"@keystone-ui/tooltip@^6.0.0":
-  version "6.0.0"
-  resolved "https://registry.yarnpkg.com/@keystone-ui/tooltip/-/tooltip-6.0.0.tgz#3fbf29e39b51400ca42a83df3b9b7c2e9fca800e"
-  integrity sha512-5FsQIAZ4mjREGwE4cMjUy/+0oejg0bYYHfTILL4Bam4e4trlkBUeiktOvsjNRcB5lJ8y41B4IJxn47DDtHA6xA==
-  dependencies:
-    "@babel/runtime" "^7.16.3"
-    "@keystone-ui/core" "^5.0.0"
-    "@keystone-ui/popover" "^6.0.0"
-    apply-ref "^1.0.0"
 
 "@keystone-ui/tooltip@^6.0.1":
   version "6.0.1"
@@ -10267,13 +10192,6 @@ match-sorter@^6.3.1:
     "@babel/runtime" "^7.12.5"
     remove-accents "0.4.2"
 
-mdast-util-definitions@^4.0.0:
-  version "4.0.0"
-  resolved "https://registry.yarnpkg.com/mdast-util-definitions/-/mdast-util-definitions-4.0.0.tgz#c5c1a84db799173b4dcf7643cda999e440c24db2"
-  integrity sha512-k8AJ6aNnUkB7IE+5azR9h81O5EQ/cTDXtWdMq9Kk5KcEW/8ritU5CeLg/9HhOC++nALHBlaogJ5jz0Ybk3kPMQ==
-  dependencies:
-    unist-util-visit "^2.0.0"
-
 mdast-util-find-and-replace@^1.1.0:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/mdast-util-find-and-replace/-/mdast-util-find-and-replace-1.1.1.tgz#b7db1e873f96f66588c321f1363069abf607d1b5"
@@ -13379,15 +13297,6 @@ unist-util-visit-parents@^3.0.0:
   dependencies:
     "@types/unist" "^2.0.0"
     unist-util-is "^4.0.0"
-
-unist-util-visit@^2.0.0:
-  version "2.0.3"
-  resolved "https://registry.yarnpkg.com/unist-util-visit/-/unist-util-visit-2.0.3.tgz#c3703893146df47203bb8a9795af47d7b971208c"
-  integrity sha512-iJ4/RczbJMkD0712mGktuGpm/U4By4FfDonL7N/9tATGIF4imikjOuagyMY53tnZq3NP6BcmlrHhEKAfGWjh7Q==
-  dependencies:
-    "@types/unist" "^2.0.0"
-    unist-util-is "^4.0.0"
-    unist-util-visit-parents "^3.0.0"
 
 universalify@^0.1.0, universalify@^0.1.2:
   version "0.1.2"
