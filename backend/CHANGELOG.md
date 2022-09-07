@@ -1,5 +1,17 @@
 # @opensaas-keystone/next-auth-backend
 
+## 15.2.4
+
+### Patch Changes
+
+- ae15a2c: Update dependency @keystone-6/core to ^2.2.0
+- b730bff: Update react monorepo (minor)
+- Updated dependencies [0a7d339]
+- Updated dependencies [ae15a2c]
+- Updated dependencies [b730bff]
+- Updated dependencies [7d40c8b]
+  - @opensaas/keystone-nextjs-auth@24.1.0
+
 ## 15.2.3
 
 ### Patch Changes

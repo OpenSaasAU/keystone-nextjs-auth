@@ -1,5 +1,17 @@
 # @opensaas-keystone/nextjs-auth
 
+## 24.1.0
+
+### Minor Changes
+
+- ae15a2c: Update dependency @keystone-6/core to ^2.2.0
+- b730bff: Update react monorepo (minor)
+
+### Patch Changes
+
+- 0a7d339: Update patch dependencies (patch)
+- 7d40c8b: Fix keystone `onConnect` running on next-auth initialisation
+
 ## 24.0.0
 
 ### Major Changes
