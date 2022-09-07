@@ -7,7 +7,16 @@ import keystoneConfig from '../../../../../keystone';
 import { PrismaClient } from '.prisma/client';
 import { createQueryAPI } from '@keystone-6/core/___internal-do-not-use-will-break-in-patch/node-api';
 
-const keystoneQueryAPI = global.keystoneQueryAPI || createQueryAPI(keystoneConfig, PrismaClient);
+const cleanConfig = (config) => {
+  const { db, ...rest } = config;
+  if (db) {
+    const { onConnect, ...restDB } = db;
+    return { ...rest, db: restDB };
+  }
+  return rest;
+};
+
+const keystoneQueryAPI = global.keystoneQueryAPI || createQueryAPI(cleanConfig(keystoneConfig), PrismaClient);
 
 if (process.env.NODE_ENV !== 'production') globalThis.keystoneQueryAPI = keystoneQueryAPI
 
