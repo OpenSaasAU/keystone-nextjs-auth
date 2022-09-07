@@ -1,5 +1,11 @@
 # @collective-ams/unifi-frontend
 
+## 8.1.1
+
+### Patch Changes
+
+- b730bff: Update react monorepo (minor)
+
 ## 8.1.0
 
 ### Minor Changes
