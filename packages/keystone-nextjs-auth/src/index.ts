@@ -284,7 +284,6 @@ export function createAuth<GeneratedListTypes extends BaseListTypeInfo>({
         getAdditionalFiles: [...(keystoneConfig.ui?.getAdditionalFiles || []), getAdditionalFiles],
         pageMiddleware: async args =>
           (await pageMiddleware(args)) ?? keystoneConfig?.ui?.pageMiddleware?.(args),
-        enableSessionItem: true,
         isAccessAllowed: async (context: KeystoneContext) => {
           const { req } = context;
           const pathname = url.parse(req?.url!).pathname!;
@@ -325,10 +324,6 @@ export function createAuth<GeneratedListTypes extends BaseListTypeInfo>({
       session,
       lists: {
         ...keystoneConfig.lists,
-      },
-      experimental: {
-        ...keystoneConfig.experimental,
-        generateNodeAPI: true,
       },
       extendGraphqlSchema: existingExtendGraphQLSchema
         ? schema => existingExtendGraphQLSchema(extendGraphqlSchema(schema))

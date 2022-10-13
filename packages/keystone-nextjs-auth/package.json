@@ -1,6 +1,6 @@
 {
   "name": "@opensaas/keystone-nextjs-auth",
-  "version": "24.1.0",
+  "version": "25.0.0-rc-1",
   "repository": "https://github.com/opensaasau/keystone-nextjs-auth",
   "license": "MIT",
   "main": "dist/opensaas-keystone-nextjs-auth.cjs.js",
@@ -16,15 +16,12 @@
     "next-auth": "^4.10.3"
   },
   "devDependencies": {
-    "@keystone-6/core": "^2.2.0",
+    "@keystone-6/core": "0.0.0-rc-20221013033655",
     "react": "^18.2.0"
   },
   "peerDependencies": {
-    "@keystone-6/core": "^2.2.0",
+    "@keystone-6/core": "0.0.0-rc-20221013033655",
     "react": "^18.2.0"
-  },
-  "engines": {
-    "node": "^14.13 || >= 16.13"
   },
   "publishConfig": {
     "access": "public"
