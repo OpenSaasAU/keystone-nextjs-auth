@@ -1,10 +1,12 @@
 import { list } from '@keystone-6/core';
 import { text, relationship } from '@keystone-6/core/fields';
-import { permissions, rules } from '../access';
+import { allOperations } from '@keystone-6/core/access';
+import { isSignedIn, permissions, rules } from '../access';
 
 export const User = list({
   access: {
     operation: {
+      ...allOperations(isSignedIn),
       create: () => true,
       // only people with the permission can delete themselves!
       // You can't delete yourself
