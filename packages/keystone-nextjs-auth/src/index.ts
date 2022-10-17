@@ -14,7 +14,7 @@ import { Provider } from 'next-auth/providers';
 
 import * as cookie from 'cookie';
 
-import { Session } from 'next-auth';
+import { JWT, Session } from 'next-auth';
 import { nextConfigTemplate } from './templates/next-config';
 // import * as Path from 'path';
 
@@ -199,17 +199,17 @@ export function createAuth<GeneratedListTypes extends BaseListTypeInfo>({
       ...sessionStrategy,
       get: async ({ req, createContext }) => {
         const pathname = url.parse(req?.url!).pathname!;
-        let nextSession: Session;
+        let nextSession: Session | JWT | null;
         if (pathname.includes('/api/auth')) {
           return;
         }
         const sudoContext = createContext({ sudo: true });
 
         if (req.headers?.authorization?.split(' ')[0] === 'Bearer') {
-          nextSession = (await getToken({
+          nextSession = await getToken({
             req,
             secret: sessionSecret,
-          })) as Session;
+          });
         } else {
           nextSession = (await getSession({ req })) as Session;
         }
