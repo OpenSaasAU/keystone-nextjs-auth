@@ -7413,10 +7413,10 @@ eslint-config-prettier@^6.15.0:
   dependencies:
     get-stdin "^6.0.0"
 
-eslint-config-wesbos@^3.0.2:
-  version "3.0.2"
-  resolved "https://registry.yarnpkg.com/eslint-config-wesbos/-/eslint-config-wesbos-3.0.2.tgz#514af04b4b1a88013746f1cd781581b60bc162f4"
-  integrity sha512-lzyvce/Eprb1dST3c5DMwhm7oqb8TpFCwPb1BrNgdVKp+2jdc/yBVEAnwq/One8Avhy9defQUXrVGBusm2v00w==
+eslint-config-wesbos@^3.1.4:
+  version "3.1.4"
+  resolved "https://registry.yarnpkg.com/eslint-config-wesbos/-/eslint-config-wesbos-3.1.4.tgz#9b79d3ff760161cdaf1ff0fb2c0d926384360f97"
+  integrity sha512-uMLkWbfHXztt2+AKgDIOz/Hh45ChajVLAvIOlJXzWTKLtAUb5uS6+Wy+vZatTg9EW3TgcEURrLu2SNaBmqu7GA==
 
 eslint-import-resolver-node@^0.3.6:
   version "0.3.6"
