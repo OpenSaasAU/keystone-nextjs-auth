@@ -3595,10 +3595,10 @@
   resolved "https://registry.yarnpkg.com/@js-joda/core/-/core-5.4.1.tgz#984922e386169c60a95cdb60bd6199338e9d6e4c"
   integrity sha512-+uMco2Xm9VYJ81XYWwrvgsM9xEvqs9JvLNrN4/fOg7YJKk4yeqAg+O/cpoFPTGxvfL2Zy0mUcnKlIz9UV0Cadw==
 
-"@keystone-6/core@0.0.0-rc-20221013033655":
-  version "0.0.0-rc-20221013033655"
-  resolved "https://registry.yarnpkg.com/@keystone-6/core/-/core-0.0.0-rc-20221013033655.tgz#91859ec31406e78774efd00d3092a5522e49d116"
-  integrity sha512-wrijFSNgDGPo+UpzFAKNZZ8Enb3it2vU+Eu6pOm9ldM4SkTe+TY+El2KvUrTLkpi0AGw8gRZF5dN8JEOpz2n8A==
+"@keystone-6/core@3.0.0":
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/@keystone-6/core/-/core-3.0.0.tgz#978c52eb055c4f38ed6371e733ea35c7fe46bd37"
+  integrity sha512-WMtpsmBIi+UcD4VItqvGs62Sv10CLHze/htAPbOVfAkGcA718YyoQRFGV1vI1jtGyMoILvvlwCvAF66eGVbjEQ==
   dependencies:
     "@apollo/client" "3.6.9"
     "@aws-sdk/client-s3" "^3.83.0"

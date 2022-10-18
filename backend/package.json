@@ -9,11 +9,11 @@
     "start": "keystone prisma migrate deploy && keystone start"
   },
   "dependencies": {
-    "@keystone-6/core": "0.0.0-rc-20221013033655",
+    "@keystone-6/core": "3.0.0",
     "@keystone-6/fields-document": "4.1.2",
     "@keystone-ui/button": "7.0.1",
     "@keystone-ui/core": "5.0.1",
-    "@opensaas/keystone-nextjs-auth": "^25.0.0-rc-1",
+    "@opensaas/keystone-nextjs-auth": "^24.1.0",
     "@types/ejs": "^3.1.1",
     "dotenv": "^16.0.2",
     "ejs": "^3.1.8",
