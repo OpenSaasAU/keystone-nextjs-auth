@@ -2,21 +2,12 @@ import ejs from 'ejs';
 import { NextAuthTemplateProps } from '../pages/NextAuthPage';
 
 const template = `
+import { getContext } from '@keystone-6/core/context';
 import getNextAuthPage from '@opensaas/keystone-nextjs-auth/pages/NextAuthPage';
 import keystoneConfig from '../../../../../keystone';
-import { PrismaClient } from '.prisma/client';
-import { createQueryAPI } from '@keystone-6/core/___internal-do-not-use-will-break-in-patch/node-api';
+import * as PrismaModule from '.prisma/client';
 
-const cleanConfig = (config) => {
-  const { db, ...rest } = config;
-  if (db) {
-    const { onConnect, ...restDB } = db;
-    return { ...rest, db: restDB };
-  }
-  return rest;
-};
-
-const keystoneQueryAPI = global.keystoneQueryAPI || createQueryAPI(cleanConfig(keystoneConfig), PrismaClient);
+const keystoneQueryAPI = global.keystoneQueryAPI || getContext(keystoneConfig, PrismaModule).sudo().query;
 
 if (process.env.NODE_ENV !== 'production') globalThis.keystoneQueryAPI = keystoneQueryAPI
 

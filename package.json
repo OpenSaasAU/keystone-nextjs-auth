@@ -38,9 +38,6 @@
     "singleQuote": true,
     "trailingComma": "es5"
   },
-  "resolutions": {
-    "babel-plugin-remove-graphql-queries": "2.7.2"
-  },
   "dependencies": {
     "@babel/core": "^7.18.13",
     "@babel/eslint-parser": "^7.17.0",
