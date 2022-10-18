@@ -3216,21 +3216,21 @@
   dependencies:
     tslib "~2.3.0"
 
-"@graphql-ts/extend@^0.4.1":
-  version "0.4.1"
-  resolved "https://registry.yarnpkg.com/@graphql-ts/extend/-/extend-0.4.1.tgz#b2325c43fab5435f6b70219168a1c554eeadb0a3"
-  integrity sha512-qMi1rFfEjdgQ9QjixIqPq5sCasJF1xEbRxjzxh6Z/6LhpFbQSoQlOxgGSM7PiPCgV/VsEIuPXebILLjRKmHyRA==
+"@graphql-ts/extend@^1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@graphql-ts/extend/-/extend-1.0.0.tgz#ffaf2d67e8a2fc3a4b63ba38f8d6bbcb9eea0ced"
+  integrity sha512-KdBgOEcTp08h86IVNZR6+DRrmqX8uRplB6qpcB3Jq9cC6tzjtGifIrkQOSx/GivuiWeE0kt8r+uxA+U86nERjw==
   dependencies:
     "@babel/runtime" "^7.9.2"
 
-"@graphql-ts/schema@^0.5.3":
-  version "0.5.3"
-  resolved "https://registry.yarnpkg.com/@graphql-ts/schema/-/schema-0.5.3.tgz#06f23b873c9b6dc517441f2ec9b22f0bf5dbf2a5"
-  integrity sha512-y39jQEsjW2SHLLcI8BJCrGl9Nh2JHkyOw5+MpeVSQA7QV1mjyJ8AdVCaUBocj0JiwhbTAJmb9dnbPTc26vAUHQ==
+"@graphql-ts/schema@^0.6.0":
+  version "0.6.0"
+  resolved "https://registry.yarnpkg.com/@graphql-ts/schema/-/schema-0.6.0.tgz#a1a160f4bc4aea535470d7c23861f7a1e99830e6"
+  integrity sha512-MO99ZdQ6GeLcW5up+hbGx8cLZhVrzl9/1kDH/FRyipq5isB0je6WKMdyzx2hnKrCPqVGIWsXykYzHxuIHJGb5A==
   dependencies:
     "@babel/runtime" "^7.9.2"
 
-"@graphql-typed-document-node/core@^3.0.0", "@graphql-typed-document-node/core@^3.1.1":
+"@graphql-typed-document-node/core@3.1.1", "@graphql-typed-document-node/core@^3.0.0", "@graphql-typed-document-node/core@^3.1.1":
   version "3.1.1"
   resolved "https://registry.yarnpkg.com/@graphql-typed-document-node/core/-/core-3.1.1.tgz#076d78ce99822258cf813ecc1e7fa460fa74d052"
   integrity sha512-NQ17ii0rK1b34VZonlmT2QMJFI70m0TRwbknO/ihlbatXyaktDhN/98vBiUU6kNBPljqGqyIrl2T4nY2RpFANg==
@@ -3582,10 +3582,10 @@
   resolved "https://registry.yarnpkg.com/@js-joda/core/-/core-4.3.1.tgz#1df9f197d060f1eb087a895a5e33adb7f12b58fc"
   integrity sha512-oeaetlodcqVsiZDxnEcqsbs+sXBkASxua0mXs5OXuPQXz3/wdPTMlxwfQ4z2HKcOik3S9voW3QJkp/KLWDhvRQ==
 
-"@keystone-6/core@^2.2.0":
-  version "2.2.0"
-  resolved "https://registry.yarnpkg.com/@keystone-6/core/-/core-2.2.0.tgz#4de610549a90a13b22000d847815ea276b03f9da"
-  integrity sha512-g99+wzcpvCmNbnI0zgapMgvCdB0dfUdUwYG3kACT5LCNyDalcsDW6VKDDZdH42KSMKihBZMY3qa3zb2bSX5LAw==
+"@keystone-6/core@^2.3.1":
+  version "2.3.1"
+  resolved "https://registry.yarnpkg.com/@keystone-6/core/-/core-2.3.1.tgz#33171d8c0ac0a1f64c1e6a88b153718e2b0ec52f"
+  integrity sha512-C6Ngn2iydcUOD6MwFe6qIekq3el5RscJNpNZvOatEPGkFW3nKV34HNXsGXsn1Q9fCWRtlv2vwGI0pZO13xQ6cQ==
   dependencies:
     "@apollo/client" "3.6.9"
     "@aws-sdk/client-s3" "^3.83.0"
@@ -3596,8 +3596,9 @@
     "@emotion/hash" "^0.9.0"
     "@emotion/weak-memoize" "^0.3.0"
     "@graphql-tools/schema" "npm:@graphql-tools/schema@9.0.1"
-    "@graphql-ts/extend" "^0.4.1"
-    "@graphql-ts/schema" "^0.5.3"
+    "@graphql-ts/extend" "^1.0.0"
+    "@graphql-ts/schema" "^0.6.0"
+    "@graphql-typed-document-node/core" "3.1.1"
     "@hapi/iron" "^6.0.0"
     "@keystone-ui/button" "^7.0.1"
     "@keystone-ui/core" "^5.0.1"
@@ -3644,7 +3645,6 @@
     chalk "^4.1.2"
     clipboard-copy "^4.0.1"
     cookie "^0.5.0"
-    copy-to-clipboard "^3.3.1"
     cors "^2.8.5"
     cuid "^2.1.8"
     date-fns "^2.26.0"
@@ -3668,8 +3668,6 @@
     micro "^9.3.4"
     next "^12.2.4"
     node-fetch "^2.6.7"
-    normalize-path "^3.0.0"
-    object-hash "^3.0.0"
     p-limit "^2.3.0"
     pirates "4.0.4"
     pluralize "^8.0.0"
@@ -6633,13 +6631,6 @@ copy-descriptor@^0.1.0:
   version "0.1.1"
   resolved "https://registry.yarnpkg.com/copy-descriptor/-/copy-descriptor-0.1.1.tgz#676f6eb3c39997c2ee1ac3a924fd6124748f578d"
   integrity sha1-Z29us8OZl8LuGsOpJP1hJHSPV40=
-
-copy-to-clipboard@^3.3.1:
-  version "3.3.1"
-  resolved "https://registry.yarnpkg.com/copy-to-clipboard/-/copy-to-clipboard-3.3.1.tgz#115aa1a9998ffab6196f93076ad6da3b913662ae"
-  integrity sha512-i13qo6kIHTTpCm8/Wup+0b1mVWETvu2kIMzKoK8FpkLkFxlt0znUAHcMzox+T8sPlqtZXq3CulEjQHsYiGFJUw==
-  dependencies:
-    toggle-selection "^1.0.6"
 
 core-js-compat@^3.20.0, core-js-compat@^3.20.2:
   version "3.20.2"
@@ -10803,11 +10794,6 @@ object-hash@^2.0.1:
   resolved "https://registry.yarnpkg.com/object-hash/-/object-hash-2.2.0.tgz#5ad518581eefc443bd763472b8ff2e9c2c0d54a5"
   integrity sha512-gScRMn0bS5fH+IuwyIFgnh9zBdo4DV+6GhygmWM9HyNJSgS0hScp1f5vjtm7oIIOiT9trXrShAkLFSc2IqKNgw==
 
-object-hash@^3.0.0:
-  version "3.0.0"
-  resolved "https://registry.yarnpkg.com/object-hash/-/object-hash-3.0.0.tgz#73f97f753e7baffc0e2cc9d6e079079744ac82e9"
-  integrity sha512-RSn9F68PjH9HqtltsSnqYC1XXoWe9Bju5+213R98cNGttag9q9yAOTzdbsqvIa7aNm5WffBZFpWYr2aWrklWAw==
-
 object-inspect@^1.11.0, object-inspect@^1.9.0:
   version "1.12.0"
   resolved "https://registry.yarnpkg.com/object-inspect/-/object-inspect-1.12.0.tgz#6e2c120e868fd1fd18cb4f18c31741d0d6e776f0"
@@ -13039,11 +13025,6 @@ to-regex@^3.0.1, to-regex@^3.0.2:
     extend-shallow "^3.0.2"
     regex-not "^1.0.2"
     safe-regex "^1.1.0"
-
-toggle-selection@^1.0.6:
-  version "1.0.6"
-  resolved "https://registry.yarnpkg.com/toggle-selection/-/toggle-selection-1.0.6.tgz#6e45b1263f2017fa0acc7d89d78b15b8bf77da32"
-  integrity sha1-bkWxJj8gF/oKzH2J14sVuL932jI=
 
 toidentifier@1.0.1:
   version "1.0.1"
