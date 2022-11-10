@@ -1,8 +1,8 @@
 [![Open in Visual Studio Code](https://open.vscode.dev/badges/open-in-vscode.svg)](https://open.vscode.dev/OpenSaasAU/keystone-nextjs-auth)
 [![Release](https://github.com/OpenSaasAU/keystone-nextjs-auth/actions/workflows/release.yml/badge.svg)](https://github.com/OpenSaasAU/keystone-nextjs-auth/actions/workflows/release.yml)
 
-
 # Keystone next auth
+
 This package enables the addition of social auth to keystone-6.
 
 ## Contents
@@ -13,6 +13,7 @@ This package enables the addition of social auth to keystone-6.
 - [Contributing](#contributing)
 
 ## About
+
 This uses NextAuth.js (https://next-auth.js.org/) project to add social auth to Keystone-6 (https://keystonejs.com/). Primary testing has been done with Auth0, happy for others to test other providers/give feedback or send through a PR.
 
 ## Adding to your project
@@ -24,7 +25,6 @@ Add import...
 ```javascript
 import { createAuth } from '@opensaas/keystone-nextjs-auth';
 import Auth0 from '@opensaas/keystone-nextjs-auth/providers/auth0';
-
 ```
 
 Add you Auth configuration including providers
@@ -64,7 +64,8 @@ const auth = createAuth({
 ]
 });
 ```
-Wrap your keystone config in `auth.withAuth`. Note that `generateNodeAPI` is required.
+
+Wrap your keystone config in `auth.withAuth`.
 
 ```javascript
 export default auth.withAuth(
@@ -73,32 +74,32 @@ export default auth.withAuth(
     db: {},
     ui: {},
     lists,
-    experimental: {
-      generateNodeAPI: true,
-    },
     ...
   });
 ```
 
 ## Configuration
+
 Provider configuration see https://next-auth.js.org/configuration/providers.
 For Keystone-6 Configuration see https://keystonejs.com/
 for example see the example [backend](./backend)
 
--  listKey - the list for authentication (generally `'User'`). Make sure any required fields are set using the `*Map` fields, see note below. 
--  identityField - The field that stores the identity/subjectId in keystone (generally `'subjectId'`). You will need to add this field to your list schema specified by `listKey`. An example can be found [here](./backend/schemas/User.ts).
--  sessionData - Data to be stored in the session ( something like `'id name email'`),
--  autoCreate - boolean to autocreate a user when they log in
--  userMap: `key:value` pairs that define what is copied from the User object returned from NextAuth in the SignIn callback (https://next-auth.js.org/configuration/callbacks#sign-in-callback) Left side is Keystone side, right is what comes from NextAuth eg: `{ subjectId: 'id', name: 'name' }`
--  accountMap - As Above but for the Account object
--  profileMap - As Above but for the Profile object
--  keystonePath - the path you want to access keystone from your frontend app (if required).
+- listKey - the list for authentication (generally `'User'`). Make sure any required fields are set using the `*Map` fields, see note below.
+- identityField - The field that stores the identity/subjectId in keystone (generally `'subjectId'`). You will need to add this field to your list schema specified by `listKey`. An example can be found [here](./backend/schemas/User.ts).
+- sessionData - Data to be stored in the session ( something like `'id name email'`),
+- autoCreate - boolean to autocreate a user when they log in
+- userMap: `key:value` pairs that define what is copied from the User object returned from NextAuth in the SignIn callback (https://next-auth.js.org/configuration/callbacks#sign-in-callback) Left side is Keystone side, right is what comes from NextAuth eg: `{ subjectId: 'id', name: 'name' }`
+- accountMap - As Above but for the Account object
+- profileMap - As Above but for the Profile object
+- keystonePath - the path you want to access keystone from your frontend app (if required).
 
 Note: The Keystone `create-keystone-app` CLI app (generally run with `yarn create keystone-app`/`npm init keystone-app`) will set a required `password` field on the `User` list. If you've used this to set up your project you will need to modify your list schema to set the field as not required, or remove it entirely if you don't plan to use the default Keystone auth system at all.
 
 ## Contributing
+
 If you want to run this package locally
 After cloning run `yarn install` and either:
+
 - `yarn dev` to run both the frontend and backend or
 - `yarn dev:backend` for just the backend
 

@@ -13,8 +13,8 @@ import { getToken } from 'next-auth/jwt';
 import { Provider } from 'next-auth/providers';
 
 import * as cookie from 'cookie';
-
-import { JWT, Session } from 'next-auth';
+import { JWT } from 'next-auth/jwt';
+import { Session } from 'next-auth';
 import { nextConfigTemplate } from './templates/next-config';
 // import * as Path from 'path';
 
