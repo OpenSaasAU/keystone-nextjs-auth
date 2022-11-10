@@ -6,6 +6,8 @@ declare module 'next-auth' {
    */
   interface Session {
     itemId: string;
+    listKey?: string;
+    subject?: string | number | null | undefined;
     data: {
       name: string;
       email: string;
