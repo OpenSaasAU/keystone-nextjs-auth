@@ -6,6 +6,7 @@ import Auth0 from '@opensaas/keystone-nextjs-auth/providers/auth0';
 import { createAuth } from '@opensaas/keystone-nextjs-auth';
 import { KeystoneContext } from '@keystone-6/core/types';
 import { lists } from './schemas';
+import { permissionsList } from './schemas/permissionFields';
 
 let sessionSecret = process.env.SESSION_SECRET;
 
@@ -22,7 +23,7 @@ const sessionMaxAge = 60 * 60 * 24 * 30; // 30 days
 const auth = createAuth({
   listKey: 'User',
   identityField: 'subjectId',
-  sessionData: `id name email`,
+  sessionData: `id name email role {${permissionsList.join(' ')}}`,
   autoCreate: true,
   resolver: async ({ user, profile }: { user: any; profile: any }) => {
     const name = user.name as string;
