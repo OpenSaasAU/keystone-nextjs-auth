@@ -81,6 +81,9 @@ export const rules = {
     if (!isSignedIn({ session })) {
       return false;
     }
+    if (permissions.canManageUsers({ session })) {
+      return true;
+    }
     // Otherwise they may only update themselves!
     return { id: { equals: session?.itemId } };
   },
