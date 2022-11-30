@@ -60,7 +60,7 @@ export default auth.withAuth(
       useMigrations: true,
     },
     ui: {
-      isAccessAllowed: (context: KeystoneContext) => !!context.session?.data,
+      isAccessAllowed: (context: KeystoneContext) => !!context.session,
       publicPages: ['/admin/auth/signin', '/admin/auth/error'],
       getAdditionalFiles: [
         async () => [
