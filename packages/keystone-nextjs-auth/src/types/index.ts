@@ -1,26 +1,11 @@
-import type { ServerResponse, IncomingMessage } from 'http';
-import type { NextRequest } from 'next/server';
 import { Provider } from 'next-auth/providers';
 import { CookiesOptions, PagesOptions } from 'next-auth';
-import { BaseListTypeInfo, KeystoneConfig, CreateContext } from '@keystone-6/core/types';
-
-type NextAuthResponse = IncomingMessage & NextRequest;
+import { BaseListTypeInfo, KeystoneConfig, KeystoneContext } from '@keystone-6/core/types';
 
 export declare type AuthSessionStrategy<StoredSessionData> = {
-  start: (args: {
-    res: ServerResponse;
-    data: any;
-    createContext: CreateContext;
-  }) => Promise<string>;
-  end: (args: {
-    req: IncomingMessage;
-    res: ServerResponse;
-    createContext: CreateContext;
-  }) => Promise<void>;
-  get: (args: {
-    req: NextAuthResponse;
-    createContext: CreateContext;
-  }) => Promise<StoredSessionData | undefined>;
+  start: (args: { data: any; context: KeystoneContext }) => Promise<unknown>;
+  end: (args: { context: KeystoneContext }) => Promise<unknown>;
+  get: (args: { context: KeystoneContext }) => Promise<StoredSessionData | undefined>;
 };
 
 export type NextAuthProviders = Provider[];

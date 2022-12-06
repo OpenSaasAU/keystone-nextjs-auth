@@ -8,6 +8,8 @@ import {
   SessionStrategy,
   KeystoneContext,
 } from '@keystone-6/core/types';
+import type { NextApiRequest } from 'next';
+
 import { getSession } from 'next-auth/react';
 import { getToken } from 'next-auth/jwt';
 import { Provider } from 'next-auth/providers';
@@ -181,17 +183,19 @@ export function createAuth<GeneratedListTypes extends BaseListTypeInfo>({
     const { get, end, ...sessionStrategy } = _sessionStrategy;
     return {
       ...sessionStrategy,
-      get: async ({ req, createContext }) => {
+      get: async ({ context }) => {
+        const { req } = context;
         const pathname = url.parse(req?.url!).pathname!;
         let nextSession: Session | JWT | null;
+        if (!req) return;
         if (pathname.includes('/api/auth')) {
           return;
         }
-        const sudoContext = createContext({ sudo: true });
+        const sudoContext = context.sudo();
 
         if (req.headers?.authorization?.split(' ')[0] === 'Bearer') {
           nextSession = await getToken({
-            req,
+            req: req as NextApiRequest,
             secret: sessionSecret,
           });
         } else {
@@ -215,7 +219,7 @@ export function createAuth<GeneratedListTypes extends BaseListTypeInfo>({
           data: nextSession.data,
         };
 
-        const userSession = await get({ req: reqWithUser, createContext });
+        const userSession = await get({ context });
 
         return {
           ...userSession,
@@ -225,12 +229,14 @@ export function createAuth<GeneratedListTypes extends BaseListTypeInfo>({
           itemId: nextSession.itemId,
         };
       },
-      end: async ({ res, req, createContext }) => {
-        await end({ res, req, createContext });
+      end: async ({ context }) => {
+        await end({ context });
         const TOKEN_NAME =
           process.env.NODE_ENV === 'production'
             ? '__Secure-next-auth.session-token'
             : 'next-auth.session-token';
+        const { req, res } = context;
+        if (!req || !res) return;
         res.setHeader(
           'Set-Cookie',
           cookie.serialize(TOKEN_NAME, '', {
