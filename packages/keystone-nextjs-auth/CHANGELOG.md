@@ -1,5 +1,22 @@
 # @opensaas-keystone/nextjs-auth
 
+## 26.0.0
+
+### Major Changes
+
+- fac7086: Upgrade to `keystone-6/core@4.0.0`
+
+### Minor Changes
+
+- ed67215: Update dependency next-auth to ^4.17.0
+- 9643191: Upgrade next-auth and fix types
+- b9dbb77: Upgrade to keystone `3.1.0`
+
+### Patch Changes
+
+- b9dbb77: Resolve error when `isAccessAllowed` is not defined
+- 5b0af33: Simplify NextJS config of Keystone path and resolve redirect loops
+
 ## 25.0.0
 
 ### Major Changes
