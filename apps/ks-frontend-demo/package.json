@@ -60,7 +60,7 @@
     "@preconstruct/next": "^4.0.0",
     "core-js": "^3.20.3",
     "date-fns": "^2.29.3",
-    "deepmerge": "^4.2.2",
+    "deepmerge": "^4.3.0",
     "downshift": "^6.1.12",
     "eslint-config-next": "^13.0.7",
     "graphql": "^16.6.0",
