@@ -52,7 +52,7 @@
     "@babel/preset-typescript": "^7.21.0",
     "@changesets/changelog-github": "^0.4.8",
     "@changesets/cli": "^2.26.0",
-    "@manypkg/cli": "^0.19.2",
+    "@manypkg/cli": "^0.20.0",
     "@preconstruct/cli": "2.3.0",
     "@preconstruct/eslint-plugin-format-js-tag": "^0.2.0",
     "@types/node": "^18.11.19",
