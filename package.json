@@ -59,7 +59,6 @@
     "@types/react": "^18.0.26",
     "@typescript-eslint/eslint-plugin": "^5.45.1",
     "@typescript-eslint/parser": "^5.45.1",
-    "babel-eslint": "^10.1.0",
     "babel-loader": "^8.2.5",
     "babel-plugin-styled-components": "^1.13.3",
     "chalk-cli": "^5.0.0",
