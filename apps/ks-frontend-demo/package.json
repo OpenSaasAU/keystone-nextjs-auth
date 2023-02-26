@@ -70,7 +70,6 @@
     "lodash.debounce": "^4.0.8",
     "next": "^13.2.1",
     "next-auth": "^4.19.2",
-    "next-transpile-modules": "^10.0.0",
     "nprogress": "^0.2.0",
     "prop-types": "^15.8.1",
     "react": "^18.2.0",
