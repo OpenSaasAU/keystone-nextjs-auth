@@ -61,12 +61,12 @@ export function createAuth<GeneratedListTypes extends BaseListTypeInfo>({
    */
   const authMiddleware: AdminUIConfig<BaseKeystoneTypeInfo>['pageMiddleware'] = async ({
     context,
-    isValidSession,
+    wasAccessAllowed,
   }) => {
     const { req, session } = context;
     const pathname = url.parse(req?.url!).pathname!;
 
-    if (isValidSession) {
+    if (wasAccessAllowed) {
       if (customPath !== '' && pathname === '/') {
         return { kind: 'redirect', to: `${customPath}` };
       }
