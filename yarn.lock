@@ -2663,7 +2663,7 @@
   dependencies:
     tslib "^2.0.0"
 
-"@dnd-kit/core@^6.0.0":
+"@dnd-kit/core@^6.0.6":
   version "6.0.8"
   resolved "https://registry.yarnpkg.com/@dnd-kit/core/-/core-6.0.8.tgz#040ae13fea9787ee078e5f0361f3b49b07f3f005"
   integrity sha512-lYaoP8yHTQSLlZe6Rr9qogouGUz9oRUj4AHhDQGQzq/hqaJRpFo65X+JKsdHf8oUFBzx5A+SJPUvxAwTF2OabA==
@@ -2672,7 +2672,7 @@
     "@dnd-kit/utilities" "^3.2.1"
     tslib "^2.0.0"
 
-"@dnd-kit/modifiers@^6.0.0":
+"@dnd-kit/modifiers@^6.0.1":
   version "6.0.1"
   resolved "https://registry.yarnpkg.com/@dnd-kit/modifiers/-/modifiers-6.0.1.tgz#9e39b25fd6e323659604cc74488fe044d33188c8"
   integrity sha512-rbxcsg3HhzlcMHVHWDuh9LCjpOVAgqbV78wLGI8tziXY3+qcMQ61qVXIvNKQFuhj75dSfD+o+PYZQ/NUk2A23A==
@@ -2680,7 +2680,7 @@
     "@dnd-kit/utilities" "^3.2.1"
     tslib "^2.0.0"
 
-"@dnd-kit/sortable@^7.0.0":
+"@dnd-kit/sortable@^7.0.1":
   version "7.0.2"
   resolved "https://registry.yarnpkg.com/@dnd-kit/sortable/-/sortable-7.0.2.tgz#791d550872457f3f3c843e00d159b640f982011c"
   integrity sha512-wDkBHHf9iCi1veM834Gbk1429bd4lHX4RpAwT0y2cHLf246GAvU2sVw/oxWNpPKQNQRQaeGXhAVgrOl1IT+iyA==
@@ -3390,16 +3390,16 @@
   resolved "https://registry.yarnpkg.com/@keystone-6/document-renderer/-/document-renderer-1.1.2.tgz#30f8bbc95ac905ba3971e0699b635172d2aff08e"
   integrity sha512-fxnQL6xYTK/2xSrZ0dzBTC1Qpa4VVeXmZ+7mMvaZOWquttgvDQzBRY57q9zScRa0dAALNWU1xzq14OL8Kc+eBw==
 
-"@keystone-6/fields-document@6.0.0":
-  version "6.0.0"
-  resolved "https://registry.yarnpkg.com/@keystone-6/fields-document/-/fields-document-6.0.0.tgz#4739d394df34cd6e2c9bf1f91ba39990b5375260"
-  integrity sha512-nMT4eunIPA0ygVKYnSm9F+EZU4cfb4AfGaMNiCCgGgqP9eZgmWcbgVzSJ4OHa39WNw0nTz3QyGMYuN08X4YoSA==
+"@keystone-6/fields-document@7.0.0":
+  version "7.0.0"
+  resolved "https://registry.yarnpkg.com/@keystone-6/fields-document/-/fields-document-7.0.0.tgz#86f469c9c38b761865e44d23648d4c6295345fc3"
+  integrity sha512-QqAi6so6CiowczJhpKWEAz8tTKORtgtcgPmpCNnz2E2CLenvnuYuM/Zi6k0upndJGI+gCDuHHWC1Ht2B7otBuw==
   dependencies:
     "@babel/runtime" "^7.16.3"
     "@braintree/sanitize-url" "^6.0.0"
-    "@dnd-kit/core" "^6.0.0"
-    "@dnd-kit/modifiers" "^6.0.0"
-    "@dnd-kit/sortable" "^7.0.0"
+    "@dnd-kit/core" "^6.0.6"
+    "@dnd-kit/modifiers" "^6.0.1"
+    "@dnd-kit/sortable" "^7.0.1"
     "@emotion/weak-memoize" "^0.3.0"
     "@keystone-6/document-renderer" "^1.1.2"
     "@keystone-ui/button" "^7.0.2"
@@ -3410,7 +3410,6 @@
     "@keystone-ui/popover" "^6.0.2"
     "@keystone-ui/tooltip" "^6.0.2"
     "@types/react" "^18.0.9"
-    apollo-server-errors "^3.3.0"
     apply-ref "^1.0.0"
     fp-ts "^2.11.5"
     graphql "^16.6.0"
@@ -3424,7 +3423,7 @@
     micromark-extension-gfm-autolink-literal "0.5.7"
     micromark-extension-gfm-strikethrough "0.6.5"
     react "^18.2.0"
-    scroll-into-view-if-needed "^2.2.28"
+    scroll-into-view-if-needed "^3.0.0"
     slate "^0.81.1"
     slate-history "^0.66.0"
     slate-react "^0.81.0"
@@ -6003,6 +6002,11 @@ compute-scroll-into-view@^1.0.17, compute-scroll-into-view@^1.0.20:
   version "1.0.20"
   resolved "https://registry.yarnpkg.com/compute-scroll-into-view/-/compute-scroll-into-view-1.0.20.tgz#1768b5522d1172754f5d0c9b02de3af6be506a43"
   integrity sha512-UCB0ioiyj8CRjtrvaceBLqqhZCVP+1B8+NWQhmdsm0VXOJtobBCf1dBQmebCCo34qZmUwZfIH2MZLqNHazrfjg==
+
+compute-scroll-into-view@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/compute-scroll-into-view/-/compute-scroll-into-view-3.0.0.tgz#95d2f2f4653e7edda74dd1e38edaaa897918e0f0"
+  integrity sha512-Yk1An4qzo5++Cu6peT9PsmRKIU8tALpmdoE09n//AfGQFcPfx21/tMGMsmKYmLJWaBJrGOJ5Jz5hoU+7cZZUWQ==
 
 concat-map@0.0.1:
   version "0.0.1"
@@ -11338,12 +11342,19 @@ schema-utils@^2.6.5:
     ajv "^6.12.4"
     ajv-keywords "^3.5.2"
 
-scroll-into-view-if-needed@^2.2.20, scroll-into-view-if-needed@^2.2.28:
+scroll-into-view-if-needed@^2.2.20:
   version "2.2.31"
   resolved "https://registry.yarnpkg.com/scroll-into-view-if-needed/-/scroll-into-view-if-needed-2.2.31.tgz#d3c482959dc483e37962d1521254e3295d0d1587"
   integrity sha512-dGCXy99wZQivjmjIqihaBQNjryrz5rueJY7eHfTdyWEiR4ttYpsajb14rn9s5d4DY4EcY6+4+U/maARBXJedkA==
   dependencies:
     compute-scroll-into-view "^1.0.20"
+
+scroll-into-view-if-needed@^3.0.0:
+  version "3.0.6"
+  resolved "https://registry.yarnpkg.com/scroll-into-view-if-needed/-/scroll-into-view-if-needed-3.0.6.tgz#2c803a509c1036bc4a9c009fecc5c145f87e47cf"
+  integrity sha512-x+CW0kOzlFNOnseF0DBr0AJ5m+TgGmSOdEZwyiZW0gV87XBvxQKw5A8DvFFgabznA68XqLgVX+PwPX8OzsFvRA==
+  dependencies:
+    compute-scroll-into-view "^3.0.0"
 
 sembear@^0.5.0:
   version "0.5.2"
