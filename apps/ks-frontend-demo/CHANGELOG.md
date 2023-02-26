@@ -1,5 +1,11 @@
 # @collective-ams/unifi-frontend
 
+## 8.1.2
+
+### Patch Changes
+
+- 0a8ea8e: Update patch dependencies (patch)
+
 ## 8.1.1
 
 ### Patch Changes

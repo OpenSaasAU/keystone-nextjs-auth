@@ -1,5 +1,15 @@
 # @opensaas-keystone/nextjs-auth
 
+## 27.0.0
+
+### Major Changes
+
+- ec29144: Update dependency @keystone-6/core to v5
+
+### Patch Changes
+
+- 0a8ea8e: Update patch dependencies (patch)
+
 ## 26.0.0
 
 ### Major Changes
