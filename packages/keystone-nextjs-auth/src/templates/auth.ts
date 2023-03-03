@@ -5,7 +5,7 @@ const template = `
 import { getContext } from '@keystone-6/core/context';
 import getNextAuthPage from '@opensaas/keystone-nextjs-auth/pages/NextAuthPage';
 import keystoneConfig from '../../../../../keystone';
-import * as PrismaModule from '.prisma/client';
+import * as PrismaModule from '<%= prismaClientPath %>';
 
 const keystoneQueryAPI = global.keystoneQueryAPI || getContext(keystoneConfig, PrismaModule).sudo().query;
 
@@ -30,6 +30,7 @@ export const authTemplate = ({
   listKey,
   sessionData,
   sessionSecret,
+  prismaClientPath,
 }: NextAuthTemplateProps) => {
   const authOut = ejs.render(template, {
     identityField,
@@ -37,6 +38,7 @@ export const authTemplate = ({
     listKey,
     autoCreate,
     sessionSecret,
+    prismaClientPath,
   });
   return authOut;
 };

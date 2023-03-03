@@ -10,6 +10,7 @@ export type NextAuthTemplateProps = {
   listKey: string;
   sessionData: string | undefined;
   sessionSecret: string;
+  prismaClientPath: string;
 };
 
 export type CoreNextAuthPageProps = {
