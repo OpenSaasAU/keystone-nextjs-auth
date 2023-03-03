@@ -1,5 +1,11 @@
 # @opensaas-keystone/nextjs-auth
 
+## 27.1.0
+
+### Minor Changes
+
+- dd2923f: Fixes custom Prisma Path config
+
 ## 27.0.0
 
 ### Major Changes
