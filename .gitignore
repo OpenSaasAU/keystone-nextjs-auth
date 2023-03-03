@@ -4,6 +4,7 @@
 # Keystone build dir
 .keystone
 *.log
+__generated__
 
 
 # Logs

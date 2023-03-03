@@ -1,4 +1,5 @@
 import url from 'url';
+import path from 'path';
 import {
   AdminFileToWrite,
   BaseListTypeInfo,
@@ -63,7 +64,7 @@ export function createAuth<GeneratedListTypes extends BaseListTypeInfo>({
     context,
     wasAccessAllowed,
   }) => {
-    const { req, session } = context;
+    const { req } = context;
     const pathname = url.parse(req?.url!).pathname!;
 
     if (wasAccessAllowed) {
@@ -72,7 +73,7 @@ export function createAuth<GeneratedListTypes extends BaseListTypeInfo>({
       }
       return;
     }
-    if (!session && !pathname.includes(`${customPath}/api/auth/`)) {
+    if (!wasAccessAllowed && !pathname.includes(`${customPath}/api/auth/`)) {
       return {
         kind: 'redirect',
         to: pages?.signIn || `${customPath}/api/auth/signin`,
@@ -88,7 +89,10 @@ export function createAuth<GeneratedListTypes extends BaseListTypeInfo>({
    *
    * The signin page is always included, and the init page is included when initFirstItem is set
    */
-  const authGetAdditionalFiles = () => {
+  const authGetAdditionalFiles = (config: KeystoneConfig) => {
+    const prismaClientPath = config.db.prismaClientPath
+      ? path.join('../../../../../', config.db.prismaClientPath)
+      : '@prisma/client';
     const filesToWrite: AdminFileToWrite[] = [
       {
         mode: 'write',
@@ -99,6 +103,7 @@ export function createAuth<GeneratedListTypes extends BaseListTypeInfo>({
           listKey,
           sessionData,
           sessionSecret,
+          prismaClientPath,
         }),
       },
       {
