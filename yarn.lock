@@ -3381,7 +3381,7 @@
   resolved "https://registry.yarnpkg.com/@js-joda/core/-/core-5.5.2.tgz#3d7953004d70adf6a0a4140a78c948de758284e0"
   integrity sha512-retLUN4TwCJ0QJDi9OCJwYVaXAz93NeOkEtEQL98M2bykBOxmURlP0YlfsuE46kItOOVZIWRYC3KsSLhQ1R2Qw==
 
-"@keystone-6/core@5.1.0":
+"@keystone-6/core@^5.1.0":
   version "5.1.0"
   resolved "https://registry.yarnpkg.com/@keystone-6/core/-/core-5.1.0.tgz#d2684029585323610883261f7596840599361fc3"
   integrity sha512-Mnt1cW236cgbpoVHsA0tgCxV1X3ravKAZD+jSlYVQYeMFWZDV/lKXSywCEc+gJei2Nojqm/1OvfdrPsdfuCaqA==
@@ -3479,7 +3479,7 @@
   resolved "https://registry.yarnpkg.com/@keystone-6/document-renderer/-/document-renderer-1.1.2.tgz#30f8bbc95ac905ba3971e0699b635172d2aff08e"
   integrity sha512-fxnQL6xYTK/2xSrZ0dzBTC1Qpa4VVeXmZ+7mMvaZOWquttgvDQzBRY57q9zScRa0dAALNWU1xzq14OL8Kc+eBw==
 
-"@keystone-6/fields-document@7.0.0":
+"@keystone-6/fields-document@^7.0.0":
   version "7.0.0"
   resolved "https://registry.yarnpkg.com/@keystone-6/fields-document/-/fields-document-7.0.0.tgz#86f469c9c38b761865e44d23648d4c6295345fc3"
   integrity sha512-QqAi6so6CiowczJhpKWEAz8tTKORtgtcgPmpCNnz2E2CLenvnuYuM/Zi6k0upndJGI+gCDuHHWC1Ht2B7otBuw==
@@ -3517,7 +3517,7 @@
     slate-history "^0.66.0"
     slate-react "^0.81.0"
 
-"@keystone-ui/button@7.0.2", "@keystone-ui/button@^7.0.2":
+"@keystone-ui/button@^7.0.2":
   version "7.0.2"
   resolved "https://registry.yarnpkg.com/@keystone-ui/button/-/button-7.0.2.tgz#6f3be63b54b517eddd101b3f2d3bb47e281e84f5"
   integrity sha512-bFuT3WtLRFWXGP0lMPRIxYG22u2BEvjP9blSeGGXQSvl3hC5Zh2r/BlylHeYaWFChcaRYRU2G/2QSLoPAvyDGQ==
@@ -3528,7 +3528,7 @@
     "@keystone-ui/loading" "^6.0.2"
     react "^18.1.0"
 
-"@keystone-ui/core@5.0.2", "@keystone-ui/core@^5.0.2":
+"@keystone-ui/core@^5.0.2":
   version "5.0.2"
   resolved "https://registry.yarnpkg.com/@keystone-ui/core/-/core-5.0.2.tgz#d56af8d7a18afbf608c85f3236424eeb34a325bd"
   integrity sha512-0/rh2nhuQDyio1I8HWfeHUhHP3Adf9+RcsrtpJfcv+U6W3NsJnL/hX68WOYOSF7vYhFgtnuCx8a57xrK1xTsEQ==
