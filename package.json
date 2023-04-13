@@ -38,6 +38,7 @@
     "singleQuote": true,
     "trailingComma": "es5"
   },
+  "packageManager": "yarn@1.22.0",
   "dependencies": {
     "@babel/core": "^7.21.0",
     "@babel/eslint-parser": "^7.19.1",
