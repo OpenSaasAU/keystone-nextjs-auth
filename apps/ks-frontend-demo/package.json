@@ -69,7 +69,7 @@
     "lodash": "^4.17.21",
     "lodash.debounce": "^4.0.8",
     "next": "^13.3.0",
-    "next-auth": "^4.20.1",
+    "next-auth": "^4.22.1",
     "nprogress": "^0.2.0",
     "prop-types": "^15.8.1",
     "react": "^18.2.0",
