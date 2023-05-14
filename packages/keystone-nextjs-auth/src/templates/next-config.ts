@@ -5,6 +5,9 @@ const keystoneConfig = require('@keystone-6/core/___internal-do-not-use-will-bre
 
 module.exports = {
     ...keystoneConfig,
+    experimental: {
+        appDir: false,
+    },
     basePath: '<%= keystonePath || '' %>'
 };`;
 export const nextConfigTemplate = ({ keystonePath }: { keystonePath: string }) => {
