@@ -1,5 +1,13 @@
 # @opensaas-keystone/nextjs-auth
 
+## 27.2.1
+
+### Patch Changes
+
+- 6cb5522: Update dependency @keystone-6/core to ^5.2.0
+- e6d47dc: Update dependency next-auth to ^4.22.0
+- 7a95e6f: Fixes error on when using nextjs 13.4.x
+
 ## 27.2.0
 
 ### Minor Changes
