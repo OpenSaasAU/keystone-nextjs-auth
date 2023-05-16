@@ -4,7 +4,6 @@ import { config } from '@keystone-6/core';
 import { statelessSessions } from '@keystone-6/core/session';
 import Auth0 from '@opensaas/keystone-nextjs-auth/providers/auth0';
 import { createAuth } from '@opensaas/keystone-nextjs-auth';
-import { KeystoneContext } from '@keystone-6/core/types';
 import { lists } from './schemas';
 import { permissionsList } from './schemas/permissionFields';
 
@@ -53,14 +52,11 @@ export default auth.withAuth(
       },
     },
     db: {
-      provider: 'postgresql',
-      url:
-        process.env.DATABASE_URL ||
-        'postgres://postgres:mysecretpassword@localhost:55000/opensaas-local',
-      useMigrations: true,
+      provider: 'sqlite',
+      url: process.env.DATABASE_URL || 'file:./dev.db',
     },
     ui: {
-      isAccessAllowed: (context: KeystoneContext) => !!context.session,
+      isAccessAllowed: context => !!context.session,
       publicPages: ['/admin/auth/signin', '/admin/auth/error'],
       getAdditionalFiles: [
         async () => [
