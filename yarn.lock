@@ -3928,12 +3928,12 @@
     "@keystone-ui/popover" "^6.0.2"
     apply-ref "^1.0.0"
 
-"@manypkg/cli@^0.20.0":
-  version "0.20.0"
-  resolved "https://registry.yarnpkg.com/@manypkg/cli/-/cli-0.20.0.tgz#fe4fec8fc49e831e94fa48c9b41d8fcea1aa20e2"
-  integrity sha512-xOAyzHp4cF6+1VxCeVi14k4WJBbKAExuYVA+wXlCHPLoTUv64D2HQrLUOFO8bXtzW9KFhGhdP2xGFq9n9rSDiw==
+"@manypkg/cli@^0.21.0":
+  version "0.21.0"
+  resolved "https://registry.yarnpkg.com/@manypkg/cli/-/cli-0.21.0.tgz#e36f97b544aac6304ab79817eaa720c091a122f6"
+  integrity sha512-q/JF25il2EXtyPpc5U/Pp7TMgJot/WmFkyh7M9FiutQkliHp58UqUxIPeUObLu9EtoAp/uP21t+TMDsq1DMbeg==
   dependencies:
-    "@manypkg/get-packages" "^2.0.0"
+    "@manypkg/get-packages" "^2.2.0"
     chalk "^2.4.2"
     detect-indent "^6.0.0"
     find-up "^4.1.0"
@@ -3957,12 +3957,12 @@
     find-up "^4.1.0"
     fs-extra "^8.1.0"
 
-"@manypkg/find-root@^2.1.0":
-  version "2.1.0"
-  resolved "https://registry.yarnpkg.com/@manypkg/find-root/-/find-root-2.1.0.tgz#555072fde526f3986e5a02200440f7f7746ed6ce"
-  integrity sha512-NEYRVlZCJYhRTqQURhv+WBpDcvmsp/M423Wcdvggv8lYJYD4GtqnTMLrQaTjA10fYt/PIc3tSdwV+wxJnWqPfQ==
+"@manypkg/find-root@^2.2.0":
+  version "2.2.0"
+  resolved "https://registry.yarnpkg.com/@manypkg/find-root/-/find-root-2.2.0.tgz#b30a0bf1bdeac64b0e3f612b3c33587730a60927"
+  integrity sha512-NET+BNIMmBWUUUfFtuDgaTIav6pVlkkSdI2mt+2rFWPd6TQ0DXyhQH47Ql+d7x2oIkJ69dkVKwsTErRt2ROPbw==
   dependencies:
-    "@manypkg/tools" "^1.0.0"
+    "@manypkg/tools" "^1.1.0"
     "@types/node" "^12.7.1"
     find-up "^4.1.0"
     fs-extra "^8.1.0"
@@ -3979,18 +3979,18 @@
     globby "^11.0.0"
     read-yaml-file "^1.1.0"
 
-"@manypkg/get-packages@^2.0.0":
-  version "2.1.0"
-  resolved "https://registry.yarnpkg.com/@manypkg/get-packages/-/get-packages-2.1.0.tgz#f7308e7b7c14c4a630256d3da73f2d0f75bfede2"
-  integrity sha512-IgWPEGgeKeR3ISlgHAMbY+m042yjNe3NPt8UmJT0xMwofe/UifUVtOq5aUBkNSygfOrcUh/j5JExLPuOx72quA==
+"@manypkg/get-packages@^2.2.0":
+  version "2.2.0"
+  resolved "https://registry.yarnpkg.com/@manypkg/get-packages/-/get-packages-2.2.0.tgz#268c918880f60146351e348380ab590460c1dcc4"
+  integrity sha512-B5p5BXMwhGZKi/syEEAP1eVg5DZ/9LP+MZr0HqfrHLgu9fq0w4ZwH8yVen4JmjrxI2dWS31dcoswYzuphLaRxg==
   dependencies:
-    "@manypkg/find-root" "^2.1.0"
-    "@manypkg/tools" "^1.0.0"
+    "@manypkg/find-root" "^2.2.0"
+    "@manypkg/tools" "^1.1.0"
 
-"@manypkg/tools@^1.0.0":
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/@manypkg/tools/-/tools-1.0.0.tgz#60c41eaca846b32c4924aeb892194d5a5b3c1174"
-  integrity sha512-W8uDMhDGtwNyXYr6A+MWggxdL3spOQ8rfMNYpNph1GDJ0v084MnBFdpF1jvcPZ0okHAeYccV7le8AUs+fzwsAQ==
+"@manypkg/tools@^1.1.0":
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/@manypkg/tools/-/tools-1.1.0.tgz#730b4c0df78be7f0ce232a417f3c26023884a55c"
+  integrity sha512-SkAyKAByB9l93Slyg8AUHGuM2kjvWioUTCckT/03J09jYnfEzMO/wSXmEhnKGYs6qx9De8TH4yJCl0Y9lRgnyQ==
   dependencies:
     fs-extra "^8.1.0"
     globby "^11.0.0"
