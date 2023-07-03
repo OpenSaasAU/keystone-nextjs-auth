@@ -4243,10 +4243,10 @@
     terser "^5.16.8"
     v8-compile-cache "^2.1.1"
 
-"@preconstruct/eslint-plugin-format-js-tag@^0.2.0":
-  version "0.2.0"
-  resolved "https://registry.yarnpkg.com/@preconstruct/eslint-plugin-format-js-tag/-/eslint-plugin-format-js-tag-0.2.0.tgz#6727039301087469fc74fa5ddcdc56fc0187e234"
-  integrity sha512-/yXgIoBp8h0MOYOeI55pT5uLCalOLRyM+FSY55HqnbH1ALkr8ttmf7hu/EI3Z6KY8zRso3sXaf6OeFM4tuHIDg==
+"@preconstruct/eslint-plugin-format-js-tag@^0.4.0":
+  version "0.4.0"
+  resolved "https://registry.yarnpkg.com/@preconstruct/eslint-plugin-format-js-tag/-/eslint-plugin-format-js-tag-0.4.0.tgz#7545b4ba430bfa594fddb5b3091a48a3d6c61aa9"
+  integrity sha512-HDVWvMnvNQYzsxuX534wnOXgAH7841PxrjVnVN1hW9xdd9rEIQh5gpBhIa0ubhMA0ZSR/dn+da0Nt0d3FRvGQw==
   dependencies:
     "@typescript-eslint/experimental-utils" "^5.4.0"
 
