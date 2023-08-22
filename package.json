@@ -63,7 +63,7 @@
     "babel-loader": "^8.3.0",
     "babel-plugin-styled-components": "^1.13.3",
     "chalk-cli": "^5.0.1",
-    "concurrently": "^8.0.1",
+    "concurrently": "^8.2.1",
     "cross-env": "^7.0.3",
     "eslint": "^8.40.0",
     "eslint-plugin-cypress": "^2.12.1",
