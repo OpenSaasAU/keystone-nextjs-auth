@@ -75,7 +75,7 @@
     "prettier": "^2.8.7",
     "rimraf": "^3.0.2",
     "terminal-link-cli": "^3.0.0",
-    "typescript": "^5.0.4"
+    "typescript": "^5.2.2"
   },
   "preconstruct": {
     "packages": [
