@@ -72,7 +72,7 @@
     "eslint-plugin-react": "^7.32.2",
     "eslint-plugin-react-hooks": "^4.6.0",
     "is-ci": "^3.0.1",
-    "prettier": "^2.8.7",
+    "prettier": "^3.0.3",
     "rimraf": "^3.0.2",
     "terminal-link-cli": "^3.0.0",
     "typescript": "^5.0.4"
