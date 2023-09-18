@@ -76,7 +76,7 @@
     "react-bootstrap": "^2.7.3",
     "react-dom": "^18.2.0",
     "react-transition-group": "^4.4.5",
-    "styled-components": "^5.3.9",
+    "styled-components": "^6.0.8",
     "typescript": "^5.0.4",
     "waait": "^1.0.5"
   },
