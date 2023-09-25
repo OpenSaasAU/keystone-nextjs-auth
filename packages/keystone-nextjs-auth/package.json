@@ -6,8 +6,8 @@
   "main": "dist/opensaas-keystone-nextjs-auth.cjs.js",
   "module": "dist/opensaas-keystone-nextjs-auth.esm.js",
   "dependencies": {
-    "@babel/runtime": "^7.21.0",
-    "@babel/runtime-corejs3": "^7.21.0",
+    "@babel/runtime": "^7.23.1",
+    "@babel/runtime-corejs3": "^7.23.1",
     "@types/ejs": "^3.1.2",
     "cookie": "^0.5.0",
     "cross-fetch": "^3.1.5",
