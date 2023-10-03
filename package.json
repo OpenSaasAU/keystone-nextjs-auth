@@ -56,7 +56,7 @@
     "@manypkg/cli": "^0.20.0",
     "@preconstruct/cli": "2.6.2",
     "@preconstruct/eslint-plugin-format-js-tag": "^0.2.0",
-    "@types/node": "^18.16.6",
+    "@types/node": "^18.18.3",
     "@types/react": "^18.2.6",
     "@typescript-eslint/eslint-plugin": "^5.53.0",
     "@typescript-eslint/parser": "^5.53.0",
