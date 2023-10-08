@@ -1,3 +1,7 @@
+# Package now DEPRECIATED
+This package now no longer works with the latest versions of Keystone and Next-Auth. For more background see https://github.com/keystonejs/keystone/pull/8582.
+You can now implement Next-Auth directly in Keystone - see example https://github.com/keystonejs/keystone/tree/main/examples/custom-session-next-auth
+
 [![Open in Visual Studio Code](https://open.vscode.dev/badges/open-in-vscode.svg)](https://open.vscode.dev/OpenSaasAU/keystone-nextjs-auth)
 [![Release](https://github.com/OpenSaasAU/keystone-nextjs-auth/actions/workflows/release.yml/badge.svg)](https://github.com/OpenSaasAU/keystone-nextjs-auth/actions/workflows/release.yml)
 
